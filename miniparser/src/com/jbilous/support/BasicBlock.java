@@ -1,0 +1,12 @@
+package com.jbilous.support;
+
+import java.util.Vector;
+
+public class BasicBlock {
+
+	Vector<Instruction> instructions;
+
+	BasicBlock() {
+		instructions = new Vector<Instruction>();
+	}
+}

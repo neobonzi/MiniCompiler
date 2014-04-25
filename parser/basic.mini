@@ -1,0 +1,16 @@
+struct apple {
+    int core;
+    int stem;
+};
+
+struct banana {
+    int peel;
+};
+
+int a, b;
+int c;
+
+fun f() void {
+    a = b * c;
+}
+
