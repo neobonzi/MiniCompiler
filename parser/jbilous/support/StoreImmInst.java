@@ -14,6 +14,6 @@ public class StoreImmInst extends Instruction{
 	}
 
 	public String toString() {
-		return "storeai " + imm + ", r" + source + ",  @" + target;
+		return "storeai r" + imm + ", r" + source + ",  @" + target;
 	}
 }

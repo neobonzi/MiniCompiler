@@ -229,7 +229,7 @@ statement [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock ret
    ;
 
 read [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
-   :  ^(READ retReg=lvalue[regTable, prevBlock])
+   :  ^(READ retReg=lvalueRead[regTable, prevBlock])
       {
          prevBlock.instructions.add(new ReadInst($retReg.regNum));
          $retBlock = $prevBlock;
@@ -349,10 +349,9 @@ block [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBloc
    ;
 
 assignment [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
-   :  ^(ASSIGN retExpReg=expression[regTable, prevBlock] retAddrReg=lvalue[regTable, prevBlock])
+   :  ^(ASSIGN retExpReg=expression[regTable, prevBlock] lvalue[regTable, prevBlock, $retExpReg.regNum])
       {
-         prevBlock.instructions.add(new StoreInst($retExpReg.regNum, $retAddrReg.regNum));
-         $retBlock = $prevBlock;
+         $retBlock = prevBlock;
       }
    ;
 
@@ -441,15 +440,14 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
       }
    |  newId = ID
       {
-         Type idType = lookupType($newId.text, env);
-         if(idType != null && (idType.getClass().equals(StructType.class))) {
-            ComputeGlobalAddrInst cbai = new ComputeGlobalAddrInst($newId.text, regCounter);
-            prevBlock.instructions.add(cbai);
+         Integer varReg = regTable.get($newId.text);
+         if (varReg == null) {
+            prevBlock.instructions.add(new ComputeGlobalAddrInst($newId.text, regCounter));
+            $regNum = new Integer(regCounter++);
          } else {
-            Integer curLoc = regTable.get($newId.text);
-            prevBlock.instructions.add(new MoveInst(curLoc, regCounter));
+             prevBlock.instructions.add(new MoveInst(varReg, regCounter));
+             $regNum = new Integer(regCounter++);
          }
-         $regNum = new Integer(regCounter++);
       }
    |  intVal=INTEGER
       {
@@ -484,24 +482,46 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
       }
    ;
    
-lvalue [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum]
+lvalue [RegisterTable regTable, BasicBlock prevBlock, Integer assReg] returns [Integer regNum]
    :  retId=ID
       {
-         if(lookupType($retId.text, env) != null && lookupType($retId.text, env).getClass().equals(StructType.class)) {
-            prevBlock.instructions.add(new LoadInst($retId.text, regCounter));
-            $regNum = regCounter++;
-         } else {
-            prevBlock.instructions.add(new MoveInst(regTable.get($retId.text), regCounter));
-            $regNum = regCounter++;
-         }
+         prevBlock.instructions.add(new MoveInst($assReg, regTable.get($retId.text)));
+         $regNum = regTable.get($retId.text);
       }
-   |  ^(DOT retReg=lvalue[regTable, prevBlock] newId=ID)
+   |  ^(DOT retReg=lvalueLoad[regTable, prevBlock] newId=ID)
+      {
+         prevBlock.instructions.add(new StoreImmInst($assReg, $retReg.regNum, $newId.text));
+      }
+   ;
+
+lvalueRead [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum]
+   :  retId=ID
+      {
+         $regNum = regTable.get($retId.text);
+      }
+   |  ^(DOT retReg=lvalueRead[regTable, prevBlock] newId=ID)
       {
          prevBlock.instructions.add(new LoadAIInst($retReg.regNum, $newId.text, regCounter));
          $regNum = regCounter++;
       }
    ;
-   
+
+lvalueLoad [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum]
+   :  retId=ID
+      {
+         $regNum = regTable.get($retId.text);
+         if ($regNum == null) {
+            prevBlock.instructions.add(new LoadGlobalInst($retId.text, regCounter));
+            $regNum = regCounter++;
+         }
+      }
+   |  ^(DOT retReg=lvalueLoad[regTable, prevBlock] newId=ID)
+      {
+         prevBlock.instructions.add(new LoadAIInst($retReg.regNum, $newId.text, regCounter));
+         $regNum = regCounter++;
+      }
+   ; 
+
 rettype
    :  type
    |  VOID
