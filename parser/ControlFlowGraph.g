@@ -65,6 +65,7 @@ options
    StructTypes stypes;
    Vector<BasicBlock> cfgs = new Vector<BasicBlock>();
    int regCounter = 0;
+   int numParams = 0;
    int labelCounter = 1;
 
    String getLabel() {
@@ -152,15 +153,22 @@ function returns [BasicBlock retBlock]
    @init{
       regCounter = 0;
       BasicBlock newFunBlk = new BasicBlock("tempLabel");
+      newFunBlk.funEntrance = true;
    }
    :  {
          RegisterTable regTable = new RegisterTable();
       }
-      ^(FUN funID=ID params[regTable, newFunBlk] ^(RETTYPE rettype) declarations[regTable] retSLBlock=statement_list[regTable, newFunBlk])
+      ^(FUN funID=ID paramRet=params[regTable, newFunBlk] {
+         numParams = $paramRet.numParams;
+         newFunBlk.numParams = numParams;
+      } 
+      ^(RETTYPE rettype) declarations[regTable] retSLBlock=statement_list[regTable, newFunBlk])
       {
           newFunBlk.label = $funID.text;
           BasicBlock funExitBlk = new BasicBlock(getLabel());
+          funExitBlk.funExit = true;
           funExitBlk.instructions.add(new RetInst());
+          funExitBlk.numParams = numParams;
           addBlockRel($retSLBlock.retBlock, funExitBlk);
           $retBlock=newFunBlk;
       }
@@ -527,7 +535,7 @@ rettype
    |  VOID
    ;
 
-params [RegisterTable regTable, BasicBlock prevBlock]
+params [RegisterTable regTable, BasicBlock prevBlock] returns [int numParams]
    @init {
       int paramNum = 0;
    }
@@ -536,4 +544,7 @@ params [RegisterTable regTable, BasicBlock prevBlock]
          $regTable.put($declRetID.id, regCounter);
          prevBlock.instructions.add(new LoadInArgumentInst($declRetID.id, paramNum++, regCounter++));
       })*)
+      {
+         $numParams = paramNum;
+      }
    ;

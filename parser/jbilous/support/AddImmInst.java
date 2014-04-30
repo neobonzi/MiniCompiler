@@ -3,17 +3,27 @@ package jbilous.support;
 import java.lang.String;
 
 public class AddImmInst extends Instruction{
-	Integer source1;
-	Integer source2;
+	Integer source;
+	String sourceString;
+	String imm;
 	Integer target;
 
-	public AddImmInst(int source1, String imm, int target) {
-		this.source1 = new Integer(source1);
-		this.source2 = new Integer(source2);
+	public AddImmInst(int source, String imm, int target) {
+		this.source = new Integer(source);
+		this.imm = imm;
 		this.target = new Integer(target);
 	}
 
+	public AddImmInst(String source, String imm, int target) {
+		this.sourceString = source;
+		this.imm = imm;
+		this.target = new Integer(target);
+	}
 	public String toString() {
-		return "addi rarp, " +  source2 + ", r" + target;
+		if (sourceString != null) {
+			return "addi r" + sourceString + ",  " +  imm + ", r" + target;
+		} else {
+			return "addi r" + source + ", " + imm + ", r" + target;
+		}
 	}
 }

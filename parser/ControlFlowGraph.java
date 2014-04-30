@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 ControlFlowGraph.g 2014-04-25 10:27:37
+// $ANTLR 3.5.2 ControlFlowGraph.g 2014-04-29 21:11:33
 
    import java.util.Map;
    import java.util.HashMap;
@@ -157,6 +157,7 @@ public class ControlFlowGraph extends TreeParser {
 	   StructTypes stypes;
 	   Vector<BasicBlock> cfgs = new Vector<BasicBlock>();
 	   int regCounter = 0;
+	   int numParams = 0;
 	   int labelCounter = 1;
 
 	   String getLabel() {
@@ -173,7 +174,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "generate"
-	// ControlFlowGraph.g:75:1: generate[Vector<SymbolTable> symTableIn, StructTypes stypesIn] returns [Vector<BasicBlock> cfGraph] : ( program EOF |);
+	// ControlFlowGraph.g:76:1: generate[Vector<SymbolTable> symTableIn, StructTypes stypesIn] returns [Vector<BasicBlock> cfGraph] : ( program EOF |);
 	public final ControlFlowGraph.generate_return generate(Vector<SymbolTable> symTableIn, StructTypes stypesIn) throws RecognitionException {
 		ControlFlowGraph.generate_return retval = new ControlFlowGraph.generate_return();
 		retval.start = input.LT(1);
@@ -194,7 +195,7 @@ public class ControlFlowGraph extends TreeParser {
 		      stypes = stypesIn;
 		   
 		try {
-			// ControlFlowGraph.g:80:4: ( program EOF |)
+			// ControlFlowGraph.g:81:4: ( program EOF |)
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0==PROGRAM) ) {
@@ -212,7 +213,7 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt1) {
 				case 1 :
-					// ControlFlowGraph.g:80:7: program EOF
+					// ControlFlowGraph.g:81:7: program EOF
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -237,7 +238,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:84:7: 
+					// ControlFlowGraph.g:85:7: 
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -270,7 +271,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "program"
-	// ControlFlowGraph.g:87:1: program : ^( PROGRAM . . functions ) ;
+	// ControlFlowGraph.g:88:1: program : ^( PROGRAM . . functions ) ;
 	public final ControlFlowGraph.program_return program() throws RecognitionException {
 		ControlFlowGraph.program_return retval = new ControlFlowGraph.program_return();
 		retval.start = input.LT(1);
@@ -291,8 +292,8 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree wildcard5_tree=null;
 
 		try {
-			// ControlFlowGraph.g:88:4: ( ^( PROGRAM . . functions ) )
-			// ControlFlowGraph.g:88:7: ^( PROGRAM . . functions )
+			// ControlFlowGraph.g:89:4: ( ^( PROGRAM . . functions ) )
+			// ControlFlowGraph.g:89:7: ^( PROGRAM . . functions )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -363,7 +364,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "types"
-	// ControlFlowGraph.g:94:1: types : ( ^( TYPES types_sub ) | TYPES );
+	// ControlFlowGraph.g:95:1: types : ( ^( TYPES types_sub ) | TYPES );
 	public final ControlFlowGraph.types_return types() throws RecognitionException {
 		ControlFlowGraph.types_return retval = new ControlFlowGraph.types_return();
 		retval.start = input.LT(1);
@@ -382,7 +383,7 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree TYPES9_tree=null;
 
 		try {
-			// ControlFlowGraph.g:95:4: ( ^( TYPES types_sub ) | TYPES )
+			// ControlFlowGraph.g:96:4: ( ^( TYPES types_sub ) | TYPES )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0==TYPES) ) {
@@ -416,7 +417,7 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt2) {
 				case 1 :
-					// ControlFlowGraph.g:95:8: ^( TYPES types_sub )
+					// ControlFlowGraph.g:96:8: ^( TYPES types_sub )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -452,7 +453,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:96:8: TYPES
+					// ControlFlowGraph.g:97:8: TYPES
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -491,7 +492,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "types_sub"
-	// ControlFlowGraph.g:99:1: types_sub : ( type_decl types_sub |);
+	// ControlFlowGraph.g:100:1: types_sub : ( type_decl types_sub |);
 	public final ControlFlowGraph.types_sub_return types_sub() throws RecognitionException {
 		ControlFlowGraph.types_sub_return retval = new ControlFlowGraph.types_sub_return();
 		retval.start = input.LT(1);
@@ -507,7 +508,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 		try {
-			// ControlFlowGraph.g:100:4: ( type_decl types_sub |)
+			// ControlFlowGraph.g:101:4: ( type_decl types_sub |)
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0==STRUCT) ) {
@@ -525,7 +526,7 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt3) {
 				case 1 :
-					// ControlFlowGraph.g:100:7: type_decl types_sub
+					// ControlFlowGraph.g:101:7: type_decl types_sub
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -547,7 +548,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:102:4: 
+					// ControlFlowGraph.g:103:4: 
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -579,7 +580,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "type_decl"
-	// ControlFlowGraph.g:104:1: type_decl : ^( STRUCT ^id= ID nested_decl ) ;
+	// ControlFlowGraph.g:105:1: type_decl : ^( STRUCT ^id= ID nested_decl ) ;
 	public final ControlFlowGraph.type_decl_return type_decl() throws RecognitionException {
 		ControlFlowGraph.type_decl_return retval = new ControlFlowGraph.type_decl_return();
 		retval.start = input.LT(1);
@@ -598,8 +599,8 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree STRUCT12_tree=null;
 
 		try {
-			// ControlFlowGraph.g:105:4: ( ^( STRUCT ^id= ID nested_decl ) )
-			// ControlFlowGraph.g:105:7: ^( STRUCT ^id= ID nested_decl )
+			// ControlFlowGraph.g:106:4: ( ^( STRUCT ^id= ID nested_decl ) )
+			// ControlFlowGraph.g:106:7: ^( STRUCT ^id= ID nested_decl )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -662,7 +663,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "nested_decl"
-	// ControlFlowGraph.g:108:1: nested_decl : ( decl )+ ;
+	// ControlFlowGraph.g:109:1: nested_decl : ( decl )+ ;
 	public final ControlFlowGraph.nested_decl_return nested_decl() throws RecognitionException {
 		ControlFlowGraph.nested_decl_return retval = new ControlFlowGraph.nested_decl_return();
 		retval.start = input.LT(1);
@@ -677,13 +678,13 @@ public class ControlFlowGraph extends TreeParser {
 
 
 		try {
-			// ControlFlowGraph.g:109:4: ( ( decl )+ )
-			// ControlFlowGraph.g:109:7: ( decl )+
+			// ControlFlowGraph.g:110:4: ( ( decl )+ )
+			// ControlFlowGraph.g:110:7: ( decl )+
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// ControlFlowGraph.g:109:7: ( decl )+
+			// ControlFlowGraph.g:110:7: ( decl )+
 			int cnt4=0;
 			loop4:
 			while (true) {
@@ -695,7 +696,7 @@ public class ControlFlowGraph extends TreeParser {
 
 				switch (alt4) {
 				case 1 :
-					// ControlFlowGraph.g:109:7: decl
+					// ControlFlowGraph.g:110:7: decl
 					{
 					_last = (CommonTree)input.LT(1);
 					pushFollow(FOLLOW_decl_in_nested_decl218);
@@ -741,7 +742,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "decl"
-	// ControlFlowGraph.g:112:1: decl returns [String id] : ^( DECL ^( TYPE type ) myId= ID ) ;
+	// ControlFlowGraph.g:113:1: decl returns [String id] : ^( DECL ^( TYPE type ) myId= ID ) ;
 	public final ControlFlowGraph.decl_return decl() throws RecognitionException {
 		ControlFlowGraph.decl_return retval = new ControlFlowGraph.decl_return();
 		retval.start = input.LT(1);
@@ -762,8 +763,8 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree TYPE16_tree=null;
 
 		try {
-			// ControlFlowGraph.g:113:4: ( ^( DECL ^( TYPE type ) myId= ID ) )
-			// ControlFlowGraph.g:113:7: ^( DECL ^( TYPE type ) myId= ID )
+			// ControlFlowGraph.g:114:4: ( ^( DECL ^( TYPE type ) myId= ID ) )
+			// ControlFlowGraph.g:114:7: ^( DECL ^( TYPE type ) myId= ID )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -848,7 +849,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "declarations"
-	// ControlFlowGraph.g:119:1: declarations[RegisterTable regTable] : ^( DECLS ( declaration[regTable] )* ) ;
+	// ControlFlowGraph.g:120:1: declarations[RegisterTable regTable] : ^( DECLS ( declaration[regTable] )* ) ;
 	public final ControlFlowGraph.declarations_return declarations(RegisterTable regTable) throws RecognitionException {
 		ControlFlowGraph.declarations_return retval = new ControlFlowGraph.declarations_return();
 		retval.start = input.LT(1);
@@ -865,8 +866,8 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree DECLS18_tree=null;
 
 		try {
-			// ControlFlowGraph.g:120:4: ( ^( DECLS ( declaration[regTable] )* ) )
-			// ControlFlowGraph.g:120:7: ^( DECLS ( declaration[regTable] )* )
+			// ControlFlowGraph.g:121:4: ( ^( DECLS ( declaration[regTable] )* ) )
+			// ControlFlowGraph.g:121:7: ^( DECLS ( declaration[regTable] )* )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -885,7 +886,7 @@ public class ControlFlowGraph extends TreeParser {
 
 			if ( input.LA(1)==Token.DOWN ) {
 				match(input, Token.DOWN, null); 
-				// ControlFlowGraph.g:120:15: ( declaration[regTable] )*
+				// ControlFlowGraph.g:121:15: ( declaration[regTable] )*
 				loop5:
 				while (true) {
 					int alt5=2;
@@ -896,7 +897,7 @@ public class ControlFlowGraph extends TreeParser {
 
 					switch (alt5) {
 					case 1 :
-						// ControlFlowGraph.g:120:15: declaration[regTable]
+						// ControlFlowGraph.g:121:15: declaration[regTable]
 						{
 						_last = (CommonTree)input.LT(1);
 						pushFollow(FOLLOW_declaration_in_declarations287);
@@ -945,7 +946,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "declaration"
-	// ControlFlowGraph.g:123:1: declaration[RegisterTable regTable] : decllist[regTable] ;
+	// ControlFlowGraph.g:124:1: declaration[RegisterTable regTable] : decllist[regTable] ;
 	public final ControlFlowGraph.declaration_return declaration(RegisterTable regTable) throws RecognitionException {
 		ControlFlowGraph.declaration_return retval = new ControlFlowGraph.declaration_return();
 		retval.start = input.LT(1);
@@ -960,8 +961,8 @@ public class ControlFlowGraph extends TreeParser {
 
 
 		try {
-			// ControlFlowGraph.g:124:4: ( decllist[regTable] )
-			// ControlFlowGraph.g:124:7: decllist[regTable]
+			// ControlFlowGraph.g:125:4: ( decllist[regTable] )
+			// ControlFlowGraph.g:125:7: decllist[regTable]
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -998,7 +999,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "type"
-	// ControlFlowGraph.g:127:1: type : ( INT | BOOL | ^( STRUCT ID ) );
+	// ControlFlowGraph.g:128:1: type : ( INT | BOOL | ^( STRUCT ID ) );
 	public final ControlFlowGraph.type_return type() throws RecognitionException {
 		ControlFlowGraph.type_return retval = new ControlFlowGraph.type_return();
 		retval.start = input.LT(1);
@@ -1020,7 +1021,7 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree ID24_tree=null;
 
 		try {
-			// ControlFlowGraph.g:128:4: ( INT | BOOL | ^( STRUCT ID ) )
+			// ControlFlowGraph.g:129:4: ( INT | BOOL | ^( STRUCT ID ) )
 			int alt6=3;
 			switch ( input.LA(1) ) {
 			case INT:
@@ -1045,7 +1046,7 @@ public class ControlFlowGraph extends TreeParser {
 			}
 			switch (alt6) {
 				case 1 :
-					// ControlFlowGraph.g:128:7: INT
+					// ControlFlowGraph.g:129:7: INT
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1060,7 +1061,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:129:7: BOOL
+					// ControlFlowGraph.g:130:7: BOOL
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1075,7 +1076,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 3 :
-					// ControlFlowGraph.g:130:7: ^( STRUCT ID )
+					// ControlFlowGraph.g:131:7: ^( STRUCT ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1133,7 +1134,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "decllist"
-	// ControlFlowGraph.g:133:1: decllist[RegisterTable regTable] : ^( DECLLIST ^( TYPE type ) id_list[regTable] ) ;
+	// ControlFlowGraph.g:134:1: decllist[RegisterTable regTable] : ^( DECLLIST ^( TYPE type ) id_list[regTable] ) ;
 	public final ControlFlowGraph.decllist_return decllist(RegisterTable regTable) throws RecognitionException {
 		ControlFlowGraph.decllist_return retval = new ControlFlowGraph.decllist_return();
 		retval.start = input.LT(1);
@@ -1153,8 +1154,8 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree TYPE26_tree=null;
 
 		try {
-			// ControlFlowGraph.g:134:4: ( ^( DECLLIST ^( TYPE type ) id_list[regTable] ) )
-			// ControlFlowGraph.g:134:7: ^( DECLLIST ^( TYPE type ) id_list[regTable] )
+			// ControlFlowGraph.g:135:4: ( ^( DECLLIST ^( TYPE type ) id_list[regTable] ) )
+			// ControlFlowGraph.g:135:7: ^( DECLLIST ^( TYPE type ) id_list[regTable] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -1236,7 +1237,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "id_list"
-	// ControlFlowGraph.g:137:1: id_list[RegisterTable regTable] : (decId= ID )+ ;
+	// ControlFlowGraph.g:138:1: id_list[RegisterTable regTable] : (decId= ID )+ ;
 	public final ControlFlowGraph.id_list_return id_list(RegisterTable regTable) throws RecognitionException {
 		ControlFlowGraph.id_list_return retval = new ControlFlowGraph.id_list_return();
 		retval.start = input.LT(1);
@@ -1252,13 +1253,13 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree decId_tree=null;
 
 		try {
-			// ControlFlowGraph.g:138:4: ( (decId= ID )+ )
-			// ControlFlowGraph.g:138:7: (decId= ID )+
+			// ControlFlowGraph.g:139:4: ( (decId= ID )+ )
+			// ControlFlowGraph.g:139:7: (decId= ID )+
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// ControlFlowGraph.g:138:7: (decId= ID )+
+			// ControlFlowGraph.g:139:7: (decId= ID )+
 			int cnt7=0;
 			loop7:
 			while (true) {
@@ -1270,7 +1271,7 @@ public class ControlFlowGraph extends TreeParser {
 
 				switch (alt7) {
 				case 1 :
-					// ControlFlowGraph.g:138:8: decId= ID
+					// ControlFlowGraph.g:139:8: decId= ID
 					{
 					_last = (CommonTree)input.LT(1);
 					decId=(CommonTree)match(input,ID,FOLLOW_ID_in_id_list398); 
@@ -1318,7 +1319,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "functions"
-	// ControlFlowGraph.g:144:1: functions : ^( FUNCS (retFunBlock= function )* ) ;
+	// ControlFlowGraph.g:145:1: functions : ^( FUNCS (retFunBlock= function )* ) ;
 	public final ControlFlowGraph.functions_return functions() throws RecognitionException {
 		ControlFlowGraph.functions_return retval = new ControlFlowGraph.functions_return();
 		retval.start = input.LT(1);
@@ -1335,8 +1336,8 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree FUNCS29_tree=null;
 
 		try {
-			// ControlFlowGraph.g:145:4: ( ^( FUNCS (retFunBlock= function )* ) )
-			// ControlFlowGraph.g:145:7: ^( FUNCS (retFunBlock= function )* )
+			// ControlFlowGraph.g:146:4: ( ^( FUNCS (retFunBlock= function )* ) )
+			// ControlFlowGraph.g:146:7: ^( FUNCS (retFunBlock= function )* )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -1355,7 +1356,7 @@ public class ControlFlowGraph extends TreeParser {
 
 			if ( input.LA(1)==Token.DOWN ) {
 				match(input, Token.DOWN, null); 
-				// ControlFlowGraph.g:145:15: (retFunBlock= function )*
+				// ControlFlowGraph.g:146:15: (retFunBlock= function )*
 				loop8:
 				while (true) {
 					int alt8=2;
@@ -1366,7 +1367,7 @@ public class ControlFlowGraph extends TreeParser {
 
 					switch (alt8) {
 					case 1 :
-						// ControlFlowGraph.g:145:16: retFunBlock= function
+						// ControlFlowGraph.g:146:16: retFunBlock= function
 						{
 						_last = (CommonTree)input.LT(1);
 						pushFollow(FOLLOW_function_in_functions433);
@@ -1419,7 +1420,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "function"
-	// ControlFlowGraph.g:151:1: function returns [BasicBlock retBlock] : ^( FUN funID= ID params[regTable, newFunBlk] ^( RETTYPE rettype ) declarations[regTable] retSLBlock= statement_list[regTable, newFunBlk] ) ;
+	// ControlFlowGraph.g:152:1: function returns [BasicBlock retBlock] : ^( FUN funID= ID paramRet= params[regTable, newFunBlk] ^( RETTYPE rettype ) declarations[regTable] retSLBlock= statement_list[regTable, newFunBlk] ) ;
 	public final ControlFlowGraph.function_return function() throws RecognitionException {
 		ControlFlowGraph.function_return retval = new ControlFlowGraph.function_return();
 		retval.start = input.LT(1);
@@ -1432,23 +1433,24 @@ public class ControlFlowGraph extends TreeParser {
 
 		CommonTree funID=null;
 		CommonTree FUN30=null;
-		CommonTree RETTYPE32=null;
+		CommonTree RETTYPE31=null;
+		TreeRuleReturnScope paramRet =null;
 		TreeRuleReturnScope retSLBlock =null;
-		TreeRuleReturnScope params31 =null;
-		TreeRuleReturnScope rettype33 =null;
-		TreeRuleReturnScope declarations34 =null;
+		TreeRuleReturnScope rettype32 =null;
+		TreeRuleReturnScope declarations33 =null;
 
 		CommonTree funID_tree=null;
 		CommonTree FUN30_tree=null;
-		CommonTree RETTYPE32_tree=null;
+		CommonTree RETTYPE31_tree=null;
 
 
 		      regCounter = 0;
 		      BasicBlock newFunBlk = new BasicBlock("tempLabel");
+		      newFunBlk.funEntrance = true;
 		   
 		try {
-			// ControlFlowGraph.g:156:4: ( ^( FUN funID= ID params[regTable, newFunBlk] ^( RETTYPE rettype ) declarations[regTable] retSLBlock= statement_list[regTable, newFunBlk] ) )
-			// ControlFlowGraph.g:156:7: ^( FUN funID= ID params[regTable, newFunBlk] ^( RETTYPE rettype ) declarations[regTable] retSLBlock= statement_list[regTable, newFunBlk] )
+			// ControlFlowGraph.g:158:4: ( ^( FUN funID= ID paramRet= params[regTable, newFunBlk] ^( RETTYPE rettype ) declarations[regTable] retSLBlock= statement_list[regTable, newFunBlk] ) )
+			// ControlFlowGraph.g:158:7: ^( FUN funID= ID paramRet= params[regTable, newFunBlk] ^( RETTYPE rettype ) declarations[regTable] retSLBlock= statement_list[regTable, newFunBlk] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -1477,31 +1479,35 @@ public class ControlFlowGraph extends TreeParser {
 			adaptor.addChild(root_1, funID_tree);
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_params_in_function486);
-			params31=params(regTable, newFunBlk);
+			pushFollow(FOLLOW_params_in_function488);
+			paramRet=params(regTable, newFunBlk);
 			state._fsp--;
 
-			adaptor.addChild(root_1, params31.getTree());
+			adaptor.addChild(root_1, paramRet.getTree());
 
+
+			         numParams = (paramRet!=null?((ControlFlowGraph.params_return)paramRet).numParams:0);
+			         newFunBlk.numParams = numParams;
+			      
 			_last = (CommonTree)input.LT(1);
 			{
 			CommonTree _save_last_2 = _last;
 			CommonTree _first_2 = null;
 			CommonTree root_2 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			RETTYPE32=(CommonTree)match(input,RETTYPE,FOLLOW_RETTYPE_in_function490); 
-			RETTYPE32_tree = (CommonTree)adaptor.dupNode(RETTYPE32);
+			RETTYPE31=(CommonTree)match(input,RETTYPE,FOLLOW_RETTYPE_in_function501); 
+			RETTYPE31_tree = (CommonTree)adaptor.dupNode(RETTYPE31);
 
 
-			root_2 = (CommonTree)adaptor.becomeRoot(RETTYPE32_tree, root_2);
+			root_2 = (CommonTree)adaptor.becomeRoot(RETTYPE31_tree, root_2);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_rettype_in_function492);
-			rettype33=rettype();
+			pushFollow(FOLLOW_rettype_in_function503);
+			rettype32=rettype();
 			state._fsp--;
 
-			adaptor.addChild(root_2, rettype33.getTree());
+			adaptor.addChild(root_2, rettype32.getTree());
 
 			match(input, Token.UP, null); 
 			adaptor.addChild(root_1, root_2);
@@ -1510,14 +1516,14 @@ public class ControlFlowGraph extends TreeParser {
 
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_declarations_in_function495);
-			declarations34=declarations(regTable);
+			pushFollow(FOLLOW_declarations_in_function506);
+			declarations33=declarations(regTable);
 			state._fsp--;
 
-			adaptor.addChild(root_1, declarations34.getTree());
+			adaptor.addChild(root_1, declarations33.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_statement_list_in_function500);
+			pushFollow(FOLLOW_statement_list_in_function511);
 			retSLBlock=statement_list(regTable, newFunBlk);
 			state._fsp--;
 
@@ -1532,7 +1538,9 @@ public class ControlFlowGraph extends TreeParser {
 
 			          newFunBlk.label = (funID!=null?funID.getText():null);
 			          BasicBlock funExitBlk = new BasicBlock(getLabel());
+			          funExitBlk.funExit = true;
 			          funExitBlk.instructions.add(new RetInst());
+			          funExitBlk.numParams = numParams;
 			          addBlockRel((retSLBlock!=null?((ControlFlowGraph.statement_list_return)retSLBlock).retBlock:null), funExitBlk);
 			          retval.retBlock =newFunBlk;
 			      
@@ -1562,7 +1570,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "statement_list"
-	// ControlFlowGraph.g:169:1: statement_list[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( STMTS (retStmtBlock= statement[regTable, prevBlock] )* ) ;
+	// ControlFlowGraph.g:177:1: statement_list[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( STMTS (retStmtBlock= statement[regTable, prevBlock] )* ) ;
 	public final ControlFlowGraph.statement_list_return statement_list(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.statement_list_return retval = new ControlFlowGraph.statement_list_return();
 		retval.start = input.LT(1);
@@ -1573,14 +1581,14 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree STMTS35=null;
+		CommonTree STMTS34=null;
 		TreeRuleReturnScope retStmtBlock =null;
 
-		CommonTree STMTS35_tree=null;
+		CommonTree STMTS34_tree=null;
 
 		try {
-			// ControlFlowGraph.g:170:4: ( ^( STMTS (retStmtBlock= statement[regTable, prevBlock] )* ) )
-			// ControlFlowGraph.g:170:7: ^( STMTS (retStmtBlock= statement[regTable, prevBlock] )* )
+			// ControlFlowGraph.g:178:4: ( ^( STMTS (retStmtBlock= statement[regTable, prevBlock] )* ) )
+			// ControlFlowGraph.g:178:7: ^( STMTS (retStmtBlock= statement[regTable, prevBlock] )* )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -1591,15 +1599,15 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			STMTS35=(CommonTree)match(input,STMTS,FOLLOW_STMTS_in_statement_list533); 
-			STMTS35_tree = (CommonTree)adaptor.dupNode(STMTS35);
+			STMTS34=(CommonTree)match(input,STMTS,FOLLOW_STMTS_in_statement_list544); 
+			STMTS34_tree = (CommonTree)adaptor.dupNode(STMTS34);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(STMTS35_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(STMTS34_tree, root_1);
 
 			if ( input.LA(1)==Token.DOWN ) {
 				match(input, Token.DOWN, null); 
-				// ControlFlowGraph.g:170:15: (retStmtBlock= statement[regTable, prevBlock] )*
+				// ControlFlowGraph.g:178:15: (retStmtBlock= statement[regTable, prevBlock] )*
 				loop9:
 				while (true) {
 					int alt9=2;
@@ -1610,10 +1618,10 @@ public class ControlFlowGraph extends TreeParser {
 
 					switch (alt9) {
 					case 1 :
-						// ControlFlowGraph.g:170:16: retStmtBlock= statement[regTable, prevBlock]
+						// ControlFlowGraph.g:178:16: retStmtBlock= statement[regTable, prevBlock]
 						{
 						_last = (CommonTree)input.LT(1);
-						pushFollow(FOLLOW_statement_in_statement_list538);
+						pushFollow(FOLLOW_statement_in_statement_list549);
 						retStmtBlock=statement(regTable, prevBlock);
 						state._fsp--;
 
@@ -1670,7 +1678,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "statement"
-	// ControlFlowGraph.g:184:1: statement[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : (blockReturnBlock= block[regTable, blockBlock] |retAssBlock= assignment[regTable, prevBlock] |retCondBlock= conditional[regTable, condBlock] |retLoopBlock= loop[regTable, prevBlock] | invocation[regTable, prevBlock] |retReturnBlock= ret[regTable, prevBlock] |retReadBlock= read[regTable, prevBlock] |retPrintBlock= print[regTable, prevBlock] |retDeleteBlock= delete[regTable, prevBlock] );
+	// ControlFlowGraph.g:192:1: statement[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : (blockReturnBlock= block[regTable, blockBlock] |retAssBlock= assignment[regTable, prevBlock] |retCondBlock= conditional[regTable, condBlock] |retLoopBlock= loop[regTable, prevBlock] | invocation[regTable, prevBlock] |retReturnBlock= ret[regTable, prevBlock] |retReadBlock= read[regTable, prevBlock] |retPrintBlock= print[regTable, prevBlock] |retDeleteBlock= delete[regTable, prevBlock] );
 	public final ControlFlowGraph.statement_return statement(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.statement_return retval = new ControlFlowGraph.statement_return();
 		retval.start = input.LT(1);
@@ -1689,11 +1697,11 @@ public class ControlFlowGraph extends TreeParser {
 		TreeRuleReturnScope retReadBlock =null;
 		TreeRuleReturnScope retPrintBlock =null;
 		TreeRuleReturnScope retDeleteBlock =null;
-		TreeRuleReturnScope invocation36 =null;
+		TreeRuleReturnScope invocation35 =null;
 
 
 		try {
-			// ControlFlowGraph.g:185:4: (blockReturnBlock= block[regTable, blockBlock] |retAssBlock= assignment[regTable, prevBlock] |retCondBlock= conditional[regTable, condBlock] |retLoopBlock= loop[regTable, prevBlock] | invocation[regTable, prevBlock] |retReturnBlock= ret[regTable, prevBlock] |retReadBlock= read[regTable, prevBlock] |retPrintBlock= print[regTable, prevBlock] |retDeleteBlock= delete[regTable, prevBlock] )
+			// ControlFlowGraph.g:193:4: (blockReturnBlock= block[regTable, blockBlock] |retAssBlock= assignment[regTable, prevBlock] |retCondBlock= conditional[regTable, condBlock] |retLoopBlock= loop[regTable, prevBlock] | invocation[regTable, prevBlock] |retReturnBlock= ret[regTable, prevBlock] |retReadBlock= read[regTable, prevBlock] |retPrintBlock= print[regTable, prevBlock] |retDeleteBlock= delete[regTable, prevBlock] )
 			int alt10=9;
 			switch ( input.LA(1) ) {
 			case BLOCK:
@@ -1748,7 +1756,7 @@ public class ControlFlowGraph extends TreeParser {
 			}
 			switch (alt10) {
 				case 1 :
-					// ControlFlowGraph.g:185:7: blockReturnBlock= block[regTable, blockBlock]
+					// ControlFlowGraph.g:193:7: blockReturnBlock= block[regTable, blockBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1758,7 +1766,7 @@ public class ControlFlowGraph extends TreeParser {
 					         addBlockRel(prevBlock, blockBlock);
 					      
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_block_in_statement594);
+					pushFollow(FOLLOW_block_in_statement605);
 					blockReturnBlock=block(regTable, blockBlock);
 					state._fsp--;
 
@@ -1770,13 +1778,13 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:193:7: retAssBlock= assignment[regTable, prevBlock]
+					// ControlFlowGraph.g:201:7: retAssBlock= assignment[regTable, prevBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_assignment_in_statement613);
+					pushFollow(FOLLOW_assignment_in_statement624);
 					retAssBlock=assignment(regTable, prevBlock);
 					state._fsp--;
 
@@ -1788,7 +1796,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 3 :
-					// ControlFlowGraph.g:197:7: retCondBlock= conditional[regTable, condBlock]
+					// ControlFlowGraph.g:205:7: retCondBlock= conditional[regTable, condBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1798,7 +1806,7 @@ public class ControlFlowGraph extends TreeParser {
 					         addBlockRel(prevBlock, condBlock);
 					      
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_conditional_in_statement640);
+					pushFollow(FOLLOW_conditional_in_statement651);
 					retCondBlock=conditional(regTable, condBlock);
 					state._fsp--;
 
@@ -1810,13 +1818,13 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 4 :
-					// ControlFlowGraph.g:205:7: retLoopBlock= loop[regTable, prevBlock]
+					// ControlFlowGraph.g:213:7: retLoopBlock= loop[regTable, prevBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_loop_in_statement659);
+					pushFollow(FOLLOW_loop_in_statement670);
 					retLoopBlock=loop(regTable, prevBlock);
 					state._fsp--;
 
@@ -1828,17 +1836,17 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 5 :
-					// ControlFlowGraph.g:209:7: invocation[regTable, prevBlock]
+					// ControlFlowGraph.g:217:7: invocation[regTable, prevBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_invocation_in_statement676);
-					invocation36=invocation(regTable, prevBlock);
+					pushFollow(FOLLOW_invocation_in_statement687);
+					invocation35=invocation(regTable, prevBlock);
 					state._fsp--;
 
-					adaptor.addChild(root_0, invocation36.getTree());
+					adaptor.addChild(root_0, invocation35.getTree());
 
 
 					         retval.retBlock = prevBlock;
@@ -1846,13 +1854,13 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 6 :
-					// ControlFlowGraph.g:213:7: retReturnBlock= ret[regTable, prevBlock]
+					// ControlFlowGraph.g:221:7: retReturnBlock= ret[regTable, prevBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_ret_in_statement695);
+					pushFollow(FOLLOW_ret_in_statement706);
 					retReturnBlock=ret(regTable, prevBlock);
 					state._fsp--;
 
@@ -1864,13 +1872,13 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 7 :
-					// ControlFlowGraph.g:217:7: retReadBlock= read[regTable, prevBlock]
+					// ControlFlowGraph.g:225:7: retReadBlock= read[regTable, prevBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_read_in_statement714);
+					pushFollow(FOLLOW_read_in_statement725);
 					retReadBlock=read(regTable, prevBlock);
 					state._fsp--;
 
@@ -1882,13 +1890,13 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 8 :
-					// ControlFlowGraph.g:221:7: retPrintBlock= print[regTable, prevBlock]
+					// ControlFlowGraph.g:229:7: retPrintBlock= print[regTable, prevBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_print_in_statement733);
+					pushFollow(FOLLOW_print_in_statement744);
 					retPrintBlock=print(regTable, prevBlock);
 					state._fsp--;
 
@@ -1900,13 +1908,13 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 9 :
-					// ControlFlowGraph.g:225:7: retDeleteBlock= delete[regTable, prevBlock]
+					// ControlFlowGraph.g:233:7: retDeleteBlock= delete[regTable, prevBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_delete_in_statement752);
+					pushFollow(FOLLOW_delete_in_statement763);
 					retDeleteBlock=delete(regTable, prevBlock);
 					state._fsp--;
 
@@ -1943,7 +1951,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "read"
-	// ControlFlowGraph.g:231:1: read[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( READ retReg= lvalueRead[regTable, prevBlock] ) ;
+	// ControlFlowGraph.g:239:1: read[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( READ retReg= lvalueRead[regTable, prevBlock] ) ;
 	public final ControlFlowGraph.read_return read(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.read_return retval = new ControlFlowGraph.read_return();
 		retval.start = input.LT(1);
@@ -1954,14 +1962,14 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree READ37=null;
+		CommonTree READ36=null;
 		TreeRuleReturnScope retReg =null;
 
-		CommonTree READ37_tree=null;
+		CommonTree READ36_tree=null;
 
 		try {
-			// ControlFlowGraph.g:232:4: ( ^( READ retReg= lvalueRead[regTable, prevBlock] ) )
-			// ControlFlowGraph.g:232:7: ^( READ retReg= lvalueRead[regTable, prevBlock] )
+			// ControlFlowGraph.g:240:4: ( ^( READ retReg= lvalueRead[regTable, prevBlock] ) )
+			// ControlFlowGraph.g:240:7: ^( READ retReg= lvalueRead[regTable, prevBlock] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -1972,15 +1980,15 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			READ37=(CommonTree)match(input,READ,FOLLOW_READ_in_read784); 
-			READ37_tree = (CommonTree)adaptor.dupNode(READ37);
+			READ36=(CommonTree)match(input,READ,FOLLOW_READ_in_read795); 
+			READ36_tree = (CommonTree)adaptor.dupNode(READ36);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(READ37_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(READ36_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_lvalueRead_in_read788);
+			pushFollow(FOLLOW_lvalueRead_in_read799);
 			retReg=lvalueRead(regTable, prevBlock);
 			state._fsp--;
 
@@ -2022,7 +2030,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "delete"
-	// ControlFlowGraph.g:239:1: delete[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( DELETE delRetReg= expression[regTable, prevBlock] ) ;
+	// ControlFlowGraph.g:247:1: delete[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( DELETE delRetReg= expression[regTable, prevBlock] ) ;
 	public final ControlFlowGraph.delete_return delete(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.delete_return retval = new ControlFlowGraph.delete_return();
 		retval.start = input.LT(1);
@@ -2033,14 +2041,14 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree DELETE38=null;
+		CommonTree DELETE37=null;
 		TreeRuleReturnScope delRetReg =null;
 
-		CommonTree DELETE38_tree=null;
+		CommonTree DELETE37_tree=null;
 
 		try {
-			// ControlFlowGraph.g:240:4: ( ^( DELETE delRetReg= expression[regTable, prevBlock] ) )
-			// ControlFlowGraph.g:240:6: ^( DELETE delRetReg= expression[regTable, prevBlock] )
+			// ControlFlowGraph.g:248:4: ( ^( DELETE delRetReg= expression[regTable, prevBlock] ) )
+			// ControlFlowGraph.g:248:6: ^( DELETE delRetReg= expression[regTable, prevBlock] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2051,15 +2059,15 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			DELETE38=(CommonTree)match(input,DELETE,FOLLOW_DELETE_in_delete820); 
-			DELETE38_tree = (CommonTree)adaptor.dupNode(DELETE38);
+			DELETE37=(CommonTree)match(input,DELETE,FOLLOW_DELETE_in_delete831); 
+			DELETE37_tree = (CommonTree)adaptor.dupNode(DELETE37);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(DELETE38_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(DELETE37_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_delete824);
+			pushFollow(FOLLOW_expression_in_delete835);
 			delRetReg=expression(regTable, prevBlock);
 			state._fsp--;
 
@@ -2101,7 +2109,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "print"
-	// ControlFlowGraph.g:247:1: print[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( PRINT returnReg= expression[regTable, prevBlock] ( ENDL )? ) ;
+	// ControlFlowGraph.g:255:1: print[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( PRINT returnReg= expression[regTable, prevBlock] ( ENDL )? ) ;
 	public final ControlFlowGraph.print_return print(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.print_return retval = new ControlFlowGraph.print_return();
 		retval.start = input.LT(1);
@@ -2112,16 +2120,16 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree PRINT39=null;
-		CommonTree ENDL40=null;
+		CommonTree PRINT38=null;
+		CommonTree ENDL39=null;
 		TreeRuleReturnScope returnReg =null;
 
-		CommonTree PRINT39_tree=null;
-		CommonTree ENDL40_tree=null;
+		CommonTree PRINT38_tree=null;
+		CommonTree ENDL39_tree=null;
 
 		try {
-			// ControlFlowGraph.g:248:4: ( ^( PRINT returnReg= expression[regTable, prevBlock] ( ENDL )? ) )
-			// ControlFlowGraph.g:248:7: ^( PRINT returnReg= expression[regTable, prevBlock] ( ENDL )? )
+			// ControlFlowGraph.g:256:4: ( ^( PRINT returnReg= expression[regTable, prevBlock] ( ENDL )? ) )
+			// ControlFlowGraph.g:256:7: ^( PRINT returnReg= expression[regTable, prevBlock] ( ENDL )? )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2132,21 +2140,21 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			PRINT39=(CommonTree)match(input,PRINT,FOLLOW_PRINT_in_print857); 
-			PRINT39_tree = (CommonTree)adaptor.dupNode(PRINT39);
+			PRINT38=(CommonTree)match(input,PRINT,FOLLOW_PRINT_in_print868); 
+			PRINT38_tree = (CommonTree)adaptor.dupNode(PRINT38);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(PRINT39_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(PRINT38_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_print861);
+			pushFollow(FOLLOW_expression_in_print872);
 			returnReg=expression(regTable, prevBlock);
 			state._fsp--;
 
 			adaptor.addChild(root_1, returnReg.getTree());
 
-			// ControlFlowGraph.g:248:57: ( ENDL )?
+			// ControlFlowGraph.g:256:57: ( ENDL )?
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0==ENDL) ) {
@@ -2154,14 +2162,14 @@ public class ControlFlowGraph extends TreeParser {
 			}
 			switch (alt11) {
 				case 1 :
-					// ControlFlowGraph.g:248:57: ENDL
+					// ControlFlowGraph.g:256:57: ENDL
 					{
 					_last = (CommonTree)input.LT(1);
-					ENDL40=(CommonTree)match(input,ENDL,FOLLOW_ENDL_in_print864); 
-					ENDL40_tree = (CommonTree)adaptor.dupNode(ENDL40);
+					ENDL39=(CommonTree)match(input,ENDL,FOLLOW_ENDL_in_print875); 
+					ENDL39_tree = (CommonTree)adaptor.dupNode(ENDL39);
 
 
-					adaptor.addChild(root_1, ENDL40_tree);
+					adaptor.addChild(root_1, ENDL39_tree);
 
 					}
 					break;
@@ -2204,7 +2212,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "ret"
-	// ControlFlowGraph.g:255:1: ret[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ( ^( RETURN returnReg= expression[regTable, prevBlock] ) | RETURN );
+	// ControlFlowGraph.g:263:1: ret[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ( ^( RETURN returnReg= expression[regTable, prevBlock] ) | RETURN );
 	public final ControlFlowGraph.ret_return ret(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.ret_return retval = new ControlFlowGraph.ret_return();
 		retval.start = input.LT(1);
@@ -2215,15 +2223,15 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
+		CommonTree RETURN40=null;
 		CommonTree RETURN41=null;
-		CommonTree RETURN42=null;
 		TreeRuleReturnScope returnReg =null;
 
+		CommonTree RETURN40_tree=null;
 		CommonTree RETURN41_tree=null;
-		CommonTree RETURN42_tree=null;
 
 		try {
-			// ControlFlowGraph.g:256:4: ( ^( RETURN returnReg= expression[regTable, prevBlock] ) | RETURN )
+			// ControlFlowGraph.g:264:4: ( ^( RETURN returnReg= expression[regTable, prevBlock] ) | RETURN )
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0==RETURN) ) {
@@ -2257,7 +2265,7 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt12) {
 				case 1 :
-					// ControlFlowGraph.g:256:7: ^( RETURN returnReg= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:264:7: ^( RETURN returnReg= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -2268,15 +2276,15 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					RETURN41=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret897); 
-					RETURN41_tree = (CommonTree)adaptor.dupNode(RETURN41);
+					RETURN40=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret908); 
+					RETURN40_tree = (CommonTree)adaptor.dupNode(RETURN40);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(RETURN41_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(RETURN40_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_ret903);
+					pushFollow(FOLLOW_expression_in_ret914);
 					returnReg=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -2295,17 +2303,17 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:261:7: RETURN
+					// ControlFlowGraph.g:269:7: RETURN
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					RETURN42=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret921); 
-					RETURN42_tree = (CommonTree)adaptor.dupNode(RETURN42);
+					RETURN41=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret932); 
+					RETURN41_tree = (CommonTree)adaptor.dupNode(RETURN41);
 
 
-					adaptor.addChild(root_0, RETURN42_tree);
+					adaptor.addChild(root_0, RETURN41_tree);
 
 					 retval.retBlock = prevBlock; 
 					}
@@ -2336,7 +2344,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "arguments"
-	// ControlFlowGraph.g:264:1: arguments[String callID, RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : retArgBlock= arg_list[callID, regTable, prevBlock] ;
+	// ControlFlowGraph.g:272:1: arguments[String callID, RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : retArgBlock= arg_list[callID, regTable, prevBlock] ;
 	public final ControlFlowGraph.arguments_return arguments(String callID, RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.arguments_return retval = new ControlFlowGraph.arguments_return();
 		retval.start = input.LT(1);
@@ -2351,14 +2359,14 @@ public class ControlFlowGraph extends TreeParser {
 
 
 		try {
-			// ControlFlowGraph.g:265:4: (retArgBlock= arg_list[callID, regTable, prevBlock] )
-			// ControlFlowGraph.g:265:7: retArgBlock= arg_list[callID, regTable, prevBlock]
+			// ControlFlowGraph.g:273:4: (retArgBlock= arg_list[callID, regTable, prevBlock] )
+			// ControlFlowGraph.g:273:7: retArgBlock= arg_list[callID, regTable, prevBlock]
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_arg_list_in_arguments949);
+			pushFollow(FOLLOW_arg_list_in_arguments960);
 			retArgBlock=arg_list(callID, regTable, prevBlock);
 			state._fsp--;
 
@@ -2393,7 +2401,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "arg_list"
-	// ControlFlowGraph.g:271:1: arg_list[String callID, RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ( ^( ARGS (retArg= expression[regTable, prevBlock] )+ ) | ARGS );
+	// ControlFlowGraph.g:279:1: arg_list[String callID, RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ( ^( ARGS (retArg= expression[regTable, prevBlock] )+ ) | ARGS );
 	public final ControlFlowGraph.arg_list_return arg_list(String callID, RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.arg_list_return retval = new ControlFlowGraph.arg_list_return();
 		retval.start = input.LT(1);
@@ -2404,19 +2412,19 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
+		CommonTree ARGS42=null;
 		CommonTree ARGS43=null;
-		CommonTree ARGS44=null;
 		TreeRuleReturnScope retArg =null;
 
+		CommonTree ARGS42_tree=null;
 		CommonTree ARGS43_tree=null;
-		CommonTree ARGS44_tree=null;
 
 
 		      int argCounter = 0;
 		      Vector<Instruction> storeCache = new Vector<Instruction>();
 		   
 		try {
-			// ControlFlowGraph.g:276:4: ( ^( ARGS (retArg= expression[regTable, prevBlock] )+ ) | ARGS )
+			// ControlFlowGraph.g:284:4: ( ^( ARGS (retArg= expression[regTable, prevBlock] )+ ) | ARGS )
 			int alt14=2;
 			int LA14_0 = input.LA(1);
 			if ( (LA14_0==ARGS) ) {
@@ -2450,7 +2458,7 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt14) {
 				case 1 :
-					// ControlFlowGraph.g:276:7: ^( ARGS (retArg= expression[regTable, prevBlock] )+ )
+					// ControlFlowGraph.g:284:7: ^( ARGS (retArg= expression[regTable, prevBlock] )+ )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -2461,14 +2469,14 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					ARGS43=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list989); 
-					ARGS43_tree = (CommonTree)adaptor.dupNode(ARGS43);
+					ARGS42=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list1000); 
+					ARGS42_tree = (CommonTree)adaptor.dupNode(ARGS42);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(ARGS43_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(ARGS42_tree, root_1);
 
 					match(input, Token.DOWN, null); 
-					// ControlFlowGraph.g:276:14: (retArg= expression[regTable, prevBlock] )+
+					// ControlFlowGraph.g:284:14: (retArg= expression[regTable, prevBlock] )+
 					int cnt13=0;
 					loop13:
 					while (true) {
@@ -2480,10 +2488,10 @@ public class ControlFlowGraph extends TreeParser {
 
 						switch (alt13) {
 						case 1 :
-							// ControlFlowGraph.g:276:15: retArg= expression[regTable, prevBlock]
+							// ControlFlowGraph.g:284:15: retArg= expression[regTable, prevBlock]
 							{
 							_last = (CommonTree)input.LT(1);
-							pushFollow(FOLLOW_expression_in_arg_list994);
+							pushFollow(FOLLOW_expression_in_arg_list1005);
 							retArg=expression(regTable, prevBlock);
 							state._fsp--;
 
@@ -2519,17 +2527,17 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:287:7: ARGS
+					// ControlFlowGraph.g:295:7: ARGS
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					ARGS44=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list1022); 
-					ARGS44_tree = (CommonTree)adaptor.dupNode(ARGS44);
+					ARGS43=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list1033); 
+					ARGS43_tree = (CommonTree)adaptor.dupNode(ARGS43);
 
 
-					adaptor.addChild(root_0, ARGS44_tree);
+					adaptor.addChild(root_0, ARGS43_tree);
 
 					 retval.retBlock = prevBlock; 
 					}
@@ -2560,7 +2568,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "conditional"
-	// ControlFlowGraph.g:290:1: conditional[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( IF guardReg= expression[regTable, prevBlock] trueBlock= block[regTable, trueBlockIn] (falseBlock= block[regTable, falseBlockIn] )? ) ;
+	// ControlFlowGraph.g:298:1: conditional[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( IF guardReg= expression[regTable, prevBlock] trueBlock= block[regTable, trueBlockIn] (falseBlock= block[regTable, falseBlockIn] )? ) ;
 	public final ControlFlowGraph.conditional_return conditional(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.conditional_return retval = new ControlFlowGraph.conditional_return();
 		retval.start = input.LT(1);
@@ -2571,12 +2579,12 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree IF45=null;
+		CommonTree IF44=null;
 		TreeRuleReturnScope guardReg =null;
 		TreeRuleReturnScope trueBlock =null;
 		TreeRuleReturnScope falseBlock =null;
 
-		CommonTree IF45_tree=null;
+		CommonTree IF44_tree=null;
 
 
 		      BasicBlock trueBlockIn = new BasicBlock(getLabel());
@@ -2584,8 +2592,8 @@ public class ControlFlowGraph extends TreeParser {
 		      addBlockRel(prevBlock, trueBlockIn);
 		   
 		try {
-			// ControlFlowGraph.g:296:4: ( ^( IF guardReg= expression[regTable, prevBlock] trueBlock= block[regTable, trueBlockIn] (falseBlock= block[regTable, falseBlockIn] )? ) )
-			// ControlFlowGraph.g:296:7: ^( IF guardReg= expression[regTable, prevBlock] trueBlock= block[regTable, trueBlockIn] (falseBlock= block[regTable, falseBlockIn] )? )
+			// ControlFlowGraph.g:304:4: ( ^( IF guardReg= expression[regTable, prevBlock] trueBlock= block[regTable, trueBlockIn] (falseBlock= block[regTable, falseBlockIn] )? ) )
+			// ControlFlowGraph.g:304:7: ^( IF guardReg= expression[regTable, prevBlock] trueBlock= block[regTable, trueBlockIn] (falseBlock= block[regTable, falseBlockIn] )? )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2596,28 +2604,28 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			IF45=(CommonTree)match(input,IF,FOLLOW_IF_in_conditional1055); 
-			IF45_tree = (CommonTree)adaptor.dupNode(IF45);
+			IF44=(CommonTree)match(input,IF,FOLLOW_IF_in_conditional1066); 
+			IF44_tree = (CommonTree)adaptor.dupNode(IF44);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(IF45_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(IF44_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_conditional1059);
+			pushFollow(FOLLOW_expression_in_conditional1070);
 			guardReg=expression(regTable, prevBlock);
 			state._fsp--;
 
 			adaptor.addChild(root_1, guardReg.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_block_in_conditional1064);
+			pushFollow(FOLLOW_block_in_conditional1075);
 			trueBlock=block(regTable, trueBlockIn);
 			state._fsp--;
 
 			adaptor.addChild(root_1, trueBlock.getTree());
 
-			// ControlFlowGraph.g:296:92: (falseBlock= block[regTable, falseBlockIn] )?
+			// ControlFlowGraph.g:304:92: (falseBlock= block[regTable, falseBlockIn] )?
 			int alt15=2;
 			int LA15_0 = input.LA(1);
 			if ( (LA15_0==BLOCK) ) {
@@ -2625,14 +2633,14 @@ public class ControlFlowGraph extends TreeParser {
 			}
 			switch (alt15) {
 				case 1 :
-					// ControlFlowGraph.g:297:7: falseBlock= block[regTable, falseBlockIn]
+					// ControlFlowGraph.g:305:7: falseBlock= block[regTable, falseBlockIn]
 					{
 
 					         addBlockRel(prevBlock, falseBlockIn);
 					         prevBlock.instructions.add(new CompImmInst((guardReg!=null?((ControlFlowGraph.expression_return)guardReg).regNum:null), 1));
 					      
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_block_in_conditional1085);
+					pushFollow(FOLLOW_block_in_conditional1096);
 					falseBlock=block(regTable, falseBlockIn);
 					state._fsp--;
 
@@ -2688,7 +2696,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "invocation"
-	// ControlFlowGraph.g:317:1: invocation[RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum] : ^( INVOKE funcId= ID arguments[$funcId.text, regTable, prevBlock] ) ;
+	// ControlFlowGraph.g:325:1: invocation[RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum] : ^( INVOKE funcId= ID arguments[$funcId.text, regTable, prevBlock] ) ;
 	public final ControlFlowGraph.invocation_return invocation(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.invocation_return retval = new ControlFlowGraph.invocation_return();
 		retval.start = input.LT(1);
@@ -2700,15 +2708,15 @@ public class ControlFlowGraph extends TreeParser {
 
 
 		CommonTree funcId=null;
-		CommonTree INVOKE46=null;
-		TreeRuleReturnScope arguments47 =null;
+		CommonTree INVOKE45=null;
+		TreeRuleReturnScope arguments46 =null;
 
 		CommonTree funcId_tree=null;
-		CommonTree INVOKE46_tree=null;
+		CommonTree INVOKE45_tree=null;
 
 		try {
-			// ControlFlowGraph.g:318:4: ( ^( INVOKE funcId= ID arguments[$funcId.text, regTable, prevBlock] ) )
-			// ControlFlowGraph.g:318:7: ^( INVOKE funcId= ID arguments[$funcId.text, regTable, prevBlock] )
+			// ControlFlowGraph.g:326:4: ( ^( INVOKE funcId= ID arguments[$funcId.text, regTable, prevBlock] ) )
+			// ControlFlowGraph.g:326:7: ^( INVOKE funcId= ID arguments[$funcId.text, regTable, prevBlock] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2719,26 +2727,26 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			INVOKE46=(CommonTree)match(input,INVOKE,FOLLOW_INVOKE_in_invocation1120); 
-			INVOKE46_tree = (CommonTree)adaptor.dupNode(INVOKE46);
+			INVOKE45=(CommonTree)match(input,INVOKE,FOLLOW_INVOKE_in_invocation1131); 
+			INVOKE45_tree = (CommonTree)adaptor.dupNode(INVOKE45);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(INVOKE46_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(INVOKE45_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			funcId=(CommonTree)match(input,ID,FOLLOW_ID_in_invocation1124); 
+			funcId=(CommonTree)match(input,ID,FOLLOW_ID_in_invocation1135); 
 			funcId_tree = (CommonTree)adaptor.dupNode(funcId);
 
 
 			adaptor.addChild(root_1, funcId_tree);
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_arguments_in_invocation1126);
-			arguments47=arguments((funcId!=null?funcId.getText():null), regTable, prevBlock);
+			pushFollow(FOLLOW_arguments_in_invocation1137);
+			arguments46=arguments((funcId!=null?funcId.getText():null), regTable, prevBlock);
 			state._fsp--;
 
-			adaptor.addChild(root_1, arguments47.getTree());
+			adaptor.addChild(root_1, arguments46.getTree());
 
 			match(input, Token.UP, null); 
 			adaptor.addChild(root_0, root_1);
@@ -2776,7 +2784,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "loop"
-	// ControlFlowGraph.g:325:1: loop[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( WHILE guardReg= expression[regTable, prevBlock] retBodyBlock= block[regTable, bodyBlock] guardReg2= expression[regTable, bodyBlock] ) ;
+	// ControlFlowGraph.g:333:1: loop[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( WHILE guardReg= expression[regTable, prevBlock] retBodyBlock= block[regTable, bodyBlock] guardReg2= expression[regTable, bodyBlock] ) ;
 	public final ControlFlowGraph.loop_return loop(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.loop_return retval = new ControlFlowGraph.loop_return();
 		retval.start = input.LT(1);
@@ -2787,16 +2795,16 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree WHILE48=null;
+		CommonTree WHILE47=null;
 		TreeRuleReturnScope guardReg =null;
 		TreeRuleReturnScope retBodyBlock =null;
 		TreeRuleReturnScope guardReg2 =null;
 
-		CommonTree WHILE48_tree=null;
+		CommonTree WHILE47_tree=null;
 
 		try {
-			// ControlFlowGraph.g:326:4: ( ^( WHILE guardReg= expression[regTable, prevBlock] retBodyBlock= block[regTable, bodyBlock] guardReg2= expression[regTable, bodyBlock] ) )
-			// ControlFlowGraph.g:326:7: ^( WHILE guardReg= expression[regTable, prevBlock] retBodyBlock= block[regTable, bodyBlock] guardReg2= expression[regTable, bodyBlock] )
+			// ControlFlowGraph.g:334:4: ( ^( WHILE guardReg= expression[regTable, prevBlock] retBodyBlock= block[regTable, bodyBlock] guardReg2= expression[regTable, bodyBlock] ) )
+			// ControlFlowGraph.g:334:7: ^( WHILE guardReg= expression[regTable, prevBlock] retBodyBlock= block[regTable, bodyBlock] guardReg2= expression[regTable, bodyBlock] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2811,29 +2819,29 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			WHILE48=(CommonTree)match(input,WHILE,FOLLOW_WHILE_in_loop1164); 
-			WHILE48_tree = (CommonTree)adaptor.dupNode(WHILE48);
+			WHILE47=(CommonTree)match(input,WHILE,FOLLOW_WHILE_in_loop1175); 
+			WHILE47_tree = (CommonTree)adaptor.dupNode(WHILE47);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(WHILE48_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(WHILE47_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_loop1168);
+			pushFollow(FOLLOW_expression_in_loop1179);
 			guardReg=expression(regTable, prevBlock);
 			state._fsp--;
 
 			adaptor.addChild(root_1, guardReg.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_block_in_loop1173);
+			pushFollow(FOLLOW_block_in_loop1184);
 			retBodyBlock=block(regTable, bodyBlock);
 			state._fsp--;
 
 			adaptor.addChild(root_1, retBodyBlock.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_loop1178);
+			pushFollow(FOLLOW_expression_in_loop1189);
 			guardReg2=expression(regTable, bodyBlock);
 			state._fsp--;
 
@@ -2882,7 +2890,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "block"
-	// ControlFlowGraph.g:344:1: block[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( BLOCK returnSLBlock= statement_list[regTable, prevBlock] ) ;
+	// ControlFlowGraph.g:352:1: block[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( BLOCK returnSLBlock= statement_list[regTable, prevBlock] ) ;
 	public final ControlFlowGraph.block_return block(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.block_return retval = new ControlFlowGraph.block_return();
 		retval.start = input.LT(1);
@@ -2893,14 +2901,14 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree BLOCK49=null;
+		CommonTree BLOCK48=null;
 		TreeRuleReturnScope returnSLBlock =null;
 
-		CommonTree BLOCK49_tree=null;
+		CommonTree BLOCK48_tree=null;
 
 		try {
-			// ControlFlowGraph.g:345:4: ( ^( BLOCK returnSLBlock= statement_list[regTable, prevBlock] ) )
-			// ControlFlowGraph.g:345:7: ^( BLOCK returnSLBlock= statement_list[regTable, prevBlock] )
+			// ControlFlowGraph.g:353:4: ( ^( BLOCK returnSLBlock= statement_list[regTable, prevBlock] ) )
+			// ControlFlowGraph.g:353:7: ^( BLOCK returnSLBlock= statement_list[regTable, prevBlock] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2911,15 +2919,15 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			BLOCK49=(CommonTree)match(input,BLOCK,FOLLOW_BLOCK_in_block1211); 
-			BLOCK49_tree = (CommonTree)adaptor.dupNode(BLOCK49);
+			BLOCK48=(CommonTree)match(input,BLOCK,FOLLOW_BLOCK_in_block1222); 
+			BLOCK48_tree = (CommonTree)adaptor.dupNode(BLOCK48);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(BLOCK49_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(BLOCK48_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_statement_list_in_block1215);
+			pushFollow(FOLLOW_statement_list_in_block1226);
 			returnSLBlock=statement_list(regTable, prevBlock);
 			state._fsp--;
 
@@ -2960,7 +2968,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "assignment"
-	// ControlFlowGraph.g:351:1: assignment[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( ASSIGN retExpReg= expression[regTable, prevBlock] lvalue[regTable, prevBlock, $retExpReg.regNum] ) ;
+	// ControlFlowGraph.g:359:1: assignment[RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock] : ^( ASSIGN retExpReg= expression[regTable, prevBlock] lvalue[regTable, prevBlock, $retExpReg.regNum] ) ;
 	public final ControlFlowGraph.assignment_return assignment(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.assignment_return retval = new ControlFlowGraph.assignment_return();
 		retval.start = input.LT(1);
@@ -2971,15 +2979,15 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree ASSIGN50=null;
+		CommonTree ASSIGN49=null;
 		TreeRuleReturnScope retExpReg =null;
-		TreeRuleReturnScope lvalue51 =null;
+		TreeRuleReturnScope lvalue50 =null;
 
-		CommonTree ASSIGN50_tree=null;
+		CommonTree ASSIGN49_tree=null;
 
 		try {
-			// ControlFlowGraph.g:352:4: ( ^( ASSIGN retExpReg= expression[regTable, prevBlock] lvalue[regTable, prevBlock, $retExpReg.regNum] ) )
-			// ControlFlowGraph.g:352:7: ^( ASSIGN retExpReg= expression[regTable, prevBlock] lvalue[regTable, prevBlock, $retExpReg.regNum] )
+			// ControlFlowGraph.g:360:4: ( ^( ASSIGN retExpReg= expression[regTable, prevBlock] lvalue[regTable, prevBlock, $retExpReg.regNum] ) )
+			// ControlFlowGraph.g:360:7: ^( ASSIGN retExpReg= expression[regTable, prevBlock] lvalue[regTable, prevBlock, $retExpReg.regNum] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2990,26 +2998,26 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			ASSIGN50=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment1248); 
-			ASSIGN50_tree = (CommonTree)adaptor.dupNode(ASSIGN50);
+			ASSIGN49=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment1259); 
+			ASSIGN49_tree = (CommonTree)adaptor.dupNode(ASSIGN49);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN50_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN49_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_assignment1252);
+			pushFollow(FOLLOW_expression_in_assignment1263);
 			retExpReg=expression(regTable, prevBlock);
 			state._fsp--;
 
 			adaptor.addChild(root_1, retExpReg.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_lvalue_in_assignment1255);
-			lvalue51=lvalue(regTable, prevBlock, (retExpReg!=null?((ControlFlowGraph.expression_return)retExpReg).regNum:null));
+			pushFollow(FOLLOW_lvalue_in_assignment1266);
+			lvalue50=lvalue(regTable, prevBlock, (retExpReg!=null?((ControlFlowGraph.expression_return)retExpReg).regNum:null));
 			state._fsp--;
 
-			adaptor.addChild(root_1, lvalue51.getTree());
+			adaptor.addChild(root_1, lvalue50.getTree());
 
 			match(input, Token.UP, null); 
 			adaptor.addChild(root_0, root_1);
@@ -3046,7 +3054,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "expression"
-	// ControlFlowGraph.g:358:1: expression[RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum = null] : (invRetReg= invocation[regTable, prevBlock] | ^( AND regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( OR regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( LE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( EQ regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( LT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( GT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( NE expression[regTable, prevBlock] expression[regTable, prevBlock] ) | ^( GE expression[regTable, prevBlock] expression[regTable, prevBlock] ) | ^( PLUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( MINUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( TIMES regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( DIVIDE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( NOT expression[regTable, prevBlock] ) | ^( DOT retReg= expression[regTable, prevBlock] calledId= ID ) |newId= ID |intVal= INTEGER | TRUE | FALSE | ^( NEW addrId= ID ) | ^( NEG returnReg= expression[regTable, prevBlock] ) | NULL );
+	// ControlFlowGraph.g:366:1: expression[RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum = null] : (invRetReg= invocation[regTable, prevBlock] | ^( AND regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( OR regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( LE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( EQ regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( LT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( GT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( NE expression[regTable, prevBlock] expression[regTable, prevBlock] ) | ^( GE expression[regTable, prevBlock] expression[regTable, prevBlock] ) | ^( PLUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( MINUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( TIMES regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( DIVIDE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( NOT expression[regTable, prevBlock] ) | ^( DOT retReg= expression[regTable, prevBlock] calledId= ID ) |newId= ID |intVal= INTEGER | TRUE | FALSE | ^( NEW addrId= ID ) | ^( NEG returnReg= expression[regTable, prevBlock] ) | NULL );
 	public final ControlFlowGraph.expression_return expression(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.expression_return retval = new ControlFlowGraph.expression_return();
 		retval.start = input.LT(1);
@@ -3061,62 +3069,62 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree newId=null;
 		CommonTree intVal=null;
 		CommonTree addrId=null;
-		CommonTree AND52=null;
-		CommonTree OR53=null;
-		CommonTree LE54=null;
-		CommonTree EQ55=null;
-		CommonTree LT56=null;
-		CommonTree GT57=null;
-		CommonTree NE58=null;
-		CommonTree GE61=null;
-		CommonTree PLUS64=null;
-		CommonTree MINUS65=null;
-		CommonTree TIMES66=null;
-		CommonTree DIVIDE67=null;
-		CommonTree NOT68=null;
-		CommonTree DOT70=null;
-		CommonTree TRUE71=null;
-		CommonTree FALSE72=null;
-		CommonTree NEW73=null;
-		CommonTree NEG74=null;
-		CommonTree NULL75=null;
+		CommonTree AND51=null;
+		CommonTree OR52=null;
+		CommonTree LE53=null;
+		CommonTree EQ54=null;
+		CommonTree LT55=null;
+		CommonTree GT56=null;
+		CommonTree NE57=null;
+		CommonTree GE60=null;
+		CommonTree PLUS63=null;
+		CommonTree MINUS64=null;
+		CommonTree TIMES65=null;
+		CommonTree DIVIDE66=null;
+		CommonTree NOT67=null;
+		CommonTree DOT69=null;
+		CommonTree TRUE70=null;
+		CommonTree FALSE71=null;
+		CommonTree NEW72=null;
+		CommonTree NEG73=null;
+		CommonTree NULL74=null;
 		TreeRuleReturnScope invRetReg =null;
 		TreeRuleReturnScope regNum1 =null;
 		TreeRuleReturnScope regNum2 =null;
 		TreeRuleReturnScope retReg =null;
 		TreeRuleReturnScope returnReg =null;
+		TreeRuleReturnScope expression58 =null;
 		TreeRuleReturnScope expression59 =null;
-		TreeRuleReturnScope expression60 =null;
+		TreeRuleReturnScope expression61 =null;
 		TreeRuleReturnScope expression62 =null;
-		TreeRuleReturnScope expression63 =null;
-		TreeRuleReturnScope expression69 =null;
+		TreeRuleReturnScope expression68 =null;
 
 		CommonTree calledId_tree=null;
 		CommonTree newId_tree=null;
 		CommonTree intVal_tree=null;
 		CommonTree addrId_tree=null;
-		CommonTree AND52_tree=null;
-		CommonTree OR53_tree=null;
-		CommonTree LE54_tree=null;
-		CommonTree EQ55_tree=null;
-		CommonTree LT56_tree=null;
-		CommonTree GT57_tree=null;
-		CommonTree NE58_tree=null;
-		CommonTree GE61_tree=null;
-		CommonTree PLUS64_tree=null;
-		CommonTree MINUS65_tree=null;
-		CommonTree TIMES66_tree=null;
-		CommonTree DIVIDE67_tree=null;
-		CommonTree NOT68_tree=null;
-		CommonTree DOT70_tree=null;
-		CommonTree TRUE71_tree=null;
-		CommonTree FALSE72_tree=null;
-		CommonTree NEW73_tree=null;
-		CommonTree NEG74_tree=null;
-		CommonTree NULL75_tree=null;
+		CommonTree AND51_tree=null;
+		CommonTree OR52_tree=null;
+		CommonTree LE53_tree=null;
+		CommonTree EQ54_tree=null;
+		CommonTree LT55_tree=null;
+		CommonTree GT56_tree=null;
+		CommonTree NE57_tree=null;
+		CommonTree GE60_tree=null;
+		CommonTree PLUS63_tree=null;
+		CommonTree MINUS64_tree=null;
+		CommonTree TIMES65_tree=null;
+		CommonTree DIVIDE66_tree=null;
+		CommonTree NOT67_tree=null;
+		CommonTree DOT69_tree=null;
+		CommonTree TRUE70_tree=null;
+		CommonTree FALSE71_tree=null;
+		CommonTree NEW72_tree=null;
+		CommonTree NEG73_tree=null;
+		CommonTree NULL74_tree=null;
 
 		try {
-			// ControlFlowGraph.g:359:4: (invRetReg= invocation[regTable, prevBlock] | ^( AND regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( OR regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( LE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( EQ regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( LT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( GT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( NE expression[regTable, prevBlock] expression[regTable, prevBlock] ) | ^( GE expression[regTable, prevBlock] expression[regTable, prevBlock] ) | ^( PLUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( MINUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( TIMES regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( DIVIDE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( NOT expression[regTable, prevBlock] ) | ^( DOT retReg= expression[regTable, prevBlock] calledId= ID ) |newId= ID |intVal= INTEGER | TRUE | FALSE | ^( NEW addrId= ID ) | ^( NEG returnReg= expression[regTable, prevBlock] ) | NULL )
+			// ControlFlowGraph.g:367:4: (invRetReg= invocation[regTable, prevBlock] | ^( AND regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( OR regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( LE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( EQ regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( LT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( GT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( NE expression[regTable, prevBlock] expression[regTable, prevBlock] ) | ^( GE expression[regTable, prevBlock] expression[regTable, prevBlock] ) | ^( PLUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( MINUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( TIMES regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( DIVIDE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] ) | ^( NOT expression[regTable, prevBlock] ) | ^( DOT retReg= expression[regTable, prevBlock] calledId= ID ) |newId= ID |intVal= INTEGER | TRUE | FALSE | ^( NEW addrId= ID ) | ^( NEG returnReg= expression[regTable, prevBlock] ) | NULL )
 			int alt16=22;
 			switch ( input.LA(1) ) {
 			case INVOKE:
@@ -3236,13 +3244,13 @@ public class ControlFlowGraph extends TreeParser {
 			}
 			switch (alt16) {
 				case 1 :
-					// ControlFlowGraph.g:359:7: invRetReg= invocation[regTable, prevBlock]
+					// ControlFlowGraph.g:367:7: invRetReg= invocation[regTable, prevBlock]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_invocation_in_expression1289);
+					pushFollow(FOLLOW_invocation_in_expression1300);
 					invRetReg=invocation(regTable, prevBlock);
 					state._fsp--;
 
@@ -3254,7 +3262,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:363:7: ^( AND regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:371:7: ^( AND regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3265,22 +3273,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					AND52=(CommonTree)match(input,AND,FOLLOW_AND_in_expression1307); 
-					AND52_tree = (CommonTree)adaptor.dupNode(AND52);
+					AND51=(CommonTree)match(input,AND,FOLLOW_AND_in_expression1318); 
+					AND51_tree = (CommonTree)adaptor.dupNode(AND51);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(AND52_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(AND51_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1311);
+					pushFollow(FOLLOW_expression_in_expression1322);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1316);
+					pushFollow(FOLLOW_expression_in_expression1327);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3299,7 +3307,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 3 :
-					// ControlFlowGraph.g:368:7: ^( OR regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:376:7: ^( OR regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3310,22 +3318,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					OR53=(CommonTree)match(input,OR,FOLLOW_OR_in_expression1335); 
-					OR53_tree = (CommonTree)adaptor.dupNode(OR53);
+					OR52=(CommonTree)match(input,OR,FOLLOW_OR_in_expression1346); 
+					OR52_tree = (CommonTree)adaptor.dupNode(OR52);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(OR53_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(OR52_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1339);
+					pushFollow(FOLLOW_expression_in_expression1350);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1344);
+					pushFollow(FOLLOW_expression_in_expression1355);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3344,7 +3352,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 4 :
-					// ControlFlowGraph.g:373:7: ^( LE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:381:7: ^( LE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3355,22 +3363,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					LE54=(CommonTree)match(input,LE,FOLLOW_LE_in_expression1363); 
-					LE54_tree = (CommonTree)adaptor.dupNode(LE54);
+					LE53=(CommonTree)match(input,LE,FOLLOW_LE_in_expression1374); 
+					LE53_tree = (CommonTree)adaptor.dupNode(LE53);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(LE54_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(LE53_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1367);
+					pushFollow(FOLLOW_expression_in_expression1378);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1372);
+					pushFollow(FOLLOW_expression_in_expression1383);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3391,7 +3399,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 5 :
-					// ControlFlowGraph.g:380:7: ^( EQ regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:388:7: ^( EQ regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3402,22 +3410,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					EQ55=(CommonTree)match(input,EQ,FOLLOW_EQ_in_expression1391); 
-					EQ55_tree = (CommonTree)adaptor.dupNode(EQ55);
+					EQ54=(CommonTree)match(input,EQ,FOLLOW_EQ_in_expression1402); 
+					EQ54_tree = (CommonTree)adaptor.dupNode(EQ54);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(EQ55_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(EQ54_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1395);
+					pushFollow(FOLLOW_expression_in_expression1406);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1400);
+					pushFollow(FOLLOW_expression_in_expression1411);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3438,7 +3446,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 6 :
-					// ControlFlowGraph.g:387:7: ^( LT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:395:7: ^( LT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3449,22 +3457,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					LT56=(CommonTree)match(input,LT,FOLLOW_LT_in_expression1419); 
-					LT56_tree = (CommonTree)adaptor.dupNode(LT56);
+					LT55=(CommonTree)match(input,LT,FOLLOW_LT_in_expression1430); 
+					LT55_tree = (CommonTree)adaptor.dupNode(LT55);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(LT56_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(LT55_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1423);
+					pushFollow(FOLLOW_expression_in_expression1434);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1428);
+					pushFollow(FOLLOW_expression_in_expression1439);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3485,7 +3493,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 7 :
-					// ControlFlowGraph.g:394:7: ^( GT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:402:7: ^( GT regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3496,22 +3504,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					GT57=(CommonTree)match(input,GT,FOLLOW_GT_in_expression1447); 
-					GT57_tree = (CommonTree)adaptor.dupNode(GT57);
+					GT56=(CommonTree)match(input,GT,FOLLOW_GT_in_expression1458); 
+					GT56_tree = (CommonTree)adaptor.dupNode(GT56);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(GT57_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(GT56_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1451);
+					pushFollow(FOLLOW_expression_in_expression1462);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1456);
+					pushFollow(FOLLOW_expression_in_expression1467);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3532,7 +3540,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 8 :
-					// ControlFlowGraph.g:401:7: ^( NE expression[regTable, prevBlock] expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:409:7: ^( NE expression[regTable, prevBlock] expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3543,26 +3551,26 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NE58=(CommonTree)match(input,NE,FOLLOW_NE_in_expression1475); 
-					NE58_tree = (CommonTree)adaptor.dupNode(NE58);
+					NE57=(CommonTree)match(input,NE,FOLLOW_NE_in_expression1486); 
+					NE57_tree = (CommonTree)adaptor.dupNode(NE57);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NE58_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NE57_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1477);
+					pushFollow(FOLLOW_expression_in_expression1488);
+					expression58=expression(regTable, prevBlock);
+					state._fsp--;
+
+					adaptor.addChild(root_1, expression58.getTree());
+
+					_last = (CommonTree)input.LT(1);
+					pushFollow(FOLLOW_expression_in_expression1491);
 					expression59=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, expression59.getTree());
-
-					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1480);
-					expression60=expression(regTable, prevBlock);
-					state._fsp--;
-
-					adaptor.addChild(root_1, expression60.getTree());
 
 					match(input, Token.UP, null); 
 					adaptor.addChild(root_0, root_1);
@@ -3579,7 +3587,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 9 :
-					// ControlFlowGraph.g:408:7: ^( GE expression[regTable, prevBlock] expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:416:7: ^( GE expression[regTable, prevBlock] expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3590,26 +3598,26 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					GE61=(CommonTree)match(input,GE,FOLLOW_GE_in_expression1499); 
-					GE61_tree = (CommonTree)adaptor.dupNode(GE61);
+					GE60=(CommonTree)match(input,GE,FOLLOW_GE_in_expression1510); 
+					GE60_tree = (CommonTree)adaptor.dupNode(GE60);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(GE61_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(GE60_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1501);
+					pushFollow(FOLLOW_expression_in_expression1512);
+					expression61=expression(regTable, prevBlock);
+					state._fsp--;
+
+					adaptor.addChild(root_1, expression61.getTree());
+
+					_last = (CommonTree)input.LT(1);
+					pushFollow(FOLLOW_expression_in_expression1515);
 					expression62=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, expression62.getTree());
-
-					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1504);
-					expression63=expression(regTable, prevBlock);
-					state._fsp--;
-
-					adaptor.addChild(root_1, expression63.getTree());
 
 					match(input, Token.UP, null); 
 					adaptor.addChild(root_0, root_1);
@@ -3626,7 +3634,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 10 :
-					// ControlFlowGraph.g:415:7: ^( PLUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:423:7: ^( PLUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3637,22 +3645,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					PLUS64=(CommonTree)match(input,PLUS,FOLLOW_PLUS_in_expression1523); 
-					PLUS64_tree = (CommonTree)adaptor.dupNode(PLUS64);
+					PLUS63=(CommonTree)match(input,PLUS,FOLLOW_PLUS_in_expression1534); 
+					PLUS63_tree = (CommonTree)adaptor.dupNode(PLUS63);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(PLUS64_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(PLUS63_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1527);
+					pushFollow(FOLLOW_expression_in_expression1538);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1532);
+					pushFollow(FOLLOW_expression_in_expression1543);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3671,7 +3679,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 11 :
-					// ControlFlowGraph.g:420:7: ^( MINUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:428:7: ^( MINUS regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3682,22 +3690,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					MINUS65=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_expression1548); 
-					MINUS65_tree = (CommonTree)adaptor.dupNode(MINUS65);
+					MINUS64=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_expression1559); 
+					MINUS64_tree = (CommonTree)adaptor.dupNode(MINUS64);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(MINUS65_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(MINUS64_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1552);
+					pushFollow(FOLLOW_expression_in_expression1563);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1557);
+					pushFollow(FOLLOW_expression_in_expression1568);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3716,7 +3724,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 12 :
-					// ControlFlowGraph.g:425:7: ^( TIMES regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:433:7: ^( TIMES regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3727,22 +3735,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					TIMES66=(CommonTree)match(input,TIMES,FOLLOW_TIMES_in_expression1576); 
-					TIMES66_tree = (CommonTree)adaptor.dupNode(TIMES66);
+					TIMES65=(CommonTree)match(input,TIMES,FOLLOW_TIMES_in_expression1587); 
+					TIMES65_tree = (CommonTree)adaptor.dupNode(TIMES65);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(TIMES66_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(TIMES65_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1580);
+					pushFollow(FOLLOW_expression_in_expression1591);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1585);
+					pushFollow(FOLLOW_expression_in_expression1596);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3761,7 +3769,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 13 :
-					// ControlFlowGraph.g:430:7: ^( DIVIDE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:438:7: ^( DIVIDE regNum1= expression[regTable, prevBlock] regNum2= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3772,22 +3780,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DIVIDE67=(CommonTree)match(input,DIVIDE,FOLLOW_DIVIDE_in_expression1604); 
-					DIVIDE67_tree = (CommonTree)adaptor.dupNode(DIVIDE67);
+					DIVIDE66=(CommonTree)match(input,DIVIDE,FOLLOW_DIVIDE_in_expression1615); 
+					DIVIDE66_tree = (CommonTree)adaptor.dupNode(DIVIDE66);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DIVIDE67_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DIVIDE66_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1608);
+					pushFollow(FOLLOW_expression_in_expression1619);
 					regNum1=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, regNum1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1613);
+					pushFollow(FOLLOW_expression_in_expression1624);
 					regNum2=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -3806,7 +3814,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 14 :
-					// ControlFlowGraph.g:435:7: ^( NOT expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:443:7: ^( NOT expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3817,19 +3825,19 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NOT68=(CommonTree)match(input,NOT,FOLLOW_NOT_in_expression1632); 
-					NOT68_tree = (CommonTree)adaptor.dupNode(NOT68);
+					NOT67=(CommonTree)match(input,NOT,FOLLOW_NOT_in_expression1643); 
+					NOT67_tree = (CommonTree)adaptor.dupNode(NOT67);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NOT68_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NOT67_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1634);
-					expression69=expression(regTable, prevBlock);
+					pushFollow(FOLLOW_expression_in_expression1645);
+					expression68=expression(regTable, prevBlock);
 					state._fsp--;
 
-					adaptor.addChild(root_1, expression69.getTree());
+					adaptor.addChild(root_1, expression68.getTree());
 
 					match(input, Token.UP, null); 
 					adaptor.addChild(root_0, root_1);
@@ -3840,7 +3848,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 15 :
-					// ControlFlowGraph.g:436:7: ^( DOT retReg= expression[regTable, prevBlock] calledId= ID )
+					// ControlFlowGraph.g:444:7: ^( DOT retReg= expression[regTable, prevBlock] calledId= ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3851,22 +3859,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT70=(CommonTree)match(input,DOT,FOLLOW_DOT_in_expression1645); 
-					DOT70_tree = (CommonTree)adaptor.dupNode(DOT70);
+					DOT69=(CommonTree)match(input,DOT,FOLLOW_DOT_in_expression1656); 
+					DOT69_tree = (CommonTree)adaptor.dupNode(DOT69);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DOT70_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DOT69_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1649);
+					pushFollow(FOLLOW_expression_in_expression1660);
 					retReg=expression(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, retReg.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					calledId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1654); 
+					calledId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1665); 
 					calledId_tree = (CommonTree)adaptor.dupNode(calledId);
 
 
@@ -3885,13 +3893,13 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 16 :
-					// ControlFlowGraph.g:441:7: newId= ID
+					// ControlFlowGraph.g:449:7: newId= ID
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					newId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1675); 
+					newId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1686); 
 					newId_tree = (CommonTree)adaptor.dupNode(newId);
 
 
@@ -3910,13 +3918,13 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 17 :
-					// ControlFlowGraph.g:452:7: intVal= INTEGER
+					// ControlFlowGraph.g:460:7: intVal= INTEGER
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					intVal=(CommonTree)match(input,INTEGER,FOLLOW_INTEGER_in_expression1693); 
+					intVal=(CommonTree)match(input,INTEGER,FOLLOW_INTEGER_in_expression1704); 
 					intVal_tree = (CommonTree)adaptor.dupNode(intVal);
 
 
@@ -3929,17 +3937,17 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 18 :
-					// ControlFlowGraph.g:457:7: TRUE
+					// ControlFlowGraph.g:465:7: TRUE
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					TRUE71=(CommonTree)match(input,TRUE,FOLLOW_TRUE_in_expression1709); 
-					TRUE71_tree = (CommonTree)adaptor.dupNode(TRUE71);
+					TRUE70=(CommonTree)match(input,TRUE,FOLLOW_TRUE_in_expression1720); 
+					TRUE70_tree = (CommonTree)adaptor.dupNode(TRUE70);
 
 
-					adaptor.addChild(root_0, TRUE71_tree);
+					adaptor.addChild(root_0, TRUE70_tree);
 
 
 					         prevBlock.instructions.add(new ImmInst(1, regCounter));
@@ -3948,17 +3956,17 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 19 :
-					// ControlFlowGraph.g:462:7: FALSE
+					// ControlFlowGraph.g:470:7: FALSE
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					FALSE72=(CommonTree)match(input,FALSE,FOLLOW_FALSE_in_expression1726); 
-					FALSE72_tree = (CommonTree)adaptor.dupNode(FALSE72);
+					FALSE71=(CommonTree)match(input,FALSE,FOLLOW_FALSE_in_expression1737); 
+					FALSE71_tree = (CommonTree)adaptor.dupNode(FALSE71);
 
 
-					adaptor.addChild(root_0, FALSE72_tree);
+					adaptor.addChild(root_0, FALSE71_tree);
 
 
 					         prevBlock.instructions.add(new ImmInst(0, regCounter));
@@ -3967,7 +3975,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 20 :
-					// ControlFlowGraph.g:467:7: ^( NEW addrId= ID )
+					// ControlFlowGraph.g:475:7: ^( NEW addrId= ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3978,15 +3986,15 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NEW73=(CommonTree)match(input,NEW,FOLLOW_NEW_in_expression1743); 
-					NEW73_tree = (CommonTree)adaptor.dupNode(NEW73);
+					NEW72=(CommonTree)match(input,NEW,FOLLOW_NEW_in_expression1754); 
+					NEW72_tree = (CommonTree)adaptor.dupNode(NEW72);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NEW73_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NEW72_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					addrId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1747); 
+					addrId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1758); 
 					addrId_tree = (CommonTree)adaptor.dupNode(addrId);
 
 
@@ -4005,7 +4013,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 21 :
-					// ControlFlowGraph.g:472:7: ^( NEG returnReg= expression[regTable, prevBlock] )
+					// ControlFlowGraph.g:480:7: ^( NEG returnReg= expression[regTable, prevBlock] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -4016,15 +4024,15 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NEG74=(CommonTree)match(input,NEG,FOLLOW_NEG_in_expression1765); 
-					NEG74_tree = (CommonTree)adaptor.dupNode(NEG74);
+					NEG73=(CommonTree)match(input,NEG,FOLLOW_NEG_in_expression1776); 
+					NEG73_tree = (CommonTree)adaptor.dupNode(NEG73);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NEG74_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NEG73_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1769);
+					pushFollow(FOLLOW_expression_in_expression1780);
 					returnReg=expression(regTable, prevBlock);
 					state._fsp--;
 
@@ -4044,17 +4052,17 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 22 :
-					// ControlFlowGraph.g:478:7: NULL
+					// ControlFlowGraph.g:486:7: NULL
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					NULL75=(CommonTree)match(input,NULL,FOLLOW_NULL_in_expression1788); 
-					NULL75_tree = (CommonTree)adaptor.dupNode(NULL75);
+					NULL74=(CommonTree)match(input,NULL,FOLLOW_NULL_in_expression1799); 
+					NULL74_tree = (CommonTree)adaptor.dupNode(NULL74);
 
 
-					adaptor.addChild(root_0, NULL75_tree);
+					adaptor.addChild(root_0, NULL74_tree);
 
 
 					         prevBlock.instructions.add(new ImmInst(0, regCounter));
@@ -4088,7 +4096,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "lvalue"
-	// ControlFlowGraph.g:485:1: lvalue[RegisterTable regTable, BasicBlock prevBlock, Integer assReg] returns [Integer regNum] : (retId= ID | ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID ) );
+	// ControlFlowGraph.g:493:1: lvalue[RegisterTable regTable, BasicBlock prevBlock, Integer assReg] returns [Integer regNum] : (retId= ID | ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID ) );
 	public final ControlFlowGraph.lvalue_return lvalue(RegisterTable regTable, BasicBlock prevBlock, Integer assReg) throws RecognitionException {
 		ControlFlowGraph.lvalue_return retval = new ControlFlowGraph.lvalue_return();
 		retval.start = input.LT(1);
@@ -4101,15 +4109,15 @@ public class ControlFlowGraph extends TreeParser {
 
 		CommonTree retId=null;
 		CommonTree newId=null;
-		CommonTree DOT76=null;
+		CommonTree DOT75=null;
 		TreeRuleReturnScope retReg =null;
 
 		CommonTree retId_tree=null;
 		CommonTree newId_tree=null;
-		CommonTree DOT76_tree=null;
+		CommonTree DOT75_tree=null;
 
 		try {
-			// ControlFlowGraph.g:486:4: (retId= ID | ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID ) )
+			// ControlFlowGraph.g:494:4: (retId= ID | ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID ) )
 			int alt17=2;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0==ID) ) {
@@ -4127,13 +4135,13 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt17) {
 				case 1 :
-					// ControlFlowGraph.g:486:7: retId= ID
+					// ControlFlowGraph.g:494:7: retId= ID
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					retId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1823); 
+					retId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1834); 
 					retId_tree = (CommonTree)adaptor.dupNode(retId);
 
 
@@ -4146,7 +4154,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:491:7: ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID )
+					// ControlFlowGraph.g:499:7: ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -4157,22 +4165,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT76=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalue1840); 
-					DOT76_tree = (CommonTree)adaptor.dupNode(DOT76);
+					DOT75=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalue1851); 
+					DOT75_tree = (CommonTree)adaptor.dupNode(DOT75);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DOT76_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DOT75_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_lvalueLoad_in_lvalue1844);
+					pushFollow(FOLLOW_lvalueLoad_in_lvalue1855);
 					retReg=lvalueLoad(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, retReg.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					newId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1849); 
+					newId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1860); 
 					newId_tree = (CommonTree)adaptor.dupNode(newId);
 
 
@@ -4215,7 +4223,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "lvalueRead"
-	// ControlFlowGraph.g:497:1: lvalueRead[RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum] : (retId= ID | ^( DOT retReg= lvalueRead[regTable, prevBlock] newId= ID ) );
+	// ControlFlowGraph.g:505:1: lvalueRead[RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum] : (retId= ID | ^( DOT retReg= lvalueRead[regTable, prevBlock] newId= ID ) );
 	public final ControlFlowGraph.lvalueRead_return lvalueRead(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.lvalueRead_return retval = new ControlFlowGraph.lvalueRead_return();
 		retval.start = input.LT(1);
@@ -4228,15 +4236,15 @@ public class ControlFlowGraph extends TreeParser {
 
 		CommonTree retId=null;
 		CommonTree newId=null;
-		CommonTree DOT77=null;
+		CommonTree DOT76=null;
 		TreeRuleReturnScope retReg =null;
 
 		CommonTree retId_tree=null;
 		CommonTree newId_tree=null;
-		CommonTree DOT77_tree=null;
+		CommonTree DOT76_tree=null;
 
 		try {
-			// ControlFlowGraph.g:498:4: (retId= ID | ^( DOT retReg= lvalueRead[regTable, prevBlock] newId= ID ) )
+			// ControlFlowGraph.g:506:4: (retId= ID | ^( DOT retReg= lvalueRead[regTable, prevBlock] newId= ID ) )
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0==ID) ) {
@@ -4254,13 +4262,13 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt18) {
 				case 1 :
-					// ControlFlowGraph.g:498:7: retId= ID
+					// ControlFlowGraph.g:506:7: retId= ID
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					retId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalueRead1882); 
+					retId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalueRead1893); 
 					retId_tree = (CommonTree)adaptor.dupNode(retId);
 
 
@@ -4272,7 +4280,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:502:7: ^( DOT retReg= lvalueRead[regTable, prevBlock] newId= ID )
+					// ControlFlowGraph.g:510:7: ^( DOT retReg= lvalueRead[regTable, prevBlock] newId= ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -4283,22 +4291,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT77=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalueRead1899); 
-					DOT77_tree = (CommonTree)adaptor.dupNode(DOT77);
+					DOT76=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalueRead1910); 
+					DOT76_tree = (CommonTree)adaptor.dupNode(DOT76);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DOT77_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DOT76_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_lvalueRead_in_lvalueRead1903);
+					pushFollow(FOLLOW_lvalueRead_in_lvalueRead1914);
 					retReg=lvalueRead(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, retReg.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					newId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalueRead1908); 
+					newId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalueRead1919); 
 					newId_tree = (CommonTree)adaptor.dupNode(newId);
 
 
@@ -4342,7 +4350,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "lvalueLoad"
-	// ControlFlowGraph.g:509:1: lvalueLoad[RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum] : (retId= ID | ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID ) );
+	// ControlFlowGraph.g:517:1: lvalueLoad[RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum] : (retId= ID | ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID ) );
 	public final ControlFlowGraph.lvalueLoad_return lvalueLoad(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.lvalueLoad_return retval = new ControlFlowGraph.lvalueLoad_return();
 		retval.start = input.LT(1);
@@ -4355,15 +4363,15 @@ public class ControlFlowGraph extends TreeParser {
 
 		CommonTree retId=null;
 		CommonTree newId=null;
-		CommonTree DOT78=null;
+		CommonTree DOT77=null;
 		TreeRuleReturnScope retReg =null;
 
 		CommonTree retId_tree=null;
 		CommonTree newId_tree=null;
-		CommonTree DOT78_tree=null;
+		CommonTree DOT77_tree=null;
 
 		try {
-			// ControlFlowGraph.g:510:4: (retId= ID | ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID ) )
+			// ControlFlowGraph.g:518:4: (retId= ID | ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID ) )
 			int alt19=2;
 			int LA19_0 = input.LA(1);
 			if ( (LA19_0==ID) ) {
@@ -4381,13 +4389,13 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt19) {
 				case 1 :
-					// ControlFlowGraph.g:510:7: retId= ID
+					// ControlFlowGraph.g:518:7: retId= ID
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					retId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalueLoad1941); 
+					retId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalueLoad1952); 
 					retId_tree = (CommonTree)adaptor.dupNode(retId);
 
 
@@ -4403,7 +4411,7 @@ public class ControlFlowGraph extends TreeParser {
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:518:7: ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID )
+					// ControlFlowGraph.g:526:7: ^( DOT retReg= lvalueLoad[regTable, prevBlock] newId= ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -4414,22 +4422,22 @@ public class ControlFlowGraph extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT78=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalueLoad1958); 
-					DOT78_tree = (CommonTree)adaptor.dupNode(DOT78);
+					DOT77=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalueLoad1969); 
+					DOT77_tree = (CommonTree)adaptor.dupNode(DOT77);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DOT78_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DOT77_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_lvalueLoad_in_lvalueLoad1962);
+					pushFollow(FOLLOW_lvalueLoad_in_lvalueLoad1973);
 					retReg=lvalueLoad(regTable, prevBlock);
 					state._fsp--;
 
 					adaptor.addChild(root_1, retReg.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					newId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalueLoad1967); 
+					newId=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalueLoad1978); 
 					newId_tree = (CommonTree)adaptor.dupNode(newId);
 
 
@@ -4472,7 +4480,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "rettype"
-	// ControlFlowGraph.g:525:1: rettype : ( type | VOID );
+	// ControlFlowGraph.g:533:1: rettype : ( type | VOID );
 	public final ControlFlowGraph.rettype_return rettype() throws RecognitionException {
 		ControlFlowGraph.rettype_return retval = new ControlFlowGraph.rettype_return();
 		retval.start = input.LT(1);
@@ -4483,13 +4491,13 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree VOID80=null;
-		TreeRuleReturnScope type79 =null;
+		CommonTree VOID79=null;
+		TreeRuleReturnScope type78 =null;
 
-		CommonTree VOID80_tree=null;
+		CommonTree VOID79_tree=null;
 
 		try {
-			// ControlFlowGraph.g:526:4: ( type | VOID )
+			// ControlFlowGraph.g:534:4: ( type | VOID )
 			int alt20=2;
 			int LA20_0 = input.LA(1);
 			if ( (LA20_0==BOOL||LA20_0==INT||LA20_0==STRUCT) ) {
@@ -4507,32 +4515,32 @@ public class ControlFlowGraph extends TreeParser {
 
 			switch (alt20) {
 				case 1 :
-					// ControlFlowGraph.g:526:7: type
+					// ControlFlowGraph.g:534:7: type
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_type_in_rettype1993);
-					type79=type();
+					pushFollow(FOLLOW_type_in_rettype2004);
+					type78=type();
 					state._fsp--;
 
-					adaptor.addChild(root_0, type79.getTree());
+					adaptor.addChild(root_0, type78.getTree());
 
 					}
 					break;
 				case 2 :
-					// ControlFlowGraph.g:527:7: VOID
+					// ControlFlowGraph.g:535:7: VOID
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					VOID80=(CommonTree)match(input,VOID,FOLLOW_VOID_in_rettype2001); 
-					VOID80_tree = (CommonTree)adaptor.dupNode(VOID80);
+					VOID79=(CommonTree)match(input,VOID,FOLLOW_VOID_in_rettype2012); 
+					VOID79_tree = (CommonTree)adaptor.dupNode(VOID79);
 
 
-					adaptor.addChild(root_0, VOID80_tree);
+					adaptor.addChild(root_0, VOID79_tree);
 
 					}
 					break;
@@ -4554,6 +4562,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	public static class params_return extends TreeRuleReturnScope {
+		public int numParams;
 		CommonTree tree;
 		@Override
 		public CommonTree getTree() { return tree; }
@@ -4561,7 +4570,7 @@ public class ControlFlowGraph extends TreeParser {
 
 
 	// $ANTLR start "params"
-	// ControlFlowGraph.g:530:1: params[RegisterTable regTable, BasicBlock prevBlock] : ^( PARAMS (declRetID= decl )* ) ;
+	// ControlFlowGraph.g:538:1: params[RegisterTable regTable, BasicBlock prevBlock] returns [int numParams] : ^( PARAMS (declRetID= decl )* ) ;
 	public final ControlFlowGraph.params_return params(RegisterTable regTable, BasicBlock prevBlock) throws RecognitionException {
 		ControlFlowGraph.params_return retval = new ControlFlowGraph.params_return();
 		retval.start = input.LT(1);
@@ -4572,17 +4581,17 @@ public class ControlFlowGraph extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree PARAMS81=null;
+		CommonTree PARAMS80=null;
 		TreeRuleReturnScope declRetID =null;
 
-		CommonTree PARAMS81_tree=null;
+		CommonTree PARAMS80_tree=null;
 
 
 		      int paramNum = 0;
 		   
 		try {
-			// ControlFlowGraph.g:534:4: ( ^( PARAMS (declRetID= decl )* ) )
-			// ControlFlowGraph.g:534:7: ^( PARAMS (declRetID= decl )* )
+			// ControlFlowGraph.g:542:4: ( ^( PARAMS (declRetID= decl )* ) )
+			// ControlFlowGraph.g:542:7: ^( PARAMS (declRetID= decl )* )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -4593,15 +4602,15 @@ public class ControlFlowGraph extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			PARAMS81=(CommonTree)match(input,PARAMS,FOLLOW_PARAMS_in_params2028); 
-			PARAMS81_tree = (CommonTree)adaptor.dupNode(PARAMS81);
+			PARAMS80=(CommonTree)match(input,PARAMS,FOLLOW_PARAMS_in_params2043); 
+			PARAMS80_tree = (CommonTree)adaptor.dupNode(PARAMS80);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(PARAMS81_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(PARAMS80_tree, root_1);
 
 			if ( input.LA(1)==Token.DOWN ) {
 				match(input, Token.DOWN, null); 
-				// ControlFlowGraph.g:534:16: (declRetID= decl )*
+				// ControlFlowGraph.g:542:16: (declRetID= decl )*
 				loop21:
 				while (true) {
 					int alt21=2;
@@ -4612,10 +4621,10 @@ public class ControlFlowGraph extends TreeParser {
 
 					switch (alt21) {
 					case 1 :
-						// ControlFlowGraph.g:534:17: declRetID= decl
+						// ControlFlowGraph.g:542:17: declRetID= decl
 						{
 						_last = (CommonTree)input.LT(1);
-						pushFollow(FOLLOW_decl_in_params2033);
+						pushFollow(FOLLOW_decl_in_params2048);
 						declRetID=decl();
 						state._fsp--;
 
@@ -4640,6 +4649,9 @@ public class ControlFlowGraph extends TreeParser {
 			}
 
 
+
+			         retval.numParams = paramNum;
+			      
 			}
 
 			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
@@ -4693,117 +4705,117 @@ public class ControlFlowGraph extends TreeParser {
 	public static final BitSet FOLLOW_function_in_functions433 = new BitSet(new long[]{0x0000000000200008L});
 	public static final BitSet FOLLOW_FUN_in_function480 = new BitSet(new long[]{0x0000000000000004L});
 	public static final BitSet FOLLOW_ID_in_function484 = new BitSet(new long[]{0x0000020000000000L});
-	public static final BitSet FOLLOW_params_in_function486 = new BitSet(new long[]{0x0000800000000000L});
-	public static final BitSet FOLLOW_RETTYPE_in_function490 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_rettype_in_function492 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_declarations_in_function495 = new BitSet(new long[]{0x0008000000000000L});
-	public static final BitSet FOLLOW_statement_list_in_function500 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_STMTS_in_statement_list533 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_statement_in_statement_list538 = new BitSet(new long[]{0x04014800240040C8L});
-	public static final BitSet FOLLOW_block_in_statement594 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_assignment_in_statement613 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_conditional_in_statement640 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_loop_in_statement659 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_invocation_in_statement676 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ret_in_statement695 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_read_in_statement714 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_print_in_statement733 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_delete_in_statement752 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_READ_in_read784 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalueRead_in_read788 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_DELETE_in_delete820 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_delete824 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_PRINT_in_print857 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_print861 = new BitSet(new long[]{0x0000000000040008L});
-	public static final BitSet FOLLOW_ENDL_in_print864 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_RETURN_in_ret897 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_ret903 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_RETURN_in_ret921 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_arg_list_in_arguments949 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARGS_in_arg_list989 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_arg_list994 = new BitSet(new long[]{0x006005FEB3998018L});
-	public static final BitSet FOLLOW_ARGS_in_arg_list1022 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IF_in_conditional1055 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_conditional1059 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_in_conditional1064 = new BitSet(new long[]{0x0000000000000088L});
-	public static final BitSet FOLLOW_block_in_conditional1085 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_INVOKE_in_invocation1120 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_invocation1124 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_arguments_in_invocation1126 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_WHILE_in_loop1164 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_loop1168 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_in_loop1173 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_loop1178 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_BLOCK_in_block1211 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_statement_list_in_block1215 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ASSIGN_in_assignment1248 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_assignment1252 = new BitSet(new long[]{0x0000000002010000L});
-	public static final BitSet FOLLOW_lvalue_in_assignment1255 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_invocation_in_expression1289 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AND_in_expression1307 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1311 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1316 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_OR_in_expression1335 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1339 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1344 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_LE_in_expression1363 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1367 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1372 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_EQ_in_expression1391 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1395 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1400 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_LT_in_expression1419 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1423 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1428 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_GT_in_expression1447 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1451 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1456 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NE_in_expression1475 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1477 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1480 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_GE_in_expression1499 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1501 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1504 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_PLUS_in_expression1523 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1527 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1532 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_MINUS_in_expression1548 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1552 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1557 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_TIMES_in_expression1576 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1580 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1585 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_DIVIDE_in_expression1604 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1608 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1613 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NOT_in_expression1632 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1634 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_DOT_in_expression1645 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1649 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_expression1654 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_expression1675 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTEGER_in_expression1693 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TRUE_in_expression1709 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FALSE_in_expression1726 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NEW_in_expression1743 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_expression1747 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NEG_in_expression1765 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1769 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NULL_in_expression1788 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_lvalue1823 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOT_in_lvalue1840 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalueLoad_in_lvalue1844 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_lvalue1849 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_lvalueRead1882 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOT_in_lvalueRead1899 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalueRead_in_lvalueRead1903 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_lvalueRead1908 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_lvalueLoad1941 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOT_in_lvalueLoad1958 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalueLoad_in_lvalueLoad1962 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_lvalueLoad1967 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_type_in_rettype1993 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VOID_in_rettype2001 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PARAMS_in_params2028 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_decl_in_params2033 = new BitSet(new long[]{0x0000000000000808L});
+	public static final BitSet FOLLOW_params_in_function488 = new BitSet(new long[]{0x0000800000000000L});
+	public static final BitSet FOLLOW_RETTYPE_in_function501 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_rettype_in_function503 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_declarations_in_function506 = new BitSet(new long[]{0x0008000000000000L});
+	public static final BitSet FOLLOW_statement_list_in_function511 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_STMTS_in_statement_list544 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_statement_in_statement_list549 = new BitSet(new long[]{0x04014800240040C8L});
+	public static final BitSet FOLLOW_block_in_statement605 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_assignment_in_statement624 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_conditional_in_statement651 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_loop_in_statement670 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_invocation_in_statement687 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ret_in_statement706 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_read_in_statement725 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_print_in_statement744 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_delete_in_statement763 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_READ_in_read795 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalueRead_in_read799 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DELETE_in_delete831 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_delete835 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_PRINT_in_print868 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_print872 = new BitSet(new long[]{0x0000000000040008L});
+	public static final BitSet FOLLOW_ENDL_in_print875 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_RETURN_in_ret908 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_ret914 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_RETURN_in_ret932 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_arg_list_in_arguments960 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARGS_in_arg_list1000 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_arg_list1005 = new BitSet(new long[]{0x006005FEB3998018L});
+	public static final BitSet FOLLOW_ARGS_in_arg_list1033 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IF_in_conditional1066 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_conditional1070 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_in_conditional1075 = new BitSet(new long[]{0x0000000000000088L});
+	public static final BitSet FOLLOW_block_in_conditional1096 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_INVOKE_in_invocation1131 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_invocation1135 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_arguments_in_invocation1137 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_WHILE_in_loop1175 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_loop1179 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_in_loop1184 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_loop1189 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_BLOCK_in_block1222 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_statement_list_in_block1226 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ASSIGN_in_assignment1259 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_assignment1263 = new BitSet(new long[]{0x0000000002010000L});
+	public static final BitSet FOLLOW_lvalue_in_assignment1266 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_invocation_in_expression1300 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AND_in_expression1318 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1322 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1327 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_OR_in_expression1346 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1350 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1355 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_LE_in_expression1374 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1378 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1383 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_EQ_in_expression1402 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1406 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1411 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_LT_in_expression1430 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1434 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1439 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_GT_in_expression1458 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1462 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1467 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NE_in_expression1486 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1488 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1491 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_GE_in_expression1510 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1512 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1515 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_PLUS_in_expression1534 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1538 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1543 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_MINUS_in_expression1559 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1563 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1568 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_TIMES_in_expression1587 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1591 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1596 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DIVIDE_in_expression1615 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1619 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1624 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NOT_in_expression1643 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1645 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DOT_in_expression1656 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1660 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_expression1665 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_expression1686 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INTEGER_in_expression1704 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TRUE_in_expression1720 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FALSE_in_expression1737 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NEW_in_expression1754 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_expression1758 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NEG_in_expression1776 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1780 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NULL_in_expression1799 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_lvalue1834 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOT_in_lvalue1851 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalueLoad_in_lvalue1855 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_lvalue1860 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_lvalueRead1893 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOT_in_lvalueRead1910 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalueRead_in_lvalueRead1914 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_lvalueRead1919 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_lvalueLoad1952 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOT_in_lvalueLoad1969 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalueLoad_in_lvalueLoad1973 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_lvalueLoad1978 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_type_in_rettype2004 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VOID_in_rettype2012 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PARAMS_in_params2043 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_decl_in_params2048 = new BitSet(new long[]{0x0000000000000808L});
 }

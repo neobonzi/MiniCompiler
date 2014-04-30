@@ -1,5 +1,6 @@
 package jbilous.support;
 
+import jbilous.support.assembly.*;
 import java.util.Vector;
 
 public class Instruction {
@@ -17,4 +18,9 @@ public class Instruction {
 		}
 		return regs;
 	}
+
+	public Vector<AssemblyInstruction> genAssembly() {
+		return new Vector<AssemblyInstruction>();
+	}
+
 }

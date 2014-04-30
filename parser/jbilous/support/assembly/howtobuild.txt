@@ -1,0 +1,2 @@
+Build an instruction:
+javac AssemblyInstruction.java ../Instruction.java AssemblyRegister.java PushQ.java

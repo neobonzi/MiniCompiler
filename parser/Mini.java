@@ -6,6 +6,8 @@ import java.io.*;
 import java.util.Vector;
 import java.util.HashMap;
 import jbilous.support.*;
+import jbilous.support.assembly.*;
+import jbilous.support.assembly.AssemblyRegister;
 
 public class Mini
 {
@@ -33,8 +35,11 @@ public class Mini
 
    private static final String DISPLAYAST = "-displayAST";
    private static final String DUMPIL = "-dumpIL";
+   private static final String DUMPASS = "-dumpASS";
    private static HashMap<String, BasicBlock> printedBlocks = new HashMap<String, BasicBlock>();
+   private static HashMap<String, BasicBlock> transformedBlocks = new HashMap<String, BasicBlock>();
    private static String _inputFile = null;
+   private static boolean _dumpAss = false;
    private static boolean _displayAST = false;
    private static boolean _dumpIL = false;
 
@@ -49,6 +54,10 @@ public class Mini
          else if (args[i].equals(DUMPIL))
          {
             _dumpIL = true;
+         }
+         else if (args[i].equals(DUMPASS))
+         {
+            _dumpAss = true;
          }
          else if (args[i].charAt(0) == '-')
          {
@@ -89,23 +98,107 @@ public class Mini
          }
       }
    }
+   private static void printBlockAssem(PrintWriter writer, BasicBlock block) {
+      writer.println(String.format("%10s:", block.label));
+      if (block.assemInstructions.size() == 0){
+         return;
+      }
+      for (AssemblyInstruction inst : block.assemInstructions) {
+         writer.println(String.format("%15s %s", "", inst.toString()));
+      }
+   }
+   private static void printCFGAssem(PrintWriter writer, BasicBlock cfgBlock) {
+      if(!printedBlocks.containsKey(cfgBlock.label)) {
+         printedBlocks.put(cfgBlock.label, cfgBlock);
+         printBlockAssem(writer, cfgBlock);
+         if (cfgBlock.descendants.size() > 0) {
+            int i = 0;
+            for (BasicBlock descBlock : cfgBlock.descendants) {
+               printCFGAssem(writer, descBlock);
+            }
+         }
+      }
+   }
+
+   private static void addPreamble(BasicBlock cfgBlock) {
+      cfgBlock.assemInstructions.add(new PushQ(AssemblyRegister.RBP));
+      cfgBlock.assemInstructions.add(new MovQ(AssemblyRegister.RSP, AssemblyRegister.RBP));
+   }
+
+   private static void addEpilogue(BasicBlock cfgBlock) {
+      cfgBlock.assemInstructions.add(new PopQ(AssemblyRegister.RBP));
+      cfgBlock.assemInstructions.add(new Ret());
+   }
+
+   private static void transformBlock(BasicBlock cfgBlock) {
+      if (cfgBlock.instructions.size() == 0) {
+         return;
+      } else {
+         for (Instruction ins : cfgBlock.instructions) {
+            try{
+               cfgBlock.assemInstructions.addAll(ins.genAssembly());
+            } catch (NoSuchMethodError e) {
+
+            }
+         }
+      }
+   }
+
+   private static void transformCFG(BasicBlock cfgBlock) {
+      if(!transformedBlocks.containsKey(cfgBlock.label)) {
+         transformedBlocks.put(cfgBlock.label, cfgBlock);
+         if(cfgBlock.funEntrance) {
+            addPreamble(cfgBlock);
+         }
+         transformBlock(cfgBlock);
+         if (cfgBlock.descendants.size() > 0) {
+            int i = 0;
+            for (BasicBlock descBlock : cfgBlock.descendants) {
+               transformCFG(descBlock);
+               if(descBlock.funExit) {
+                  addEpilogue(descBlock);
+               }
+            }
+         }
+      }
+   }
 
    private static void genCFG(TypeCheck tchecker, CommonTree tree, CommonTokenStream tokens)
    {
       try
       {
          CommonTreeNodeStream nodes = new CommonTreeNodeStream(tree);
-         nodes.setTokenStream(tokens);
          ControlFlowGraph cfg = new ControlFlowGraph(nodes);
+         ControlFlowGraph cfgAss = new ControlFlowGraph(nodes);
 
          ControlFlowGraph.generate_return cfgRet = cfg.generate(tchecker.getSymTable(), tchecker.getStructTypes());
+         nodes.reset();
+         ControlFlowGraph.generate_return cfgAssRet = cfg.generate(tchecker.getSymTable(), tchecker.getStructTypes());
+
          Vector<BasicBlock> cfgBlocks = cfgRet.cfGraph;
+         Vector<BasicBlock> cfgAssBlocks = cfgAssRet.cfGraph;
+
          if (_dumpIL) {
             String ilFile = _inputFile.replace(".mini", ".il");
             try{
                PrintWriter writer = new PrintWriter(ilFile);
                for(BasicBlock cfgBlock : cfgBlocks) {
                   printCFG(writer, cfgBlock);
+               }
+               writer.close();
+            } catch(FileNotFoundException e) {
+               System.out.println("File not found");
+            }
+         }
+
+         if (_dumpAss) {
+            String assFile = _inputFile.replace(".mini", ".s");
+            try{
+               PrintWriter writer = new PrintWriter(assFile);
+               printedBlocks = new HashMap<String, BasicBlock>();
+               for(BasicBlock cfgBlock : cfgAssBlocks) {
+                  transformCFG(cfgBlock);
+                  printCFGAssem(writer, cfgBlock);
                }
                writer.close();
             } catch(FileNotFoundException e) {
