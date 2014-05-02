@@ -17,25 +17,26 @@ public class LoadInArgumentInst extends Instruction{
 
 	public Vector<AssemblyInstruction> genAssembly() {
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
+		VirtualRegister virtualTarget = new VirtualRegister(regNum);
 		switch(regNum) {
-			case 0: inst.add(new MovQ(AssemblyRegister.RDI, regNum));
+			case 0: inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RDI), virtualTarget));
 					break;
-			case 1: inst.add(new MovQ(AssemblyRegister.RSI, regNum));
+			case 1: inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RSI), virtualTarget));
 					break;
-			case 2: inst.add(new MovQ(AssemblyRegister.RDX, regNum));
+			case 2: inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RDX), virtualTarget));
 					break;
-			case 3: inst.add(new MovQ(AssemblyRegister.RCX, regNum));
+			case 3: inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RCX), virtualTarget));
 					break;
-			case 4: inst.add(new MovQ(AssemblyRegister.R8, regNum));
+			case 4: inst.add(new MovQ(new AssemblyRegister(x86_64Reg.R8), virtualTarget));
 					break;
-			case 5: inst.add(new MovQ(AssemblyRegister.R9, regNum));
+			case 5: inst.add(new MovQ(new AssemblyRegister(x86_64Reg.R9), virtualTarget));
 					break;
-			default: MovQ newMove = new MovQ("", regNum));
+			default: MovQ newMove = new MovQ(new AssemblyRegister(x86_64Reg.RBP), virtualTarget);
 					newMove.fromMem = true;
 					newMove.stackPos = imm + 1;
 
 		}
-		return new Vector<AssemblyInstruction>();
+		return inst;
 	}
 
 	public String toString() {

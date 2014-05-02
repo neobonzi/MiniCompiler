@@ -121,12 +121,14 @@ public class Mini
    }
 
    private static void addPreamble(BasicBlock cfgBlock) {
-      cfgBlock.assemInstructions.add(new PushQ(AssemblyRegister.RBP));
-      cfgBlock.assemInstructions.add(new MovQ(AssemblyRegister.RSP, AssemblyRegister.RBP));
+      Register ar = new AssemblyRegister(x86_64Reg.RBP);
+      cfgBlock.assemInstructions.add(new PushQ(ar));
+      cfgBlock.assemInstructions.add(new MovQ(new AssemblyRegister(x86_64Reg.RSP), new AssemblyRegister(x86_64Reg.RBP)));
    }
 
    private static void addEpilogue(BasicBlock cfgBlock) {
-      cfgBlock.assemInstructions.add(new PopQ(AssemblyRegister.RBP));
+      Register ar = new AssemblyRegister(x86_64Reg.RBP);
+      cfgBlock.assemInstructions.add(new PopQ(ar));
       cfgBlock.assemInstructions.add(new Ret());
    }
 

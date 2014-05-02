@@ -1,17 +1,14 @@
 package jbilous.support.assembly;
+import jbilous.support.Register;
+import jbilous.support.assembly.x86_64Reg;
 
-public enum AssemblyRegister {
-	RAX("%rax"), RBX("%rbx"), RCX("%rcx"), RDX("%rdx"),
-	RSI("%rsi"), RDI("%rdi"),
-	RBP("%rbp"), RSP("%rsp"),
-	R8("%r8"), R9("%r9"), R10("%r10"), R11("%r11"), 
-	R12("%r12"), R13("%r13"), R14("%r14"), R15("%r15");
+public class AssemblyRegister implements Register {
+	x86_64Reg register;
 
-	private final String name;
-	private AssemblyRegister(String s) {
-		name = s;
+	public AssemblyRegister(x86_64Reg register) {
+		this.register = register;
 	}
 	public String toString() {
-		return name;
+		return register.toString();
 	}
 }

@@ -2,24 +2,18 @@ package jbilous.support.assembly;
 
 import java.lang.String;
 import jbilous.support.Instruction;
+import jbilous.support.Register;
 
 public class AssemblyInstruction extends Instruction{
-	AssemblyRegister source;
-	AssemblyRegister target;
-	String fakeSource;
-	String fakeTarget;
+	Register source;
+	Register target;
 
-	public AssemblyInstruction(AssemblyRegister source, AssemblyRegister target) {
+	public AssemblyInstruction(Register source, Register target) {
 		this.source = source;
 		this.target = target;
 	}
 
-	public AssemblyInstruction(String fakeSource, String fakeTarget) {
-		this.fakeSource = fakeSource;
-		this.fakeTarget = fakeTarget;
-	}
-
-	public AssemblyInstruction(AssemblyRegister source) {
+	public AssemblyInstruction(Register source) {
 		this.source = source;
 	}
 
