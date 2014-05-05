@@ -8,6 +8,7 @@ public class BasicBlock {
 	public String label;
 	public boolean funEntrance = false;
 	public boolean funExit = false;
+	public String funLabel = "null";
 	public int numParams = 0;
 	public Vector<Instruction> instructions;
 	public Vector<AssemblyInstruction> assemInstructions;

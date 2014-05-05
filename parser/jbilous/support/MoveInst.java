@@ -17,7 +17,7 @@ public class MoveInst extends Instruction{
 	public Vector<AssemblyInstruction> genAssembly() {
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
 		inst.add(new MovQ(new VirtualRegister(source), new VirtualRegister(target)));
-		return new Vector<AssemblyInstruction>();
+		return inst;
 	}
 
 

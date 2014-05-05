@@ -34,6 +34,7 @@ public class LoadInArgumentInst extends Instruction{
 			default: MovQ newMove = new MovQ(new AssemblyRegister(x86_64Reg.RBP), virtualTarget);
 					newMove.fromMem = true;
 					newMove.stackPos = imm + 1;
+					inst.add(newMove);
 
 		}
 		return inst;

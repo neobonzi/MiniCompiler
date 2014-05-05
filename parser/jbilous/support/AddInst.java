@@ -1,6 +1,8 @@
 package jbilous.support;
 
+import jbilous.support.assembly.*;
 import java.lang.String;
+import java.util.Vector;
 
 public class AddInst extends Instruction{
 	Integer source1;
@@ -11,6 +13,13 @@ public class AddInst extends Instruction{
 		this.source1 = new Integer(source1);
 		this.source2 = new Integer(source2);
 		this.target = new Integer(target);
+	}
+
+	public Vector<AssemblyInstruction> genAssembly() {
+		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
+		inst.add(new MovQ(new VirtualRegister(source1), new VirtualRegister(target)));
+		inst.add(new AddQ(new VirtualRegister(source2), new VirtualRegister(target)));
+		return inst;
 	}
 
 	public String toString() {

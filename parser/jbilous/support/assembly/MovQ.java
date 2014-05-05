@@ -8,6 +8,7 @@ public class MovQ extends AssemblyInstruction{
 	public int stackPos;
 	public boolean fromMem = false;
 	public boolean toMem = false;
+	public String varOffset = null;
 
 	public MovQ(Register source, Register target) {
 		super(source, target);
@@ -15,6 +16,9 @@ public class MovQ extends AssemblyInstruction{
 
 	public String toString() {
 		if (fromMem) {
+			if (varOffset != null) {
+				return "movq " + varOffset + "(" + source + "), " + target;
+			}
 			return "movq " + (stackPos * 8) + "(" + source + "), " + target;
 		}
 

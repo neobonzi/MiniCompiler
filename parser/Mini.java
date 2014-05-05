@@ -82,7 +82,7 @@ public class Mini
          return;
       }
       for (Instruction inst : block.instructions) {
-         writer.println(String.format("%15s %s", "", inst.toString()));
+         writer.println(String.format("%15s %s", "",  inst.toString()));
       }
    }
 
@@ -130,6 +130,7 @@ public class Mini
       Register ar = new AssemblyRegister(x86_64Reg.RBP);
       cfgBlock.assemInstructions.add(new PopQ(ar));
       cfgBlock.assemInstructions.add(new Ret());
+      cfgBlock.assemInstructions.add(new FuncSize(cfgBlock.funLabel));
    }
 
    private static void transformBlock(BasicBlock cfgBlock) {
@@ -165,6 +166,16 @@ public class Mini
       }
    }
 
+   private static void addAssIntro(PrintWriter writer, String fileName, SymbolTable globals) {
+      writer.println(String.format("%10s .file   \"" + fileName + ".c\"", ""));
+      for (String key : globals.symbols.keySet()) {
+         String comm = new String(".comm   " + key + ",8,8");
+         writer.println(String.format("%10s%s","", comm));
+      }
+      writer.println(String.format("%10sextern printf", ""));
+      writer.println(String.format("%10s.LLC0", ""));
+      writer.println(String.format("%10s%s","", ".string   \"%d\\n\""));
+   }
    private static void genCFG(TypeCheck tchecker, CommonTree tree, CommonTokenStream tokens)
    {
       try
@@ -173,9 +184,9 @@ public class Mini
          ControlFlowGraph cfg = new ControlFlowGraph(nodes);
          ControlFlowGraph cfgAss = new ControlFlowGraph(nodes);
 
-         ControlFlowGraph.generate_return cfgRet = cfg.generate(tchecker.getSymTable(), tchecker.getStructTypes());
+         ControlFlowGraph.generate_return cfgRet = cfg.generate(tchecker.getEnvMap(), tchecker.getStructTypes());
          nodes.reset();
-         ControlFlowGraph.generate_return cfgAssRet = cfg.generate(tchecker.getSymTable(), tchecker.getStructTypes());
+         ControlFlowGraph.generate_return cfgAssRet = cfg.generate(tchecker.getEnvMap(), tchecker.getStructTypes());
 
          Vector<BasicBlock> cfgBlocks = cfgRet.cfGraph;
          Vector<BasicBlock> cfgAssBlocks = cfgAssRet.cfGraph;
@@ -197,6 +208,9 @@ public class Mini
             String assFile = _inputFile.replace(".mini", ".s");
             try{
                PrintWriter writer = new PrintWriter(assFile);
+               //Get Globals
+               SymbolTable globals = tchecker.getEnvMap().get("globals");
+               addAssIntro(writer, _inputFile.replace(".mini", ""), globals);
                printedBlocks = new HashMap<String, BasicBlock>();
                for(BasicBlock cfgBlock : cfgAssBlocks) {
                   transformCFG(cfgBlock);

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.lang.String;
 
 public class StructTypes {
-   HashMap<String, Type> stypes;
+   public HashMap<String, Type> stypes;
    
    public StructTypes() {
       stypes = new HashMap<String, Type>();

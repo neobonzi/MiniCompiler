@@ -27,33 +27,25 @@ options
       throw new RuntimeException(errorText);
    }
    
-   public void printEnv(Vector<SymbolTable> env) {
-      int i = 0;
-      for(SymbolTable st : env) {
-         printSymbolTable(st);
-      }
-   }
-   
    public void printSymbolTable(SymbolTable st) {
       for (Map.Entry entry : st.symbols.entrySet()) {
          System.out.println(entry.getKey() + ", " + entry.getValue());
       }
    }
-      
+
    public Type lookupType(String id, Vector<SymbolTable> env) {
       Type retType = null;
       Iterator it;
-      for(SymbolTable st : env) {
+         for(SymbolTable st : env) {
          it = st.symbols.entrySet().iterator();
-         while(it.hasNext()) {
+            while(it.hasNext()) {
             Map.Entry pairs = (Map.Entry)it.next();
             if(pairs.getKey().toString().compareTo(id) == 0) {
-               retType = (Type)pairs.getValue();
+                  retType = (Type)pairs.getValue();
             }
          }
       }
-     
-      return retType;
+         return retType;
    }
 
    void addBlockRel(BasicBlock parent, BasicBlock child) {
@@ -61,8 +53,11 @@ options
       child.ancestors.add(parent);
    }
  
-   Vector<SymbolTable> env;
+   HashMap<String, SymbolTable> env;
    StructTypes stypes;
+   StructType curStruct;
+   SymbolTable curEnv;
+   SymbolTable globals;
    Vector<BasicBlock> cfgs = new Vector<BasicBlock>();
    int regCounter = 0;
    int numParams = 0;
@@ -73,9 +68,10 @@ options
    }
 }
 
-generate [Vector<SymbolTable> symTableIn, StructTypes stypesIn] returns [Vector<BasicBlock> cfGraph]
+generate [HashMap<String, SymbolTable> symTableIn, StructTypes stypesIn] returns [Vector<BasicBlock> cfGraph]
    @init {
       env = symTableIn;
+      globals = env.get("globals");
       stypes = stypesIn;
    }
    :  program EOF
@@ -158,7 +154,10 @@ function returns [BasicBlock retBlock]
    :  {
          RegisterTable regTable = new RegisterTable();
       }
-      ^(FUN funID=ID paramRet=params[regTable, newFunBlk] {
+      ^(FUN funID=ID {
+         curEnv = env.get($funID.text);
+      }
+         paramRet=params[regTable, newFunBlk] {
          numParams = $paramRet.numParams;
          newFunBlk.numParams = numParams;
       } 
@@ -167,6 +166,7 @@ function returns [BasicBlock retBlock]
           newFunBlk.label = $funID.text;
           BasicBlock funExitBlk = new BasicBlock(getLabel());
           funExitBlk.funExit = true;
+          funExitBlk.funLabel = $funID.text;
           funExitBlk.instructions.add(new RetInst());
           funExitBlk.numParams = numParams;
           addBlockRel($retSLBlock.retBlock, funExitBlk);
@@ -314,9 +314,13 @@ conditional [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock r
          if ($falseBlock.retBlock != null) {
             addBlockRel($falseBlock.retBlock, convergeBlock);
             prevBlock.instructions.add(new CBRNEInst($falseBlock.retBlock.label, $trueBlock.retBlock.label));
+            $falseBlock.retBlock.instructions.add(new BranchInst(convergeBlock.label));
+            $trueBlock.retBlock.instructions.add(new BranchInst(convergeBlock.label));
+
          } else {
             addBlockRel(falseBlockIn, convergeBlock);
             prevBlock.instructions.add(new CBRNEInst(falseBlockIn.label, $trueBlock.retBlock.label));
+            $trueBlock.retBlock.instructions.add(new BranchInst(convergeBlock.label));
          }
          $retBlock = convergeBlock;
       }
@@ -443,14 +447,24 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
    |  ^(NOT expression[regTable, prevBlock])
    |  ^(DOT retReg=expression[regTable, prevBlock] calledId=ID)
       { 
-         prevBlock.instructions.add(new LoadAIInst($retReg.regNum, $calledId.text, regCounter));
+         LoadAIInst inst = new LoadAIInst($retReg.regNum, $calledId.text, regCounter);
+         inst.offset = curStruct.memberCounts.get($calledId.text);
+         if(curStruct.get($calledId.text) instanceof StructType) {
+            curStruct = (StructType)curStruct.get($calledId.text);
+         }
+         prevBlock.instructions.add(inst);
          $regNum = new Integer(regCounter++);
       }
    |  newId = ID
       {
          Integer varReg = regTable.get($newId.text);
          if (varReg == null) {
-            prevBlock.instructions.add(new ComputeGlobalAddrInst($newId.text, regCounter));
+            ComputeGlobalAddrInst globInst = new ComputeGlobalAddrInst($newId.text, regCounter);
+            globInst.type = globals.get($newId.text);
+            if(globInst.type instanceof StructType) {
+               curStruct = (StructType)globInst.type;
+            }
+            prevBlock.instructions.add(globInst);
             $regNum = new Integer(regCounter++);
          } else {
              prevBlock.instructions.add(new MoveInst(varReg, regCounter));
@@ -474,7 +488,11 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
       }
    |  ^(NEW addrId=ID)
       {
-         prevBlock.instructions.add(new NewInst($addrId.text, regCounter));
+         NewInst newInst = new NewInst($addrId.text, regCounter);
+         newInst.assReg = regCounter;
+         StructType newStruct = (StructType)stypes.get($addrId.text);
+         newInst.size = newStruct.memberCount * 8;
+         prevBlock.instructions.add(newInst);
          $regNum = regCounter++;
       }
    |  ^(NEG returnReg=expression[regTable, prevBlock]) 
@@ -498,7 +516,9 @@ lvalue [RegisterTable regTable, BasicBlock prevBlock, Integer assReg] returns [I
       }
    |  ^(DOT retReg=lvalueLoad[regTable, prevBlock] newId=ID)
       {
-         prevBlock.instructions.add(new StoreImmInst($assReg, $retReg.regNum, $newId.text));
+         StoreImmInst inst = new StoreImmInst($assReg, $retReg.regNum, $newId.text);
+         inst.offset = curStruct.memberCounts.get($newId.text);
+         prevBlock.instructions.add(inst);
       }
    ;
 
@@ -519,13 +539,18 @@ lvalueLoad [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
       {
          $regNum = regTable.get($retId.text);
          if ($regNum == null) {
-            prevBlock.instructions.add(new LoadGlobalInst($retId.text, regCounter));
+            LoadGlobalInst inst = new LoadGlobalInst($retId.text, regCounter);
+            curStruct = (StructType)globals.get($retId.text);
+            prevBlock.instructions.add(inst);
             $regNum = regCounter++;
          }
       }
    |  ^(DOT retReg=lvalueLoad[regTable, prevBlock] newId=ID)
       {
-         prevBlock.instructions.add(new LoadAIInst($retReg.regNum, $newId.text, regCounter));
+         LoadAIInst inst = new LoadAIInst($retReg.regNum, $newId.text, regCounter);
+         inst.offset = curStruct.memberCounts.get($newId.text);
+         curStruct = (StructType)curStruct.get($newId.text);
+         prevBlock.instructions.add(inst);
          $regNum = regCounter++;
       }
    ; 

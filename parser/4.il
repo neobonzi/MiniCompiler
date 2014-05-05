@@ -18,6 +18,7 @@
         L3:
                 loadi 1, r4
                 storeret r4
+                br L5
         L5:
         L6:
                 ret true
@@ -31,6 +32,7 @@
                 loadret r9
                 mult r5, r9, r10
                 storeret r10
+                br L5
          f:
                 loadinargument i, 0, r0
                 loadinargument j, 1, r1
@@ -72,6 +74,7 @@
        L11:
                 loadi 1, r12
                 print r12
+                br L13
        L13:
        L14:
                 mov r1, r13
@@ -89,6 +92,7 @@
        L15:
                 loadi 1, r18
                 print r18
+                br L17
        L17:
                 loadi 1, r20
                 compi r20, 1, ccr
@@ -146,3 +150,4 @@
        L16:
                 loadi 3, r19
                 print r19
+                br L17

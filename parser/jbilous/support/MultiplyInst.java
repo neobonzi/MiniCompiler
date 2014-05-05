@@ -1,6 +1,8 @@
 package jbilous.support;
 
+import jbilous.support.assembly.*;
 import java.lang.String;
+import java.util.Vector;
 
 public class MultiplyInst extends Instruction{
 	Integer source1;
@@ -13,6 +15,13 @@ public class MultiplyInst extends Instruction{
 		this.target = new Integer(target);
 	}
 
+	public Vector<AssemblyInstruction> genAssembly() {
+		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
+		inst.add(new MovQ(new VirtualRegister(source1), new VirtualRegister(target)));
+		inst.add(new IMulQ(new VirtualRegister(source2), new VirtualRegister(target)));
+		return inst;
+	}
+	
 	public String toString() {
 		return "mult r" + source1 + ", r" +  source2 + ", r" + target;
 	}

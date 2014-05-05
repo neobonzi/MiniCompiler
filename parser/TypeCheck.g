@@ -22,6 +22,8 @@ options
 	
     StructTypes stypes;
     Vector<SymbolTable> env;
+    HashMap<String, SymbolTable> envMap;
+  	SymbolTable globals;
 
     public Vector<SymbolTable> getGlobalSymbolTable() {
         return env; 
@@ -68,7 +70,11 @@ options
 	}
 
 	public Vector<SymbolTable> getSymTable() {
-      return env;
+    	return env;
+   	}
+
+   public HashMap<String, SymbolTable> getEnvMap() {
+   		return envMap;
    }
 }
 
@@ -81,10 +87,13 @@ program
 	@init{
 		stypes = new StructTypes();
 		env = new Vector<SymbolTable>();
-		env.add(new SymbolTable());
+		envMap = new HashMap<String, SymbolTable>();
+		globals = new SymbolTable();
+		env.add(globals);
 	}
    :	^(PROGRAM types[stypes, env] declarations[stypes, env] functions[stypes, env])
    	{
+   		envMap.put("globals", globals);
    		if(lookupType("main", env) == null) {
    			error("Main method required");
    		}
@@ -112,12 +121,24 @@ type_decl [StructTypes stypes]
 			newStruct = new StructType($id.text);
 			stypes.put($id.text, newStruct);
 		} 
-		nested_decl[stypes, newStruct.members])
+		nested_struct_decl[stypes, newStruct])
 		{
 			StructType myStruct = (StructType)stypes.get($id.text);
 		}
 	;
-	 
+
+nested_struct_decl [StructTypes stypes, StructType newStruct]
+	:	struct_decl[stypes, newStruct]+
+	;	
+
+struct_decl [StructTypes stypes, StructType newStruct] returns [Type newDec]
+   :  ^(DECL ^(TYPE retType=type[stypes]) myId=ID) 
+   	{
+   		newStruct.addMember($myId.text, $retType.t);
+   		$newDec = $retType.t;
+   	}
+   ;
+
 nested_decl [StructTypes stypes, SymbolTable structDecls]
 	:	decl[stypes, structDecls]+
 	;
@@ -180,6 +201,7 @@ function[StructTypes stypes, Vector<SymbolTable> env]
 	}
 	:	^(FUN id=ID retParams=params[stypes, localEnv] ^(RETTYPE rreturn=rettype[stypes]) declarations[stypes, localEnv]
 		{
+			envMap.put($id.text, funcEnv);
 			FunctionType func = new FunctionType($rreturn.retType, $retParams.retParams);
 			localEnv.get(1).put($id.text, func);
 			localEnv.get(0).put("expret", $rreturn.retType);
