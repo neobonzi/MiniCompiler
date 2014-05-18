@@ -1,26 +1,26 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
 import jbilous.support.assembly.*;
 import java.lang.String;
 import java.util.Vector;
 
 public class MoveLEInst extends Instruction{
-	Integer value;
+	Integer source;
 	Integer target;
 
-	public MoveLEInst(int value, int target) {
-		this.value = new Integer(value);
+	public MoveLEInst(int source, int target) {
+		this.source = new Integer(source);
 		this.target = new Integer(target);
 	}
 
 	public Vector<AssemblyInstruction> genAssembly() {
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
-		inst.add(new CMovLE(new ImmediateRegister(value), new VirtualRegister(target)));
+		inst.add(new CMovLE(new VirtualRegister(source), new VirtualRegister(target)));
 		return inst;
 	}
-
-
+	
 	public String toString() {
-		return "movle " + value + ", r" + target;
+		return "movle r" + source + ", r" + target;
 	}
 }

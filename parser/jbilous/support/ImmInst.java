@@ -1,5 +1,6 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
 import jbilous.support.assembly.*;
 import java.lang.String;
 import java.util.Vector;
@@ -18,6 +19,7 @@ public class ImmInst extends Instruction{
 		inst.add(new MovQ(new ImmediateRegister(value), new VirtualRegister(target)));
 		return inst;
 	}
+
 	public String toString() {
 		return "loadi " + value + ", r" + target;
 	}

@@ -1,17 +1,26 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
+import jbilous.support.assembly.*;
 import java.lang.String;
+import java.util.Vector;
 
 public class MoveGTInst extends Instruction{
-	Integer value;
+	Integer source;
 	Integer target;
 
-	public MoveGTInst(int value, int target) {
-		this.value = new Integer(value);
+	public MoveGTInst(int source, int target) {
+		this.source = new Integer(source);
 		this.target = new Integer(target);
 	}
 
+	public Vector<AssemblyInstruction> genAssembly() {
+		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
+		inst.add(new CMovGT(new VirtualRegister(source), new VirtualRegister(target)));
+		return inst;
+	}
+	
 	public String toString() {
-		return "movgt " + value + ", r" + target;
+		return "movgt r" + source + ", r" + target;
 	}
 }

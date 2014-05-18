@@ -98,7 +98,7 @@ program
    			error("Main method required");
    		}
    		
-   		System.out.println("---------Successfully Passed Type Checking!---------");
+   		System.out.println("~~~~~~CONGRATZ U HAZ TYPE CHECKED!~~~~~~");
    	}
    ;
 

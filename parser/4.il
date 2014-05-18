@@ -1,153 +1,156 @@
-         g:
-                loadinargument i, 0, r0
-                loadinargument j, 1, r1
-                loadi 3, r5
-                storeret r5
-        L1:
-                ret true
-       foo:
-                loadinargument n, 0, r0
-        L2:
-                mov r0, r1
-                loadi 0, r2
-                loadi 0, r3
-                comp r1, r2, ccr
-                movle 1, r3
-                compi r3, 1, ccr
-                cbrne cc, L4, L3
-        L3:
-                loadi 1, r4
-                storeret r4
-                br L5
-        L5:
-        L6:
-                ret true
-        L4:
-                mov r0, r5
-                mov r0, r6
-                loadi 1, r7
-                sub r6, r7, r8
-                storeoutargument r8, 0
-                call foo, 1
-                loadret r9
-                mult r5, r9, r10
-                storeret r10
-                br L5
-         f:
-                loadinargument i, 0, r0
-                loadinargument j, 1, r1
-                loadi 7, r5
-                loadglobal @b, r6
-                loadAI r6, @a, r7
-                loadAI r7, @a, r8
-                loadAI r8, @a, r9
-                storeai r5, r9,  @i
-                computeglobaladdress b, r10
-                loadAI r10, @a, r11
-                loadAI r11, @a, r12
-                loadAI r12, @a, r13
-                loadAI r13, @a, r14
-                storeret r14
-        L7:
-                ret true
-       bar:
-                loadinargument j, 0, r0
-                loadinargument i, 1, r1
-        L8:
-                ret true
-      main:
-        L9:
-                loadi 2, r6
-                mov r6, r1
-       L10:
-                mov r1, r7
-                loadi 1, r8
-                loadi 0, r9
-                storeoutargument r8, 0
-                storeoutargument r9, 1
-                call g, 2
-                loadret r10
-                loadi 0, r11
-                comp r7, r10, ccr
-                movlt 1, r11
-                cbrne cc, L12, L11
-       L11:
-                loadi 1, r12
-                print r12
-                br L13
-       L13:
-       L14:
-                mov r1, r13
-                loadi 1, r14
-                loadi 0, r15
-                storeoutargument r14, 0
-                storeoutargument r15, 1
-                call g, 2
-                loadret r16
-                loadi 0, r17
-                comp r13, r16, ccr
-                movgt 1, r17
-                compi r17, 1, ccr
-                cbrne cc, L16, L15
-       L15:
-                loadi 1, r18
-                print r18
-                br L17
-       L17:
-                loadi 1, r20
-                compi r20, 1, ccr
-                cbrne cc, L19, L18
-       L18:
-                loadi 7, r21
-                print r21
-                loadi 1, r22
-                compi r22, 1, ccr
-                cbrne cc, L19, L18
-       L19:
-                loadi 1, r23
-                new B, r24
-                storeoutargument r23, 0
-                storeoutargument r24, 1
-                call g, 2
-                loadret r25
-                new B, r26
-                storeoutargument r25, 0
-                storeoutargument r26, 1
-                call f, 2
-                loadret r27
-                loadi 1, r28
-                print r28
-                new B, r29
-                loadi 1, r30
-                new B, r31
-                storeoutargument r30, 0
-                storeoutargument r31, 1
-                call g, 2
-                loadret r32
-                storeoutargument r29, 0
-                storeoutargument r32, 1
-                call bar, 2
-                loadret r33
-                loadi 2, r34
-                print r34
-                loadi 1, r35
-                new B, r36
-                storeoutargument r35, 0
-                storeoutargument r36, 1
-                call g, 2
-                loadret r37
-                new B, r38
-                storeoutargument r37, 0
-                storeoutargument r38, 1
-                call f, 2
-                loadret r39
-                loadAI r39, @i, r40
-                print r40
-                loadi 0, r41
-                storeret r41
-       L20:
-                ret true
-       L16:
-                loadi 3, r19
-                print r19
-                br L17
+    _g:
+          loadinargument i, 0, r17
+          loadinargument j, 1, r18
+          loadi 3, r22
+          storeret r22
+    L1:
+          ret true
+  _foo:
+          loadinargument n, 0, r17
+    L2:
+          mov r17, r18
+          loadi 0, r19
+          loadi 0, r20
+          comp r18, r19, ccr
+          loadi 1, r20
+          movle r20, r21
+          compi r21, 1, ccr
+          cbrne cc, L4, L3
+    L3:
+          loadi 1, r22
+          storeret r22
+          br L5
+    L5:
+    L6:
+          ret true
+    L4:
+          mov r17, r23
+          mov r17, r24
+          loadi 1, r25
+          sub r24, r25, r26
+          storeoutargument r26, 0
+          call _foo, 1
+          loadret r27
+          mult r23, r27, r28
+          storeret r28
+          br L5
+    _f:
+          loadinargument i, 0, r17
+          loadinargument j, 1, r18
+          loadi 7, r22
+          loadglobal @b, r23
+          loadAI r23, @a, r24
+          loadAI r24, @a, r25
+          loadAI r25, @a, r26
+          storeai r22, r26,  @i
+          computeglobaladdress b, r27
+          loadAI r27, @a, r28
+          loadAI r28, @a, r29
+          loadAI r29, @a, r30
+          loadAI r30, @a, r31
+          storeret r31
+    L7:
+          ret true
+  _bar:
+          loadinargument j, 0, r17
+          loadinargument i, 1, r18
+    L8:
+          ret true
+ _main:
+    L9:
+          loadi 2, r23
+          mov r23, r18
+   L10:
+          mov r18, r24
+          loadi 1, r25
+          loadi 0, r26
+          storeoutargument r25, 0
+          storeoutargument r26, 1
+          call _g, 2
+          loadret r27
+          loadi 0, r28
+          comp r24, r27, ccr
+          loadi 1, r28
+          movlt r28, r29
+          cbrne cc, L12, L11
+   L11:
+          loadi 1, r30
+          print r30
+          br L13
+   L13:
+   L14:
+          mov r18, r31
+          loadi 1, r32
+          loadi 0, r33
+          storeoutargument r32, 0
+          storeoutargument r33, 1
+          call _g, 2
+          loadret r34
+          loadi 0, r35
+          comp r31, r34, ccr
+          loadi 1, r35
+          movgt r35, r36
+          compi r36, 1, ccr
+          cbrne cc, L16, L15
+   L15:
+          loadi 1, r37
+          print r37
+          br L17
+   L17:
+          loadi 1, r39
+          compi r39, 1, ccr
+          cbrne cc, L19, L18
+   L18:
+          loadi 7, r40
+          print r40
+          loadi 1, r41
+          compi r41, 1, ccr
+          cbrne cc, L19, L18
+   L19:
+          loadi 1, r42
+          new B, r43
+          storeoutargument r42, 0
+          storeoutargument r43, 1
+          call _g, 2
+          loadret r44
+          new B, r45
+          storeoutargument r44, 0
+          storeoutargument r45, 1
+          call _f, 2
+          loadret r46
+          loadi 1, r47
+          print r47
+          new B, r48
+          loadi 1, r49
+          new B, r50
+          storeoutargument r49, 0
+          storeoutargument r50, 1
+          call _g, 2
+          loadret r51
+          storeoutargument r48, 0
+          storeoutargument r51, 1
+          call _bar, 2
+          loadret r52
+          loadi 2, r53
+          print r53
+          loadi 1, r54
+          new B, r55
+          storeoutargument r54, 0
+          storeoutargument r55, 1
+          call _g, 2
+          loadret r56
+          new B, r57
+          storeoutargument r56, 0
+          storeoutargument r57, 1
+          call _f, 2
+          loadret r58
+          loadAI r58, @i, r59
+          print r59
+          loadi 0, r60
+          storeret r60
+   L20:
+          ret true
+   L16:
+          loadi 3, r38
+          print r38
+          br L17

@@ -1,6 +1,10 @@
 package jbilous.support;
 
 import jbilous.support.assembly.*;
+import jbilous.support.lva.LVABlock;
+import jbilous.support.assembly.VirtualRegister;
+import jbilous.support.graph.InterferenceGraph;
+import java.util.BitSet;
 import java.util.Vector;
 
 public class Instruction {
@@ -17,6 +21,10 @@ public class Instruction {
 			regs += " " + regNum;
 		}
 		return regs;
+	}
+
+	public void updateLVA(LVABlock lvaBlock) {
+
 	}
 
 	public Vector<AssemblyInstruction> genAssembly() {

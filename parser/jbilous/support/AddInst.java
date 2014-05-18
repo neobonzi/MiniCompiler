@@ -1,6 +1,7 @@
 package jbilous.support;
 
 import jbilous.support.assembly.*;
+import jbilous.support.lva.LVABlock;
 import java.lang.String;
 import java.util.Vector;
 

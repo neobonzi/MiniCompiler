@@ -1,17 +1,26 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
+import jbilous.support.assembly.*;
 import java.lang.String;
+import java.util.Vector;
 
 public class MoveEQInst extends Instruction{
-	Integer value;
+	Integer source;
 	Integer target;
 
-	public MoveEQInst(int value, int target) {
-		this.value = new Integer(value);
+	public MoveEQInst(int source, int target) {
+		this.source = new Integer(source);
 		this.target = new Integer(target);
 	}
 
+	public Vector<AssemblyInstruction> genAssembly() {
+		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
+		inst.add(new CMovEQ(new VirtualRegister(source), new VirtualRegister(target)));
+		return inst;
+	}
+
 	public String toString() {
-		return "moveq " + value + ", r" + target;
+		return "moveq r" + source + ", r" + target;
 	}
 }

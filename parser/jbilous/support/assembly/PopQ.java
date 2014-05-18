@@ -5,10 +5,10 @@ import jbilous.support.Register;
 
 public class PopQ extends AssemblyInstruction{
 
-	public PopQ(Register source) {
-		super(source);
+	public PopQ(Register target) {
+		super(null, target);
 	}
 	public String toString() {
-		return "popq " + source;
+		return "popq " + target;
 	}
 }

@@ -1,5 +1,6 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
 import jbilous.support.assembly.*;
 import java.lang.String;
 import java.util.Vector;
@@ -19,6 +20,7 @@ public class ReadInst extends Instruction{
 		inst.add(new Call("scanf"));
 		return inst;
 	}
+
 	public String toString() {
 		return "read r" + target;
 	}

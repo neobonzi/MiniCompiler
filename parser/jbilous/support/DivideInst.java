@@ -1,5 +1,6 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
 import java.lang.String;
 
 public class DivideInst extends Instruction{
@@ -12,7 +13,7 @@ public class DivideInst extends Instruction{
 		this.source2 = new Integer(source2);
 		this.target = new Integer(target);
 	}
-
+	
 	public String toString() {
 		return "div r" + source1 + ", r" +  source2 + ", r" + target;
 	}

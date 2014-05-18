@@ -12,10 +12,12 @@ public class ImmediateRegister implements Register {
 	public ImmediateRegister(String value) {
 		this.stringVal = value;
 	}
+
 	public String toString() {
 		if(value == null) {
 			return "$" + stringVal;
 		}
 		return "$" + value;
 	}
+
 }

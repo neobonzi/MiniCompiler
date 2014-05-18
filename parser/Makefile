@@ -2,7 +2,7 @@ SUPPORTPATH = jbilous/support
 FILES=$(SUPPORTPATH)/*.java
 OBJECTS=$(FILES:%.java=%.class)
 
-Mini.class : antlr.generated Mini.java $(OBJECTS)
+GimmeCompilez.class : antlr.generated GimmeCompilez.java $(OBJECTS)
 	javac *.java
 
 $(SUPPORTPATH)/%.class : $(SUPPORTPATH)/%.java

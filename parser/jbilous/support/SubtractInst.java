@@ -1,5 +1,6 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
 import jbilous.support.assembly.*;
 import java.lang.String;
 import java.util.Vector;
@@ -21,7 +22,7 @@ public class SubtractInst extends Instruction{
 		inst.add(new SubQ(new VirtualRegister(source2), new VirtualRegister(target)));
 		return inst;
 	}
-
+	
 	public String toString() {
 		return "sub r" + source1 + ", r" +  source2 + ", r" + target;
 	}

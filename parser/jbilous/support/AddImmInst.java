@@ -1,6 +1,10 @@
 package jbilous.support;
 
 import java.lang.String;
+import jbilous.support.lva.LVABlock;
+import jbilous.support.assembly.VirtualRegister;
+import jbilous.support.graph.InterferenceGraph;
+import java.util.BitSet;
 
 public class AddImmInst extends Instruction{
 	Integer source;

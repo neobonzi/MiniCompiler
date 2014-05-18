@@ -1,5 +1,6 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
 import java.lang.String;
 
 public class LoadInst extends Instruction{

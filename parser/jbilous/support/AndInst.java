@@ -1,6 +1,7 @@
 package jbilous.support;
 
 import java.lang.String;
+import jbilous.support.lva.LVABlock;
 
 public class AndInst extends Instruction{
 	Integer source1;

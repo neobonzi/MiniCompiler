@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 TypeCheck.g 2014-05-04 20:48:11
+// $ANTLR 3.5.2 TypeCheck.g 2014-05-14 10:27:07
 
    import java.util.Map;
    import java.util.HashMap;
@@ -346,7 +346,7 @@ public class TypeCheck extends TreeParser {
 			   			error("Main method required");
 			   		}
 			   		
-			   		System.out.println("---------Successfully Passed Type Checking!---------");
+			   		System.out.println("~~~~~~CONGRATZ U HAZ TYPE CHECKED!~~~~~~");
 			   	
 			}
 

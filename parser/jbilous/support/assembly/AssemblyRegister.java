@@ -11,4 +11,16 @@ public class AssemblyRegister implements Register {
 	public String toString() {
 		return register.toString();
 	}
+
+	public x86_64Reg getRegister() {
+		return register;
+	}
+
+	public boolean equals(Object object) {
+		if(object instanceof AssemblyRegister) {
+			AssemblyRegister assReg = (AssemblyRegister)object;
+			return assReg.getRegister() == this.register;
+		}
+		return false;
+	}
 }

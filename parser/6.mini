@@ -1,0 +1,12 @@
+fun main() int
+{
+   int a, b, c, d, e;
+   a = 1253;
+   b = 6993; 
+   c = 515;
+   d = 1;
+
+   e = a + b + c + d;
+   print c;
+   return c;
+}

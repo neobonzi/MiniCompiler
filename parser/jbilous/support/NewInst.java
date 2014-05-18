@@ -1,5 +1,6 @@
 package jbilous.support;
 
+import jbilous.support.lva.LVABlock;
 import jbilous.support.assembly.*;
 import java.lang.String;
 import java.util.Vector;
@@ -22,6 +23,7 @@ public class NewInst extends Instruction{
 		inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RAX), new VirtualRegister(assReg)));
 		return inst;
 	}
+	
 	public String toString() {
 		return "new " + var + ", r" + target;
 	}
