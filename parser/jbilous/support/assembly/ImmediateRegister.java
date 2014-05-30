@@ -20,4 +20,8 @@ public class ImmediateRegister implements Register {
 		return "$" + value;
 	}
 
+	public Integer getValueNum() {
+		return value;
+	}
+
 }

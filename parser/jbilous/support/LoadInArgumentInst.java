@@ -8,7 +8,6 @@ import java.util.Vector;
 public class LoadInArgumentInst extends Instruction{
 	String id;
 	Integer imm;
-	Integer target;
 
 	public LoadInArgumentInst(String id, int imm, int target) {
 		this.id = id;

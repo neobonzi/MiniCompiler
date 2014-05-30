@@ -4,7 +4,6 @@ import jbilous.support.lva.LVABlock;
 import java.lang.String;
 
 public class DeleteInst extends Instruction{
-	Integer source;
 
 	public DeleteInst(int source) {
 		this.source = new Integer(source);

@@ -47,6 +47,6 @@ public class IntGraphNode implements Comparable{
 	}
 
 	public String toString() {
-		return edges.toString();
+		return register + " : " + edges.toString();
 	}
 }

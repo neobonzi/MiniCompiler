@@ -1,30 +1,69 @@
 package jbilous.support;
 
 import jbilous.support.assembly.*;
-import jbilous.support.lva.LVABlock;
+import jbilous.support.lva.LVAIBlock;
 import jbilous.support.assembly.VirtualRegister;
 import jbilous.support.graph.InterferenceGraph;
 import java.util.BitSet;
 import java.util.Vector;
 
 public class Instruction {
-	
-	Vector<Integer> registers;
+
+	Integer source;
+	Integer target;
+	Integer source1;
+	Integer source2;
+	boolean isCritical;
 
 	public Instruction() {
-		registers = new Vector<Integer>();
+		isCritical = false;
 	}
 
-	public String toString() {
-		String regs = new String();
-		for (Integer regNum : registers) {
-			regs += " " + regNum;
+	public Integer getILSource() {
+		return source;
+	}
+
+	public Integer getILTarget() {
+		return target;
+	}
+
+	public Integer getILSource1() {
+		return source1;
+	}
+
+	public Integer getILSource2() {
+		return source2;
+	}
+
+	public void setILSource(Integer source) {
+		this.source = source;
+	}
+
+	public void setILSource1(Integer source1) {
+		this.source1 = source1;
+	}
+
+	public void setILSource2(Integer source2) {
+		this.source2 = source2;
+	}
+
+	public void updateILLVA(LVAIBlock lvaiBlock) {
+		BitSet killSet = lvaiBlock.getKillSet();
+		if(source != null && !killSet.get(source)) {
+			lvaiBlock.addGen(source);
 		}
-		return regs;
-	}
 
-	public void updateLVA(LVABlock lvaBlock) {
+		if(source1 != null && !killSet.get(source1)) {
+			lvaiBlock.addGen(source1);
+		}
 
+		if(source2 != null && !killSet.get(source2)) {
+			lvaiBlock.addGen(source2);
+		}
+
+		if(target != null) {
+			lvaiBlock.addKill(target);
+		}
 	}
 
 	public Vector<AssemblyInstruction> genAssembly() {

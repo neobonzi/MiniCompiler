@@ -15,13 +15,13 @@ public class CMovLT extends AssemblyInstruction{
 
 	public String toString() {
 		if (fromMem) {
-			return "cmovlt " + (stackPos * 8) + "(" + source + "), " + target;
+			return "cmovl " + (stackPos * 8) + "(" + source_ass + "), " + target_ass;
 		}
 
 		if (toMem) {
-			return "cmovlt " + source +  ", " + (stackPos * 8) + "(" + target + ")";
+			return "cmovl " + source_ass +  ", " + (stackPos * 8) + "(" + target_ass + ")";
 		}
 
-		return "cmovlt " + source + ", " + target;
+		return "cmovl " + source_ass + ", " + target_ass;
 	}
 }

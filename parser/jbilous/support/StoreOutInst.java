@@ -7,7 +7,6 @@ import java.util.Vector;
 
 
 public class StoreOutInst extends Instruction{
-	Integer source;
 	Integer argNum;
 
 	public StoreOutInst(int source, int argNum) {

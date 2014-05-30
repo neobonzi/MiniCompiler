@@ -6,8 +6,6 @@ import java.lang.String;
 import java.util.Vector;
 
 public class MoveGTInst extends Instruction{
-	Integer source;
-	Integer target;
 
 	public MoveGTInst(int source, int target) {
 		this.source = new Integer(source);

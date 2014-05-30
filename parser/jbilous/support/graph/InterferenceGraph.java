@@ -22,13 +22,12 @@ public class InterferenceGraph {
 
 	public int getColor(Integer k) {
 		IntGraphNode node = regNodeMap.get(k);
-		System.out.println("trying to get color for " + k);
+		System.out.println("Getting color for " + node.getRegister());
 		return node.getColor().intValue();
 	}
 
 	public void printColors() {
 		Iterator it = regNodeMap.entrySet().iterator();
-		System.out.println("printing colors");
 		for (Map.Entry<Integer, IntGraphNode> pairs : regNodeMap.entrySet()) {
 		    System.out.println(pairs.getKey() + " : " + pairs.getValue().getColor());
 		}
@@ -57,7 +56,7 @@ public class InterferenceGraph {
 		HashSet<Integer> newSet = new HashSet<Integer>();
 		
 		for(int i = 0; i < 17; i++) {
-			if(i != 7 && i != 10 && i != 11) {
+			if(i != 7 && i != 10 && i != 11 && i != 6) {
 				newSet.add(new Integer(i));
 			}
 		}
@@ -69,7 +68,6 @@ public class InterferenceGraph {
 		HashSet<Integer> unavailColors = new HashSet<Integer>();
 		HashSet<Integer> allColors = initColors();
 		
-		System.out.println("Reconstructing " + nodeNum);
 		if(nodeNum < 17) {
 			regNodeMap.put(node.getRegister(), node);
 			return;
@@ -81,7 +79,7 @@ public class InterferenceGraph {
 			}
 		}
 
-		if(unavailColors.size() > 13) {
+		if(unavailColors.size() > 12) {
 			node.setColor(new Integer(-1));
 		} else {
 			allColors.removeAll(unavailColors);
@@ -101,6 +99,14 @@ public class InterferenceGraph {
 		}
 
 		return new Vector<IntGraphNode>(regNodeMap.values());
+	}
+
+	public void addNode(Integer reg)
+	{
+		if(!regNodeMap.containsKey(reg))
+		{
+			regNodeMap.put(reg, new IntGraphNode(reg));
+		}
 	}
 
 	public void addEdge(Integer reg1, Integer reg2) {

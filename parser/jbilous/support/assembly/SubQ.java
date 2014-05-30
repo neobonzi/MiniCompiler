@@ -10,6 +10,6 @@ public class SubQ extends AssemblyInstruction{
 	}
 
 	public String toString() {
-		return "subq " + source + ", " + target;
+		return "subq " + source_ass + ", " + target_ass;
 	}
 }

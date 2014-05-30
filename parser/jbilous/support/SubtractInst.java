@@ -6,9 +6,6 @@ import java.lang.String;
 import java.util.Vector;
 
 public class SubtractInst extends Instruction{
-	Integer source1;
-	Integer source2;
-	Integer target;
 
 	public SubtractInst(int source1, int source2, int target) {
 		this.source1 = new Integer(source1);

@@ -10,6 +10,6 @@ public class IMulQ extends AssemblyInstruction{
 	}
 
 	public String toString() {
-		return "imulq " + source + ", " + target;
+		return "imulq " + source_ass + ", " + target_ass;
 	}
 }

@@ -7,7 +7,6 @@ import java.util.Vector;
 
 public class ImmInst extends Instruction{
 	Integer value;
-	Integer target;
 
 	public ImmInst(int value, int target) {
 		this.value = new Integer(value);

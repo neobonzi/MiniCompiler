@@ -7,7 +7,6 @@ import java.util.Vector;
 
 public class NewInst extends Instruction{
 	String var;
-	Integer target;
 	public Integer size;
 	public Integer assReg;
 

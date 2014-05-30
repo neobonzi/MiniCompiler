@@ -15,13 +15,13 @@ public class CMovEQ extends AssemblyInstruction{
 
 	public String toString() {
 		if (fromMem) {
-			return "cmoveq " + (stackPos * 8) + "(" + source + "), " + target;
+			return "cmoveq " + (stackPos * 8) + "(" + source_ass + "), " + target_ass;
 		}
 
 		if (toMem) {
-			return "cmoveq " + source +  ", " + (stackPos * 8) + "(" + target + ")";
+			return "cmoveq " + source_ass +  ", " + (stackPos * 8) + "(" + target_ass + ")";
 		}
 
-		return "cmoveq " + source + ", " + target;
+		return "cmoveq " + source_ass + ", " + target_ass;
 	}
 }

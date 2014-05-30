@@ -6,7 +6,6 @@ import java.lang.String;
 import java.util.Vector;
 
 public class LoadRetInst extends Instruction{
-	Integer source;
 
 	public LoadRetInst(int source) {
 		this.source = new Integer(source);

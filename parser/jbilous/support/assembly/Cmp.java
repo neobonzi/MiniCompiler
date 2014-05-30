@@ -10,6 +10,6 @@ public class Cmp extends AssemblyInstruction{
 	}
 
 	public String toString() {
-		return "cmpq " + source + ", " + source2;
+		return "cmp " + source_ass + ", " + source2_ass;
 	}
 }

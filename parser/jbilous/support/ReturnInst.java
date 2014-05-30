@@ -6,7 +6,6 @@ import java.lang.String;
 import java.util.Vector;
 
 public class ReturnInst extends Instruction{
-	Integer source;
 
 	public ReturnInst(int source) {
 		this.source = new Integer(source);

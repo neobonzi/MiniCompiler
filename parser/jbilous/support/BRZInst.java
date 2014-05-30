@@ -4,7 +4,6 @@ import jbilous.support.lva.LVABlock;
 import java.lang.String;
 
 public class BRZInst extends Instruction{
-	Integer source;
 	String label1;
 	String label2;
 

@@ -25,4 +25,8 @@ public class VirtualRegister implements Register {
 		} 
 		return false;
 	}
+
+	public Integer getValueNum() {
+		return regNum;
+	}
 }

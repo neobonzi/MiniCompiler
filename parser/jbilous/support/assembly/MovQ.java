@@ -17,15 +17,15 @@ public class MovQ extends AssemblyInstruction{
 	public String toString() {
 		if (fromMem) {
 			if (varOffset != null) {
-				return "movq " + varOffset + "(" + source + "), " + target;
+				return "movq " + varOffset + "(" + source_ass + "), " + target_ass;
 			}
-			return "movq " + (stackPos * 8) + "(" + source + "), " + target;
+			return "movq " + (stackPos * 8) + "(" + source_ass + "), " + target_ass;
 		}
 
 		if (toMem) {
-			return "movq " + source +  ", " + (stackPos * 8) + "(" + target + ")";
+			return "movq " + source_ass +  ", " + stackPos + "(" + target_ass + ")";
 		}
 
-		return "movq " + source + ", " + target;
+		return "movq " + source_ass + ", " + target_ass;
 	}
 }

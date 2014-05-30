@@ -7,7 +7,6 @@ import java.util.Vector;
 
 public class ComputeGlobalAddrInst extends Instruction{
 	String var;
-	Integer target;
 	public Type type;
 
 	public ComputeGlobalAddrInst(String var, int target) {

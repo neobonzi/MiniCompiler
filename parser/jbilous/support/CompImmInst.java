@@ -6,7 +6,6 @@ import java.lang.String;
 import java.util.Vector;
 
 public class CompImmInst extends Instruction{
-	Integer source;
 	Integer value;
 
 	public CompImmInst(int source, int value) {

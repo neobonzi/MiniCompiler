@@ -6,16 +6,15 @@ import java.lang.String;
 import java.util.Vector;
 
 public class StoreImmInst extends Instruction{
-	Integer source;
 	public Integer offset;
-	String target;
+	String stringTarget;
 	Integer imm;
 
-	public StoreImmInst(int imm, int source, String target) {
+	public StoreImmInst(int imm, int source, String stringTarget) {
 		this.imm = new Integer(imm);	
 		this.offset = new Integer(0);
 		this.source = new Integer(source);
-		this.target = target;
+		this.stringTarget = stringTarget;
 	}
 
 	public Vector<AssemblyInstruction> genAssembly() {
@@ -28,6 +27,6 @@ public class StoreImmInst extends Instruction{
 	}
 
 	public String toString() {
-		return "storeai r" + imm + ", r" + source + ",  @" + target;
+		return "storeai r" + imm + ", r" + source + ",  @" + stringTarget;
 	}
 }

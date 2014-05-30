@@ -7,8 +7,6 @@ import java.util.Vector;
 
 public class MoveInst extends Instruction{
 	String id;
-	Integer source;
-	Integer target;
 
 	public MoveInst(int source, int target) {
 		this.source = new Integer(source);
@@ -19,6 +17,14 @@ public class MoveInst extends Instruction{
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
 		inst.add(new MovQ(new VirtualRegister(source), new VirtualRegister(target)));
 		return inst;
+	}
+
+	public Integer getSource() {
+		return source;
+	}
+
+	public Integer getTarget() {
+		return target;
 	}
 
 	public String toString() {

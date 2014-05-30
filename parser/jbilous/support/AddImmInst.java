@@ -7,10 +7,8 @@ import jbilous.support.graph.InterferenceGraph;
 import java.util.BitSet;
 
 public class AddImmInst extends Instruction{
-	Integer source;
 	String sourceString;
 	String imm;
-	Integer target;
 
 	public AddImmInst(int source, String imm, int target) {
 		this.source = new Integer(source);

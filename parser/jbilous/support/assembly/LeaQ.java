@@ -17,15 +17,15 @@ public class LeaQ extends AssemblyInstruction{
 	public String toString() {
 		if (fromMem) {
 			if (varOffset != null) {
-				return "leaq " + varOffset + "(" + source + "), " + target;
+				return "leaq " + varOffset + "(" + source_ass + "), " + target_ass;
 			}
-			return "leaq " + (stackPos * 8) + "(" + source + "), " + target;
+			return "leaq " + (stackPos * 8) + "(" + source_ass + "), " + target_ass;
 		}
 
 		if (toMem) {
-			return "leaq " + source +  ", " + (stackPos * 8) + "(" + target + ")";
+			return "leaq " + source_ass +  ", " + (stackPos * 8) + "(" + target_ass + ")";
 		}
 
-		return "leaq " + source + ", " + target;
+		return "leaq " + source_ass + ", " + target_ass;
 	}
 }

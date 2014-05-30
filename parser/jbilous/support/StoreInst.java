@@ -4,8 +4,6 @@ import jbilous.support.lva.LVABlock;
 import java.lang.String;
 
 public class StoreInst extends Instruction{
-	Integer source;
-	Integer target;
 
 	public StoreInst(int source, int target) {
 		this.source = new Integer(source);	

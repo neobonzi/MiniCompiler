@@ -6,11 +6,9 @@ import java.lang.String;
 import java.util.Vector;
 
 public class LoadAIInst extends Instruction{
-	Integer source;
 	String sourceString;
 	public Integer offset;
 	String value;
-	Integer target;
 	boolean isVar;
 
 	public LoadAIInst(String sourceString, String value, int target) {

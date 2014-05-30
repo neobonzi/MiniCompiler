@@ -6,7 +6,6 @@ import java.lang.String;
 import java.util.Vector;
 
 public class ReadInst extends Instruction{
-	Integer target;
 
 	public ReadInst(int target) {
 		this.target = new Integer(target);

@@ -4,15 +4,14 @@ import jbilous.support.lva.LVABlock;
 import java.lang.String;
 
 public class LoadInst extends Instruction{
-	String source;
-	Integer target;
+	String sourceString;
 
-	public LoadInst(String source, int target) {
-		this.source = source;
+	public LoadInst(String sourceString, int target) {
+		this.sourceString = source;
 		this.target = target;
 	}
 
 	public String toString() {
-		return "load @r" + source + ", r" + target;
+		return "load @r" + sourceString + ", r" + target;
 	}
 }

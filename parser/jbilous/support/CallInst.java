@@ -17,7 +17,6 @@ public class CallInst extends Instruction{
 
 	public Vector<AssemblyInstruction> genAssembly() {
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
-		inst.add(new PushQ(new AssemblyRegister(x86_64Reg.RAX)));
 		inst.add(new PushQ(new AssemblyRegister(x86_64Reg.RCX)));
 		inst.add(new PushQ(new AssemblyRegister(x86_64Reg.RDX)));
 		inst.add(new PushQ(new AssemblyRegister(x86_64Reg.RSI)));
@@ -35,7 +34,6 @@ public class CallInst extends Instruction{
 		inst.add(new PopQ(new AssemblyRegister(x86_64Reg.RSI)));
 		inst.add(new PopQ(new AssemblyRegister(x86_64Reg.RDX)));
 		inst.add(new PopQ(new AssemblyRegister(x86_64Reg.RCX)));
-		inst.add(new PopQ(new AssemblyRegister(x86_64Reg.RAX)));
 		return inst;
 	}
 

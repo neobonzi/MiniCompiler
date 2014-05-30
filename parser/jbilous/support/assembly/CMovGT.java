@@ -15,13 +15,13 @@ public class CMovGT extends AssemblyInstruction{
 
 	public String toString() {
 		if (fromMem) {
-			return "cmovg " + (stackPos * 8) + "(" + source + "), " + target;
+			return "cmovg " + (stackPos * 8) + "(" + source_ass + "), " + target_ass;
 		}
 
 		if (toMem) {
-			return "cmovg " + source +  ", " + (stackPos * 8) + "(" + target + ")";
+			return "cmovg " + source_ass +  ", " + (stackPos * 8) + "(" + target_ass + ")";
 		}
 
-		return "cmovg " + source + ", " + target;
+		return "cmovg " + source_ass + ", " + target_ass;
 	}
 }

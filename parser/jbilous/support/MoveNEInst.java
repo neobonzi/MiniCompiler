@@ -6,8 +6,6 @@ import java.lang.String;
 import java.util.Vector;
 
 public class MoveNEInst extends Instruction{
-	Integer source;
-	Integer target;
 
 	public MoveNEInst(int source, int target) {
 		this.source = new Integer(source);

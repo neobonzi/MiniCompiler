@@ -15,13 +15,13 @@ public class CMovNE extends AssemblyInstruction{
 
 	public String toString() {
 		if (fromMem) {
-			return "cmovne " + (stackPos * 8) + "(" + source + "), " + target;
+			return "cmovne " + (stackPos * 8) + "(" + source_ass + "), " + target_ass;
 		}
 
 		if (toMem) {
-			return "cmovne " + source +  ", " + (stackPos * 8) + "(" + target + ")";
+			return "cmovne " + source_ass +  ", " + (stackPos * 8) + "(" + target_ass + ")";
 		}
 
-		return "cmovne " + source + ", " + target;
+		return "cmovne " + source_ass + ", " + target_ass;
 	}
 }

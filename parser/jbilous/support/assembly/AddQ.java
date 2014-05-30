@@ -12,6 +12,6 @@ public class AddQ extends AssemblyInstruction{
 	}
 
 	public String toString() {
-		return "addq " + source + ", " + target;
+		return "addq " + source_ass + ", " + target_ass;
 	}
 }
