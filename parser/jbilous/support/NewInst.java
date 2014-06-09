@@ -18,8 +18,8 @@ public class NewInst extends Instruction{
 	public Vector<AssemblyInstruction> genAssembly() {
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
 		inst.add(new MovQ(new ImmediateRegister(size), new AssemblyRegister(x86_64Reg.RDI)));
-		inst.add(new Call("malloc"));
-		inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RAX), new VirtualRegister(assReg)));
+		inst.add(new Call("_malloc"));
+		inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RAX), new VirtualRegister(target)));
 		return inst;
 	}
 	

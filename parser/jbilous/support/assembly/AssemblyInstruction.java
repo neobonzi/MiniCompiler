@@ -76,7 +76,7 @@ public class AssemblyInstruction extends Instruction{
 		if(target_ass != null) {
 			if(target_ass instanceof VirtualRegister) {
 				VirtualRegister vr = (VirtualRegister)target_ass;
-				System.out.println("get color for " + vr.getRegNum());
+				// System.out.println("get color for " + vr.getRegNum());
 				Integer ordinal = intGraph.getColor(vr.getRegNum());
 				if(ordinal < 0) {
 					result.set(2);
@@ -90,7 +90,7 @@ public class AssemblyInstruction extends Instruction{
 		if(source_ass != null) {
 			if(source_ass instanceof VirtualRegister) {
 				VirtualRegister vrs = (VirtualRegister)source_ass;
-				System.out.println("get color for " + vrs.getRegNum());
+				// System.out.println("get color for " + vrs.getRegNum());
 				Integer ordinals = intGraph.getColor(vrs.getRegNum());
 				if(ordinals < 0) {
 					this.sourceSpill = true;
@@ -105,7 +105,7 @@ public class AssemblyInstruction extends Instruction{
 		if(source2_ass != null) {
 			if(source2_ass instanceof VirtualRegister) {
 				VirtualRegister vrs2 = (VirtualRegister)source2_ass;
-				System.out.println("get color for " + vrs2.getRegNum());
+				// System.out.println("get color for " + vrs2.getRegNum());
 				Integer ordinals = intGraph.getColor(vrs2.getRegNum());
 				if(ordinals < 0) {
 					this.sourceSpill = true;
@@ -133,7 +133,7 @@ public class AssemblyInstruction extends Instruction{
 	            }
 	            if(!nodeAdded)
 	            {
-	            	System.out.println("adding node " + vr.getRegNum() + " cuz nothing in live out");
+	            	// System.out.println("adding node " + vr.getRegNum() + " cuz nothing in live out");
 	            	intGraph.addNode(vr.getRegNum());
 	            }
 	            //Remove target from liveNow

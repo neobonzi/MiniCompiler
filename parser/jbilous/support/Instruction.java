@@ -11,9 +11,8 @@ public class Instruction {
 
 	Integer source;
 	Integer target;
-	Integer source1;
 	Integer source2;
-	boolean isCritical;
+	public boolean isCritical;
 
 	public Instruction() {
 		isCritical = false;
@@ -27,9 +26,6 @@ public class Instruction {
 		return target;
 	}
 
-	public Integer getILSource1() {
-		return source1;
-	}
 
 	public Integer getILSource2() {
 		return source2;
@@ -37,10 +33,6 @@ public class Instruction {
 
 	public void setILSource(Integer source) {
 		this.source = source;
-	}
-
-	public void setILSource1(Integer source1) {
-		this.source1 = source1;
 	}
 
 	public void setILSource2(Integer source2) {
@@ -51,10 +43,6 @@ public class Instruction {
 		BitSet killSet = lvaiBlock.getKillSet();
 		if(source != null && !killSet.get(source)) {
 			lvaiBlock.addGen(source);
-		}
-
-		if(source1 != null && !killSet.get(source1)) {
-			lvaiBlock.addGen(source1);
 		}
 
 		if(source2 != null && !killSet.get(source2)) {

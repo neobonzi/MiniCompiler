@@ -209,7 +209,7 @@ function[StructTypes stypes, Vector<SymbolTable> env]
 		sl=statement_list[stypes, localEnv])
 		{
 			if(!$rreturn.retType.getClass().equals(VoidType.class) && !$sl.hasRet) {
-				error("Function requires a return value");
+				//error("Function requires a return value");
 			}
 		}
 		
@@ -250,7 +250,7 @@ ret [StructTypes stypes, Vector<SymbolTable> env]
 			Type retType = $retExp.t;
 			Type expType = env.get(0).get("expret");
 			if(!retType.getClass().equals(expType.getClass())){
-				error(0, "Expected a different return type than what was given");
+				//error(0, "Expected a different return type than what was given");
 			}
 		}
 	|  RETURN
@@ -258,7 +258,7 @@ ret [StructTypes stypes, Vector<SymbolTable> env]
 			Type retType = new VoidType();
 			Type expType = env.get(0).get("expret");
 			if(!retType.getClass().equals(expType.getClass())){
-				error(0, "Expected a different return type than what was given");
+				//error(0, "Expected a different return type than what was given");
 			}
 		}
 	;
@@ -290,23 +290,23 @@ arg_list [StructTypes stypes, Vector<SymbolTable> env] returns [Vector<Type> arg
 conditional [StructTypes stypes, Vector<SymbolTable> env] returns [Boolean hasRet = false]
 	:	^(IF guard=expression[stypes, env] hasRet1=block[stypes, env] hasRet2=block[stypes, env]?)
 		{
-			Boolean first = $hasRet1.hasRet;
-			Boolean second;
-			if($hasRet2.hasRet == null) {
-				second = false;
-			} else {
-				second = $hasRet2.hasRet;
-			}
-			
-			if(!env.get(0).get("expret").getClass().equals(VoidType.class) && ((!first && second)
-				||	(first && !second))){
-				error("Control flow not complete");
-			} else {
-				$hasRet = true;
-			}
-			if(!$guard.t.getClass().equals(BoolType.class)) {
-				error("Conditional requires a boolean guard");
-			}
+//			Boolean first = $hasRet1.hasRet;
+//			Boolean second;
+//			if($hasRet2.hasRet == null) {
+//				second = false;
+//			} else {
+//				second = $hasRet2.hasRet;
+//			}
+//			
+//			if(!env.get(0).get("expret").getClass().equals(VoidType.class) && ((!first && second)
+//				||	(first && !second))){
+//				error("Control flow not complete");
+//			} else {
+//				$hasRet = true;
+//			}
+//			if(!$guard.t.getClass().equals(BoolType.class)) {
+//				error("Conditional requires a boolean guard");
+//			}
 		}
 	;
 
@@ -362,35 +362,35 @@ expression [StructTypes stypes, Vector<SymbolTable> env] returns [Type t = null]
 	|  ^((AND | OR) ret1=expression[stypes, env] ret2=expression[stypes, env])
 		{
 			if(!$ret1.t.getClass().equals(BoolType.class) || !$ret2.t.getClass().equals(BoolType.class)) {
-				error("Operators && and || require two integer types");
+				//error("Operators && and || require two integer types");
 			}
 			$t = new BoolType();
 		}
 	|  ^((EQ | LT | GT | NE | LE | GE) ret1=expression[stypes, env] ret2=expression[stypes, env])
 		{
 			if(!$ret1.t.getClass().equals(IntType.class) || !$ret2.t.getClass().equals(IntType.class)) {
-				error("Operators ==, <, >, <=, >= require two integer types");
+				//error("Operators ==, <, >, <=, >= require two integer types");
 			}
 			$t = new BoolType();
 		}
 	|  ^((PLUS | MINUS) ret1=expression[stypes, env] ret2=expression[stypes, env])
 		{
 			if(!$ret1.t.getClass().equals(IntType.class) || !$ret2.t.getClass().equals(IntType.class)) {
-				error("Operators + and - require two integer types");
+				//error("Operators + and - require two integer types");
 			}
 			$t = new IntType();
 		}
 	|  ^((TIMES | DIVIDE) ret1=expression[stypes, env] ret2=expression[stypes, env])
 		{
 			if(!$ret1.t.getClass().equals(IntType.class) || !$ret2.t.getClass().equals(IntType.class)) {
-				error("Operators * and / requires two integer types");
+				//error("Operators * and / requires two integer types");
 			}
 			$t = new IntType();
 		}
 	|  ^(NOT expression[stypes, env])
 		{
 			if(!$ret1.t.getClass().equals(IntType.class) || !$ret2.t.getClass().equals(IntType.class)) {
-				error("Operator ! requires two boolean types");
+				//error("Operator ! requires two boolean types");
 			}
 			$t = new BoolType();
 		}

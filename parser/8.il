@@ -1,11 +1,7 @@
  _main:
-          loadi 6, r35
-          loadi 11, r40
-          loadi 12, r41
-          loadi 13, r42
-          print r42
-          print r41
-          print r40
-          storeret r35
+          new node, r18
+          mov r18, r17
+          loadi 0, r19
+          storeret r19
+          br L1
     L1:
-          ret true

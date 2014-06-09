@@ -58,6 +58,7 @@ options
    StructType curStruct;
    SymbolTable curEnv;
    SymbolTable globals;
+   BasicBlock funExitBlk;
    Vector<BasicBlock> cfgs = new Vector<BasicBlock>();
    int regCounter;
    int numParams;
@@ -117,7 +118,7 @@ decl returns [String id]
          $id = $myId.text;
       } 
    ;
-   
+
 declarations [RegisterTable regTable]
    :  ^(DECLS declaration[regTable]*) 
    ;
@@ -155,6 +156,7 @@ function returns [BasicBlock retBlock]
       regCounter = 17;
       BasicBlock newFunBlk = new BasicBlock("tempLabel");
       newFunBlk.funEntrance = true;
+      funExitBlk = new BasicBlock(getLabel());
    }
    :  {
          RegisterTable regTable = new RegisterTable();
@@ -169,10 +171,8 @@ function returns [BasicBlock retBlock]
       ^(RETTYPE rettype) declarations[regTable] retSLBlock=statement_list[regTable, newFunBlk])
       {
           newFunBlk.label = "_" + $funID.text;
-          BasicBlock funExitBlk = new BasicBlock(getLabel());
           funExitBlk.funExit = true;
           funExitBlk.funLabel = "_" + $funID.text;
-          funExitBlk.instructions.add(new RetInst());
           funExitBlk.numParams = numParams;
           addBlockRel($retSLBlock.retBlock, funExitBlk);
           $retBlock=newFunBlk;
@@ -269,9 +269,14 @@ ret [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
    :  ^(RETURN returnReg = expression[regTable, prevBlock])
       {
          prevBlock.instructions.add(new ReturnInst($returnReg.regNum));
+         prevBlock.instructions.add(new BranchInst(funExitBlk.label));
          $retBlock = $prevBlock;
       }
-   |  RETURN { $retBlock = $prevBlock; }
+   |  RETURN 
+      { 
+         prevBlock.instructions.add(new BranchInst(funExitBlk.label));
+         $retBlock = $prevBlock; 
+      }
    ;
 
 arguments [String callID, RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
@@ -307,18 +312,20 @@ conditional [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock r
       addBlockRel(prevBlock, trueBlockIn);
       addBlockRel(prevBlock, falseBlockIn);
    }
-   :  ^(IF guardReg=condExpression[regTable, prevBlock, trueBlockIn.label, falseBlockIn.label] trueBlock=block[regTable, trueBlockIn] (falseBlock=block[regTable, falseBlockIn])?)
+   :  ^(IF guardReg=expression[regTable, prevBlock] trueBlock=block[regTable, trueBlockIn] (falseBlock=block[regTable, falseBlockIn])?)
       {
          BasicBlock convergeBlock = new BasicBlock(getLabel());
          addBlockRel($trueBlock.retBlock, convergeBlock);
-         
+         prevBlock.instructions.add(new CompImmInst(1, $guardReg.regNum));
+         prevBlock.instructions.add(new BRNEInst(falseBlockIn.label, trueBlockIn.label));
+
          if ($falseBlock.retBlock != null) {
             addBlockRel($falseBlock.retBlock, convergeBlock);
             $falseBlock.retBlock.instructions.add(new BranchInst(convergeBlock.label));
             $trueBlock.retBlock.instructions.add(new BranchInst(convergeBlock.label));
          } else {
             addBlockRel(falseBlockIn, convergeBlock);
-            prevBlock.instructions.add(new CBRNEInst(falseBlockIn.label, $trueBlock.retBlock.label));
+            falseBlockIn.instructions.add(new BranchInst(convergeBlock.label));
             $trueBlock.retBlock.instructions.add(new BranchInst(convergeBlock.label));
          }
          $retBlock = convergeBlock;
@@ -339,9 +346,14 @@ loop [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock
       String falseLabel = getLabel();
       BasicBlock bodyBlock = new BasicBlock(trueLabel); 
    }
-   :  ^(WHILE guardReg=condExpression[regTable, prevBlock, trueLabel, falseLabel] retBodyBlock=block[regTable, bodyBlock] guardReg2=condExpression[regTable, $retBodyBlock.retBlock, trueLabel, falseLabel])
+   :  ^(WHILE guardReg=expression[regTable, prevBlock] retBodyBlock=block[regTable, bodyBlock] guardReg2=expression[regTable, $retBodyBlock.retBlock])
       {
+         prevBlock.instructions.add(new CompImmInst(1, $guardReg.regNum));
+         prevBlock.instructions.add(new BRNEInst(falseLabel, trueLabel));
          BasicBlock loopExitBlock = new BasicBlock(falseLabel);
+         $retBodyBlock.retBlock.instructions.add(new CompImmInst(1, $guardReg2.regNum));
+         $retBodyBlock.retBlock.instructions.add(new BRNEInst(falseLabel, trueLabel));
+
          addBlockRel($prevBlock, bodyBlock);
          addBlockRel(bodyBlock, loopExitBlock);
          $retBlock = loopExitBlock;
@@ -356,54 +368,13 @@ block [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBloc
    ;
 
 assignment [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
-   :  ^(ASSIGN retExpReg=expression[regTable, prevBlock] lvalue[regTable, prevBlock, $retExpReg.regNum])
+   :  ^(ASSIGN retExpReg=expression[regTable, prevBlock] retLvalueReg=lvalue[regTable, prevBlock, $retExpReg.regNum])
       {
          $retBlock = prevBlock;
       }
    ;
 
-condExpression [RegisterTable regTable, BasicBlock prevBlock, String trueLabel, String falseLabel]
-   :  ^(LE regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
-      {
-         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
-         prevBlock.instructions.add(new BRLEInst(trueLabel, falseLabel));
-      }
-   |  ^(EQ regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
-      {
-         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
-         prevBlock.instructions.add(new BREQInst(trueLabel, falseLabel));
-      }
-   |  ^(LT regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
-      {
-         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
-         prevBlock.instructions.add(new BRLTInst(trueLabel, falseLabel));
-      }
-   |  ^(GT regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
-      {
-         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
-         prevBlock.instructions.add(new BRGTInst(trueLabel, falseLabel));
-      }
-   |  ^(NE regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
-      {
-         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
-         prevBlock.instructions.add(new BRNEInst(trueLabel, falseLabel));
-      }
-   |  ^(GE regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
-      {
-         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
-         prevBlock.instructions.add(new BRGEInst(trueLabel, falseLabel));
-      }
-   |  TRUE 
-      {
-         prevBlock.instructions.add(new BranchInst(trueLabel));
-      }
-   |  FALSE
-      {
-         prevBlock.instructions.add(new BranchInst(falseLabel));
-      }
-   ;
-
-expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum = null]
+expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum = null, Integer retInt = null]
    :  invRetReg=invocation[regTable, prevBlock]
       {
          $regNum = $invRetReg.regNum;
@@ -416,6 +387,60 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
    |  ^(OR regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
       {
          prevBlock.instructions.add(new OrInst($regNum1.regNum, $regNum2.regNum, regCounter));
+         $regNum = regCounter++;
+      }
+   |  ^(LE regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
+      {
+         ImmInst immInst = new ImmInst(new Integer(0), regCounter);
+         immInst.isCritical = true;
+         prevBlock.instructions.add(immInst);
+         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
+         prevBlock.instructions.add(new MoveLEImmInst(new Integer(1), regCounter));
+         $regNum = regCounter++;
+      }
+   |  ^(EQ regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
+      {
+         ImmInst immInst = new ImmInst(new Integer(0), regCounter);
+         immInst.isCritical = true;
+         prevBlock.instructions.add(immInst);
+         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
+         prevBlock.instructions.add(new MoveEQImmInst(new Integer(1), regCounter));
+         $regNum = regCounter++;
+      }
+   |  ^(LT regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
+      {
+         ImmInst immInst = new ImmInst(new Integer(0), regCounter);
+         immInst.isCritical = true;
+         prevBlock.instructions.add(immInst);
+         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
+         prevBlock.instructions.add(new MoveLTImmInst(new Integer(1), regCounter));
+         $regNum = regCounter++;
+      }
+   |  ^(GT regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
+      {
+         ImmInst immInst = new ImmInst(new Integer(0), regCounter);
+         immInst.isCritical = true;
+         prevBlock.instructions.add(immInst);
+         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
+         prevBlock.instructions.add(new MoveGTImmInst(new Integer(1), regCounter));
+         $regNum = regCounter++;
+      }
+   |  ^(NE regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
+      {
+         ImmInst immInst = new ImmInst(new Integer(0), regCounter);
+         immInst.isCritical = true;
+         prevBlock.instructions.add(immInst);
+         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
+         prevBlock.instructions.add(new MoveNEImmInst(new Integer(1), regCounter));
+         $regNum = regCounter++;
+      }
+   |  ^(GE regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
+      {
+         ImmInst immInst = new ImmInst(new Integer(0), regCounter);
+         immInst.isCritical = true;
+         prevBlock.instructions.add(immInst);
+         prevBlock.instructions.add(new CompInst($regNum1.regNum, $regNum2.regNum));
+         prevBlock.instructions.add(new MoveGEImmInst(new Integer(1), regCounter));
          $regNum = regCounter++;
       }
    |  ^(PLUS regNum1=expression[regTable, prevBlock] regNum2=expression[regTable, prevBlock])
@@ -461,6 +486,7 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
             prevBlock.instructions.add(globInst);
             $regNum = new Integer(regCounter++);
          } else {
+            System.out.println("--> Found" + $newId.text + " at " + varReg);
              prevBlock.instructions.add(new MoveInst(varReg, regCounter));
              $regNum = new Integer(regCounter++);
          }
@@ -468,6 +494,7 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
    |  intVal=INTEGER
       {
          prevBlock.instructions.add(new ImmInst(Integer.valueOf($intVal.text), regCounter));
+         $retInt = new Integer($intVal.text);
          $regNum = regCounter++;
       }
    |  TRUE 
@@ -492,7 +519,7 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
    |  ^(NEG returnReg=expression[regTable, prevBlock]) 
       {
          prevBlock.instructions.add(new ImmInst(-1, regCounter));
-         prevBlock.instructions.add(new MultiplyInst(regCounter++, $returnReg.regNum, regCounter));
+         prevBlock.instructions.add(new MultiplyInst(regCounter, $returnReg.regNum, regCounter));
          $regNum = regCounter++;
       }
    |  NULL

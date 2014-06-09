@@ -22,7 +22,7 @@ public class InterferenceGraph {
 
 	public int getColor(Integer k) {
 		IntGraphNode node = regNodeMap.get(k);
-		System.out.println("Getting color for " + node.getRegister());
+		// System.out.println("Getting color for " + node.getRegister());
 		return node.getColor().intValue();
 	}
 

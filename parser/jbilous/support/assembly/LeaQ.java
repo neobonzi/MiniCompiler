@@ -8,6 +8,7 @@ public class LeaQ extends AssemblyInstruction{
 	public int stackPos;
 	public boolean fromMem = false;
 	public boolean toMem = false;
+	public boolean setMe = false;
 	public String varOffset = null;
 
 	public LeaQ(Register source, Register target) {

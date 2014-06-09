@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 TypeCheck.g 2014-05-14 10:27:07
+// $ANTLR 3.5.2 TypeCheck.g 2014-06-08 22:29:22
 
    import java.util.Map;
    import java.util.HashMap;
@@ -1753,7 +1753,7 @@ public class TypeCheck extends TreeParser {
 
 
 						if(!(rreturn!=null?((TypeCheck.rettype_return)rreturn).retType:null).getClass().equals(VoidType.class) && !(sl!=null?((TypeCheck.statement_list_return)sl).hasRet:null)) {
-							error("Function requires a return value");
+							//error("Function requires a return value");
 						}
 					
 			}
@@ -2364,7 +2364,7 @@ public class TypeCheck extends TreeParser {
 								Type retType = (retExp!=null?((TypeCheck.expression_return)retExp).t:null);
 								Type expType = env.get(0).get("expret");
 								if(!retType.getClass().equals(expType.getClass())){
-									error(0, "Expected a different return type than what was given");
+									//error(0, "Expected a different return type than what was given");
 								}
 							
 					}
@@ -2386,7 +2386,7 @@ public class TypeCheck extends TreeParser {
 								Type retType = new VoidType();
 								Type expType = env.get(0).get("expret");
 								if(!retType.getClass().equals(expType.getClass())){
-									error(0, "Expected a different return type than what was given");
+									//error(0, "Expected a different return type than what was given");
 								}
 							
 					}
@@ -2718,23 +2718,23 @@ public class TypeCheck extends TreeParser {
 
 
 
-						Boolean first = (hasRet1!=null?((TypeCheck.block_return)hasRet1).hasRet:null);
-						Boolean second;
-						if((hasRet2!=null?((TypeCheck.block_return)hasRet2).hasRet:null) == null) {
-							second = false;
-						} else {
-							second = (hasRet2!=null?((TypeCheck.block_return)hasRet2).hasRet:null);
-						}
-						
-						if(!env.get(0).get("expret").getClass().equals(VoidType.class) && ((!first && second)
-							||	(first && !second))){
-							error("Control flow not complete");
-						} else {
-							retval.hasRet = true;
-						}
-						if(!(guard!=null?((TypeCheck.expression_return)guard).t:null).getClass().equals(BoolType.class)) {
-							error("Conditional requires a boolean guard");
-						}
+			//			Boolean first = (hasRet1!=null?((TypeCheck.block_return)hasRet1).hasRet:null);
+			//			Boolean second;
+			//			if((hasRet2!=null?((TypeCheck.block_return)hasRet2).hasRet:null) == null) {
+			//				second = false;
+			//			} else {
+			//				second = (hasRet2!=null?((TypeCheck.block_return)hasRet2).hasRet:null);
+			//			}
+			//			
+			//			if(!env.get(0).get("expret").getClass().equals(VoidType.class) && ((!first && second)
+			//				||	(first && !second))){
+			//				error("Control flow not complete");
+			//			} else {
+			//				retval.hasRet = true;
+			//			}
+			//			if(!(guard!=null?((TypeCheck.expression_return)guard).t:null).getClass().equals(BoolType.class)) {
+			//				error("Conditional requires a boolean guard");
+			//			}
 					
 			}
 
@@ -3324,7 +3324,7 @@ public class TypeCheck extends TreeParser {
 
 
 								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(BoolType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(BoolType.class)) {
-									error("Operators && and || require two integer types");
+									//error("Operators && and || require two integer types");
 								}
 								retval.t = new BoolType();
 							
@@ -3379,7 +3379,7 @@ public class TypeCheck extends TreeParser {
 
 
 								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
-									error("Operators ==, <, >, <=, >= require two integer types");
+									//error("Operators ==, <, >, <=, >= require two integer types");
 								}
 								retval.t = new BoolType();
 							
@@ -3434,7 +3434,7 @@ public class TypeCheck extends TreeParser {
 
 
 								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
-									error("Operators + and - require two integer types");
+									//error("Operators + and - require two integer types");
 								}
 								retval.t = new IntType();
 							
@@ -3489,7 +3489,7 @@ public class TypeCheck extends TreeParser {
 
 
 								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
-									error("Operators * and / requires two integer types");
+									//error("Operators * and / requires two integer types");
 								}
 								retval.t = new IntType();
 							
@@ -3529,7 +3529,7 @@ public class TypeCheck extends TreeParser {
 
 
 								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
-									error("Operator ! requires two boolean types");
+									//error("Operator ! requires two boolean types");
 								}
 								retval.t = new BoolType();
 							

@@ -7,9 +7,9 @@ public class PushQ extends AssemblyInstruction{
 	Register pushReg;
 
 	public PushQ(Register source) {
-		pushReg = source;
+		super(source);
 	}
 	public String toString() {
-		return "pushq " + pushReg;
+		return "pushq " + source_ass;
 	}
 }

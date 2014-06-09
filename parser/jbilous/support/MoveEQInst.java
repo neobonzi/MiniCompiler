@@ -9,6 +9,7 @@ public class MoveEQInst extends Instruction{
 
 	public MoveEQInst(int source, int target) {
 		this.source = new Integer(source);
+		this.source2 = new Integer(target);
 		this.target = new Integer(target);
 	}
 

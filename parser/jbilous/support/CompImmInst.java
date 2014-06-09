@@ -8,9 +8,9 @@ import java.util.Vector;
 public class CompImmInst extends Instruction{
 	Integer value;
 
-	public CompImmInst(int source, int value) {
-		this.source = new Integer(source);
-		this.value = new Integer(value);
+	public CompImmInst(int imm, int regNum) {
+		this.value = new Integer(imm);
+		this.source = new Integer(regNum);
 	}
 
 	public Vector<AssemblyInstruction> genAssembly() {
@@ -20,6 +20,6 @@ public class CompImmInst extends Instruction{
 	}
 
 	public String toString() {
-		return "compi r" + source + ", " + value + ", ccr";
+		return "compi " + value + ", r" + source + ", ccr";
 	}
 }

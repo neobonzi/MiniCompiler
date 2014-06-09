@@ -9,6 +9,7 @@ public class MovQ extends AssemblyInstruction{
 	public boolean fromMem = false;
 	public boolean toMem = false;
 	public String varOffset = null;
+	public LeaQ relatedLoad = null;
 
 	public MovQ(Register source, Register target) {
 		super(source, target);

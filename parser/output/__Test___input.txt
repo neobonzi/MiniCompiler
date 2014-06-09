@@ -1,17 +1,13 @@
-
-struct apple {
-   int core;
-   int stem;
+struct node {
+   int value;
+   struct node next;
 };
 
-struct banana {
-   int peel;
-};
+fun main() int {
+   struct node n0;
+   
+   n0 = new node;
+   n0.value = 5;
 
-int a, b;
-int c;
-
-fun f() void
-{
-   a = b * c;
+   return 0;
 }

@@ -10,6 +10,7 @@ public class MoveNEInst extends Instruction{
 	public MoveNEInst(int source, int target) {
 		this.source = new Integer(source);
 		this.target = new Integer(target);
+		this.source2 = new Integer(target);
 	}
 
 	public Vector<AssemblyInstruction> genAssembly() {

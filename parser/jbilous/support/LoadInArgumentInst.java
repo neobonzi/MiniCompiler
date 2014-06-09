@@ -18,7 +18,7 @@ public class LoadInArgumentInst extends Instruction{
 	public Vector<AssemblyInstruction> genAssembly() {
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
 		VirtualRegister virtualTarget = new VirtualRegister(target);
-		switch(target) {
+		switch(imm) {
 			case 0: inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RDI), virtualTarget));
 					break;
 			case 1: inst.add(new MovQ(new AssemblyRegister(x86_64Reg.RSI), virtualTarget));
@@ -35,7 +35,6 @@ public class LoadInArgumentInst extends Instruction{
 					newMove.fromMem = true;
 					newMove.stackPos = imm + 1;
 					inst.add(newMove);
-
 		}
 		return inst;
 	}
