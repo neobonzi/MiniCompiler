@@ -11,34 +11,34 @@ L2_.str:
   _mod:
        pushq %rbp
        movq %rsp, %rbp
-       subq $144, %rsp
+       subq $160, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
        movq %r14, -32(%rbp)
        movq %r15, -40(%rbp)
        movq %rdi, %rbx
-       movq %rsi, %rdi
-       movq %rbx, %rsi
-       movq %rbx, %rcx
-       movq %rdi, %rbx
+       movq %rsi, %r14
+       movq %rbx, %r13
+       movq %rbx, %r12
+       movq %r14, %rbx
        pushq %rdx
        pushq %rax
-       movq %rcx, %rax
+       movq %r12, %rax
        movq $0, %rdx
        cqto
        idivq %rbx
-       movq %rax, %rcx
+       movq %rax, %r12
        popq %rax
        popq %rdx
-       movq %rdi, %rbx
+       movq %r14, %rbx
        pushq %r8
        movq %rbx, %r8
-       imulq %rcx, %r8
+       imulq %r12, %r8
        movq %r8, %rbx
        popq %r8
        pushq %r8
-       movq %rsi, %r8
+       movq %r13, %r8
        subq %rbx, %r8
        movq %r8, %rbx
        popq %r8
@@ -50,13 +50,13 @@ L2_.str:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $144, %rsp
+       addq $160, %rsp
        popq %rbp
        ret
 _hailstone:
        pushq %rbp
        movq %rsp, %rbp
-       subq $872, %rsp
+       subq $888, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -64,8 +64,8 @@ _hailstone:
        movq %r15, -40(%rbp)
        movq %rdi, %r11
        movq %r11, -48(%rbp)
-       movq $1, %rax
-       cmpq $1, %rax
+       movq $1, %rbx
+       cmpq $1, %rbx
        jne L4
        jmp L3
     L3:
@@ -216,13 +216,13 @@ _hailstone:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $872, %rsp
+       addq $888, %rsp
        popq %rbp
        ret
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $80, %rsp
+       subq $96, %rsp
        pushq %rax
        pushq %rcx
        pushq %rdx
@@ -243,9 +243,9 @@ _hailstone:
        popq %rdx
        popq %rcx
        popq %rax
-       movq -8(%rbp), %rax
-       movq %rax, %rax
-       movq %rax, %rdi
+       movq -8(%rbp), %rbx
+       movq %rbx, %rbx
+       movq %rbx, %rdi
        pushq %rcx
        pushq %rdx
        pushq %rsi
@@ -263,11 +263,11 @@ _hailstone:
        popq %rsi
        popq %rdx
        popq %rcx
-       movq %rax, %rax
-       movq $0, %rax
-       movq %rax, %rax
+       movq %rax, %rbx
+       movq $0, %rbx
+       movq %rbx, %rax
        jmp L13
    L13:
-       addq $80, %rsp
+       addq $96, %rsp
        popq %rbp
        ret

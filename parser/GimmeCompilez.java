@@ -769,7 +769,6 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
             adaptLiveOuts(lvaHash, blockList);
             // Create Interference Graph
             InterferenceGraph intGraph = new InterferenceGraph();
-
             intGraph.addEdge(2, 3);
             intGraph.addEdge(2, 4);
             intGraph.addEdge(2, 5);
@@ -791,7 +790,7 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
             colorGraph(intGraph);
             intGraph.printColors();
             transformedBlocks.clear();
-            Integer finalStackOffset = (7 * 8) + allocateRegisters(intGraph, cfgBlock, stackVarHash, stackVarPos);
+            Integer finalStackOffset = (8 * 8) + allocateRegisters(intGraph, cfgBlock, stackVarHash, stackVarPos);
             cfgBlock.assemInstructions.add(2, new SubQ(new ImmediateRegister(finalStackOffset), new AssemblyRegister(x86_64Reg.RSP)));
             funExit.assemInstructions.add(funExit.assemInstructions.size() - 2, new AddQ(new ImmediateRegister(finalStackOffset), new AssemblyRegister(x86_64Reg.RSP)));
          }

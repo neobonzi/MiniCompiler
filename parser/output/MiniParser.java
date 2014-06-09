@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /Users/jbilous/Development/CSC431/parser/Mini.g 2014-06-07 19:17:37
+// $ANTLR 3.5.1 /Users/jbilous/Development/CSC431/parser/Mini.g 2014-06-09 00:12:20
 
    /* package declaration here */
 
@@ -93,13 +93,14 @@ public class MiniParser extends DebugParser {
 
 
 	public static final String[] ruleNames = new String[] {
-		"invalidRule", "type", "lvalue", "types_sub", "declaration", "loop", "term", 
-		"declarations", "boolterm", "synpred3_Mini", "read", "ret", "unary", "simple", 
-		"synpred4_Mini", "type_declaration", "decl", "arguments", "program", "function", 
-		"return_type", "odd_neg", "conditional", "types", "functions", "odd_not", 
-		"factor", "statement_list", "nested_decl", "block", "invocation", "delete", 
-		"id_list", "expression", "parameters", "arg_list", "synpred2_Mini", "even_not", 
-		"statement", "even_neg", "synpred1_Mini", "selector", "assignment", "print"
+		"invalidRule", "assignment", "parameters", "types", "simple", "expression", 
+		"invocation", "odd_neg", "factor", "functions", "type_declaration", "decl", 
+		"even_neg", "program", "nested_decl", "arguments", "term", "statement", 
+		"synpred3_Mini", "block", "id_list", "delete", "lvalue", "declaration", 
+		"declarations", "arg_list", "type", "print", "conditional", "synpred1_Mini", 
+		"selector", "types_sub", "function", "even_not", "ret", "unary", "boolterm", 
+		"synpred4_Mini", "statement_list", "read", "return_type", "loop", "synpred2_Mini", 
+		"odd_not"
 	};
 
 	public static final boolean[] decisionCanBacktrack = new boolean[] {
@@ -223,16 +224,16 @@ public class MiniParser extends DebugParser {
 			if ( state.backtracking==0 ) stream_EOF.add(EOF1);
 
 			// AST REWRITE
-			// elements: t, d, f
+			// elements: d, f, t
 			// token labels: 
-			// rule labels: t, d, f, retval
+			// rule labels: d, t, f, retval
 			// token list labels: 
 			// rule list labels: 
 			// wildcard labels: 
 			if ( state.backtracking==0 ) {
 			retval.tree = root_0;
-			RewriteRuleSubtreeStream stream_t=new RewriteRuleSubtreeStream(adaptor,"rule t",t!=null?t.getTree():null);
 			RewriteRuleSubtreeStream stream_d=new RewriteRuleSubtreeStream(adaptor,"rule d",d!=null?d.getTree():null);
+			RewriteRuleSubtreeStream stream_t=new RewriteRuleSubtreeStream(adaptor,"rule t",t!=null?t.getTree():null);
 			RewriteRuleSubtreeStream stream_f=new RewriteRuleSubtreeStream(adaptor,"rule f",f!=null?f.getTree():null);
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
@@ -1326,7 +1327,7 @@ public class MiniParser extends DebugParser {
 			if ( state.backtracking==0 ) stream_SEMI.add(SEMI18);
 
 			// AST REWRITE
-			// elements: ilist, t
+			// elements: t, ilist
 			// token labels: 
 			// rule labels: t, ilist, retval
 			// token list labels: 
@@ -1738,7 +1739,7 @@ public class MiniParser extends DebugParser {
 			if ( state.backtracking==0 ) stream_RBRACE.add(RBRACE25);
 
 			// AST REWRITE
-			// elements: FUN, p, d, s, r, id
+			// elements: r, s, FUN, id, d, p
 			// token labels: id
 			// rule labels: p, r, s, d, retval
 			// token list labels: 
@@ -2715,7 +2716,7 @@ public class MiniParser extends DebugParser {
 			if ( state.backtracking==0 ) stream_SEMI.add(SEMI46);
 
 			// AST REWRITE
-			// elements: e, l, ASSIGN
+			// elements: l, e, ASSIGN
 			// token labels: 
 			// rule labels: e, l, retval
 			// token list labels: 
@@ -3172,7 +3173,7 @@ public class MiniParser extends DebugParser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_block.add(b.getTree());
 			// AST REWRITE
-			// elements: e, b, e, WHILE
+			// elements: b, e, WHILE, e
 			// token labels: 
 			// rule labels: b, e, retval
 			// token list labels: 
@@ -3481,7 +3482,7 @@ public class MiniParser extends DebugParser {
 			if ( state.backtracking==0 ) stream_SEMI.add(SEMI70);
 
 			// AST REWRITE
-			// elements: a, id
+			// elements: id, a
 			// token labels: id
 			// rule labels: a, retval
 			// token list labels: 
@@ -5391,7 +5392,7 @@ public class MiniParser extends DebugParser {
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) stream_arguments.add(a.getTree());
 					// AST REWRITE
-					// elements: a, id
+					// elements: id, a
 					// token labels: id
 					// rule labels: a, retval
 					// token list labels: 

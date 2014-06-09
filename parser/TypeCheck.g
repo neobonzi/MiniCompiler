@@ -128,7 +128,7 @@ type_decl [StructTypes stypes]
 	;
 
 nested_struct_decl [StructTypes stypes, StructType newStruct]
-	:	struct_decl[stypes, newStruct]+
+	:	(struct_decl[stypes, newStruct])+
 	;	
 
 struct_decl [StructTypes stypes, StructType newStruct] returns [Type newDec]
@@ -321,17 +321,17 @@ invocation [StructTypes stypes, Vector<SymbolTable> env] returns [Type t]
 		
 		Vector<Type> provParams = $retArgs.retArgs;
 		Vector<Type> reqParams = calledFunc.params;
-		
 		if(provParams.isEmpty()){
-			if(!provParams.get(0).getClass().equals(VoidType.class) || provParams.size() > 1) {
-				error("The provided parameters do not match those required");
-			}
+			//if(!provParams.get(0).getClass().equals(VoidType.class) || provParams.size() > 1) {
+			//	error("The provided parameters do not match those required");
+			//}
 		} else {
+			System.out.println("params not empty for " + $id.text + " " + provParams.get(0));
 			for(int i = 0; i < provParams.size(); i++) {
-				if(!provParams.get(i).getClass().equals(reqParams.get(i).getClass()) 
-					&& !provParams.get(i).getClass().equals(NullType.class)) {
-					error("The provided parameters do not match those required");
-				}
+				//if(!provParams.get(i).getClass().equals(reqParams.get(i).getClass()) 
+				//	&& !provParams.get(i).getClass().equals(NullType.class)) {
+				//	error("The provided parameters do not match those required");
+				//}
 			}
 		}
 		

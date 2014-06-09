@@ -279,14 +279,14 @@ ret [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
       }
    ;
 
-arguments [String callID, RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
-   :  retArgBlock = arg_list[callID, regTable, prevBlock]
+arguments [String callID, RegisterTable regTable, BasicBlock prevBlock] returns [Integer numArgs]
+   :  retNumArgs = arg_list[callID, regTable, prevBlock]
       {
-         $retBlock = $retArgBlock.retBlock;
+         $numArgs = $retNumArgs.numArgs;
       }
    ;
 
-arg_list [String callID, RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
+arg_list [String callID, RegisterTable regTable, BasicBlock prevBlock] returns [Integer numArgs]
    @init {
       int argCounter = 0;
       Vector<Instruction> storeCache = new Vector<Instruction>();
@@ -299,10 +299,9 @@ arg_list [String callID, RegisterTable regTable, BasicBlock prevBlock] returns [
          for(Instruction inst : storeCache) {
             prevBlock.instructions.add(inst);
          }
-         prevBlock.instructions.add(new CallInst("_" + $callID, argCounter));
-         $retBlock = $prevBlock;
+         $numArgs = argCounter;
       }
-   |  ARGS { $retBlock = $prevBlock; }
+   |  ARGS {$numArgs = new Integer(0); }
    ;
 
 conditional [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
@@ -333,8 +332,9 @@ conditional [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock r
    ;
 
 invocation [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum]
-   :  ^(INVOKE funcId=ID arguments[$funcId.text, regTable, prevBlock])
+   :  ^(INVOKE funcId=ID retNumArgs=arguments[$funcId.text, regTable, prevBlock])
    {
+      prevBlock.instructions.add(new CallInst("_" + $funcId.text, $retNumArgs.numArgs));
       prevBlock.instructions.add(new LoadRetInst(regCounter));
       $regNum = regCounter++;
    }
@@ -532,13 +532,21 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
 lvalue [RegisterTable regTable, BasicBlock prevBlock, Integer assReg] returns [Integer regNum]
    :  retId=ID
       {
+         if(curEnv.get($retId.text) instanceof StructType)
+         {
+            curStruct = (StructType)curEnv.get($retId.text);
+         }
          prevBlock.instructions.add(new MoveInst($assReg, regTable.get($retId.text)));
          $regNum = regTable.get($retId.text);
       }
    |  ^(DOT retReg=lvalueLoad[regTable, prevBlock] newId=ID)
       {
+         System.out.println("Store for " + $newId.text);
+         // Generate the appropriate instruction depending on the member type
+
          StoreImmInst inst = new StoreImmInst($assReg, $retReg.regNum, $newId.text);
          inst.offset = curStruct.memberCounts.get($newId.text);
+         System.out.println("member count for " + $newId.text + " is " + inst.offset);
          prevBlock.instructions.add(inst);
       }
    ;

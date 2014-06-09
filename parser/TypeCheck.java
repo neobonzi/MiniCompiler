@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 TypeCheck.g 2014-06-08 22:29:22
+// $ANTLR 3.5.2 TypeCheck.g 2014-06-09 01:50:12
 
    import java.util.Map;
    import java.util.HashMap;
@@ -715,10 +715,10 @@ public class TypeCheck extends TreeParser {
 
 				switch (alt4) {
 				case 1 :
-					// TypeCheck.g:131:4: struct_decl[stypes, newStruct]
+					// TypeCheck.g:131:5: struct_decl[stypes, newStruct]
 					{
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_struct_decl_in_nested_struct_decl209);
+					pushFollow(FOLLOW_struct_decl_in_nested_struct_decl210);
 					struct_decl14=struct_decl(stypes, newStruct);
 					state._fsp--;
 
@@ -794,7 +794,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			DECL15=(CommonTree)match(input,DECL,FOLLOW_DECL_in_struct_decl233); 
+			DECL15=(CommonTree)match(input,DECL,FOLLOW_DECL_in_struct_decl235); 
 			DECL15_tree = (CommonTree)adaptor.dupNode(DECL15);
 
 
@@ -807,7 +807,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_2 = null;
 			CommonTree root_2 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			TYPE16=(CommonTree)match(input,TYPE,FOLLOW_TYPE_in_struct_decl236); 
+			TYPE16=(CommonTree)match(input,TYPE,FOLLOW_TYPE_in_struct_decl238); 
 			TYPE16_tree = (CommonTree)adaptor.dupNode(TYPE16);
 
 
@@ -815,7 +815,7 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_type_in_struct_decl240);
+			pushFollow(FOLLOW_type_in_struct_decl242);
 			retType=type(stypes);
 			state._fsp--;
 
@@ -828,7 +828,7 @@ public class TypeCheck extends TreeParser {
 
 
 			_last = (CommonTree)input.LT(1);
-			myId=(CommonTree)match(input,ID,FOLLOW_ID_in_struct_decl246); 
+			myId=(CommonTree)match(input,ID,FOLLOW_ID_in_struct_decl248); 
 			myId_tree = (CommonTree)adaptor.dupNode(myId);
 
 
@@ -905,7 +905,7 @@ public class TypeCheck extends TreeParser {
 					// TypeCheck.g:143:4: decl[stypes, structDecls]
 					{
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_decl_in_nested_decl269);
+					pushFollow(FOLLOW_decl_in_nested_decl271);
 					decl17=decl(stypes, structDecls);
 					state._fsp--;
 
@@ -981,7 +981,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			DECL18=(CommonTree)match(input,DECL,FOLLOW_DECL_in_decl293); 
+			DECL18=(CommonTree)match(input,DECL,FOLLOW_DECL_in_decl295); 
 			DECL18_tree = (CommonTree)adaptor.dupNode(DECL18);
 
 
@@ -994,7 +994,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_2 = null;
 			CommonTree root_2 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			TYPE19=(CommonTree)match(input,TYPE,FOLLOW_TYPE_in_decl296); 
+			TYPE19=(CommonTree)match(input,TYPE,FOLLOW_TYPE_in_decl298); 
 			TYPE19_tree = (CommonTree)adaptor.dupNode(TYPE19);
 
 
@@ -1002,7 +1002,7 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_type_in_decl300);
+			pushFollow(FOLLOW_type_in_decl302);
 			retType=type(stypes);
 			state._fsp--;
 
@@ -1015,7 +1015,7 @@ public class TypeCheck extends TreeParser {
 
 
 			_last = (CommonTree)input.LT(1);
-			myId=(CommonTree)match(input,ID,FOLLOW_ID_in_decl306); 
+			myId=(CommonTree)match(input,ID,FOLLOW_ID_in_decl308); 
 			myId_tree = (CommonTree)adaptor.dupNode(myId);
 
 
@@ -1085,7 +1085,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			DECLS20=(CommonTree)match(input,DECLS,FOLLOW_DECLS_in_declarations335); 
+			DECLS20=(CommonTree)match(input,DECLS,FOLLOW_DECLS_in_declarations337); 
 			DECLS20_tree = (CommonTree)adaptor.dupNode(DECLS20);
 
 
@@ -1107,7 +1107,7 @@ public class TypeCheck extends TreeParser {
 						// TypeCheck.g:155:15: declaration[stypes, env]
 						{
 						_last = (CommonTree)input.LT(1);
-						pushFollow(FOLLOW_declaration_in_declarations337);
+						pushFollow(FOLLOW_declaration_in_declarations339);
 						declaration21=declaration(stypes, env);
 						state._fsp--;
 
@@ -1175,7 +1175,7 @@ public class TypeCheck extends TreeParser {
 
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_decllist_in_declaration355);
+			pushFollow(FOLLOW_decllist_in_declaration357);
 			decllist22=decllist(stypes, env);
 			state._fsp--;
 
@@ -1260,7 +1260,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					INT23=(CommonTree)match(input,INT,FOLLOW_INT_in_type374); 
+					INT23=(CommonTree)match(input,INT,FOLLOW_INT_in_type376); 
 					INT23_tree = (CommonTree)adaptor.dupNode(INT23);
 
 
@@ -1276,7 +1276,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					BOOL24=(CommonTree)match(input,BOOL,FOLLOW_BOOL_in_type382); 
+					BOOL24=(CommonTree)match(input,BOOL,FOLLOW_BOOL_in_type384); 
 					BOOL24_tree = (CommonTree)adaptor.dupNode(BOOL24);
 
 
@@ -1297,7 +1297,7 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					STRUCT25=(CommonTree)match(input,STRUCT,FOLLOW_STRUCT_in_type390); 
+					STRUCT25=(CommonTree)match(input,STRUCT,FOLLOW_STRUCT_in_type392); 
 					STRUCT25_tree = (CommonTree)adaptor.dupNode(STRUCT25);
 
 
@@ -1305,7 +1305,7 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					id=(CommonTree)match(input,ID,FOLLOW_ID_in_type394); 
+					id=(CommonTree)match(input,ID,FOLLOW_ID_in_type396); 
 					id_tree = (CommonTree)adaptor.dupNode(id);
 
 
@@ -1383,7 +1383,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			DECLLIST26=(CommonTree)match(input,DECLLIST,FOLLOW_DECLLIST_in_decllist416); 
+			DECLLIST26=(CommonTree)match(input,DECLLIST,FOLLOW_DECLLIST_in_decllist418); 
 			DECLLIST26_tree = (CommonTree)adaptor.dupNode(DECLLIST26);
 
 
@@ -1396,7 +1396,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_2 = null;
 			CommonTree root_2 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			TYPE27=(CommonTree)match(input,TYPE,FOLLOW_TYPE_in_decllist419); 
+			TYPE27=(CommonTree)match(input,TYPE,FOLLOW_TYPE_in_decllist421); 
 			TYPE27_tree = (CommonTree)adaptor.dupNode(TYPE27);
 
 
@@ -1404,7 +1404,7 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_type_in_decllist423);
+			pushFollow(FOLLOW_type_in_decllist425);
 			retType=type(stypes);
 			state._fsp--;
 
@@ -1417,7 +1417,7 @@ public class TypeCheck extends TreeParser {
 
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_id_list_in_decllist427);
+			pushFollow(FOLLOW_id_list_in_decllist429);
 			id_list28=id_list((retType!=null?((TypeCheck.type_return)retType).t:null), env);
 			state._fsp--;
 
@@ -1491,7 +1491,7 @@ public class TypeCheck extends TreeParser {
 					// TypeCheck.g:181:4: id= ID
 					{
 					_last = (CommonTree)input.LT(1);
-					id=(CommonTree)match(input,ID,FOLLOW_ID_in_id_list451); 
+					id=(CommonTree)match(input,ID,FOLLOW_ID_in_id_list453); 
 					id_tree = (CommonTree)adaptor.dupNode(id);
 
 
@@ -1569,7 +1569,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			FUNCS29=(CommonTree)match(input,FUNCS,FOLLOW_FUNCS_in_functions485); 
+			FUNCS29=(CommonTree)match(input,FUNCS,FOLLOW_FUNCS_in_functions487); 
 			FUNCS29_tree = (CommonTree)adaptor.dupNode(FUNCS29);
 
 
@@ -1591,7 +1591,7 @@ public class TypeCheck extends TreeParser {
 						// TypeCheck.g:193:14: function[stypes, env]
 						{
 						_last = (CommonTree)input.LT(1);
-						pushFollow(FOLLOW_function_in_functions487);
+						pushFollow(FOLLOW_function_in_functions489);
 						function30=function(stypes, env);
 						state._fsp--;
 
@@ -1678,7 +1678,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			FUN31=(CommonTree)match(input,FUN,FOLLOW_FUN_in_function511); 
+			FUN31=(CommonTree)match(input,FUN,FOLLOW_FUN_in_function513); 
 			FUN31_tree = (CommonTree)adaptor.dupNode(FUN31);
 
 
@@ -1686,14 +1686,14 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			id=(CommonTree)match(input,ID,FOLLOW_ID_in_function515); 
+			id=(CommonTree)match(input,ID,FOLLOW_ID_in_function517); 
 			id_tree = (CommonTree)adaptor.dupNode(id);
 
 
 			adaptor.addChild(root_1, id_tree);
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_params_in_function519);
+			pushFollow(FOLLOW_params_in_function521);
 			retParams=params(stypes, localEnv);
 			state._fsp--;
 
@@ -1705,7 +1705,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_2 = null;
 			CommonTree root_2 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			RETTYPE32=(CommonTree)match(input,RETTYPE,FOLLOW_RETTYPE_in_function523); 
+			RETTYPE32=(CommonTree)match(input,RETTYPE,FOLLOW_RETTYPE_in_function525); 
 			RETTYPE32_tree = (CommonTree)adaptor.dupNode(RETTYPE32);
 
 
@@ -1713,7 +1713,7 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_rettype_in_function527);
+			pushFollow(FOLLOW_rettype_in_function529);
 			rreturn=rettype(stypes);
 			state._fsp--;
 
@@ -1726,7 +1726,7 @@ public class TypeCheck extends TreeParser {
 
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_declarations_in_function531);
+			pushFollow(FOLLOW_declarations_in_function533);
 			declarations33=declarations(stypes, localEnv);
 			state._fsp--;
 
@@ -1739,7 +1739,7 @@ public class TypeCheck extends TreeParser {
 						localEnv.get(0).put("expret", (rreturn!=null?((TypeCheck.rettype_return)rreturn).retType:null));
 					
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_statement_list_in_function542);
+			pushFollow(FOLLOW_statement_list_in_function544);
 			sl=statement_list(stypes, localEnv);
 			state._fsp--;
 
@@ -1811,7 +1811,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			STMTS34=(CommonTree)match(input,STMTS,FOLLOW_STMTS_in_statement_list569); 
+			STMTS34=(CommonTree)match(input,STMTS,FOLLOW_STMTS_in_statement_list571); 
 			STMTS34_tree = (CommonTree)adaptor.dupNode(STMTS34);
 
 
@@ -1833,7 +1833,7 @@ public class TypeCheck extends TreeParser {
 						// TypeCheck.g:219:21: retHasRet= statement[stypes, env]
 						{
 						_last = (CommonTree)input.LT(1);
-						pushFollow(FOLLOW_statement_in_statement_list573);
+						pushFollow(FOLLOW_statement_in_statement_list575);
 						retHasRet=statement(stypes, env);
 						state._fsp--;
 
@@ -1963,7 +1963,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_block_in_statement604);
+					pushFollow(FOLLOW_block_in_statement606);
 					blockRet=block(stypes, env);
 					state._fsp--;
 
@@ -1979,7 +1979,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_assignment_in_statement614);
+					pushFollow(FOLLOW_assignment_in_statement616);
 					assignment35=assignment(stypes, env);
 					state._fsp--;
 
@@ -1994,7 +1994,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_conditional_in_statement625);
+					pushFollow(FOLLOW_conditional_in_statement627);
 					condRet=conditional(stypes, env);
 					state._fsp--;
 
@@ -2010,7 +2010,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_loop_in_statement637);
+					pushFollow(FOLLOW_loop_in_statement639);
 					loop36=loop(stypes, env);
 					state._fsp--;
 
@@ -2025,7 +2025,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_invocation_in_statement647);
+					pushFollow(FOLLOW_invocation_in_statement649);
 					invocation37=invocation(stypes, env);
 					state._fsp--;
 
@@ -2040,7 +2040,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_read_in_statement656);
+					pushFollow(FOLLOW_read_in_statement658);
 					read38=read(stypes, env);
 					state._fsp--;
 
@@ -2055,7 +2055,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_ret_in_statement665);
+					pushFollow(FOLLOW_ret_in_statement667);
 					ret39=ret(stypes, env);
 					state._fsp--;
 
@@ -2071,7 +2071,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_print_in_statement676);
+					pushFollow(FOLLOW_print_in_statement678);
 					print40=print(stypes, env);
 					state._fsp--;
 
@@ -2133,7 +2133,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			READ41=(CommonTree)match(input,READ,FOLLOW_READ_in_read694); 
+			READ41=(CommonTree)match(input,READ,FOLLOW_READ_in_read696); 
 			READ41_tree = (CommonTree)adaptor.dupNode(READ41);
 
 
@@ -2141,7 +2141,7 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_lvalue_in_read696);
+			pushFollow(FOLLOW_lvalue_in_read698);
 			lvalue42=lvalue();
 			state._fsp--;
 
@@ -2209,7 +2209,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			PRINT43=(CommonTree)match(input,PRINT,FOLLOW_PRINT_in_print712); 
+			PRINT43=(CommonTree)match(input,PRINT,FOLLOW_PRINT_in_print714); 
 			PRINT43_tree = (CommonTree)adaptor.dupNode(PRINT43);
 
 
@@ -2217,7 +2217,7 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_print714);
+			pushFollow(FOLLOW_expression_in_print716);
 			expression44=expression(stypes, env);
 			state._fsp--;
 
@@ -2234,7 +2234,7 @@ public class TypeCheck extends TreeParser {
 					// TypeCheck.g:244:37: ENDL
 					{
 					_last = (CommonTree)input.LT(1);
-					ENDL45=(CommonTree)match(input,ENDL,FOLLOW_ENDL_in_print717); 
+					ENDL45=(CommonTree)match(input,ENDL,FOLLOW_ENDL_in_print719); 
 					ENDL45_tree = (CommonTree)adaptor.dupNode(ENDL45);
 
 
@@ -2340,7 +2340,7 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					RETURN46=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret733); 
+					RETURN46=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret735); 
 					RETURN46_tree = (CommonTree)adaptor.dupNode(RETURN46);
 
 
@@ -2348,7 +2348,7 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_ret737);
+					pushFollow(FOLLOW_expression_in_ret739);
 					retExp=expression(stypes, env);
 					state._fsp--;
 
@@ -2376,7 +2376,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					RETURN47=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret749); 
+					RETURN47=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret751); 
 					RETURN47_tree = (CommonTree)adaptor.dupNode(RETURN47);
 
 
@@ -2439,7 +2439,7 @@ public class TypeCheck extends TreeParser {
 
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_arg_list_in_arguments772);
+			pushFollow(FOLLOW_arg_list_in_arguments774);
 			args=arg_list(stypes, env);
 			state._fsp--;
 
@@ -2541,7 +2541,7 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					ARGS48=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list802); 
+					ARGS48=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list804); 
 					ARGS48_tree = (CommonTree)adaptor.dupNode(ARGS48);
 
 
@@ -2563,7 +2563,7 @@ public class TypeCheck extends TreeParser {
 							// TypeCheck.g:277:12: exp= expression[stypes, env]
 							{
 							_last = (CommonTree)input.LT(1);
-							pushFollow(FOLLOW_expression_in_arg_list807);
+							pushFollow(FOLLOW_expression_in_arg_list809);
 							exp=expression(stypes, env);
 							state._fsp--;
 
@@ -2599,7 +2599,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					ARGS49=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list823); 
+					ARGS49=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list825); 
 					ARGS49_tree = (CommonTree)adaptor.dupNode(ARGS49);
 
 
@@ -2668,7 +2668,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			IF50=(CommonTree)match(input,IF,FOLLOW_IF_in_conditional845); 
+			IF50=(CommonTree)match(input,IF,FOLLOW_IF_in_conditional847); 
 			IF50_tree = (CommonTree)adaptor.dupNode(IF50);
 
 
@@ -2676,14 +2676,14 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_conditional849);
+			pushFollow(FOLLOW_expression_in_conditional851);
 			guard=expression(stypes, env);
 			state._fsp--;
 
 			adaptor.addChild(root_1, guard.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_block_in_conditional854);
+			pushFollow(FOLLOW_block_in_conditional856);
 			hasRet1=block(stypes, env);
 			state._fsp--;
 
@@ -2700,7 +2700,7 @@ public class TypeCheck extends TreeParser {
 					// TypeCheck.g:291:73: hasRet2= block[stypes, env]
 					{
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_block_in_conditional859);
+					pushFollow(FOLLOW_block_in_conditional861);
 					hasRet2=block(stypes, env);
 					state._fsp--;
 
@@ -2793,7 +2793,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			INVOKE51=(CommonTree)match(input,INVOKE,FOLLOW_INVOKE_in_invocation884); 
+			INVOKE51=(CommonTree)match(input,INVOKE,FOLLOW_INVOKE_in_invocation886); 
 			INVOKE51_tree = (CommonTree)adaptor.dupNode(INVOKE51);
 
 
@@ -2801,14 +2801,14 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			id=(CommonTree)match(input,ID,FOLLOW_ID_in_invocation888); 
+			id=(CommonTree)match(input,ID,FOLLOW_ID_in_invocation890); 
 			id_tree = (CommonTree)adaptor.dupNode(id);
 
 
 			adaptor.addChild(root_1, id_tree);
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_arguments_in_invocation892);
+			pushFollow(FOLLOW_arguments_in_invocation894);
 			retArgs=arguments(stypes, env);
 			state._fsp--;
 
@@ -2829,17 +2829,17 @@ public class TypeCheck extends TreeParser {
 					
 					Vector<Type> provParams = (retArgs!=null?((TypeCheck.arguments_return)retArgs).retArgs:null);
 					Vector<Type> reqParams = calledFunc.params;
-					
 					if(provParams.isEmpty()){
-						if(!provParams.get(0).getClass().equals(VoidType.class) || provParams.size() > 1) {
-							error("The provided parameters do not match those required");
-						}
+						//if(!provParams.get(0).getClass().equals(VoidType.class) || provParams.size() > 1) {
+						//	error("The provided parameters do not match those required");
+						//}
 					} else {
+						System.out.println("params not empty for " + (id!=null?id.getText():null) + " " + provParams.get(0));
 						for(int i = 0; i < provParams.size(); i++) {
-							if(!provParams.get(i).getClass().equals(reqParams.get(i).getClass()) 
-								&& !provParams.get(i).getClass().equals(NullType.class)) {
-								error("The provided parameters do not match those required");
-							}
+							//if(!provParams.get(i).getClass().equals(reqParams.get(i).getClass()) 
+							//	&& !provParams.get(i).getClass().equals(NullType.class)) {
+							//	error("The provided parameters do not match those required");
+							//}
 						}
 					}
 					
@@ -2901,7 +2901,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			WHILE52=(CommonTree)match(input,WHILE,FOLLOW_WHILE_in_loop911); 
+			WHILE52=(CommonTree)match(input,WHILE,FOLLOW_WHILE_in_loop913); 
 			WHILE52_tree = (CommonTree)adaptor.dupNode(WHILE52);
 
 
@@ -2909,21 +2909,21 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_loop913);
+			pushFollow(FOLLOW_expression_in_loop915);
 			expression53=expression(stypes, env);
 			state._fsp--;
 
 			adaptor.addChild(root_1, expression53.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_block_in_loop916);
+			pushFollow(FOLLOW_block_in_loop918);
 			block54=block(stypes, env);
 			state._fsp--;
 
 			adaptor.addChild(root_1, block54.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_loop919);
+			pushFollow(FOLLOW_expression_in_loop921);
 			expression55=expression(stypes, env);
 			state._fsp--;
 
@@ -2990,7 +2990,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			BLOCK56=(CommonTree)match(input,BLOCK,FOLLOW_BLOCK_in_block940); 
+			BLOCK56=(CommonTree)match(input,BLOCK,FOLLOW_BLOCK_in_block942); 
 			BLOCK56_tree = (CommonTree)adaptor.dupNode(BLOCK56);
 
 
@@ -2998,7 +2998,7 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_statement_list_in_block944);
+			pushFollow(FOLLOW_statement_list_in_block946);
 			retHasRet=statement_list(stypes, env);
 			state._fsp--;
 
@@ -3068,7 +3068,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			ASSIGN57=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment964); 
+			ASSIGN57=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment966); 
 			ASSIGN57_tree = (CommonTree)adaptor.dupNode(ASSIGN57);
 
 
@@ -3076,14 +3076,14 @@ public class TypeCheck extends TreeParser {
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_assignment966);
+			pushFollow(FOLLOW_expression_in_assignment968);
 			expression58=expression(stypes, env);
 			state._fsp--;
 
 			adaptor.addChild(root_1, expression58.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_lvalue_in_assignment969);
+			pushFollow(FOLLOW_lvalue_in_assignment971);
 			lvalue59=lvalue();
 			state._fsp--;
 
@@ -3264,7 +3264,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_invocation_in_expression989);
+					pushFollow(FOLLOW_invocation_in_expression991);
 					retVal=invocation(stypes, env);
 					state._fsp--;
 
@@ -3303,14 +3303,14 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1011);
+					pushFollow(FOLLOW_expression_in_expression1013);
 					ret1=expression(stypes, env);
 					state._fsp--;
 
 					adaptor.addChild(root_1, ret1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1016);
+					pushFollow(FOLLOW_expression_in_expression1018);
 					ret2=expression(stypes, env);
 					state._fsp--;
 
@@ -3358,14 +3358,14 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1055);
+					pushFollow(FOLLOW_expression_in_expression1057);
 					ret1=expression(stypes, env);
 					state._fsp--;
 
 					adaptor.addChild(root_1, ret1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1060);
+					pushFollow(FOLLOW_expression_in_expression1062);
 					ret2=expression(stypes, env);
 					state._fsp--;
 
@@ -3413,14 +3413,14 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1083);
+					pushFollow(FOLLOW_expression_in_expression1085);
 					ret1=expression(stypes, env);
 					state._fsp--;
 
 					adaptor.addChild(root_1, ret1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1088);
+					pushFollow(FOLLOW_expression_in_expression1090);
 					ret2=expression(stypes, env);
 					state._fsp--;
 
@@ -3468,14 +3468,14 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1111);
+					pushFollow(FOLLOW_expression_in_expression1113);
 					ret1=expression(stypes, env);
 					state._fsp--;
 
 					adaptor.addChild(root_1, ret1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1116);
+					pushFollow(FOLLOW_expression_in_expression1118);
 					ret2=expression(stypes, env);
 					state._fsp--;
 
@@ -3507,7 +3507,7 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NOT64=(CommonTree)match(input,NOT,FOLLOW_NOT_in_expression1129); 
+					NOT64=(CommonTree)match(input,NOT,FOLLOW_NOT_in_expression1131); 
 					NOT64_tree = (CommonTree)adaptor.dupNode(NOT64);
 
 
@@ -3515,7 +3515,7 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1131);
+					pushFollow(FOLLOW_expression_in_expression1133);
 					expression65=expression(stypes, env);
 					state._fsp--;
 
@@ -3547,7 +3547,7 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT66=(CommonTree)match(input,DOT,FOLLOW_DOT_in_expression1144); 
+					DOT66=(CommonTree)match(input,DOT,FOLLOW_DOT_in_expression1146); 
 					DOT66_tree = (CommonTree)adaptor.dupNode(DOT66);
 
 
@@ -3555,14 +3555,14 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1150);
+					pushFollow(FOLLOW_expression_in_expression1152);
 					retType=expression(stypes, env);
 					state._fsp--;
 
 					adaptor.addChild(root_1, retType.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					memberId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1155); 
+					memberId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1157); 
 					memberId_tree = (CommonTree)adaptor.dupNode(memberId);
 
 
@@ -3597,7 +3597,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					idCall=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1168); 
+					idCall=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1170); 
 					idCall_tree = (CommonTree)adaptor.dupNode(idCall);
 
 
@@ -3621,7 +3621,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					INTEGER67=(CommonTree)match(input,INTEGER,FOLLOW_INTEGER_in_expression1177); 
+					INTEGER67=(CommonTree)match(input,INTEGER,FOLLOW_INTEGER_in_expression1179); 
 					INTEGER67_tree = (CommonTree)adaptor.dupNode(INTEGER67);
 
 
@@ -3637,7 +3637,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					TRUE68=(CommonTree)match(input,TRUE,FOLLOW_TRUE_in_expression1184); 
+					TRUE68=(CommonTree)match(input,TRUE,FOLLOW_TRUE_in_expression1186); 
 					TRUE68_tree = (CommonTree)adaptor.dupNode(TRUE68);
 
 
@@ -3653,7 +3653,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					FALSE69=(CommonTree)match(input,FALSE,FOLLOW_FALSE_in_expression1192); 
+					FALSE69=(CommonTree)match(input,FALSE,FOLLOW_FALSE_in_expression1194); 
 					FALSE69_tree = (CommonTree)adaptor.dupNode(FALSE69);
 
 
@@ -3674,7 +3674,7 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NEW70=(CommonTree)match(input,NEW,FOLLOW_NEW_in_expression1201); 
+					NEW70=(CommonTree)match(input,NEW,FOLLOW_NEW_in_expression1203); 
 					NEW70_tree = (CommonTree)adaptor.dupNode(NEW70);
 
 
@@ -3682,7 +3682,7 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					id=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1205); 
+					id=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1207); 
 					id_tree = (CommonTree)adaptor.dupNode(id);
 
 
@@ -3715,7 +3715,7 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NEG71=(CommonTree)match(input,NEG,FOLLOW_NEG_in_expression1218); 
+					NEG71=(CommonTree)match(input,NEG,FOLLOW_NEG_in_expression1220); 
 					NEG71_tree = (CommonTree)adaptor.dupNode(NEG71);
 
 
@@ -3723,7 +3723,7 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1224);
+					pushFollow(FOLLOW_expression_in_expression1226);
 					retType=expression(stypes, env);
 					state._fsp--;
 
@@ -3745,7 +3745,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					NULL72=(CommonTree)match(input,NULL,FOLLOW_NULL_in_expression1237); 
+					NULL72=(CommonTree)match(input,NULL,FOLLOW_NULL_in_expression1239); 
 					NULL72_tree = (CommonTree)adaptor.dupNode(NULL72);
 
 
@@ -3826,7 +3826,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					ID73=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1254); 
+					ID73=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1256); 
 					ID73_tree = (CommonTree)adaptor.dupNode(ID73);
 
 
@@ -3846,7 +3846,7 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT74=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalue1260); 
+					DOT74=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalue1262); 
 					DOT74_tree = (CommonTree)adaptor.dupNode(DOT74);
 
 
@@ -3854,14 +3854,14 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_lvalue_in_lvalue1262);
+					pushFollow(FOLLOW_lvalue_in_lvalue1264);
 					lvalue75=lvalue();
 					state._fsp--;
 
 					adaptor.addChild(root_1, lvalue75.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					ID76=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1264); 
+					ID76=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1266); 
 					ID76_tree = (CommonTree)adaptor.dupNode(ID76);
 
 
@@ -3942,7 +3942,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_type_in_rettype1287);
+					pushFollow(FOLLOW_type_in_rettype1289);
 					foundType=type(stypes);
 					state._fsp--;
 
@@ -3960,7 +3960,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					VOID77=(CommonTree)match(input,VOID,FOLLOW_VOID_in_rettype1297); 
+					VOID77=(CommonTree)match(input,VOID,FOLLOW_VOID_in_rettype1299); 
 					VOID77_tree = (CommonTree)adaptor.dupNode(VOID77);
 
 
@@ -4030,7 +4030,7 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			PARAMS78=(CommonTree)match(input,PARAMS,FOLLOW_PARAMS_in_params1326); 
+			PARAMS78=(CommonTree)match(input,PARAMS,FOLLOW_PARAMS_in_params1328); 
 			PARAMS78_tree = (CommonTree)adaptor.dupNode(PARAMS78);
 
 
@@ -4052,7 +4052,7 @@ public class TypeCheck extends TreeParser {
 						// TypeCheck.g:462:14: retVal= decl[stypes, localEnv]
 						{
 						_last = (CommonTree)input.LT(1);
-						pushFollow(FOLLOW_decl_in_params1331);
+						pushFollow(FOLLOW_decl_in_params1333);
 						retVal=decl(stypes, localEnv);
 						state._fsp--;
 
@@ -4113,108 +4113,108 @@ public class TypeCheck extends TreeParser {
 	public static final BitSet FOLLOW_STRUCT_in_type_decl176 = new BitSet(new long[]{0x0000000000000004L});
 	public static final BitSet FOLLOW_ID_in_type_decl181 = new BitSet(new long[]{0x0000000000000800L});
 	public static final BitSet FOLLOW_nested_struct_decl_in_type_decl190 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_struct_decl_in_nested_struct_decl209 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_DECL_in_struct_decl233 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_TYPE_in_struct_decl236 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_type_in_struct_decl240 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_struct_decl246 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_decl_in_nested_decl269 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_DECL_in_decl293 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_TYPE_in_decl296 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_type_in_decl300 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_decl306 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_DECLS_in_declarations335 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_declaration_in_declarations337 = new BitSet(new long[]{0x0000000000001008L});
-	public static final BitSet FOLLOW_decllist_in_declaration355 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INT_in_type374 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BOOL_in_type382 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRUCT_in_type390 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_type394 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_DECLLIST_in_decllist416 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_TYPE_in_decllist419 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_type_in_decllist423 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_id_list_in_decllist427 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_id_list451 = new BitSet(new long[]{0x0000000002000002L});
-	public static final BitSet FOLLOW_FUNCS_in_functions485 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_function_in_functions487 = new BitSet(new long[]{0x0000000000200008L});
-	public static final BitSet FOLLOW_FUN_in_function511 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_function515 = new BitSet(new long[]{0x0000020000000000L});
-	public static final BitSet FOLLOW_params_in_function519 = new BitSet(new long[]{0x0000800000000000L});
-	public static final BitSet FOLLOW_RETTYPE_in_function523 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_rettype_in_function527 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_declarations_in_function531 = new BitSet(new long[]{0x0008000000000000L});
-	public static final BitSet FOLLOW_statement_list_in_function542 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_STMTS_in_statement_list569 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_statement_in_statement_list573 = new BitSet(new long[]{0x04014800240000C8L});
-	public static final BitSet FOLLOW_block_in_statement604 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_assignment_in_statement614 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_conditional_in_statement625 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_loop_in_statement637 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_invocation_in_statement647 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_read_in_statement656 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ret_in_statement665 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_print_in_statement676 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_READ_in_read694 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalue_in_read696 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_PRINT_in_print712 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_print714 = new BitSet(new long[]{0x0000000000040008L});
-	public static final BitSet FOLLOW_ENDL_in_print717 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_RETURN_in_ret733 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_ret737 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_RETURN_in_ret749 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_arg_list_in_arguments772 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARGS_in_arg_list802 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_arg_list807 = new BitSet(new long[]{0x006005FEB3998018L});
-	public static final BitSet FOLLOW_ARGS_in_arg_list823 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IF_in_conditional845 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_conditional849 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_in_conditional854 = new BitSet(new long[]{0x0000000000000088L});
-	public static final BitSet FOLLOW_block_in_conditional859 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_INVOKE_in_invocation884 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_invocation888 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_arguments_in_invocation892 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_WHILE_in_loop911 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_loop913 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_in_loop916 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_loop919 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_BLOCK_in_block940 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_statement_list_in_block944 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ASSIGN_in_assignment964 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_assignment966 = new BitSet(new long[]{0x0000000002010000L});
-	public static final BitSet FOLLOW_lvalue_in_assignment969 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_invocation_in_expression989 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_expression1001 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1011 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1016 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_set_in_expression1029 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1055 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1060 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_set_in_expression1073 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1083 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1088 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_set_in_expression1101 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1111 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1116 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NOT_in_expression1129 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1131 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_DOT_in_expression1144 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1150 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_expression1155 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_expression1168 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTEGER_in_expression1177 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TRUE_in_expression1184 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FALSE_in_expression1192 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NEW_in_expression1201 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_expression1205 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NEG_in_expression1218 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1224 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NULL_in_expression1237 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_lvalue1254 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOT_in_lvalue1260 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalue_in_lvalue1262 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_lvalue1264 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_type_in_rettype1287 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VOID_in_rettype1297 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PARAMS_in_params1326 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_decl_in_params1331 = new BitSet(new long[]{0x0000000000000808L});
+	public static final BitSet FOLLOW_struct_decl_in_nested_struct_decl210 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_DECL_in_struct_decl235 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_TYPE_in_struct_decl238 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_type_in_struct_decl242 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_struct_decl248 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_decl_in_nested_decl271 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_DECL_in_decl295 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_TYPE_in_decl298 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_type_in_decl302 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_decl308 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DECLS_in_declarations337 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_declaration_in_declarations339 = new BitSet(new long[]{0x0000000000001008L});
+	public static final BitSet FOLLOW_decllist_in_declaration357 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INT_in_type376 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BOOL_in_type384 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRUCT_in_type392 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_type396 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DECLLIST_in_decllist418 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_TYPE_in_decllist421 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_type_in_decllist425 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_id_list_in_decllist429 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_id_list453 = new BitSet(new long[]{0x0000000002000002L});
+	public static final BitSet FOLLOW_FUNCS_in_functions487 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_function_in_functions489 = new BitSet(new long[]{0x0000000000200008L});
+	public static final BitSet FOLLOW_FUN_in_function513 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_function517 = new BitSet(new long[]{0x0000020000000000L});
+	public static final BitSet FOLLOW_params_in_function521 = new BitSet(new long[]{0x0000800000000000L});
+	public static final BitSet FOLLOW_RETTYPE_in_function525 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_rettype_in_function529 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_declarations_in_function533 = new BitSet(new long[]{0x0008000000000000L});
+	public static final BitSet FOLLOW_statement_list_in_function544 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_STMTS_in_statement_list571 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_statement_in_statement_list575 = new BitSet(new long[]{0x04014800240000C8L});
+	public static final BitSet FOLLOW_block_in_statement606 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_assignment_in_statement616 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_conditional_in_statement627 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_loop_in_statement639 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_invocation_in_statement649 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_read_in_statement658 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ret_in_statement667 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_print_in_statement678 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_READ_in_read696 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalue_in_read698 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_PRINT_in_print714 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_print716 = new BitSet(new long[]{0x0000000000040008L});
+	public static final BitSet FOLLOW_ENDL_in_print719 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_RETURN_in_ret735 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_ret739 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_RETURN_in_ret751 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_arg_list_in_arguments774 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARGS_in_arg_list804 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_arg_list809 = new BitSet(new long[]{0x006005FEB3998018L});
+	public static final BitSet FOLLOW_ARGS_in_arg_list825 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IF_in_conditional847 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_conditional851 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_in_conditional856 = new BitSet(new long[]{0x0000000000000088L});
+	public static final BitSet FOLLOW_block_in_conditional861 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_INVOKE_in_invocation886 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_invocation890 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_arguments_in_invocation894 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_WHILE_in_loop913 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_loop915 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_in_loop918 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_loop921 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_BLOCK_in_block942 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_statement_list_in_block946 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ASSIGN_in_assignment966 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_assignment968 = new BitSet(new long[]{0x0000000002010000L});
+	public static final BitSet FOLLOW_lvalue_in_assignment971 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_invocation_in_expression991 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_expression1003 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1013 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1018 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_set_in_expression1031 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1057 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1062 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_set_in_expression1075 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1085 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1090 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_set_in_expression1103 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1113 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1118 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NOT_in_expression1131 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1133 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DOT_in_expression1146 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1152 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_expression1157 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_expression1170 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INTEGER_in_expression1179 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TRUE_in_expression1186 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FALSE_in_expression1194 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NEW_in_expression1203 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_expression1207 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NEG_in_expression1220 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1226 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NULL_in_expression1239 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_lvalue1256 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOT_in_lvalue1262 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalue_in_lvalue1264 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_lvalue1266 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_type_in_rettype1289 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VOID_in_rettype1299 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PARAMS_in_params1328 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_decl_in_params1333 = new BitSet(new long[]{0x0000000000000808L});
 }

@@ -31,7 +31,7 @@ public class LoadAIInst extends Instruction{
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
 		MovQ globalMove = new MovQ(new VirtualRegister(source), new VirtualRegister(target));
 		globalMove.fromMem = true;
-		Integer alignedOffset = offset * 8;
+		Integer alignedOffset = (offset - 1) * 8;
 		globalMove.varOffset = alignedOffset.toString();
 		inst.add(globalMove);
 		return inst;

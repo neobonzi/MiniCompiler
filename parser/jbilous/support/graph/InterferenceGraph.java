@@ -56,7 +56,7 @@ public class InterferenceGraph {
 		HashSet<Integer> newSet = new HashSet<Integer>();
 		
 		for(int i = 0; i < 17; i++) {
-			if(i != 7 && i != 10 && i != 11 && i != 6) {
+			if(i != 0 && i != 7 && i != 10 && i != 11 && i != 16 && i != 6) {
 				newSet.add(new Integer(i));
 			}
 		}

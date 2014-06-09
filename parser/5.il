@@ -1,16 +1,22 @@
  _main:
           loadi 1000, r22
           loadi 2, r23
+          loadi 0, r29
           comp r23, r22, ccr
-          cbrgt cc, L1, L2
-    L1:
-          print r22
-          loadi 2, r31
-          div r22, r31, r32
-          comp r23, r32, ccr
-          cbrgt cc, L1, L2
+          movgt 1, r29
+          compi 1, r29, ccr
+          cbrne cc, L3, L2
     L2:
-          loadi 0, r35
-          storeret r35
+          print r22
+          loadi 2, r32
+          div r22, r32, r33
+          loadi 0, r36
+          comp r23, r33, ccr
+          movgt 1, r36
+          compi 1, r36, ccr
+          cbrne cc, L3, L2
     L3:
-          ret true
+          loadi 0, r37
+          storeret r37
+          br L1
+    L1:

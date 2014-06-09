@@ -15,6 +15,11 @@ public class MovQ extends AssemblyInstruction{
 		super(source, target);
 	}
 
+	public void setTargetAsSource()
+	{
+		this.source2_ass = target_ass;
+	}
+
 	public String toString() {
 		if (fromMem) {
 			if (varOffset != null) {

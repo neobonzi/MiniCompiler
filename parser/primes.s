@@ -11,21 +11,23 @@ L2_.str:
 _isqrt:
        pushq %rbp
        movq %rsp, %rbp
-       subq $240, %rsp
+       subq $288, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
        movq %r14, -32(%rbp)
        movq %r15, -40(%rbp)
-       movq %rdi, %r12
+       movq %rdi, %r11
+       movq %r11, -48(%rbp)
        movq $1, %rbx
-       movq %rbx, %r9
+       movq %rbx, %r15
        movq $3, %rbx
-       movq %rbx, %rdi
-       movq %r9, %rsi
-       movq %r12, %rcx
+       movq %rbx, %r14
+       movq %r15, %r13
+       movq -48(%rbp), %r10
+       movq %r10, %r12
        movq $0, %rbx
-       cmpq %rcx, %rsi
+       cmpq %r12, %r13
        pushq %r8
        movq $1, %r8
        cmovle %r8, %rbx
@@ -34,26 +36,27 @@ _isqrt:
        jne L3
        jmp L2
     L2:
-       movq %r9, %rcx
-       movq %rdi, %rbx
+       movq %r15, %r12
+       movq %r14, %rbx
        pushq %r8
-       movq %rcx, %r8
+       movq %r12, %r8
        addq %rbx, %r8
        movq %r8, %rbx
        popq %r8
-       movq %rbx, %r9
-       movq %rdi, %rcx
+       movq %rbx, %r15
+       movq %r14, %r12
        movq $2, %rbx
        pushq %r8
-       movq %rcx, %r8
+       movq %r12, %r8
        addq %rbx, %r8
        movq %r8, %rbx
        popq %r8
-       movq %rbx, %rdi
-       movq %r9, %rsi
-       movq %r12, %rcx
+       movq %rbx, %r14
+       movq %r15, %r13
+       movq -48(%rbp), %r10
+       movq %r10, %r12
        movq $0, %rbx
-       cmpq %rcx, %rsi
+       cmpq %r12, %r13
        pushq %r8
        movq $1, %r8
        cmovle %r8, %rbx
@@ -62,20 +65,20 @@ _isqrt:
        jne L3
        jmp L2
     L3:
-       movq %rdi, %rcx
+       movq %r14, %r12
        movq $2, %rbx
        pushq %rdx
        pushq %rax
-       movq %rcx, %rax
+       movq %r12, %rax
        movq $0, %rdx
        cqto
        idivq %rbx
-       movq %rax, %rcx
+       movq %rax, %r12
        popq %rax
        popq %rdx
        movq $1, %rbx
        pushq %r8
-       movq %rcx, %r8
+       movq %r12, %r8
        subq %rbx, %r8
        movq %r8, %rbx
        popq %r8
@@ -87,13 +90,13 @@ _isqrt:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $240, %rsp
+       addq $288, %rsp
        popq %rbp
        ret
 _prime:
        pushq %rbp
        movq %rsp, %rbp
-       subq $888, %rsp
+       subq $904, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -126,7 +129,7 @@ _prime:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $888, %rsp
+       addq $904, %rsp
        popq %rbp
        ret
     L7:
@@ -251,7 +254,7 @@ _prime:
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $384, %rsp
+       subq $400, %rsp
        pushq %rax
        pushq %rcx
        pushq %rdx
@@ -375,6 +378,6 @@ _prime:
        movq %rbx, %rax
        jmp L15
    L15:
-       addq $384, %rsp
+       addq $400, %rsp
        popq %rbp
        ret

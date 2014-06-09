@@ -11,17 +11,17 @@ L2_.str:
  _wait:
        pushq %rbp
        movq %rsp, %rbp
-       subq $240, %rsp
+       subq $256, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
        movq %r14, -32(%rbp)
        movq %r15, -40(%rbp)
-       movq %rdi, %rsi
-       movq %rsi, %rdx
-       movq $0, %rcx
+       movq %rdi, %r14
+       movq %r14, %r13
+       movq $0, %r12
        movq $0, %rbx
-       cmpq %rcx, %rdx
+       cmpq %r12, %r13
        pushq %r8
        movq $1, %r8
        cmovg %r8, %rbx
@@ -30,18 +30,18 @@ L2_.str:
        jne L3
        jmp L2
     L2:
-       movq %rsi, %rcx
+       movq %r14, %r12
        movq $1, %rbx
        pushq %r8
-       movq %rcx, %r8
+       movq %r12, %r8
        subq %rbx, %r8
        movq %r8, %rbx
        popq %r8
-       movq %rbx, %rsi
-       movq %rsi, %rdx
-       movq $0, %rcx
+       movq %rbx, %r14
+       movq %r14, %r13
+       movq $0, %r12
        movq $0, %rbx
-       cmpq %rcx, %rdx
+       cmpq %r12, %r13
        pushq %r8
        movq $1, %r8
        cmovg %r8, %rbx
@@ -59,13 +59,13 @@ L2_.str:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $240, %rsp
+       addq $256, %rsp
        popq %rbp
        ret
 _power:
        pushq %rbp
        movq %rsp, %rbp
-       subq $512, %rsp
+       subq $288, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -73,70 +73,52 @@ _power:
        movq %r15, -40(%rbp)
        movq %rdi, %r11
        movq %r11, -48(%rbp)
-       movq %rsi, %r11
-       movq %r11, -56(%rbp)
-       movq $1, %r11
-       movq %r11, -64(%rbp)
-       movq -64(%rbp), %r10
-       movq %r10, -72(%rbp)
-       movq %r10, %r10
-       movq -56(%rbp), %r10
-       movq %r10, -80(%rbp)
-       movq %r10, %r10
-       movq $0, %r15
-       movq $0, %r14
-       movq -80(%rbp), %r11
-       cmpq %r15, %r11
+       movq %rsi, %r15
+       movq $1, %rbx
+       movq %rbx, %r14
+       movq %r15, %r13
+       movq $0, %r12
+       movq $0, %rbx
+       cmpq %r12, %r13
        pushq %r8
        movq $1, %r8
-       cmovg %r8, %r14
+       cmovg %r8, %rbx
        popq %r8
-       cmpq $1, %r14
+       cmpq $1, %rbx
        jne L6
        jmp L5
     L5:
-       movq -72(%rbp), %r10
-       movq %r10, %r13
+       movq %r14, %r12
        movq -48(%rbp), %r10
-       movq %r10, %r12
+       movq %r10, %rbx
+       pushq %r8
+       movq %rbx, %r8
+       imulq %r12, %r8
+       movq %r8, %rbx
+       popq %r8
+       movq %rbx, %r14
+       movq %r15, %r12
+       movq $1, %rbx
        pushq %r8
        movq %r12, %r8
-       imulq %r13, %r8
-       movq %r8, %r9
+       subq %rbx, %r8
+       movq %r8, %rbx
        popq %r8
-       movq %r9, %r11
-       movq %r11, -72(%rbp)
-       movq -56(%rbp), %r10
-       movq %r10, %rdi
-       movq $1, %rsi
-       pushq %r8
-       movq %rdi, %r8
-       subq %rsi, %r8
-       movq %r8, %rdx
-       popq %r8
-       movq %rdx, %r11
-       movq %r11, -56(%rbp)
-       movq -56(%rbp), %r10
-       movq %r10, %rcx
+       movq %rbx, %r15
+       movq %r15, %r13
+       movq $0, %r12
        movq $0, %rbx
-       movq $0, %r11
-       movq %r11, -104(%rbp)
-       cmpq %rbx, %rcx
+       cmpq %r12, %r13
        pushq %r8
        movq $1, %r8
-       cmovg %r8, %r11
-       movq %r11, -104(%rbp)
+       cmovg %r8, %rbx
        popq %r8
-       movq -104(%rbp), %r11
-       cmpq $1, %r11
+       cmpq $1, %rbx
        jne L6
        jmp L5
     L6:
-       movq -72(%rbp), %r10
-       movq %r10, -120(%rbp)
-       movq %r10, %r10
-       movq -120(%rbp), %r10
-       movq %r10, %rax
+       movq %r14, %rbx
+       movq %rbx, %rax
        jmp L4
     L4:
        movq -8(%rbp), %rbx
@@ -144,13 +126,13 @@ _power:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $512, %rsp
+       addq $288, %rsp
        popq %rbp
        ret
 _recursiveDecimalSum:
        pushq %rbp
        movq %rsp, %rbp
-       subq $1048, %rsp
+       subq $1064, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -322,7 +304,7 @@ _recursiveDecimalSum:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $1048, %rsp
+       addq $1064, %rsp
        popq %rbp
        ret
    L13:
@@ -332,7 +314,7 @@ _recursiveDecimalSum:
 _convertToDecimal:
        pushq %rbp
        movq %rsp, %rbp
-       subq $176, %rsp
+       subq $192, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -379,13 +361,13 @@ _convertToDecimal:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $176, %rsp
+       addq $192, %rsp
        popq %rbp
        ret
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $288, %rsp
+       subq $304, %rsp
        pushq %rax
        pushq %rcx
        pushq %rdx
@@ -529,6 +511,6 @@ _convertToDecimal:
        movq %rbx, %rax
        jmp L17
    L17:
-       addq $288, %rsp
+       addq $304, %rsp
        popq %rbp
        ret
