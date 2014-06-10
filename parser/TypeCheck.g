@@ -392,10 +392,10 @@ expression [StructTypes stypes, Vector<SymbolTable> env] returns [Type t = null]
 			}
 			$t = new IntType();
 		}
-	|  ^(NOT expression[stypes, env])
+	|  ^(NOT retType=expression[stypes, env])
 		{
-			if(!$ret1.t.getClass().equals(IntType.class) || !$ret2.t.getClass().equals(IntType.class)) {
-				//error("Operator ! requires two boolean types");
+			if(!$retType.t.getClass().equals(BoolType.class)) {
+				error("Operator ! requires two boolean types");
 			}
 			$t = new BoolType();
 		}

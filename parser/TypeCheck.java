@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 TypeCheck.g 2014-06-09 16:56:26
+// $ANTLR 3.5.2 TypeCheck.g 2014-06-09 23:36:29
 
    import java.util.Map;
    import java.util.HashMap;
@@ -3216,7 +3216,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "expression"
-	// TypeCheck.g:362:1: expression[StructTypes stypes, Vector<SymbolTable> env] returns [Type t = null] : (retVal= invocation[stypes, env] | ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( NOT expression[stypes, env] ) | ^( DOT retType= expression[stypes, env] memberId= ID ) |idCall= ID | INTEGER | TRUE | FALSE | ^( NEW id= ID ) | ^( NEG retType= expression[stypes,env] ) | NULL );
+	// TypeCheck.g:362:1: expression[StructTypes stypes, Vector<SymbolTable> env] returns [Type t = null] : (retVal= invocation[stypes, env] | ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( NOT retType= expression[stypes, env] ) | ^( DOT retType= expression[stypes, env] memberId= ID ) |idCall= ID | INTEGER | TRUE | FALSE | ^( NEW id= ID ) | ^( NEG retType= expression[stypes,env] ) | NULL );
 	public final TypeCheck.expression_return expression(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.expression_return retval = new TypeCheck.expression_return();
 		retval.start = input.LT(1);
@@ -3235,18 +3235,17 @@ public class TypeCheck extends TreeParser {
 		CommonTree set65=null;
 		CommonTree set66=null;
 		CommonTree NOT67=null;
-		CommonTree DOT69=null;
-		CommonTree INTEGER70=null;
-		CommonTree TRUE71=null;
-		CommonTree FALSE72=null;
-		CommonTree NEW73=null;
-		CommonTree NEG74=null;
-		CommonTree NULL75=null;
+		CommonTree DOT68=null;
+		CommonTree INTEGER69=null;
+		CommonTree TRUE70=null;
+		CommonTree FALSE71=null;
+		CommonTree NEW72=null;
+		CommonTree NEG73=null;
+		CommonTree NULL74=null;
 		TreeRuleReturnScope retVal =null;
 		TreeRuleReturnScope ret1 =null;
 		TreeRuleReturnScope ret2 =null;
 		TreeRuleReturnScope retType =null;
-		TreeRuleReturnScope expression68 =null;
 
 		CommonTree memberId_tree=null;
 		CommonTree idCall_tree=null;
@@ -3256,16 +3255,16 @@ public class TypeCheck extends TreeParser {
 		CommonTree set65_tree=null;
 		CommonTree set66_tree=null;
 		CommonTree NOT67_tree=null;
-		CommonTree DOT69_tree=null;
-		CommonTree INTEGER70_tree=null;
-		CommonTree TRUE71_tree=null;
-		CommonTree FALSE72_tree=null;
-		CommonTree NEW73_tree=null;
-		CommonTree NEG74_tree=null;
-		CommonTree NULL75_tree=null;
+		CommonTree DOT68_tree=null;
+		CommonTree INTEGER69_tree=null;
+		CommonTree TRUE70_tree=null;
+		CommonTree FALSE71_tree=null;
+		CommonTree NEW72_tree=null;
+		CommonTree NEG73_tree=null;
+		CommonTree NULL74_tree=null;
 
 		try {
-			// TypeCheck.g:363:2: (retVal= invocation[stypes, env] | ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( NOT expression[stypes, env] ) | ^( DOT retType= expression[stypes, env] memberId= ID ) |idCall= ID | INTEGER | TRUE | FALSE | ^( NEW id= ID ) | ^( NEG retType= expression[stypes,env] ) | NULL )
+			// TypeCheck.g:363:2: (retVal= invocation[stypes, env] | ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( NOT retType= expression[stypes, env] ) | ^( DOT retType= expression[stypes, env] memberId= ID ) |idCall= ID | INTEGER | TRUE | FALSE | ^( NEW id= ID ) | ^( NEG retType= expression[stypes,env] ) | NULL )
 			int alt17=14;
 			switch ( input.LA(1) ) {
 			case INVOKE:
@@ -3591,7 +3590,7 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 6 :
-					// TypeCheck.g:395:5: ^( NOT expression[stypes, env] )
+					// TypeCheck.g:395:5: ^( NOT retType= expression[stypes, env] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3610,11 +3609,11 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1161);
-					expression68=expression(stypes, env);
+					pushFollow(FOLLOW_expression_in_expression1163);
+					retType=expression(stypes, env);
 					state._fsp--;
 
-					adaptor.addChild(root_1, expression68.getTree());
+					adaptor.addChild(root_1, retType.getTree());
 
 					match(input, Token.UP, null); 
 					adaptor.addChild(root_0, root_1);
@@ -3623,8 +3622,8 @@ public class TypeCheck extends TreeParser {
 
 
 
-								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
-									//error("Operator ! requires two boolean types");
+								if(!(retType!=null?((TypeCheck.expression_return)retType).t:null).getClass().equals(BoolType.class)) {
+									error("Operator ! requires two boolean types");
 								}
 								retval.t = new BoolType();
 							
@@ -3642,22 +3641,22 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT69=(CommonTree)match(input,DOT,FOLLOW_DOT_in_expression1174); 
-					DOT69_tree = (CommonTree)adaptor.dupNode(DOT69);
+					DOT68=(CommonTree)match(input,DOT,FOLLOW_DOT_in_expression1176); 
+					DOT68_tree = (CommonTree)adaptor.dupNode(DOT68);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DOT69_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DOT68_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1180);
+					pushFollow(FOLLOW_expression_in_expression1182);
 					retType=expression(stypes, env);
 					state._fsp--;
 
 					adaptor.addChild(root_1, retType.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					memberId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1185); 
+					memberId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1187); 
 					memberId_tree = (CommonTree)adaptor.dupNode(memberId);
 
 
@@ -3692,7 +3691,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					idCall=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1198); 
+					idCall=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1200); 
 					idCall_tree = (CommonTree)adaptor.dupNode(idCall);
 
 
@@ -3716,11 +3715,11 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					INTEGER70=(CommonTree)match(input,INTEGER,FOLLOW_INTEGER_in_expression1207); 
-					INTEGER70_tree = (CommonTree)adaptor.dupNode(INTEGER70);
+					INTEGER69=(CommonTree)match(input,INTEGER,FOLLOW_INTEGER_in_expression1209); 
+					INTEGER69_tree = (CommonTree)adaptor.dupNode(INTEGER69);
 
 
-					adaptor.addChild(root_0, INTEGER70_tree);
+					adaptor.addChild(root_0, INTEGER69_tree);
 
 					 retval.t = new IntType(); 
 					}
@@ -3732,11 +3731,11 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					TRUE71=(CommonTree)match(input,TRUE,FOLLOW_TRUE_in_expression1214); 
-					TRUE71_tree = (CommonTree)adaptor.dupNode(TRUE71);
+					TRUE70=(CommonTree)match(input,TRUE,FOLLOW_TRUE_in_expression1216); 
+					TRUE70_tree = (CommonTree)adaptor.dupNode(TRUE70);
 
 
-					adaptor.addChild(root_0, TRUE71_tree);
+					adaptor.addChild(root_0, TRUE70_tree);
 
 					 retval.t = new BoolType(); 
 					}
@@ -3748,11 +3747,11 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					FALSE72=(CommonTree)match(input,FALSE,FOLLOW_FALSE_in_expression1222); 
-					FALSE72_tree = (CommonTree)adaptor.dupNode(FALSE72);
+					FALSE71=(CommonTree)match(input,FALSE,FOLLOW_FALSE_in_expression1224); 
+					FALSE71_tree = (CommonTree)adaptor.dupNode(FALSE71);
 
 
-					adaptor.addChild(root_0, FALSE72_tree);
+					adaptor.addChild(root_0, FALSE71_tree);
 
 					 retval.t = new BoolType(); 
 					}
@@ -3769,15 +3768,15 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NEW73=(CommonTree)match(input,NEW,FOLLOW_NEW_in_expression1231); 
-					NEW73_tree = (CommonTree)adaptor.dupNode(NEW73);
+					NEW72=(CommonTree)match(input,NEW,FOLLOW_NEW_in_expression1233); 
+					NEW72_tree = (CommonTree)adaptor.dupNode(NEW72);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NEW73_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NEW72_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					id=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1235); 
+					id=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1237); 
 					id_tree = (CommonTree)adaptor.dupNode(id);
 
 
@@ -3810,15 +3809,15 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NEG74=(CommonTree)match(input,NEG,FOLLOW_NEG_in_expression1248); 
-					NEG74_tree = (CommonTree)adaptor.dupNode(NEG74);
+					NEG73=(CommonTree)match(input,NEG,FOLLOW_NEG_in_expression1250); 
+					NEG73_tree = (CommonTree)adaptor.dupNode(NEG73);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NEG74_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NEG73_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1254);
+					pushFollow(FOLLOW_expression_in_expression1256);
 					retType=expression(stypes, env);
 					state._fsp--;
 
@@ -3840,11 +3839,11 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					NULL75=(CommonTree)match(input,NULL,FOLLOW_NULL_in_expression1267); 
-					NULL75_tree = (CommonTree)adaptor.dupNode(NULL75);
+					NULL74=(CommonTree)match(input,NULL,FOLLOW_NULL_in_expression1269); 
+					NULL74_tree = (CommonTree)adaptor.dupNode(NULL74);
 
 
-					adaptor.addChild(root_0, NULL75_tree);
+					adaptor.addChild(root_0, NULL74_tree);
 
 
 								retval.t = new NullType();
@@ -3887,14 +3886,14 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree ID76=null;
-		CommonTree DOT77=null;
-		CommonTree ID79=null;
-		TreeRuleReturnScope lvalue78 =null;
+		CommonTree ID75=null;
+		CommonTree DOT76=null;
+		CommonTree ID78=null;
+		TreeRuleReturnScope lvalue77 =null;
 
-		CommonTree ID76_tree=null;
-		CommonTree DOT77_tree=null;
-		CommonTree ID79_tree=null;
+		CommonTree ID75_tree=null;
+		CommonTree DOT76_tree=null;
+		CommonTree ID78_tree=null;
 
 		try {
 			// TypeCheck.g:447:2: ( ID | ^( DOT lvalue ID ) )
@@ -3921,11 +3920,11 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					ID76=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1284); 
-					ID76_tree = (CommonTree)adaptor.dupNode(ID76);
+					ID75=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1286); 
+					ID75_tree = (CommonTree)adaptor.dupNode(ID75);
 
 
-					adaptor.addChild(root_0, ID76_tree);
+					adaptor.addChild(root_0, ID75_tree);
 
 					}
 					break;
@@ -3941,26 +3940,26 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT77=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalue1290); 
-					DOT77_tree = (CommonTree)adaptor.dupNode(DOT77);
+					DOT76=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalue1292); 
+					DOT76_tree = (CommonTree)adaptor.dupNode(DOT76);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DOT77_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DOT76_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_lvalue_in_lvalue1292);
-					lvalue78=lvalue();
+					pushFollow(FOLLOW_lvalue_in_lvalue1294);
+					lvalue77=lvalue();
 					state._fsp--;
 
-					adaptor.addChild(root_1, lvalue78.getTree());
+					adaptor.addChild(root_1, lvalue77.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					ID79=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1294); 
-					ID79_tree = (CommonTree)adaptor.dupNode(ID79);
+					ID78=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1296); 
+					ID78_tree = (CommonTree)adaptor.dupNode(ID78);
 
 
-					adaptor.addChild(root_1, ID79_tree);
+					adaptor.addChild(root_1, ID78_tree);
 
 					match(input, Token.UP, null); 
 					adaptor.addChild(root_0, root_1);
@@ -4007,10 +4006,10 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree VOID80=null;
+		CommonTree VOID79=null;
 		TreeRuleReturnScope foundType =null;
 
-		CommonTree VOID80_tree=null;
+		CommonTree VOID79_tree=null;
 
 		try {
 			// TypeCheck.g:452:2: (foundType= type[stypes] | VOID )
@@ -4037,7 +4036,7 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_type_in_rettype1317);
+					pushFollow(FOLLOW_type_in_rettype1319);
 					foundType=type(stypes);
 					state._fsp--;
 
@@ -4055,11 +4054,11 @@ public class TypeCheck extends TreeParser {
 
 
 					_last = (CommonTree)input.LT(1);
-					VOID80=(CommonTree)match(input,VOID,FOLLOW_VOID_in_rettype1327); 
-					VOID80_tree = (CommonTree)adaptor.dupNode(VOID80);
+					VOID79=(CommonTree)match(input,VOID,FOLLOW_VOID_in_rettype1329); 
+					VOID79_tree = (CommonTree)adaptor.dupNode(VOID79);
 
 
-					adaptor.addChild(root_0, VOID80_tree);
+					adaptor.addChild(root_0, VOID79_tree);
 
 
 								retval.retType = new VoidType();
@@ -4103,10 +4102,10 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree PARAMS81=null;
+		CommonTree PARAMS80=null;
 		TreeRuleReturnScope retVal =null;
 
-		CommonTree PARAMS81_tree=null;
+		CommonTree PARAMS80_tree=null;
 
 
 				SymbolTable localEnv = env.get(0);
@@ -4125,11 +4124,11 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			PARAMS81=(CommonTree)match(input,PARAMS,FOLLOW_PARAMS_in_params1356); 
-			PARAMS81_tree = (CommonTree)adaptor.dupNode(PARAMS81);
+			PARAMS80=(CommonTree)match(input,PARAMS,FOLLOW_PARAMS_in_params1358); 
+			PARAMS80_tree = (CommonTree)adaptor.dupNode(PARAMS80);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(PARAMS81_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(PARAMS80_tree, root_1);
 
 			if ( input.LA(1)==Token.DOWN ) {
 				match(input, Token.DOWN, null); 
@@ -4147,7 +4146,7 @@ public class TypeCheck extends TreeParser {
 						// TypeCheck.g:467:14: retVal= decl[stypes, localEnv]
 						{
 						_last = (CommonTree)input.LT(1);
-						pushFollow(FOLLOW_decl_in_params1361);
+						pushFollow(FOLLOW_decl_in_params1363);
 						retVal=decl(stypes, localEnv);
 						state._fsp--;
 
@@ -4294,25 +4293,25 @@ public class TypeCheck extends TreeParser {
 	public static final BitSet FOLLOW_expression_in_expression1141 = new BitSet(new long[]{0x006005FEB3998010L});
 	public static final BitSet FOLLOW_expression_in_expression1146 = new BitSet(new long[]{0x0000000000000008L});
 	public static final BitSet FOLLOW_NOT_in_expression1159 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1161 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_DOT_in_expression1174 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1180 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_expression1185 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_expression1198 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTEGER_in_expression1207 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TRUE_in_expression1214 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FALSE_in_expression1222 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NEW_in_expression1231 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_expression1235 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NEG_in_expression1248 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1254 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NULL_in_expression1267 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_lvalue1284 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOT_in_lvalue1290 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalue_in_lvalue1292 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_lvalue1294 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_type_in_rettype1317 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VOID_in_rettype1327 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PARAMS_in_params1356 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_decl_in_params1361 = new BitSet(new long[]{0x0000000000000808L});
+	public static final BitSet FOLLOW_expression_in_expression1163 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DOT_in_expression1176 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1182 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_expression1187 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_expression1200 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INTEGER_in_expression1209 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TRUE_in_expression1216 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FALSE_in_expression1224 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NEW_in_expression1233 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_expression1237 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NEG_in_expression1250 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1256 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NULL_in_expression1269 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_lvalue1286 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOT_in_lvalue1292 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalue_in_lvalue1294 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_lvalue1296 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_type_in_rettype1319 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VOID_in_rettype1329 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PARAMS_in_params1358 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_decl_in_params1363 = new BitSet(new long[]{0x0000000000000808L});
 }

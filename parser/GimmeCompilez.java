@@ -212,8 +212,8 @@ public class GimmeCompilez
          for (Instruction ins : cfgBlock.instructions) {
             try{
                cfgBlock.assemInstructions.addAll(ins.genAssembly());
-            } catch (NoSuchMethodError e) {
-
+            } catch (Exception e) {
+               System.out.println("woops" + ins);
             }
          }
       }

@@ -21,6 +21,7 @@ public class StoreImmInst extends Instruction{
 		Vector<AssemblyInstruction> inst = new Vector<AssemblyInstruction>();
 		MovQ globalMove = new MovQ(new VirtualRegister(imm), new VirtualRegister(source));
 		globalMove.toMem = true;
+		System.out.println("store for " + stringTarget);
 		globalMove.stackPos = (offset - 1) * 8;
 		globalMove.setTargetAsSource();
 		inst.add(globalMove);
