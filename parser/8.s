@@ -11,7 +11,7 @@ L2_.str:
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $24, %rsp
+       subq $96, %rsp
        pushq %rax
        pushq %rcx
        pushq %rdx
@@ -38,6 +38,6 @@ L2_.str:
        movq %rbx, %rax
        jmp L1
     L1:
-       addq $24, %rsp
+       addq $96, %rsp
        popq %rbp
        ret

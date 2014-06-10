@@ -11,7 +11,7 @@ L2_.str:
 _getIntList:
        pushq %rbp
        movq %rsp, %rbp
-       subq $80, %rsp
+       subq $152, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -86,7 +86,7 @@ _getIntList:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $80, %rsp
+       addq $152, %rsp
        popq %rbp
        ret
     L4:
@@ -124,7 +124,7 @@ _getIntList:
 _biggest:
        pushq %rbp
        movq %rsp, %rbp
-       subq $56, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -156,7 +156,7 @@ _biggest:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $56, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
     L9:
@@ -167,7 +167,7 @@ _biggest:
 _biggestInList:
        pushq %rbp
        movq %rsp, %rbp
-       subq $72, %rsp
+       subq $144, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -250,13 +250,13 @@ _biggestInList:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $72, %rsp
+       addq $144, %rsp
        popq %rbp
        ret
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $16, %rsp
+       subq $88, %rsp
        pushq %rcx
        pushq %rdx
        pushq %rsi
@@ -320,6 +320,6 @@ _biggestInList:
        movq %rbx, %rax
        jmp L14
    L14:
-       addq $16, %rsp
+       addq $88, %rsp
        popq %rbp
        ret

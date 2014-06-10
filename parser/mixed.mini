@@ -95,12 +95,7 @@ fun main() int
     read d;
     read e;
 
-    tailrecursive(a);
-    print a endl;
-    domath(b);
-    print b endl;
-    objinstantiation(c);
-    print c endl;
+
     print ackermann(d,e) endl;
 
     return 0;

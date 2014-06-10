@@ -11,7 +11,7 @@ L2_.str:
 _computeFib:
        pushq %rbp
        movq %rsp, %rbp
-       subq $624, %rsp
+       subq $136, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -44,7 +44,7 @@ _computeFib:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $624, %rsp
+       addq $136, %rsp
        popq %rbp
        ret
     L4:

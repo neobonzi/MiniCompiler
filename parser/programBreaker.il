@@ -101,37 +101,38 @@
  _main:
           loadi 0, r18
           mov r18, r17
-          read r17
-          mov r17, r19
-          loadi 10000, r20
-          loadi 0, r21
-          comp r20, r19, ccr
-          movlt 1, r21
-          compi 1, r21, ccr
+          read r19
+          mov r19, r17
+          mov r17, r20
+          loadi 10000, r21
+          loadi 0, r22
+          comp r21, r20, ccr
+          movlt 1, r22
+          compi 1, r22, ccr
           cbrne cc, L17, L16
    L16:
-          loadi 3, r22
-          mov r17, r23
-          loadi 5, r24
-          storeoutargument r22, 0
-          storeoutargument r23, 1
-          storeoutargument r24, 2
+          loadi 3, r23
+          mov r17, r24
+          loadi 5, r25
+          storeoutargument r23, 0
+          storeoutargument r24, 1
+          storeoutargument r25, 2
           call _fun1, 3
-          loadret r25
-          print r25
-          mov r17, r26
-          loadi 1, r27
-          add r26, r27, r28
-          mov r28, r17
-          mov r17, r29
-          loadi 10000, r30
-          loadi 0, r31
-          comp r30, r29, ccr
-          movlt 1, r31
-          compi 1, r31, ccr
+          loadret r26
+          print r26
+          mov r17, r27
+          loadi 1, r28
+          add r27, r28, r29
+          mov r29, r17
+          mov r17, r30
+          loadi 10000, r31
+          loadi 0, r32
+          comp r31, r30, ccr
+          movlt 1, r32
+          compi 1, r32, ccr
           cbrne cc, L17, L16
    L17:
-          loadi 0, r32
-          storeret r32
+          loadi 0, r33
+          storeret r33
           br L15
    L15:

@@ -13,7 +13,7 @@ L2_.str:
  _fun2:
        pushq %rbp
        movq %rsp, %rbp
-       subq $448, %rsp
+       subq $144, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -49,7 +49,7 @@ L2_.str:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $448, %rsp
+       addq $144, %rsp
        popq %rbp
        ret
     L4:
@@ -89,7 +89,7 @@ L2_.str:
  _fun1:
        pushq %rbp
        movq %rsp, %rbp
-       subq $896, %rsp
+       subq $168, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -200,7 +200,7 @@ L2_.str:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $896, %rsp
+       addq $168, %rsp
        popq %rbp
        ret
     L9:
@@ -266,7 +266,7 @@ L2_.str:
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $240, %rsp
+       subq $128, %rsp
        movq $0, %rbx
        movq %rbx, %r11
        movq %r11, -16(%rbp)
@@ -290,7 +290,8 @@ L2_.str:
        popq %rdx
        popq %rcx
        popq %rax
-       movq -16(%rbp), %r11
+       movq -16(%rbp), %rbx
+       movq %rbx, %r11
        movq %r11, -16(%rbp)
        movq -16(%rbp), %r10
        movq %r10, -32(%rbp)
@@ -383,6 +384,6 @@ L2_.str:
        movq %rbx, %rax
        jmp L15
    L15:
-       addq $240, %rsp
+       addq $128, %rsp
        popq %rbp
        ret

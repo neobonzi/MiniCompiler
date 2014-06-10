@@ -11,18 +11,18 @@ _buildList:
           mov r29, r23
           new node, r30
           mov r30, r24
-          loadAI r19, @value, r31
           read r31
-          loadAI r20, @value, r32
+          storeai r31, r19,  @value
           read r32
-          loadAI r21, @value, r33
+          storeai r32, r20,  @value
           read r33
-          loadAI r22, @value, r34
+          storeai r33, r21,  @value
           read r34
-          loadAI r23, @value, r35
+          storeai r34, r22,  @value
           read r35
-          loadAI r24, @value, r36
+          storeai r35, r23,  @value
           read r36
+          storeai r36, r24,  @value
           mov r20, r37
           storeai r37, r19,  @next
           mov r21, r38

@@ -1,232 +1,223 @@
-tailrecursive:
-	loadinargument num, 0, r0
-	mov r0, r2
-	loadi 0, r3
-	comp r2, r3, ccr
-	cbrgt ccr, L3, L2
-L2:
-	jumpi L1
-L4:
-L3:
-	new foo, [simp, bar, cool], r5
-	mov r5, r1
-	mov r0, r6
-	loadi 1, r7
-	sub r6, r7, r8
-	storeoutargument r8, 0
-	call tailrecursive, 1
-L1:
-L5:
-	ret true
-
-add:
-	loadinargument x, 0, r0
-	loadinargument y, 1, r1
-	mov r0, r2
-	mov r1, r3
-	add r2, r3, r4
-	storeret r4
-L6:
-L7:
-	ret true
-
-domath:
-	loadinargument num, 0, r0
-	new foo, [simp, bar, cool], r4
-	mov r4, r1
-	new simple, [one], r5
-	mov r1, r6
-	storeai r5, r6, simp
-	new foo, [simp, bar, cool], r7
-	mov r7, r2
-	new simple, [one], r8
-	mov r2, r9
-	storeai r8, r9, simp
-	mov r0, r10
-	mov r1, r11
-	storeai r10, r11, bar
-	loadi 3, r12
-	mov r2, r13
-	storeai r12, r13, bar
-	mov r1, r14
-	loadai r14, bar, r15
-	mov r1, r16
-	loadai r16, simp, r17
-	storeai r15, r17, one
-	mov r2, r18
-	loadai r18, bar, r19
-	mov r2, r20
-	loadai r20, simp, r21
-	storeai r19, r21, one
-	mov r0, r22
-	loadi 0, r23
-	comp r22, r23, ccr
-	cbrle ccr, L9, L8
-L8:
-	mov r1, r25
-	loadai r25, bar, r26
-	mov r2, r27
-	loadai r27, bar, r28
-	mult r26, r28, r29
-	mov r29, r3
-	mov r1, r31
-	loadai r31, simp, r32
-	loadai r32, one, r33
-	mov r3, r30
-	mult r30, r33, r34
-	mov r2, r35
-	loadai r35, bar, r36
-	div r34, r36, r37
-	mov r37, r3
-	mov r2, r38
-	loadai r38, simp, r39
-	loadai r39, one, r40
-	mov r1, r41
-	loadai r41, bar, r42
-	storeoutargument r40, 0
-	storeoutargument r42, 1
-	call add, 2
-	loadret r43
-	mov r43, r3
-	mov r2, r44
-	loadai r44, bar, r45
-	mov r1, r46
-	loadai r46, bar, r47
-	sub r45, r47, r48
-	mov r48, r3
-	mov r0, r49
-	loadi 1, r50
-	sub r49, r50, r51
-	mov r51, r0
-	mov r0, r52
-	loadi 0, r53
-	comp r52, r53, ccr
-	cbrgt ccr, L8, L9
-L9:
-	mov r1, r55
-	del r55
-	mov r2, r56
-	del r56
-L10:
-	ret true
-
-objinstantiation:
-	loadinargument num, 0, r0
-	mov r0, r2
-	loadi 0, r3
-	comp r2, r3, ccr
-	cbrle ccr, L12, L11
-L11:
-	new foo, [simp, bar, cool], r5
-	mov r5, r1
-	mov r1, r6
-	del r6
-	mov r0, r7
-	loadi 1, r8
-	sub r7, r8, r9
-	mov r9, r0
-	mov r0, r10
-	loadi 0, r11
-	comp r10, r11, ccr
-	cbrgt ccr, L11, L12
-L12:
-L13:
-	ret true
-
-ackermann:
-	loadinargument m, 0, r0
-	loadinargument n, 1, r1
-	mov r0, r2
-	loadi 0, r3
-	comp r2, r3, ccr
-	cbrne ccr, L16, L15
-L15:
-	mov r1, r5
-	loadi 1, r6
-	add r5, r6, r7
-	storeret r7
-	jumpi L14
-L17:
-L16:
-	mov r1, r8
-	loadi 0, r9
-	comp r8, r9, ccr
-	cbrne ccr, L21, L20
-L20:
-	mov r0, r11
-	loadi 1, r12
-	sub r11, r12, r13
-	loadi 1, r14
-	storeoutargument r13, 0
-	storeoutargument r14, 1
-	call ackermann, 2
-	loadret r15
-	storeret r15
-	jumpi L18
-L21:
-	mov r1, r20
-	loadi 1, r21
-	sub r20, r21, r22
-	mov r0, r19
-	storeoutargument r19, 0
-	storeoutargument r22, 1
-	call ackermann, 2
-	loadret r23
-	mov r0, r16
-	loadi 1, r17
-	sub r16, r17, r18
-	storeoutargument r18, 0
-	storeoutargument r23, 1
-	call ackermann, 2
-	loadret r24
-	storeret r24
-L14:
-L18:
-L19:
-L24:
-	ret true
-
-main:
-	addi rarp, a, r5
-	read r5
-	loadai rarp, a, r0
-	addi rarp, b, r6
-	read r6
-	loadai rarp, b, r1
-	addi rarp, c, r7
-	read r7
-	loadai rarp, c, r2
-	addi rarp, d, r8
-	read r8
-	loadai rarp, d, r3
-	addi rarp, e, r9
-	read r9
-	loadai rarp, e, r4
-	mov r0, r10
-	storeoutargument r10, 0
-	call tailrecursive, 1
-	mov r0, r12
-	println r12
-	mov r1, r13
-	storeoutargument r13, 0
-	call domath, 1
-	mov r1, r15
-	println r15
-	mov r2, r16
-	storeoutargument r16, 0
-	call objinstantiation, 1
-	mov r2, r18
-	println r18
-	mov r3, r19
-	mov r4, r20
-	storeoutargument r19, 0
-	storeoutargument r20, 1
-	call ackermann, 2
-	loadret r21
-	println r21
-	loadi 0, r22
-	storeret r22
-L25:
-L26:
-	ret true
-
+_tailrecursive:
+          loadinargument num, 0, r17
+    L2:
+          mov r17, r19
+          loadi 0, r20
+          loadi 0, r21
+          comp r20, r19, ccr
+          movle 1, r21
+          compi 1, r21, ccr
+          cbrne cc, L4, L3
+    L3:
+          br L1
+          br L5
+    L5:
+          new foo, r22
+          mov r22, r18
+          mov r17, r23
+          loadi 1, r24
+          sub r23, r24, r25
+          storeoutargument r25, 0
+          call _tailrecursive, 1
+          loadret r26
+    L1:
+    L4:
+          br L5
+  _add:
+          loadinargument x, 0, r17
+          loadinargument y, 1, r18
+          mov r17, r19
+          mov r18, r20
+          add r19, r20, r21
+          storeret r21
+          br L6
+    L6:
+_domath:
+          loadinargument num, 0, r17
+          new foo, r21
+          mov r21, r18
+          new simple, r22
+          storeai r22, r18,  @simp
+          new foo, r23
+          mov r23, r19
+          new simple, r24
+          storeai r24, r19,  @simp
+          mov r17, r25
+          storeai r25, r18,  @bar
+          loadi 3, r26
+          storeai r26, r19,  @bar
+          mov r18, r27
+          loadAI r27, @bar, r28
+          loadAI r18, @simp, r29
+          storeai r28, r29,  @one
+          mov r19, r30
+          loadAI r30, @bar, r31
+          loadAI r19, @simp, r32
+          storeai r31, r32,  @one
+          mov r17, r33
+          loadi 0, r34
+          loadi 0, r35
+          comp r34, r33, ccr
+          movgt 1, r35
+          compi 1, r35, ccr
+          cbrne cc, L9, L8
+    L8:
+          mov r18, r36
+          loadAI r36, @bar, r37
+          mov r19, r38
+          loadAI r38, @bar, r39
+          mult r37, r39, r40
+          mov r40, r20
+          mov r20, r41
+          mov r18, r42
+          loadAI r42, @simp, r43
+          loadAI r43, @one, r44
+          mult r41, r44, r45
+          mov r19, r46
+          loadAI r46, @bar, r47
+          div r45, r47, r48
+          mov r48, r20
+          mov r19, r49
+          loadAI r49, @simp, r50
+          loadAI r50, @one, r51
+          mov r18, r52
+          loadAI r52, @bar, r53
+          storeoutargument r51, 0
+          storeoutargument r53, 1
+          call _add, 2
+          loadret r54
+          mov r54, r20
+          mov r19, r55
+          loadAI r55, @bar, r56
+          mov r18, r57
+          loadAI r57, @bar, r58
+          sub r56, r58, r59
+          mov r59, r20
+          mov r17, r60
+          loadi 1, r61
+          sub r60, r61, r62
+          mov r62, r17
+          mov r17, r63
+          loadi 0, r64
+          loadi 0, r65
+          comp r64, r63, ccr
+          movgt 1, r65
+          compi 1, r65, ccr
+          cbrne cc, L9, L8
+    L9:
+          mov r18, r66
+          del r66
+          mov r19, r67
+          del r67
+    L7:
+_objinstantiation:
+          loadinargument num, 0, r17
+          mov r17, r19
+          loadi 0, r20
+          loadi 0, r21
+          comp r20, r19, ccr
+          movgt 1, r21
+          compi 1, r21, ccr
+          cbrne cc, L12, L11
+   L11:
+          new foo, r22
+          mov r22, r18
+          mov r18, r23
+          del r23
+          mov r17, r24
+          loadi 1, r25
+          sub r24, r25, r26
+          mov r26, r17
+          mov r17, r27
+          loadi 0, r28
+          loadi 0, r29
+          comp r28, r27, ccr
+          movgt 1, r29
+          compi 1, r29, ccr
+          cbrne cc, L12, L11
+   L12:
+   L10:
+_ackermann:
+          loadinargument m, 0, r17
+          loadinargument n, 1, r18
+   L14:
+          mov r17, r19
+          loadi 0, r20
+          loadi 0, r21
+          comp r20, r19, ccr
+          moveq 1, r21
+          compi 1, r21, ccr
+          cbrne cc, L16, L15
+   L15:
+          mov r18, r22
+          loadi 1, r23
+          add r22, r23, r24
+          storeret r24
+          br L13
+          br L17
+   L17:
+   L18:
+          mov r18, r25
+          loadi 0, r26
+          loadi 0, r27
+          comp r26, r25, ccr
+          moveq 1, r27
+          compi 1, r27, ccr
+          cbrne cc, L20, L19
+   L19:
+          mov r17, r28
+          loadi 1, r29
+          sub r28, r29, r30
+          loadi 1, r31
+          storeoutargument r30, 0
+          storeoutargument r31, 1
+          call _ackermann, 2
+          loadret r32
+          storeret r32
+          br L13
+          br L21
+   L21:
+   L13:
+   L20:
+          mov r17, r33
+          loadi 1, r34
+          sub r33, r34, r35
+          mov r17, r36
+          mov r18, r37
+          loadi 1, r38
+          sub r37, r38, r39
+          storeoutargument r36, 0
+          storeoutargument r39, 1
+          call _ackermann, 2
+          loadret r40
+          storeoutargument r35, 0
+          storeoutargument r40, 1
+          call _ackermann, 2
+          loadret r41
+          storeret r41
+          br L13
+          br L21
+   L16:
+          br L17
+ _main:
+          read r22
+          mov r22, r17
+          read r23
+          mov r23, r18
+          read r24
+          mov r24, r19
+          read r25
+          mov r25, r20
+          read r26
+          mov r26, r21
+          mov r20, r27
+          mov r21, r28
+          storeoutargument r27, 0
+          storeoutargument r28, 1
+          call _ackermann, 2
+          loadret r29
+          print r29
+          loadi 0, r30
+          storeret r30
+          br L22
+   L22:
