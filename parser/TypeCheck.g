@@ -234,6 +234,7 @@ statement [StructTypes stypes, Vector<SymbolTable> env] returns [Boolean hasRet 
    |  read[stypes, env]
    |  ret[stypes, env] { $hasRet = true; }
    |  print[stypes, env]
+   |  delete[stypes, env]
    ;
 
 read [StructTypes stypes, Vector<SymbolTable> env]
@@ -242,6 +243,10 @@ read [StructTypes stypes, Vector<SymbolTable> env]
 
 print [StructTypes stypes, Vector<SymbolTable> env]
 	:  ^(PRINT expression[stypes, env] ENDL?)
+	;
+
+delete [StructTypes stypes, Vector<SymbolTable> env]
+	:  ^(DELETE expression[stypes, env])
 	;
 
 ret [StructTypes stypes, Vector<SymbolTable> env]

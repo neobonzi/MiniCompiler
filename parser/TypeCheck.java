@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 TypeCheck.g 2014-06-09 01:50:12
+// $ANTLR 3.5.2 TypeCheck.g 2014-06-09 16:56:26
 
    import java.util.Map;
    import java.util.HashMap;
@@ -1824,7 +1824,7 @@ public class TypeCheck extends TreeParser {
 				while (true) {
 					int alt10=2;
 					int LA10_0 = input.LA(1);
-					if ( ((LA10_0 >= ASSIGN && LA10_0 <= BLOCK)||LA10_0==IF||LA10_0==INVOKE||LA10_0==PRINT||LA10_0==READ||LA10_0==RETURN||LA10_0==WHILE) ) {
+					if ( ((LA10_0 >= ASSIGN && LA10_0 <= BLOCK)||LA10_0==DELETE||LA10_0==IF||LA10_0==INVOKE||LA10_0==PRINT||LA10_0==READ||LA10_0==RETURN||LA10_0==WHILE) ) {
 						alt10=1;
 					}
 
@@ -1885,7 +1885,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "statement"
-	// TypeCheck.g:228:1: statement[StructTypes stypes, Vector<SymbolTable> env] returns [Boolean hasRet = false] : (blockRet= block[stypes, env] | assignment[stypes, env] |condRet= conditional[stypes, env] | loop[stypes, env] | invocation[stypes, env] | read[stypes, env] | ret[stypes, env] | print[stypes, env] );
+	// TypeCheck.g:228:1: statement[StructTypes stypes, Vector<SymbolTable> env] returns [Boolean hasRet = false] : (blockRet= block[stypes, env] | assignment[stypes, env] |condRet= conditional[stypes, env] | loop[stypes, env] | invocation[stypes, env] | read[stypes, env] | ret[stypes, env] | print[stypes, env] | delete[stypes, env] );
 	public final TypeCheck.statement_return statement(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.statement_return retval = new TypeCheck.statement_return();
 		retval.start = input.LT(1);
@@ -1904,11 +1904,12 @@ public class TypeCheck extends TreeParser {
 		TreeRuleReturnScope read38 =null;
 		TreeRuleReturnScope ret39 =null;
 		TreeRuleReturnScope print40 =null;
+		TreeRuleReturnScope delete41 =null;
 
 
 		try {
-			// TypeCheck.g:229:4: (blockRet= block[stypes, env] | assignment[stypes, env] |condRet= conditional[stypes, env] | loop[stypes, env] | invocation[stypes, env] | read[stypes, env] | ret[stypes, env] | print[stypes, env] )
-			int alt11=8;
+			// TypeCheck.g:229:4: (blockRet= block[stypes, env] | assignment[stypes, env] |condRet= conditional[stypes, env] | loop[stypes, env] | invocation[stypes, env] | read[stypes, env] | ret[stypes, env] | print[stypes, env] | delete[stypes, env] )
+			int alt11=9;
 			switch ( input.LA(1) ) {
 			case BLOCK:
 				{
@@ -1948,6 +1949,11 @@ public class TypeCheck extends TreeParser {
 			case PRINT:
 				{
 				alt11=8;
+				}
+				break;
+			case DELETE:
+				{
+				alt11=9;
 				}
 				break;
 			default:
@@ -2079,6 +2085,21 @@ public class TypeCheck extends TreeParser {
 
 					}
 					break;
+				case 9 :
+					// TypeCheck.g:237:7: delete[stypes, env]
+					{
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					_last = (CommonTree)input.LT(1);
+					pushFollow(FOLLOW_delete_in_statement687);
+					delete41=delete(stypes, env);
+					state._fsp--;
+
+					adaptor.addChild(root_0, delete41.getTree());
+
+					}
+					break;
 
 			}
 			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
@@ -2104,7 +2125,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "read"
-	// TypeCheck.g:239:1: read[StructTypes stypes, Vector<SymbolTable> env] : ^( READ lvalue ) ;
+	// TypeCheck.g:240:1: read[StructTypes stypes, Vector<SymbolTable> env] : ^( READ lvalue ) ;
 	public final TypeCheck.read_return read(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.read_return retval = new TypeCheck.read_return();
 		retval.start = input.LT(1);
@@ -2115,14 +2136,14 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree READ41=null;
-		TreeRuleReturnScope lvalue42 =null;
+		CommonTree READ42=null;
+		TreeRuleReturnScope lvalue43 =null;
 
-		CommonTree READ41_tree=null;
+		CommonTree READ42_tree=null;
 
 		try {
-			// TypeCheck.g:240:2: ( ^( READ lvalue ) )
-			// TypeCheck.g:240:5: ^( READ lvalue )
+			// TypeCheck.g:241:2: ( ^( READ lvalue ) )
+			// TypeCheck.g:241:5: ^( READ lvalue )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2133,19 +2154,19 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			READ41=(CommonTree)match(input,READ,FOLLOW_READ_in_read696); 
-			READ41_tree = (CommonTree)adaptor.dupNode(READ41);
+			READ42=(CommonTree)match(input,READ,FOLLOW_READ_in_read705); 
+			READ42_tree = (CommonTree)adaptor.dupNode(READ42);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(READ41_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(READ42_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_lvalue_in_read698);
-			lvalue42=lvalue();
+			pushFollow(FOLLOW_lvalue_in_read707);
+			lvalue43=lvalue();
 			state._fsp--;
 
-			adaptor.addChild(root_1, lvalue42.getTree());
+			adaptor.addChild(root_1, lvalue43.getTree());
 
 			match(input, Token.UP, null); 
 			adaptor.addChild(root_0, root_1);
@@ -2178,7 +2199,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "print"
-	// TypeCheck.g:243:1: print[StructTypes stypes, Vector<SymbolTable> env] : ^( PRINT expression[stypes, env] ( ENDL )? ) ;
+	// TypeCheck.g:244:1: print[StructTypes stypes, Vector<SymbolTable> env] : ^( PRINT expression[stypes, env] ( ENDL )? ) ;
 	public final TypeCheck.print_return print(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.print_return retval = new TypeCheck.print_return();
 		retval.start = input.LT(1);
@@ -2189,16 +2210,16 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree PRINT43=null;
-		CommonTree ENDL45=null;
-		TreeRuleReturnScope expression44 =null;
+		CommonTree PRINT44=null;
+		CommonTree ENDL46=null;
+		TreeRuleReturnScope expression45 =null;
 
-		CommonTree PRINT43_tree=null;
-		CommonTree ENDL45_tree=null;
+		CommonTree PRINT44_tree=null;
+		CommonTree ENDL46_tree=null;
 
 		try {
-			// TypeCheck.g:244:2: ( ^( PRINT expression[stypes, env] ( ENDL )? ) )
-			// TypeCheck.g:244:5: ^( PRINT expression[stypes, env] ( ENDL )? )
+			// TypeCheck.g:245:2: ( ^( PRINT expression[stypes, env] ( ENDL )? ) )
+			// TypeCheck.g:245:5: ^( PRINT expression[stypes, env] ( ENDL )? )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2209,21 +2230,21 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			PRINT43=(CommonTree)match(input,PRINT,FOLLOW_PRINT_in_print714); 
-			PRINT43_tree = (CommonTree)adaptor.dupNode(PRINT43);
+			PRINT44=(CommonTree)match(input,PRINT,FOLLOW_PRINT_in_print723); 
+			PRINT44_tree = (CommonTree)adaptor.dupNode(PRINT44);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(PRINT43_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(PRINT44_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_print716);
-			expression44=expression(stypes, env);
+			pushFollow(FOLLOW_expression_in_print725);
+			expression45=expression(stypes, env);
 			state._fsp--;
 
-			adaptor.addChild(root_1, expression44.getTree());
+			adaptor.addChild(root_1, expression45.getTree());
 
-			// TypeCheck.g:244:37: ( ENDL )?
+			// TypeCheck.g:245:37: ( ENDL )?
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0==ENDL) ) {
@@ -2231,14 +2252,14 @@ public class TypeCheck extends TreeParser {
 			}
 			switch (alt12) {
 				case 1 :
-					// TypeCheck.g:244:37: ENDL
+					// TypeCheck.g:245:37: ENDL
 					{
 					_last = (CommonTree)input.LT(1);
-					ENDL45=(CommonTree)match(input,ENDL,FOLLOW_ENDL_in_print719); 
-					ENDL45_tree = (CommonTree)adaptor.dupNode(ENDL45);
+					ENDL46=(CommonTree)match(input,ENDL,FOLLOW_ENDL_in_print728); 
+					ENDL46_tree = (CommonTree)adaptor.dupNode(ENDL46);
 
 
-					adaptor.addChild(root_1, ENDL45_tree);
+					adaptor.addChild(root_1, ENDL46_tree);
 
 					}
 					break;
@@ -2268,6 +2289,80 @@ public class TypeCheck extends TreeParser {
 	// $ANTLR end "print"
 
 
+	public static class delete_return extends TreeRuleReturnScope {
+		CommonTree tree;
+		@Override
+		public CommonTree getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "delete"
+	// TypeCheck.g:248:1: delete[StructTypes stypes, Vector<SymbolTable> env] : ^( DELETE expression[stypes, env] ) ;
+	public final TypeCheck.delete_return delete(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
+		TypeCheck.delete_return retval = new TypeCheck.delete_return();
+		retval.start = input.LT(1);
+
+		CommonTree root_0 = null;
+
+		CommonTree _first_0 = null;
+		CommonTree _last = null;
+
+
+		CommonTree DELETE47=null;
+		TreeRuleReturnScope expression48 =null;
+
+		CommonTree DELETE47_tree=null;
+
+		try {
+			// TypeCheck.g:249:2: ( ^( DELETE expression[stypes, env] ) )
+			// TypeCheck.g:249:5: ^( DELETE expression[stypes, env] )
+			{
+			root_0 = (CommonTree)adaptor.nil();
+
+
+			_last = (CommonTree)input.LT(1);
+			{
+			CommonTree _save_last_1 = _last;
+			CommonTree _first_1 = null;
+			CommonTree root_1 = (CommonTree)adaptor.nil();
+			_last = (CommonTree)input.LT(1);
+			DELETE47=(CommonTree)match(input,DELETE,FOLLOW_DELETE_in_delete745); 
+			DELETE47_tree = (CommonTree)adaptor.dupNode(DELETE47);
+
+
+			root_1 = (CommonTree)adaptor.becomeRoot(DELETE47_tree, root_1);
+
+			match(input, Token.DOWN, null); 
+			_last = (CommonTree)input.LT(1);
+			pushFollow(FOLLOW_expression_in_delete747);
+			expression48=expression(stypes, env);
+			state._fsp--;
+
+			adaptor.addChild(root_1, expression48.getTree());
+
+			match(input, Token.UP, null); 
+			adaptor.addChild(root_0, root_1);
+			_last = _save_last_1;
+			}
+
+
+			}
+
+			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return retval;
+	}
+	// $ANTLR end "delete"
+
+
 	public static class ret_return extends TreeRuleReturnScope {
 		CommonTree tree;
 		@Override
@@ -2276,7 +2371,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "ret"
-	// TypeCheck.g:247:1: ret[StructTypes stypes, Vector<SymbolTable> env] : ( ^( RETURN retExp= expression[stypes, env] ) | RETURN );
+	// TypeCheck.g:252:1: ret[StructTypes stypes, Vector<SymbolTable> env] : ( ^( RETURN retExp= expression[stypes, env] ) | RETURN );
 	public final TypeCheck.ret_return ret(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.ret_return retval = new TypeCheck.ret_return();
 		retval.start = input.LT(1);
@@ -2287,15 +2382,15 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree RETURN46=null;
-		CommonTree RETURN47=null;
+		CommonTree RETURN49=null;
+		CommonTree RETURN50=null;
 		TreeRuleReturnScope retExp =null;
 
-		CommonTree RETURN46_tree=null;
-		CommonTree RETURN47_tree=null;
+		CommonTree RETURN49_tree=null;
+		CommonTree RETURN50_tree=null;
 
 		try {
-			// TypeCheck.g:248:2: ( ^( RETURN retExp= expression[stypes, env] ) | RETURN )
+			// TypeCheck.g:253:2: ( ^( RETURN retExp= expression[stypes, env] ) | RETURN )
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0==RETURN) ) {
@@ -2303,7 +2398,7 @@ public class TypeCheck extends TreeParser {
 				if ( (LA13_1==DOWN) ) {
 					alt13=1;
 				}
-				else if ( (LA13_1==UP||(LA13_1 >= ASSIGN && LA13_1 <= BLOCK)||LA13_1==IF||LA13_1==INVOKE||LA13_1==PRINT||LA13_1==READ||LA13_1==RETURN||LA13_1==WHILE) ) {
+				else if ( (LA13_1==UP||(LA13_1 >= ASSIGN && LA13_1 <= BLOCK)||LA13_1==DELETE||LA13_1==IF||LA13_1==INVOKE||LA13_1==PRINT||LA13_1==READ||LA13_1==RETURN||LA13_1==WHILE) ) {
 					alt13=2;
 				}
 
@@ -2329,7 +2424,7 @@ public class TypeCheck extends TreeParser {
 
 			switch (alt13) {
 				case 1 :
-					// TypeCheck.g:248:4: ^( RETURN retExp= expression[stypes, env] )
+					// TypeCheck.g:253:4: ^( RETURN retExp= expression[stypes, env] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -2340,15 +2435,15 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					RETURN46=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret735); 
-					RETURN46_tree = (CommonTree)adaptor.dupNode(RETURN46);
+					RETURN49=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret763); 
+					RETURN49_tree = (CommonTree)adaptor.dupNode(RETURN49);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(RETURN46_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(RETURN49_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_ret739);
+					pushFollow(FOLLOW_expression_in_ret767);
 					retExp=expression(stypes, env);
 					state._fsp--;
 
@@ -2370,17 +2465,17 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 2 :
-					// TypeCheck.g:256:5: RETURN
+					// TypeCheck.g:261:5: RETURN
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					RETURN47=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret751); 
-					RETURN47_tree = (CommonTree)adaptor.dupNode(RETURN47);
+					RETURN50=(CommonTree)match(input,RETURN,FOLLOW_RETURN_in_ret779); 
+					RETURN50_tree = (CommonTree)adaptor.dupNode(RETURN50);
 
 
-					adaptor.addChild(root_0, RETURN47_tree);
+					adaptor.addChild(root_0, RETURN50_tree);
 
 
 								Type retType = new VoidType();
@@ -2417,7 +2512,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "arguments"
-	// TypeCheck.g:266:1: arguments[StructTypes stypes, Vector<SymbolTable> env] returns [Vector<Type> retArgs] : args= arg_list[stypes, env] ;
+	// TypeCheck.g:271:1: arguments[StructTypes stypes, Vector<SymbolTable> env] returns [Vector<Type> retArgs] : args= arg_list[stypes, env] ;
 	public final TypeCheck.arguments_return arguments(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.arguments_return retval = new TypeCheck.arguments_return();
 		retval.start = input.LT(1);
@@ -2432,14 +2527,14 @@ public class TypeCheck extends TreeParser {
 
 
 		try {
-			// TypeCheck.g:267:2: (args= arg_list[stypes, env] )
-			// TypeCheck.g:267:4: args= arg_list[stypes, env]
+			// TypeCheck.g:272:2: (args= arg_list[stypes, env] )
+			// TypeCheck.g:272:4: args= arg_list[stypes, env]
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_arg_list_in_arguments774);
+			pushFollow(FOLLOW_arg_list_in_arguments802);
 			args=arg_list(stypes, env);
 			state._fsp--;
 
@@ -2474,7 +2569,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "arg_list"
-	// TypeCheck.g:273:1: arg_list[StructTypes stypes, Vector<SymbolTable> env] returns [Vector<Type> argList] : ( ^( ARGS (exp= expression[stypes, env] )+ ) | ARGS );
+	// TypeCheck.g:278:1: arg_list[StructTypes stypes, Vector<SymbolTable> env] returns [Vector<Type> argList] : ( ^( ARGS (exp= expression[stypes, env] )+ ) | ARGS );
 	public final TypeCheck.arg_list_return arg_list(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.arg_list_return retval = new TypeCheck.arg_list_return();
 		retval.start = input.LT(1);
@@ -2485,18 +2580,18 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree ARGS48=null;
-		CommonTree ARGS49=null;
+		CommonTree ARGS51=null;
+		CommonTree ARGS52=null;
 		TreeRuleReturnScope exp =null;
 
-		CommonTree ARGS48_tree=null;
-		CommonTree ARGS49_tree=null;
+		CommonTree ARGS51_tree=null;
+		CommonTree ARGS52_tree=null;
 
 
 				Vector<Type> toReturn = new Vector<Type>();
 			
 		try {
-			// TypeCheck.g:277:2: ( ^( ARGS (exp= expression[stypes, env] )+ ) | ARGS )
+			// TypeCheck.g:282:2: ( ^( ARGS (exp= expression[stypes, env] )+ ) | ARGS )
 			int alt15=2;
 			int LA15_0 = input.LA(1);
 			if ( (LA15_0==ARGS) ) {
@@ -2530,7 +2625,7 @@ public class TypeCheck extends TreeParser {
 
 			switch (alt15) {
 				case 1 :
-					// TypeCheck.g:277:4: ^( ARGS (exp= expression[stypes, env] )+ )
+					// TypeCheck.g:282:4: ^( ARGS (exp= expression[stypes, env] )+ )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -2541,14 +2636,14 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					ARGS48=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list804); 
-					ARGS48_tree = (CommonTree)adaptor.dupNode(ARGS48);
+					ARGS51=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list832); 
+					ARGS51_tree = (CommonTree)adaptor.dupNode(ARGS51);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(ARGS48_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(ARGS51_tree, root_1);
 
 					match(input, Token.DOWN, null); 
-					// TypeCheck.g:277:11: (exp= expression[stypes, env] )+
+					// TypeCheck.g:282:11: (exp= expression[stypes, env] )+
 					int cnt14=0;
 					loop14:
 					while (true) {
@@ -2560,10 +2655,10 @@ public class TypeCheck extends TreeParser {
 
 						switch (alt14) {
 						case 1 :
-							// TypeCheck.g:277:12: exp= expression[stypes, env]
+							// TypeCheck.g:282:12: exp= expression[stypes, env]
 							{
 							_last = (CommonTree)input.LT(1);
-							pushFollow(FOLLOW_expression_in_arg_list809);
+							pushFollow(FOLLOW_expression_in_arg_list837);
 							exp=expression(stypes, env);
 							state._fsp--;
 
@@ -2593,17 +2688,17 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 2 :
-					// TypeCheck.g:283:4: ARGS
+					// TypeCheck.g:288:4: ARGS
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					ARGS49=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list825); 
-					ARGS49_tree = (CommonTree)adaptor.dupNode(ARGS49);
+					ARGS52=(CommonTree)match(input,ARGS,FOLLOW_ARGS_in_arg_list853); 
+					ARGS52_tree = (CommonTree)adaptor.dupNode(ARGS52);
 
 
-					adaptor.addChild(root_0, ARGS49_tree);
+					adaptor.addChild(root_0, ARGS52_tree);
 
 
 								toReturn.add(new VoidType());
@@ -2637,7 +2732,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "conditional"
-	// TypeCheck.g:290:1: conditional[StructTypes stypes, Vector<SymbolTable> env] returns [Boolean hasRet = false] : ^( IF guard= expression[stypes, env] hasRet1= block[stypes, env] (hasRet2= block[stypes, env] )? ) ;
+	// TypeCheck.g:295:1: conditional[StructTypes stypes, Vector<SymbolTable> env] returns [Boolean hasRet = false] : ^( IF guard= expression[stypes, env] hasRet1= block[stypes, env] (hasRet2= block[stypes, env] )? ) ;
 	public final TypeCheck.conditional_return conditional(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.conditional_return retval = new TypeCheck.conditional_return();
 		retval.start = input.LT(1);
@@ -2648,16 +2743,16 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree IF50=null;
+		CommonTree IF53=null;
 		TreeRuleReturnScope guard =null;
 		TreeRuleReturnScope hasRet1 =null;
 		TreeRuleReturnScope hasRet2 =null;
 
-		CommonTree IF50_tree=null;
+		CommonTree IF53_tree=null;
 
 		try {
-			// TypeCheck.g:291:2: ( ^( IF guard= expression[stypes, env] hasRet1= block[stypes, env] (hasRet2= block[stypes, env] )? ) )
-			// TypeCheck.g:291:4: ^( IF guard= expression[stypes, env] hasRet1= block[stypes, env] (hasRet2= block[stypes, env] )? )
+			// TypeCheck.g:296:2: ( ^( IF guard= expression[stypes, env] hasRet1= block[stypes, env] (hasRet2= block[stypes, env] )? ) )
+			// TypeCheck.g:296:4: ^( IF guard= expression[stypes, env] hasRet1= block[stypes, env] (hasRet2= block[stypes, env] )? )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2668,28 +2763,28 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			IF50=(CommonTree)match(input,IF,FOLLOW_IF_in_conditional847); 
-			IF50_tree = (CommonTree)adaptor.dupNode(IF50);
+			IF53=(CommonTree)match(input,IF,FOLLOW_IF_in_conditional875); 
+			IF53_tree = (CommonTree)adaptor.dupNode(IF53);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(IF50_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(IF53_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_conditional851);
+			pushFollow(FOLLOW_expression_in_conditional879);
 			guard=expression(stypes, env);
 			state._fsp--;
 
 			adaptor.addChild(root_1, guard.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_block_in_conditional856);
+			pushFollow(FOLLOW_block_in_conditional884);
 			hasRet1=block(stypes, env);
 			state._fsp--;
 
 			adaptor.addChild(root_1, hasRet1.getTree());
 
-			// TypeCheck.g:291:73: (hasRet2= block[stypes, env] )?
+			// TypeCheck.g:296:73: (hasRet2= block[stypes, env] )?
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0==BLOCK) ) {
@@ -2697,10 +2792,10 @@ public class TypeCheck extends TreeParser {
 			}
 			switch (alt16) {
 				case 1 :
-					// TypeCheck.g:291:73: hasRet2= block[stypes, env]
+					// TypeCheck.g:296:73: hasRet2= block[stypes, env]
 					{
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_block_in_conditional861);
+					pushFollow(FOLLOW_block_in_conditional889);
 					hasRet2=block(stypes, env);
 					state._fsp--;
 
@@ -2762,7 +2857,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "invocation"
-	// TypeCheck.g:313:1: invocation[StructTypes stypes, Vector<SymbolTable> env] returns [Type t] : ^( INVOKE id= ID retArgs= arguments[stypes, env] ) ;
+	// TypeCheck.g:318:1: invocation[StructTypes stypes, Vector<SymbolTable> env] returns [Type t] : ^( INVOKE id= ID retArgs= arguments[stypes, env] ) ;
 	public final TypeCheck.invocation_return invocation(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.invocation_return retval = new TypeCheck.invocation_return();
 		retval.start = input.LT(1);
@@ -2774,15 +2869,15 @@ public class TypeCheck extends TreeParser {
 
 
 		CommonTree id=null;
-		CommonTree INVOKE51=null;
+		CommonTree INVOKE54=null;
 		TreeRuleReturnScope retArgs =null;
 
 		CommonTree id_tree=null;
-		CommonTree INVOKE51_tree=null;
+		CommonTree INVOKE54_tree=null;
 
 		try {
-			// TypeCheck.g:314:2: ( ^( INVOKE id= ID retArgs= arguments[stypes, env] ) )
-			// TypeCheck.g:314:4: ^( INVOKE id= ID retArgs= arguments[stypes, env] )
+			// TypeCheck.g:319:2: ( ^( INVOKE id= ID retArgs= arguments[stypes, env] ) )
+			// TypeCheck.g:319:4: ^( INVOKE id= ID retArgs= arguments[stypes, env] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2793,22 +2888,22 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			INVOKE51=(CommonTree)match(input,INVOKE,FOLLOW_INVOKE_in_invocation886); 
-			INVOKE51_tree = (CommonTree)adaptor.dupNode(INVOKE51);
+			INVOKE54=(CommonTree)match(input,INVOKE,FOLLOW_INVOKE_in_invocation914); 
+			INVOKE54_tree = (CommonTree)adaptor.dupNode(INVOKE54);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(INVOKE51_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(INVOKE54_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			id=(CommonTree)match(input,ID,FOLLOW_ID_in_invocation890); 
+			id=(CommonTree)match(input,ID,FOLLOW_ID_in_invocation918); 
 			id_tree = (CommonTree)adaptor.dupNode(id);
 
 
 			adaptor.addChild(root_1, id_tree);
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_arguments_in_invocation894);
+			pushFollow(FOLLOW_arguments_in_invocation922);
 			retArgs=arguments(stypes, env);
 			state._fsp--;
 
@@ -2870,7 +2965,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "loop"
-	// TypeCheck.g:342:1: loop[StructTypes stypes, Vector<SymbolTable> env] : ^( WHILE expression[stypes, env] block[stypes, env] expression[stypes, env] ) ;
+	// TypeCheck.g:347:1: loop[StructTypes stypes, Vector<SymbolTable> env] : ^( WHILE expression[stypes, env] block[stypes, env] expression[stypes, env] ) ;
 	public final TypeCheck.loop_return loop(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.loop_return retval = new TypeCheck.loop_return();
 		retval.start = input.LT(1);
@@ -2881,16 +2976,16 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree WHILE52=null;
-		TreeRuleReturnScope expression53 =null;
-		TreeRuleReturnScope block54 =null;
-		TreeRuleReturnScope expression55 =null;
+		CommonTree WHILE55=null;
+		TreeRuleReturnScope expression56 =null;
+		TreeRuleReturnScope block57 =null;
+		TreeRuleReturnScope expression58 =null;
 
-		CommonTree WHILE52_tree=null;
+		CommonTree WHILE55_tree=null;
 
 		try {
-			// TypeCheck.g:343:2: ( ^( WHILE expression[stypes, env] block[stypes, env] expression[stypes, env] ) )
-			// TypeCheck.g:343:4: ^( WHILE expression[stypes, env] block[stypes, env] expression[stypes, env] )
+			// TypeCheck.g:348:2: ( ^( WHILE expression[stypes, env] block[stypes, env] expression[stypes, env] ) )
+			// TypeCheck.g:348:4: ^( WHILE expression[stypes, env] block[stypes, env] expression[stypes, env] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2901,33 +2996,33 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			WHILE52=(CommonTree)match(input,WHILE,FOLLOW_WHILE_in_loop913); 
-			WHILE52_tree = (CommonTree)adaptor.dupNode(WHILE52);
+			WHILE55=(CommonTree)match(input,WHILE,FOLLOW_WHILE_in_loop941); 
+			WHILE55_tree = (CommonTree)adaptor.dupNode(WHILE55);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(WHILE52_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(WHILE55_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_loop915);
-			expression53=expression(stypes, env);
+			pushFollow(FOLLOW_expression_in_loop943);
+			expression56=expression(stypes, env);
 			state._fsp--;
 
-			adaptor.addChild(root_1, expression53.getTree());
+			adaptor.addChild(root_1, expression56.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_block_in_loop918);
-			block54=block(stypes, env);
+			pushFollow(FOLLOW_block_in_loop946);
+			block57=block(stypes, env);
 			state._fsp--;
 
-			adaptor.addChild(root_1, block54.getTree());
+			adaptor.addChild(root_1, block57.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_loop921);
-			expression55=expression(stypes, env);
+			pushFollow(FOLLOW_expression_in_loop949);
+			expression58=expression(stypes, env);
 			state._fsp--;
 
-			adaptor.addChild(root_1, expression55.getTree());
+			adaptor.addChild(root_1, expression58.getTree());
 
 			match(input, Token.UP, null); 
 			adaptor.addChild(root_0, root_1);
@@ -2961,7 +3056,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "block"
-	// TypeCheck.g:346:1: block[StructTypes stypes, Vector<SymbolTable> env] returns [Boolean hasRet = false] : ^( BLOCK retHasRet= statement_list[stypes, env] ) ;
+	// TypeCheck.g:351:1: block[StructTypes stypes, Vector<SymbolTable> env] returns [Boolean hasRet = false] : ^( BLOCK retHasRet= statement_list[stypes, env] ) ;
 	public final TypeCheck.block_return block(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.block_return retval = new TypeCheck.block_return();
 		retval.start = input.LT(1);
@@ -2972,14 +3067,14 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree BLOCK56=null;
+		CommonTree BLOCK59=null;
 		TreeRuleReturnScope retHasRet =null;
 
-		CommonTree BLOCK56_tree=null;
+		CommonTree BLOCK59_tree=null;
 
 		try {
-			// TypeCheck.g:347:2: ( ^( BLOCK retHasRet= statement_list[stypes, env] ) )
-			// TypeCheck.g:347:4: ^( BLOCK retHasRet= statement_list[stypes, env] )
+			// TypeCheck.g:352:2: ( ^( BLOCK retHasRet= statement_list[stypes, env] ) )
+			// TypeCheck.g:352:4: ^( BLOCK retHasRet= statement_list[stypes, env] )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2990,15 +3085,15 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			BLOCK56=(CommonTree)match(input,BLOCK,FOLLOW_BLOCK_in_block942); 
-			BLOCK56_tree = (CommonTree)adaptor.dupNode(BLOCK56);
+			BLOCK59=(CommonTree)match(input,BLOCK,FOLLOW_BLOCK_in_block970); 
+			BLOCK59_tree = (CommonTree)adaptor.dupNode(BLOCK59);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(BLOCK56_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(BLOCK59_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_statement_list_in_block946);
+			pushFollow(FOLLOW_statement_list_in_block974);
 			retHasRet=statement_list(stypes, env);
 			state._fsp--;
 
@@ -3038,7 +3133,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "assignment"
-	// TypeCheck.g:353:1: assignment[StructTypes stypes, Vector<SymbolTable> env] : ^( ASSIGN expression[stypes, env] lvalue ) ;
+	// TypeCheck.g:358:1: assignment[StructTypes stypes, Vector<SymbolTable> env] : ^( ASSIGN expression[stypes, env] lvalue ) ;
 	public final TypeCheck.assignment_return assignment(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.assignment_return retval = new TypeCheck.assignment_return();
 		retval.start = input.LT(1);
@@ -3049,15 +3144,15 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree ASSIGN57=null;
-		TreeRuleReturnScope expression58 =null;
-		TreeRuleReturnScope lvalue59 =null;
+		CommonTree ASSIGN60=null;
+		TreeRuleReturnScope expression61 =null;
+		TreeRuleReturnScope lvalue62 =null;
 
-		CommonTree ASSIGN57_tree=null;
+		CommonTree ASSIGN60_tree=null;
 
 		try {
-			// TypeCheck.g:354:2: ( ^( ASSIGN expression[stypes, env] lvalue ) )
-			// TypeCheck.g:354:4: ^( ASSIGN expression[stypes, env] lvalue )
+			// TypeCheck.g:359:2: ( ^( ASSIGN expression[stypes, env] lvalue ) )
+			// TypeCheck.g:359:4: ^( ASSIGN expression[stypes, env] lvalue )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -3068,26 +3163,26 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			ASSIGN57=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment966); 
-			ASSIGN57_tree = (CommonTree)adaptor.dupNode(ASSIGN57);
+			ASSIGN60=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment994); 
+			ASSIGN60_tree = (CommonTree)adaptor.dupNode(ASSIGN60);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN57_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN60_tree, root_1);
 
 			match(input, Token.DOWN, null); 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_expression_in_assignment968);
-			expression58=expression(stypes, env);
+			pushFollow(FOLLOW_expression_in_assignment996);
+			expression61=expression(stypes, env);
 			state._fsp--;
 
-			adaptor.addChild(root_1, expression58.getTree());
+			adaptor.addChild(root_1, expression61.getTree());
 
 			_last = (CommonTree)input.LT(1);
-			pushFollow(FOLLOW_lvalue_in_assignment971);
-			lvalue59=lvalue();
+			pushFollow(FOLLOW_lvalue_in_assignment999);
+			lvalue62=lvalue();
 			state._fsp--;
 
-			adaptor.addChild(root_1, lvalue59.getTree());
+			adaptor.addChild(root_1, lvalue62.getTree());
 
 			match(input, Token.UP, null); 
 			adaptor.addChild(root_0, root_1);
@@ -3121,7 +3216,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "expression"
-	// TypeCheck.g:357:1: expression[StructTypes stypes, Vector<SymbolTable> env] returns [Type t = null] : (retVal= invocation[stypes, env] | ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( NOT expression[stypes, env] ) | ^( DOT retType= expression[stypes, env] memberId= ID ) |idCall= ID | INTEGER | TRUE | FALSE | ^( NEW id= ID ) | ^( NEG retType= expression[stypes,env] ) | NULL );
+	// TypeCheck.g:362:1: expression[StructTypes stypes, Vector<SymbolTable> env] returns [Type t = null] : (retVal= invocation[stypes, env] | ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( NOT expression[stypes, env] ) | ^( DOT retType= expression[stypes, env] memberId= ID ) |idCall= ID | INTEGER | TRUE | FALSE | ^( NEW id= ID ) | ^( NEG retType= expression[stypes,env] ) | NULL );
 	public final TypeCheck.expression_return expression(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.expression_return retval = new TypeCheck.expression_return();
 		retval.start = input.LT(1);
@@ -3135,42 +3230,42 @@ public class TypeCheck extends TreeParser {
 		CommonTree memberId=null;
 		CommonTree idCall=null;
 		CommonTree id=null;
-		CommonTree set60=null;
-		CommonTree set61=null;
-		CommonTree set62=null;
 		CommonTree set63=null;
-		CommonTree NOT64=null;
-		CommonTree DOT66=null;
-		CommonTree INTEGER67=null;
-		CommonTree TRUE68=null;
-		CommonTree FALSE69=null;
-		CommonTree NEW70=null;
-		CommonTree NEG71=null;
-		CommonTree NULL72=null;
+		CommonTree set64=null;
+		CommonTree set65=null;
+		CommonTree set66=null;
+		CommonTree NOT67=null;
+		CommonTree DOT69=null;
+		CommonTree INTEGER70=null;
+		CommonTree TRUE71=null;
+		CommonTree FALSE72=null;
+		CommonTree NEW73=null;
+		CommonTree NEG74=null;
+		CommonTree NULL75=null;
 		TreeRuleReturnScope retVal =null;
 		TreeRuleReturnScope ret1 =null;
 		TreeRuleReturnScope ret2 =null;
 		TreeRuleReturnScope retType =null;
-		TreeRuleReturnScope expression65 =null;
+		TreeRuleReturnScope expression68 =null;
 
 		CommonTree memberId_tree=null;
 		CommonTree idCall_tree=null;
 		CommonTree id_tree=null;
-		CommonTree set60_tree=null;
-		CommonTree set61_tree=null;
-		CommonTree set62_tree=null;
 		CommonTree set63_tree=null;
-		CommonTree NOT64_tree=null;
-		CommonTree DOT66_tree=null;
-		CommonTree INTEGER67_tree=null;
-		CommonTree TRUE68_tree=null;
-		CommonTree FALSE69_tree=null;
-		CommonTree NEW70_tree=null;
-		CommonTree NEG71_tree=null;
-		CommonTree NULL72_tree=null;
+		CommonTree set64_tree=null;
+		CommonTree set65_tree=null;
+		CommonTree set66_tree=null;
+		CommonTree NOT67_tree=null;
+		CommonTree DOT69_tree=null;
+		CommonTree INTEGER70_tree=null;
+		CommonTree TRUE71_tree=null;
+		CommonTree FALSE72_tree=null;
+		CommonTree NEW73_tree=null;
+		CommonTree NEG74_tree=null;
+		CommonTree NULL75_tree=null;
 
 		try {
-			// TypeCheck.g:358:2: (retVal= invocation[stypes, env] | ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( NOT expression[stypes, env] ) | ^( DOT retType= expression[stypes, env] memberId= ID ) |idCall= ID | INTEGER | TRUE | FALSE | ^( NEW id= ID ) | ^( NEG retType= expression[stypes,env] ) | NULL )
+			// TypeCheck.g:363:2: (retVal= invocation[stypes, env] | ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] ) | ^( NOT expression[stypes, env] ) | ^( DOT retType= expression[stypes, env] memberId= ID ) |idCall= ID | INTEGER | TRUE | FALSE | ^( NEW id= ID ) | ^( NEG retType= expression[stypes,env] ) | NULL )
 			int alt17=14;
 			switch ( input.LA(1) ) {
 			case INVOKE:
@@ -3258,13 +3353,13 @@ public class TypeCheck extends TreeParser {
 			}
 			switch (alt17) {
 				case 1 :
-					// TypeCheck.g:358:4: retVal= invocation[stypes, env]
+					// TypeCheck.g:363:4: retVal= invocation[stypes, env]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_invocation_in_expression991);
+					pushFollow(FOLLOW_invocation_in_expression1019);
 					retVal=invocation(stypes, env);
 					state._fsp--;
 
@@ -3276,7 +3371,7 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 2 :
-					// TypeCheck.g:362:5: ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] )
+					// TypeCheck.g:367:5: ^( ( AND | OR ) ret1= expression[stypes, env] ret2= expression[stypes, env] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3286,13 +3381,13 @@ public class TypeCheck extends TreeParser {
 					CommonTree _save_last_1 = _last;
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
-					set60=(CommonTree)input.LT(1);
+					set63=(CommonTree)input.LT(1);
 					if ( input.LA(1)==AND||input.LA(1)==OR ) {
 						input.consume();
-						set60_tree = (CommonTree)adaptor.dupNode(set60);
+						set63_tree = (CommonTree)adaptor.dupNode(set63);
 
 
-						root_1 = (CommonTree)adaptor.becomeRoot(set60_tree, root_1);
+						root_1 = (CommonTree)adaptor.becomeRoot(set63_tree, root_1);
 
 						state.errorRecovery=false;
 					}
@@ -3303,14 +3398,14 @@ public class TypeCheck extends TreeParser {
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1013);
+					pushFollow(FOLLOW_expression_in_expression1041);
 					ret1=expression(stypes, env);
 					state._fsp--;
 
 					adaptor.addChild(root_1, ret1.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1018);
+					pushFollow(FOLLOW_expression_in_expression1046);
 					ret2=expression(stypes, env);
 					state._fsp--;
 
@@ -3331,7 +3426,7 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 3 :
-					// TypeCheck.g:369:5: ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] )
+					// TypeCheck.g:374:5: ^( ( EQ | LT | GT | NE | LE | GE ) ret1= expression[stypes, env] ret2= expression[stypes, env] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3341,68 +3436,13 @@ public class TypeCheck extends TreeParser {
 					CommonTree _save_last_1 = _last;
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
-					set61=(CommonTree)input.LT(1);
+					set64=(CommonTree)input.LT(1);
 					if ( input.LA(1)==EQ||(input.LA(1) >= GE && input.LA(1) <= GT)||input.LA(1)==LE||input.LA(1)==LT||input.LA(1)==NE ) {
 						input.consume();
-						set61_tree = (CommonTree)adaptor.dupNode(set61);
+						set64_tree = (CommonTree)adaptor.dupNode(set64);
 
 
-						root_1 = (CommonTree)adaptor.becomeRoot(set61_tree, root_1);
-
-						state.errorRecovery=false;
-					}
-					else {
-						MismatchedSetException mse = new MismatchedSetException(null,input);
-						throw mse;
-					}
-
-					match(input, Token.DOWN, null); 
-					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1057);
-					ret1=expression(stypes, env);
-					state._fsp--;
-
-					adaptor.addChild(root_1, ret1.getTree());
-
-					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1062);
-					ret2=expression(stypes, env);
-					state._fsp--;
-
-					adaptor.addChild(root_1, ret2.getTree());
-
-					match(input, Token.UP, null); 
-					adaptor.addChild(root_0, root_1);
-					_last = _save_last_1;
-					}
-
-
-
-								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
-									//error("Operators ==, <, >, <=, >= require two integer types");
-								}
-								retval.t = new BoolType();
-							
-					}
-					break;
-				case 4 :
-					// TypeCheck.g:376:5: ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] )
-					{
-					root_0 = (CommonTree)adaptor.nil();
-
-
-					_last = (CommonTree)input.LT(1);
-					{
-					CommonTree _save_last_1 = _last;
-					CommonTree _first_1 = null;
-					CommonTree root_1 = (CommonTree)adaptor.nil();
-					set62=(CommonTree)input.LT(1);
-					if ( input.LA(1)==MINUS||input.LA(1)==PLUS ) {
-						input.consume();
-						set62_tree = (CommonTree)adaptor.dupNode(set62);
-
-
-						root_1 = (CommonTree)adaptor.becomeRoot(set62_tree, root_1);
+						root_1 = (CommonTree)adaptor.becomeRoot(set64_tree, root_1);
 
 						state.errorRecovery=false;
 					}
@@ -3434,14 +3474,14 @@ public class TypeCheck extends TreeParser {
 
 
 								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
-									//error("Operators + and - require two integer types");
+									//error("Operators ==, <, >, <=, >= require two integer types");
 								}
-								retval.t = new IntType();
+								retval.t = new BoolType();
 							
 					}
 					break;
-				case 5 :
-					// TypeCheck.g:383:5: ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] )
+				case 4 :
+					// TypeCheck.g:381:5: ^( ( PLUS | MINUS ) ret1= expression[stypes, env] ret2= expression[stypes, env] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3451,13 +3491,13 @@ public class TypeCheck extends TreeParser {
 					CommonTree _save_last_1 = _last;
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
-					set63=(CommonTree)input.LT(1);
-					if ( input.LA(1)==DIVIDE||input.LA(1)==TIMES ) {
+					set65=(CommonTree)input.LT(1);
+					if ( input.LA(1)==MINUS||input.LA(1)==PLUS ) {
 						input.consume();
-						set63_tree = (CommonTree)adaptor.dupNode(set63);
+						set65_tree = (CommonTree)adaptor.dupNode(set65);
 
 
-						root_1 = (CommonTree)adaptor.becomeRoot(set63_tree, root_1);
+						root_1 = (CommonTree)adaptor.becomeRoot(set65_tree, root_1);
 
 						state.errorRecovery=false;
 					}
@@ -3489,6 +3529,61 @@ public class TypeCheck extends TreeParser {
 
 
 								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
+									//error("Operators + and - require two integer types");
+								}
+								retval.t = new IntType();
+							
+					}
+					break;
+				case 5 :
+					// TypeCheck.g:388:5: ^( ( TIMES | DIVIDE ) ret1= expression[stypes, env] ret2= expression[stypes, env] )
+					{
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					_last = (CommonTree)input.LT(1);
+					{
+					CommonTree _save_last_1 = _last;
+					CommonTree _first_1 = null;
+					CommonTree root_1 = (CommonTree)adaptor.nil();
+					set66=(CommonTree)input.LT(1);
+					if ( input.LA(1)==DIVIDE||input.LA(1)==TIMES ) {
+						input.consume();
+						set66_tree = (CommonTree)adaptor.dupNode(set66);
+
+
+						root_1 = (CommonTree)adaptor.becomeRoot(set66_tree, root_1);
+
+						state.errorRecovery=false;
+					}
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						throw mse;
+					}
+
+					match(input, Token.DOWN, null); 
+					_last = (CommonTree)input.LT(1);
+					pushFollow(FOLLOW_expression_in_expression1141);
+					ret1=expression(stypes, env);
+					state._fsp--;
+
+					adaptor.addChild(root_1, ret1.getTree());
+
+					_last = (CommonTree)input.LT(1);
+					pushFollow(FOLLOW_expression_in_expression1146);
+					ret2=expression(stypes, env);
+					state._fsp--;
+
+					adaptor.addChild(root_1, ret2.getTree());
+
+					match(input, Token.UP, null); 
+					adaptor.addChild(root_0, root_1);
+					_last = _save_last_1;
+					}
+
+
+
+								if(!(ret1!=null?((TypeCheck.expression_return)ret1).t:null).getClass().equals(IntType.class) || !(ret2!=null?((TypeCheck.expression_return)ret2).t:null).getClass().equals(IntType.class)) {
 									//error("Operators * and / requires two integer types");
 								}
 								retval.t = new IntType();
@@ -3496,7 +3591,7 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 6 :
-					// TypeCheck.g:390:5: ^( NOT expression[stypes, env] )
+					// TypeCheck.g:395:5: ^( NOT expression[stypes, env] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3507,19 +3602,19 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NOT64=(CommonTree)match(input,NOT,FOLLOW_NOT_in_expression1131); 
-					NOT64_tree = (CommonTree)adaptor.dupNode(NOT64);
+					NOT67=(CommonTree)match(input,NOT,FOLLOW_NOT_in_expression1159); 
+					NOT67_tree = (CommonTree)adaptor.dupNode(NOT67);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NOT64_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NOT67_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1133);
-					expression65=expression(stypes, env);
+					pushFollow(FOLLOW_expression_in_expression1161);
+					expression68=expression(stypes, env);
 					state._fsp--;
 
-					adaptor.addChild(root_1, expression65.getTree());
+					adaptor.addChild(root_1, expression68.getTree());
 
 					match(input, Token.UP, null); 
 					adaptor.addChild(root_0, root_1);
@@ -3536,7 +3631,7 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 7 :
-					// TypeCheck.g:397:5: ^( DOT retType= expression[stypes, env] memberId= ID )
+					// TypeCheck.g:402:5: ^( DOT retType= expression[stypes, env] memberId= ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3547,22 +3642,22 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT66=(CommonTree)match(input,DOT,FOLLOW_DOT_in_expression1146); 
-					DOT66_tree = (CommonTree)adaptor.dupNode(DOT66);
+					DOT69=(CommonTree)match(input,DOT,FOLLOW_DOT_in_expression1174); 
+					DOT69_tree = (CommonTree)adaptor.dupNode(DOT69);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DOT66_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DOT69_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1152);
+					pushFollow(FOLLOW_expression_in_expression1180);
 					retType=expression(stypes, env);
 					state._fsp--;
 
 					adaptor.addChild(root_1, retType.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					memberId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1157); 
+					memberId=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1185); 
 					memberId_tree = (CommonTree)adaptor.dupNode(memberId);
 
 
@@ -3591,13 +3686,13 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 8 :
-					// TypeCheck.g:412:5: idCall= ID
+					// TypeCheck.g:417:5: idCall= ID
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					idCall=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1170); 
+					idCall=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1198); 
 					idCall_tree = (CommonTree)adaptor.dupNode(idCall);
 
 
@@ -3615,55 +3710,55 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 9 :
-					// TypeCheck.g:422:4: INTEGER
+					// TypeCheck.g:427:4: INTEGER
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					INTEGER67=(CommonTree)match(input,INTEGER,FOLLOW_INTEGER_in_expression1179); 
-					INTEGER67_tree = (CommonTree)adaptor.dupNode(INTEGER67);
+					INTEGER70=(CommonTree)match(input,INTEGER,FOLLOW_INTEGER_in_expression1207); 
+					INTEGER70_tree = (CommonTree)adaptor.dupNode(INTEGER70);
 
 
-					adaptor.addChild(root_0, INTEGER67_tree);
+					adaptor.addChild(root_0, INTEGER70_tree);
 
 					 retval.t = new IntType(); 
 					}
 					break;
 				case 10 :
-					// TypeCheck.g:423:4: TRUE
+					// TypeCheck.g:428:4: TRUE
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					TRUE68=(CommonTree)match(input,TRUE,FOLLOW_TRUE_in_expression1186); 
-					TRUE68_tree = (CommonTree)adaptor.dupNode(TRUE68);
+					TRUE71=(CommonTree)match(input,TRUE,FOLLOW_TRUE_in_expression1214); 
+					TRUE71_tree = (CommonTree)adaptor.dupNode(TRUE71);
 
 
-					adaptor.addChild(root_0, TRUE68_tree);
+					adaptor.addChild(root_0, TRUE71_tree);
 
 					 retval.t = new BoolType(); 
 					}
 					break;
 				case 11 :
-					// TypeCheck.g:424:5: FALSE
+					// TypeCheck.g:429:5: FALSE
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					FALSE69=(CommonTree)match(input,FALSE,FOLLOW_FALSE_in_expression1194); 
-					FALSE69_tree = (CommonTree)adaptor.dupNode(FALSE69);
+					FALSE72=(CommonTree)match(input,FALSE,FOLLOW_FALSE_in_expression1222); 
+					FALSE72_tree = (CommonTree)adaptor.dupNode(FALSE72);
 
 
-					adaptor.addChild(root_0, FALSE69_tree);
+					adaptor.addChild(root_0, FALSE72_tree);
 
 					 retval.t = new BoolType(); 
 					}
 					break;
 				case 12 :
-					// TypeCheck.g:425:5: ^( NEW id= ID )
+					// TypeCheck.g:430:5: ^( NEW id= ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3674,15 +3769,15 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NEW70=(CommonTree)match(input,NEW,FOLLOW_NEW_in_expression1203); 
-					NEW70_tree = (CommonTree)adaptor.dupNode(NEW70);
+					NEW73=(CommonTree)match(input,NEW,FOLLOW_NEW_in_expression1231); 
+					NEW73_tree = (CommonTree)adaptor.dupNode(NEW73);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NEW70_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NEW73_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					id=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1207); 
+					id=(CommonTree)match(input,ID,FOLLOW_ID_in_expression1235); 
 					id_tree = (CommonTree)adaptor.dupNode(id);
 
 
@@ -3704,7 +3799,7 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 13 :
-					// TypeCheck.g:433:5: ^( NEG retType= expression[stypes,env] )
+					// TypeCheck.g:438:5: ^( NEG retType= expression[stypes,env] )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3715,15 +3810,15 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					NEG71=(CommonTree)match(input,NEG,FOLLOW_NEG_in_expression1220); 
-					NEG71_tree = (CommonTree)adaptor.dupNode(NEG71);
+					NEG74=(CommonTree)match(input,NEG,FOLLOW_NEG_in_expression1248); 
+					NEG74_tree = (CommonTree)adaptor.dupNode(NEG74);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(NEG71_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(NEG74_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_expression_in_expression1226);
+					pushFollow(FOLLOW_expression_in_expression1254);
 					retType=expression(stypes, env);
 					state._fsp--;
 
@@ -3739,17 +3834,17 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 14 :
-					// TypeCheck.g:435:5: NULL
+					// TypeCheck.g:440:5: NULL
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					NULL72=(CommonTree)match(input,NULL,FOLLOW_NULL_in_expression1239); 
-					NULL72_tree = (CommonTree)adaptor.dupNode(NULL72);
+					NULL75=(CommonTree)match(input,NULL,FOLLOW_NULL_in_expression1267); 
+					NULL75_tree = (CommonTree)adaptor.dupNode(NULL75);
 
 
-					adaptor.addChild(root_0, NULL72_tree);
+					adaptor.addChild(root_0, NULL75_tree);
 
 
 								retval.t = new NullType();
@@ -3781,7 +3876,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "lvalue"
-	// TypeCheck.g:441:1: lvalue : ( ID | ^( DOT lvalue ID ) );
+	// TypeCheck.g:446:1: lvalue : ( ID | ^( DOT lvalue ID ) );
 	public final TypeCheck.lvalue_return lvalue() throws RecognitionException {
 		TypeCheck.lvalue_return retval = new TypeCheck.lvalue_return();
 		retval.start = input.LT(1);
@@ -3792,17 +3887,17 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree ID73=null;
-		CommonTree DOT74=null;
 		CommonTree ID76=null;
-		TreeRuleReturnScope lvalue75 =null;
+		CommonTree DOT77=null;
+		CommonTree ID79=null;
+		TreeRuleReturnScope lvalue78 =null;
 
-		CommonTree ID73_tree=null;
-		CommonTree DOT74_tree=null;
 		CommonTree ID76_tree=null;
+		CommonTree DOT77_tree=null;
+		CommonTree ID79_tree=null;
 
 		try {
-			// TypeCheck.g:442:2: ( ID | ^( DOT lvalue ID ) )
+			// TypeCheck.g:447:2: ( ID | ^( DOT lvalue ID ) )
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0==ID) ) {
@@ -3820,22 +3915,22 @@ public class TypeCheck extends TreeParser {
 
 			switch (alt18) {
 				case 1 :
-					// TypeCheck.g:442:5: ID
+					// TypeCheck.g:447:5: ID
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					ID73=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1256); 
-					ID73_tree = (CommonTree)adaptor.dupNode(ID73);
+					ID76=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1284); 
+					ID76_tree = (CommonTree)adaptor.dupNode(ID76);
 
 
-					adaptor.addChild(root_0, ID73_tree);
+					adaptor.addChild(root_0, ID76_tree);
 
 					}
 					break;
 				case 2 :
-					// TypeCheck.g:443:4: ^( DOT lvalue ID )
+					// TypeCheck.g:448:4: ^( DOT lvalue ID )
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -3846,26 +3941,26 @@ public class TypeCheck extends TreeParser {
 					CommonTree _first_1 = null;
 					CommonTree root_1 = (CommonTree)adaptor.nil();
 					_last = (CommonTree)input.LT(1);
-					DOT74=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalue1262); 
-					DOT74_tree = (CommonTree)adaptor.dupNode(DOT74);
+					DOT77=(CommonTree)match(input,DOT,FOLLOW_DOT_in_lvalue1290); 
+					DOT77_tree = (CommonTree)adaptor.dupNode(DOT77);
 
 
-					root_1 = (CommonTree)adaptor.becomeRoot(DOT74_tree, root_1);
+					root_1 = (CommonTree)adaptor.becomeRoot(DOT77_tree, root_1);
 
 					match(input, Token.DOWN, null); 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_lvalue_in_lvalue1264);
-					lvalue75=lvalue();
+					pushFollow(FOLLOW_lvalue_in_lvalue1292);
+					lvalue78=lvalue();
 					state._fsp--;
 
-					adaptor.addChild(root_1, lvalue75.getTree());
+					adaptor.addChild(root_1, lvalue78.getTree());
 
 					_last = (CommonTree)input.LT(1);
-					ID76=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1266); 
-					ID76_tree = (CommonTree)adaptor.dupNode(ID76);
+					ID79=(CommonTree)match(input,ID,FOLLOW_ID_in_lvalue1294); 
+					ID79_tree = (CommonTree)adaptor.dupNode(ID79);
 
 
-					adaptor.addChild(root_1, ID76_tree);
+					adaptor.addChild(root_1, ID79_tree);
 
 					match(input, Token.UP, null); 
 					adaptor.addChild(root_0, root_1);
@@ -3901,7 +3996,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "rettype"
-	// TypeCheck.g:446:1: rettype[StructTypes stypes] returns [Type retType] : (foundType= type[stypes] | VOID );
+	// TypeCheck.g:451:1: rettype[StructTypes stypes] returns [Type retType] : (foundType= type[stypes] | VOID );
 	public final TypeCheck.rettype_return rettype(StructTypes stypes) throws RecognitionException {
 		TypeCheck.rettype_return retval = new TypeCheck.rettype_return();
 		retval.start = input.LT(1);
@@ -3912,13 +4007,13 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree VOID77=null;
+		CommonTree VOID80=null;
 		TreeRuleReturnScope foundType =null;
 
-		CommonTree VOID77_tree=null;
+		CommonTree VOID80_tree=null;
 
 		try {
-			// TypeCheck.g:447:2: (foundType= type[stypes] | VOID )
+			// TypeCheck.g:452:2: (foundType= type[stypes] | VOID )
 			int alt19=2;
 			int LA19_0 = input.LA(1);
 			if ( (LA19_0==BOOL||LA19_0==INT||LA19_0==STRUCT) ) {
@@ -3936,13 +4031,13 @@ public class TypeCheck extends TreeParser {
 
 			switch (alt19) {
 				case 1 :
-					// TypeCheck.g:447:4: foundType= type[stypes]
+					// TypeCheck.g:452:4: foundType= type[stypes]
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					pushFollow(FOLLOW_type_in_rettype1289);
+					pushFollow(FOLLOW_type_in_rettype1317);
 					foundType=type(stypes);
 					state._fsp--;
 
@@ -3954,17 +4049,17 @@ public class TypeCheck extends TreeParser {
 					}
 					break;
 				case 2 :
-					// TypeCheck.g:451:4: VOID
+					// TypeCheck.g:456:4: VOID
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
 					_last = (CommonTree)input.LT(1);
-					VOID77=(CommonTree)match(input,VOID,FOLLOW_VOID_in_rettype1299); 
-					VOID77_tree = (CommonTree)adaptor.dupNode(VOID77);
+					VOID80=(CommonTree)match(input,VOID,FOLLOW_VOID_in_rettype1327); 
+					VOID80_tree = (CommonTree)adaptor.dupNode(VOID80);
 
 
-					adaptor.addChild(root_0, VOID77_tree);
+					adaptor.addChild(root_0, VOID80_tree);
 
 
 								retval.retType = new VoidType();
@@ -3997,7 +4092,7 @@ public class TypeCheck extends TreeParser {
 
 
 	// $ANTLR start "params"
-	// TypeCheck.g:457:1: params[StructTypes stypes, Vector<SymbolTable> env] returns [Vector<Type> retParams] : ^( PARAMS (retVal= decl[stypes, localEnv] )* ) ;
+	// TypeCheck.g:462:1: params[StructTypes stypes, Vector<SymbolTable> env] returns [Vector<Type> retParams] : ^( PARAMS (retVal= decl[stypes, localEnv] )* ) ;
 	public final TypeCheck.params_return params(StructTypes stypes, Vector<SymbolTable> env) throws RecognitionException {
 		TypeCheck.params_return retval = new TypeCheck.params_return();
 		retval.start = input.LT(1);
@@ -4008,18 +4103,18 @@ public class TypeCheck extends TreeParser {
 		CommonTree _last = null;
 
 
-		CommonTree PARAMS78=null;
+		CommonTree PARAMS81=null;
 		TreeRuleReturnScope retVal =null;
 
-		CommonTree PARAMS78_tree=null;
+		CommonTree PARAMS81_tree=null;
 
 
 				SymbolTable localEnv = env.get(0);
 				Vector<Type> paramList = new Vector<Type>();
 			
 		try {
-			// TypeCheck.g:462:2: ( ^( PARAMS (retVal= decl[stypes, localEnv] )* ) )
-			// TypeCheck.g:462:4: ^( PARAMS (retVal= decl[stypes, localEnv] )* )
+			// TypeCheck.g:467:2: ( ^( PARAMS (retVal= decl[stypes, localEnv] )* ) )
+			// TypeCheck.g:467:4: ^( PARAMS (retVal= decl[stypes, localEnv] )* )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -4030,15 +4125,15 @@ public class TypeCheck extends TreeParser {
 			CommonTree _first_1 = null;
 			CommonTree root_1 = (CommonTree)adaptor.nil();
 			_last = (CommonTree)input.LT(1);
-			PARAMS78=(CommonTree)match(input,PARAMS,FOLLOW_PARAMS_in_params1328); 
-			PARAMS78_tree = (CommonTree)adaptor.dupNode(PARAMS78);
+			PARAMS81=(CommonTree)match(input,PARAMS,FOLLOW_PARAMS_in_params1356); 
+			PARAMS81_tree = (CommonTree)adaptor.dupNode(PARAMS81);
 
 
-			root_1 = (CommonTree)adaptor.becomeRoot(PARAMS78_tree, root_1);
+			root_1 = (CommonTree)adaptor.becomeRoot(PARAMS81_tree, root_1);
 
 			if ( input.LA(1)==Token.DOWN ) {
 				match(input, Token.DOWN, null); 
-				// TypeCheck.g:462:13: (retVal= decl[stypes, localEnv] )*
+				// TypeCheck.g:467:13: (retVal= decl[stypes, localEnv] )*
 				loop20:
 				while (true) {
 					int alt20=2;
@@ -4049,10 +4144,10 @@ public class TypeCheck extends TreeParser {
 
 					switch (alt20) {
 					case 1 :
-						// TypeCheck.g:462:14: retVal= decl[stypes, localEnv]
+						// TypeCheck.g:467:14: retVal= decl[stypes, localEnv]
 						{
 						_last = (CommonTree)input.LT(1);
-						pushFollow(FOLLOW_decl_in_params1333);
+						pushFollow(FOLLOW_decl_in_params1361);
 						retVal=decl(stypes, localEnv);
 						state._fsp--;
 
@@ -4145,7 +4240,7 @@ public class TypeCheck extends TreeParser {
 	public static final BitSet FOLLOW_declarations_in_function533 = new BitSet(new long[]{0x0008000000000000L});
 	public static final BitSet FOLLOW_statement_list_in_function544 = new BitSet(new long[]{0x0000000000000008L});
 	public static final BitSet FOLLOW_STMTS_in_statement_list571 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_statement_in_statement_list575 = new BitSet(new long[]{0x04014800240000C8L});
+	public static final BitSet FOLLOW_statement_in_statement_list575 = new BitSet(new long[]{0x04014800240040C8L});
 	public static final BitSet FOLLOW_block_in_statement606 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_assignment_in_statement616 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_conditional_in_statement627 = new BitSet(new long[]{0x0000000000000002L});
@@ -4154,67 +4249,70 @@ public class TypeCheck extends TreeParser {
 	public static final BitSet FOLLOW_read_in_statement658 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_ret_in_statement667 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_print_in_statement678 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_READ_in_read696 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalue_in_read698 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_PRINT_in_print714 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_print716 = new BitSet(new long[]{0x0000000000040008L});
-	public static final BitSet FOLLOW_ENDL_in_print719 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_RETURN_in_ret735 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_ret739 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_RETURN_in_ret751 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_arg_list_in_arguments774 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ARGS_in_arg_list804 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_arg_list809 = new BitSet(new long[]{0x006005FEB3998018L});
-	public static final BitSet FOLLOW_ARGS_in_arg_list825 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IF_in_conditional847 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_conditional851 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_in_conditional856 = new BitSet(new long[]{0x0000000000000088L});
-	public static final BitSet FOLLOW_block_in_conditional861 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_INVOKE_in_invocation886 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_invocation890 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_arguments_in_invocation894 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_WHILE_in_loop913 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_loop915 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_block_in_loop918 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_loop921 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_BLOCK_in_block942 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_statement_list_in_block946 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ASSIGN_in_assignment966 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_assignment968 = new BitSet(new long[]{0x0000000002010000L});
-	public static final BitSet FOLLOW_lvalue_in_assignment971 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_invocation_in_expression991 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_expression1003 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1013 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1018 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_delete_in_statement687 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_READ_in_read705 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalue_in_read707 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_PRINT_in_print723 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_print725 = new BitSet(new long[]{0x0000000000040008L});
+	public static final BitSet FOLLOW_ENDL_in_print728 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DELETE_in_delete745 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_delete747 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_RETURN_in_ret763 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_ret767 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_RETURN_in_ret779 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_arg_list_in_arguments802 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ARGS_in_arg_list832 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_arg_list837 = new BitSet(new long[]{0x006005FEB3998018L});
+	public static final BitSet FOLLOW_ARGS_in_arg_list853 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IF_in_conditional875 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_conditional879 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_in_conditional884 = new BitSet(new long[]{0x0000000000000088L});
+	public static final BitSet FOLLOW_block_in_conditional889 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_INVOKE_in_invocation914 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_invocation918 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_arguments_in_invocation922 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_WHILE_in_loop941 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_loop943 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_block_in_loop946 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_loop949 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_BLOCK_in_block970 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_statement_list_in_block974 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ASSIGN_in_assignment994 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_assignment996 = new BitSet(new long[]{0x0000000002010000L});
+	public static final BitSet FOLLOW_lvalue_in_assignment999 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_invocation_in_expression1019 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_set_in_expression1031 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1057 = new BitSet(new long[]{0x006005FEB3998010L});
-	public static final BitSet FOLLOW_expression_in_expression1062 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_set_in_expression1075 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1041 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1046 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_set_in_expression1059 = new BitSet(new long[]{0x0000000000000004L});
 	public static final BitSet FOLLOW_expression_in_expression1085 = new BitSet(new long[]{0x006005FEB3998010L});
 	public static final BitSet FOLLOW_expression_in_expression1090 = new BitSet(new long[]{0x0000000000000008L});
 	public static final BitSet FOLLOW_set_in_expression1103 = new BitSet(new long[]{0x0000000000000004L});
 	public static final BitSet FOLLOW_expression_in_expression1113 = new BitSet(new long[]{0x006005FEB3998010L});
 	public static final BitSet FOLLOW_expression_in_expression1118 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NOT_in_expression1131 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1133 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_DOT_in_expression1146 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1152 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_expression1157 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_ID_in_expression1170 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTEGER_in_expression1179 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TRUE_in_expression1186 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FALSE_in_expression1194 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NEW_in_expression1203 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_ID_in_expression1207 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NEG_in_expression1220 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_expression_in_expression1226 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_NULL_in_expression1239 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_lvalue1256 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_DOT_in_lvalue1262 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_lvalue_in_lvalue1264 = new BitSet(new long[]{0x0000000002000000L});
-	public static final BitSet FOLLOW_ID_in_lvalue1266 = new BitSet(new long[]{0x0000000000000008L});
-	public static final BitSet FOLLOW_type_in_rettype1289 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VOID_in_rettype1299 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PARAMS_in_params1328 = new BitSet(new long[]{0x0000000000000004L});
-	public static final BitSet FOLLOW_decl_in_params1333 = new BitSet(new long[]{0x0000000000000808L});
+	public static final BitSet FOLLOW_set_in_expression1131 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1141 = new BitSet(new long[]{0x006005FEB3998010L});
+	public static final BitSet FOLLOW_expression_in_expression1146 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NOT_in_expression1159 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1161 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_DOT_in_expression1174 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1180 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_expression1185 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_ID_in_expression1198 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INTEGER_in_expression1207 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TRUE_in_expression1214 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FALSE_in_expression1222 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_NEW_in_expression1231 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_ID_in_expression1235 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NEG_in_expression1248 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_expression_in_expression1254 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_NULL_in_expression1267 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_lvalue1284 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_DOT_in_lvalue1290 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_lvalue_in_lvalue1292 = new BitSet(new long[]{0x0000000002000000L});
+	public static final BitSet FOLLOW_ID_in_lvalue1294 = new BitSet(new long[]{0x0000000000000008L});
+	public static final BitSet FOLLOW_type_in_rettype1317 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VOID_in_rettype1327 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PARAMS_in_params1356 = new BitSet(new long[]{0x0000000000000004L});
+	public static final BitSet FOLLOW_decl_in_params1361 = new BitSet(new long[]{0x0000000000000808L});
 }

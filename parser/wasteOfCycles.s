@@ -11,21 +11,21 @@ L2_.str:
 _function:
        pushq %rbp
        movq %rsp, %rbp
-       subq $680, %rsp
+       subq $656, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
        movq %r14, -32(%rbp)
        movq %r15, -40(%rbp)
        movq %rdi, %r11
-       movq %r11, -48(%rbp)
+       movq %r11, -56(%rbp)
     L2:
-       movq -48(%rbp), %r10
-       movq %r10, -56(%rbp)
+       movq -56(%rbp), %r10
+       movq %r10, -64(%rbp)
        movq %r10, %r10
        movq $0, %r12
        movq $0, %rbx
-       movq -56(%rbp), %r11
+       movq -64(%rbp), %r11
        cmpq %r12, %r11
        pushq %r8
        movq $1, %r8
@@ -42,13 +42,13 @@ _function:
     L5:
        movq $0, %rbx
        movq %rbx, %r11
-       movq %r11, -64(%rbp)
-       movq -64(%rbp), %r10
-       movq %r10, -72(%rbp)
+       movq %r11, -72(%rbp)
+       movq -72(%rbp), %r10
+       movq %r10, -80(%rbp)
        movq %r10, %r10
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r12
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        pushq %r8
        movq %rbx, %r8
@@ -56,7 +56,7 @@ _function:
        movq %r8, %r12
        popq %r8
        movq $0, %rbx
-       movq -72(%rbp), %r11
+       movq -80(%rbp), %r11
        cmpq %r12, %r11
        pushq %r8
        movq $1, %r8
@@ -66,9 +66,9 @@ _function:
        jne L7
        jmp L6
     L6:
-       movq -64(%rbp), %r10
+       movq -72(%rbp), %r10
        movq %r10, %r12
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        pushq %r8
        movq %r12, %r8
@@ -97,7 +97,7 @@ _function:
        popq %rsi
        popq %rdx
        popq %rcx
-       movq -64(%rbp), %r10
+       movq -72(%rbp), %r10
        movq %r10, %r12
        movq $1, %rbx
        pushq %r8
@@ -106,13 +106,13 @@ _function:
        movq %r8, %rbx
        popq %r8
        movq %rbx, %r11
-       movq %r11, -64(%rbp)
-       movq -64(%rbp), %r10
+       movq %r11, -72(%rbp)
+       movq -72(%rbp), %r10
        movq %r10, -88(%rbp)
        movq %r10, %r10
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r12
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        pushq %r8
        movq %rbx, %r8
@@ -130,7 +130,7 @@ _function:
        jne L7
        jmp L6
     L7:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r12
        movq $1, %rbx
        pushq %r8
@@ -165,7 +165,7 @@ _function:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $680, %rsp
+       addq $656, %rsp
        popq %rbp
        ret
     L4:
@@ -195,6 +195,7 @@ _function:
        popq %rcx
        popq %rax
        movq -8(%rbp), %rbx
+       movq %rbx, %rbx
        movq %rbx, %rbx
        movq %rbx, %rdi
        pushq %rcx

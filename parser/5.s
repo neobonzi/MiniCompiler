@@ -11,12 +11,12 @@ L2_.str:
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $232, %rsp
+       subq $216, %rsp
        movq $1000, %r11
-       movq %r11, -8(%rbp)
+       movq %r11, -16(%rbp)
        movq $2, %r12
        movq $0, %rbx
-       movq -8(%rbp), %r11
+       movq -16(%rbp), %r11
        cmpq %r12, %r11
        pushq %r8
        movq $1, %r8
@@ -36,7 +36,7 @@ L2_.str:
        pushq %r11
        leaq L_.str(%rip), %rdi
        movq $0, %rax
-       movq -8(%rbp), %r10
+       movq -16(%rbp), %r10
        movq %r10, %rsi
        call _printf
        popq %r11
@@ -48,29 +48,29 @@ L2_.str:
        popq %rdx
        popq %rcx
        movq $2, %r11
-       movq %r11, -16(%rbp)
+       movq %r11, -24(%rbp)
        pushq %rdx
        pushq %rax
-       movq -8(%rbp), %r10
+       movq -16(%rbp), %r10
        movq %r10, %rax
        movq $0, %rdx
        cqto
-       movq -16(%rbp), %r10
+       movq -24(%rbp), %r10
        idivq %r10
        movq %rax, %r11
-       movq %r11, -24(%rbp)
+       movq %r11, -32(%rbp)
        popq %rax
        popq %rdx
        movq $0, %r11
-       movq %r11, -32(%rbp)
-       movq -24(%rbp), %r11
+       movq %r11, -40(%rbp)
+       movq -32(%rbp), %r11
        cmpq %r12, %r11
        pushq %r8
        movq $1, %r8
        cmovg %r8, %r11
-       movq %r11, -32(%rbp)
+       movq %r11, -40(%rbp)
        popq %r8
-       movq -32(%rbp), %r11
+       movq -40(%rbp), %r11
        cmpq $1, %r11
        jne L3
        jmp L2
@@ -81,6 +81,6 @@ L2_.str:
        movq %r10, %rax
        jmp L1
     L1:
-       addq $232, %rsp
+       addq $216, %rsp
        popq %rbp
        ret

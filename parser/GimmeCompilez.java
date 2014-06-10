@@ -60,6 +60,7 @@ public class GimmeCompilez
    private static boolean _displayAST = false;
    private static boolean _dumpIL = false;
    private static boolean _remUSELESS = false;
+   private static int curOffset = 0;
    private static boolean _copyPROP = false;
 
    private static void parseParameters(String [] args)
@@ -374,7 +375,7 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
       }
    }
 
-   private static Integer allocateRegisters(InterferenceGraph intGraph, BasicBlock cfgBlock, HashMap<Integer, Integer> stackVarMap, Integer curOffset) {
+   private static Integer allocateRegisters(InterferenceGraph intGraph, BasicBlock cfgBlock, HashMap<Integer, Integer> stackVarMap) {
       if(!transformedBlocks.containsKey(cfgBlock.label)) {
  
          for(int instNum = 0; instNum < cfgBlock.assemInstructions.size(); instNum++) {
@@ -456,6 +457,7 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
                   }
                   else
                   {
+                     curOffset += 8;
                      storeMove.stackPos = curOffset * -1;
                      stackVarMap.put(vr.getRegNum(), curOffset);
                      System.out.println("Spilled target: " + vr + " stack pos: " + stackVarMap.get(vr.getRegNum()).toString());
@@ -463,7 +465,6 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
                }
                cfgBlock.assemInstructions.add(instNum + 1, storeMove);
                inst.setTarget(targetReg);
-               curOffset += 8;
             }
          }
          for (AssemblyInstruction i : cfgBlock.assemInstructions) {
@@ -472,11 +473,9 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
 
          transformedBlocks.put(cfgBlock.label, cfgBlock);
 
-         Integer offsetSum = curOffset;
          for (BasicBlock descBlock : cfgBlock.descendants) {
-            offsetSum += allocateRegisters(intGraph, descBlock, stackVarMap, curOffset);
+            allocateRegisters(intGraph, descBlock, stackVarMap);
          }
-         return offsetSum;
       }
       return 0;
    }
@@ -739,12 +738,12 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
 
          for (BasicBlock cfgBlock : cfgAssBlocks) {
             HashMap<String, LVABlock> lvaHash = new HashMap<String, LVABlock>();
-            Integer stackVarPos = 0;
+            curOffset = 0;
             if(!cfgBlock.label.equals("_main"))
             {
-               stackVarPos = 48;
+               curOffset = 48;
             } else {
-               stackVarPos = 8;
+               curOffset = 8;
             }
             HashMap<Integer, Integer> stackVarHash = new HashMap<Integer, Integer>();
             Vector<BasicBlock> blockList = new Vector<BasicBlock>();
@@ -790,7 +789,8 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
             colorGraph(intGraph);
             intGraph.printColors();
             transformedBlocks.clear();
-            Integer finalStackOffset = (8 * 8) + allocateRegisters(intGraph, cfgBlock, stackVarHash, stackVarPos);
+            allocateRegisters(intGraph, cfgBlock, stackVarHash);
+            Integer finalStackOffset = 80 + curOffset;
             cfgBlock.assemInstructions.add(2, new SubQ(new ImmediateRegister(finalStackOffset), new AssemblyRegister(x86_64Reg.RSP)));
             funExit.assemInstructions.add(funExit.assemInstructions.size() - 2, new AddQ(new ImmediateRegister(finalStackOffset), new AssemblyRegister(x86_64Reg.RSP)));
          }

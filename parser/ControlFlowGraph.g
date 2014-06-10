@@ -242,9 +242,12 @@ statement [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock ret
    ;
 
 read [RegisterTable regTable, BasicBlock prevBlock] returns [BasicBlock retBlock]
-   :  ^(READ retReg=lvalueRead[regTable, prevBlock])
+   @init
+   {
+      prevBlock.instructions.add(new ReadInst(regCounter));
+   }
+   :  ^(READ retReg=lvalueRead[regTable, prevBlock, regCounter++])
       {
-         prevBlock.instructions.add(new ReadInst($retReg.regNum));
          $retBlock = $prevBlock;
       }
    ;
@@ -478,15 +481,19 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
       {
          Integer varReg = regTable.get($newId.text);
          if (varReg == null) {
-            ComputeGlobalAddrInst globInst = new ComputeGlobalAddrInst($newId.text, regCounter);
-            globInst.type = globals.get($newId.text);
-            if(globInst.type instanceof StructType) {
-               curStruct = (StructType)globInst.type;
+            LoadGlobalInst globInst = new LoadGlobalInst($newId.text, regCounter);
+            if(globals.get($newId.text) instanceof StructType) {
+               curStruct = (StructType)globals.get($newId.text);
             }
             prevBlock.instructions.add(globInst);
             $regNum = new Integer(regCounter++);
          } else {
-            System.out.println("--> Found" + $newId.text + " at " + varReg);
+            System.out.println("--> Found " + $newId.text + " at " + varReg);
+            if(curEnv.get($newId.text) instanceof StructType)
+            {
+               System.out.println("its a struct!");
+               curStruct = (StructType)curEnv.get($newId.text);
+            }
              prevBlock.instructions.add(new MoveInst(varReg, regCounter));
              $regNum = new Integer(regCounter++);
          }
@@ -532,12 +539,30 @@ expression [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
 lvalue [RegisterTable regTable, BasicBlock prevBlock, Integer assReg] returns [Integer regNum]
    :  retId=ID
       {
-         if(curEnv.get($retId.text) instanceof StructType)
-         {
-            curStruct = (StructType)curEnv.get($retId.text);
-         }
-         prevBlock.instructions.add(new MoveInst($assReg, regTable.get($retId.text)));
          $regNum = regTable.get($retId.text);
+         //Global lvalue
+         if ($regNum == null) {
+            ComputeGlobalAddrInst inst = new ComputeGlobalAddrInst($retId.text, regCounter);
+            prevBlock.instructions.add(inst);
+            prevBlock.instructions.add(new StoreInst($assReg, regCounter));
+            $regNum = regCounter++;
+            //Global struct lvalue
+            if(globals.get($retId.text) instanceof StructType)
+            {
+               curStruct = (StructType)globals.get($retId.text);
+            }
+         }
+         else
+         { 
+            //Local lvalue
+            prevBlock.instructions.add(new MoveInst($assReg, regTable.get($retId.text)));
+            $regNum = regTable.get($retId.text);
+            //Local struct lvalue
+            if(curEnv.get($retId.text) instanceof StructType)
+            {
+               curStruct = (StructType)curEnv.get($retId.text);
+            }
+         }
       }
    |  ^(DOT retReg=lvalueLoad[regTable, prevBlock] newId=ID)
       {
@@ -551,14 +576,47 @@ lvalue [RegisterTable regTable, BasicBlock prevBlock, Integer assReg] returns [I
       }
    ;
 
-lvalueRead [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum]
+lvalueRead [RegisterTable regTable, BasicBlock prevBlock, Integer assReg] returns [Integer regNum]
    :  retId=ID
       {
          $regNum = regTable.get($retId.text);
+         if ($regNum == null) {
+            LoadGlobalInst inst = new LoadGlobalInst($retId.text, assReg);
+            prevBlock.instructions.add(inst);
+            $regNum = regCounter++;
+         }
+         prevBlock.instructions.add(new MoveInst($assReg, $regNum));
       }
-   |  ^(DOT retReg=lvalueRead[regTable, prevBlock] newId=ID)
+   |  ^(DOT retReg=lvalueRead2[regTable, prevBlock] newId=ID)
       {
-         prevBlock.instructions.add(new LoadAIInst($retReg.regNum, $newId.text, regCounter));
+         System.out.println("Read for " + $newId.text);
+         StoreImmInst inst = new StoreImmInst($assReg, $retReg.regNum, $newId.text);
+         inst.offset = curStruct.memberCounts.get($newId.text);
+         prevBlock.instructions.add(inst);
+      }
+   ;
+
+lvalueRead2 [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNum]
+   :  retId=ID
+      {
+         curStruct = (StructType)curEnv.get($retId.text);
+         $regNum = regTable.get($retId.text);
+         if ($regNum == null) {
+            ComputeGlobalAddrInst inst = new ComputeGlobalAddrInst($retId.text, regCounter);
+            curStruct = (StructType)globals.get($retId.text);
+            prevBlock.instructions.add(inst);
+            $regNum = regCounter++;
+         }
+      }
+   |  ^(DOT retReg=lvalueRead2[regTable, prevBlock] newId=ID)
+      {
+         LoadAIInst inst = new LoadAIInst($retReg.regNum, $newId.text, regCounter);
+         inst.offset = curStruct.memberCounts.get($newId.text);
+         if(curStruct.get($newId.text) instanceof StructType)
+         {
+            curStruct = (StructType)curStruct.get($newId.text);
+         }
+         prevBlock.instructions.add(inst);
          $regNum = regCounter++;
       }
    ;
@@ -568,7 +626,7 @@ lvalueLoad [RegisterTable regTable, BasicBlock prevBlock] returns [Integer regNu
       {
          $regNum = regTable.get($retId.text);
          if ($regNum == null) {
-            LoadGlobalInst inst = new LoadGlobalInst($retId.text, regCounter);
+            LoadInst inst = new LoadInst($retId.text, regCounter);
             curStruct = (StructType)globals.get($retId.text);
             prevBlock.instructions.add(inst);
             $regNum = regCounter++;

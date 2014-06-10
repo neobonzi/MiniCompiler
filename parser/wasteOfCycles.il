@@ -58,14 +58,15 @@ _function:
     L4:
           br L5
  _main:
-          read r17
-          mov r17, r18
-          storeoutargument r18, 0
+          read r18
+          mov r18, r17
+          mov r17, r19
+          storeoutargument r19, 0
           call _function, 1
-          loadret r19
-          loadi 0, r20
-          print r20
+          loadret r20
           loadi 0, r21
-          storeret r21
+          print r21
+          loadi 0, r22
+          storeret r22
           br L8
     L8:

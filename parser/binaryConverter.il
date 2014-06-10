@@ -146,43 +146,44 @@ _convertToDecimal:
           br L16
    L16:
  _main:
-          read r17
-          mov r17, r19
-          storeoutargument r19, 0
+          read r19
+          mov r19, r17
+          mov r17, r20
+          storeoutargument r20, 0
           call _convertToDecimal, 1
-          loadret r20
-          mov r20, r17
-          mov r17, r21
+          loadret r21
+          mov r21, r17
           mov r17, r22
-          mult r21, r22, r23
-          mov r23, r18
-          mov r18, r24
-          loadi 0, r25
+          mov r17, r23
+          mult r22, r23, r24
+          mov r24, r18
+          mov r18, r25
           loadi 0, r26
-          comp r25, r24, ccr
-          movgt 1, r26
-          compi 1, r26, ccr
+          loadi 0, r27
+          comp r26, r25, ccr
+          movgt 1, r27
+          compi 1, r27, ccr
           cbrne cc, L19, L18
    L18:
-          mov r18, r27
-          storeoutargument r27, 0
+          mov r18, r28
+          storeoutargument r28, 0
           call _wait, 1
-          loadret r28
-          mov r18, r29
-          loadi 1, r30
-          sub r29, r30, r31
-          mov r31, r18
-          mov r18, r32
-          loadi 0, r33
+          loadret r29
+          mov r18, r30
+          loadi 1, r31
+          sub r30, r31, r32
+          mov r32, r18
+          mov r18, r33
           loadi 0, r34
-          comp r33, r32, ccr
-          movgt 1, r34
-          compi 1, r34, ccr
+          loadi 0, r35
+          comp r34, r33, ccr
+          movgt 1, r35
+          compi 1, r35, ccr
           cbrne cc, L19, L18
    L19:
-          mov r17, r35
-          print r35
-          loadi 0, r36
-          storeret r36
+          mov r17, r36
+          print r36
+          loadi 0, r37
+          storeret r37
           br L17
    L17:

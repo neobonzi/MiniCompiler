@@ -110,44 +110,45 @@ _prime:
           br L4
           br L14
  _main:
-          read r17
-          loadi 0, r19
-          mov r19, r18
-          mov r18, r20
-          mov r17, r21
-          loadi 0, r22
-          comp r21, r20, ccr
-          movle 1, r22
-          compi 1, r22, ccr
+          read r19
+          mov r19, r17
+          loadi 0, r20
+          mov r20, r18
+          mov r18, r21
+          mov r17, r22
+          loadi 0, r23
+          comp r22, r21, ccr
+          movle 1, r23
+          compi 1, r23, ccr
           cbrne cc, L17, L16
    L16:
    L18:
-          mov r18, r23
-          storeoutargument r23, 0
+          mov r18, r24
+          storeoutargument r24, 0
           call _prime, 1
-          loadret r24
-          compi 1, r24, ccr
+          loadret r25
+          compi 1, r25, ccr
           cbrne cc, L20, L19
    L19:
-          mov r18, r25
-          print r25
+          mov r18, r26
+          print r26
           br L21
    L21:
-          mov r18, r26
-          loadi 1, r27
-          add r26, r27, r28
-          mov r28, r18
-          mov r18, r29
-          mov r17, r30
-          loadi 0, r31
-          comp r30, r29, ccr
-          movle 1, r31
-          compi 1, r31, ccr
+          mov r18, r27
+          loadi 1, r28
+          add r27, r28, r29
+          mov r29, r18
+          mov r18, r30
+          mov r17, r31
+          loadi 0, r32
+          comp r31, r30, ccr
+          movle 1, r32
+          compi 1, r32, ccr
           cbrne cc, L17, L16
    L20:
           br L21
    L17:
-          loadi 0, r32
-          storeret r32
+          loadi 0, r33
+          storeret r33
           br L15
    L15:

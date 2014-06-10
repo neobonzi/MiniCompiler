@@ -1,36 +1,37 @@
 _getIntList:
           new IntList, r19
           mov r19, r17
-          read r18
+          read r20
+          mov r20, r18
     L2:
-          mov r18, r20
-          loadi 1, r21
-          loadi -1, r22
-          mult r22, r21, r22
-          loadi 0, r23
-          comp r22, r20, ccr
-          moveq 1, r23
-          compi 1, r23, ccr
+          mov r18, r21
+          loadi 1, r22
+          loadi -1, r23
+          mult r23, r22, r23
+          loadi 0, r24
+          comp r23, r21, ccr
+          moveq 1, r24
+          compi 1, r24, ccr
           cbrne cc, L4, L3
     L3:
-          mov r18, r24
-          storeai r24, r17,  @head
-          loadi 0, r25
-          storeai r25, r17,  @tail
-          mov r17, r26
-          storeret r26
+          mov r18, r25
+          storeai r25, r17,  @head
+          loadi 0, r26
+          storeai r26, r17,  @tail
+          mov r17, r27
+          storeret r27
           br L1
           br L5
     L5:
     L1:
     L4:
-          mov r18, r27
-          storeai r27, r17,  @head
+          mov r18, r28
+          storeai r28, r17,  @head
           call _getIntList, 0
-          loadret r28
-          storeai r28, r17,  @tail
-          mov r17, r29
-          storeret r29
+          loadret r29
+          storeai r29, r17,  @tail
+          mov r17, r30
+          storeret r30
           br L1
           br L5
 _biggest:

@@ -11,7 +11,7 @@ L2_.str:
   _mod:
        pushq %rbp
        movq %rsp, %rbp
-       subq $160, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -50,26 +50,26 @@ L2_.str:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $160, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
 _hailstone:
        pushq %rbp
        movq %rsp, %rbp
-       subq $888, %rsp
+       subq $152, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
        movq %r14, -32(%rbp)
        movq %r15, -40(%rbp)
        movq %rdi, %r11
-       movq %r11, -48(%rbp)
+       movq %r11, -56(%rbp)
        movq $1, %rbx
        cmpq $1, %rbx
        jne L4
        jmp L3
     L3:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        pushq %rcx
        pushq %rdx
@@ -92,7 +92,7 @@ _hailstone:
        popq %rdx
        popq %rcx
     L5:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r12
        movq $2, %rbx
        movq %r12, %rdi
@@ -115,10 +115,10 @@ _hailstone:
        popq %rdx
        popq %rcx
        movq %rax, %r11
-       movq %r11, -56(%rbp)
+       movq %r11, -64(%rbp)
        movq $1, %r12
        movq $0, %rbx
-       movq -56(%rbp), %r11
+       movq -64(%rbp), %r11
        cmpq %r12, %r11
        pushq %r8
        movq $1, %r8
@@ -129,7 +129,7 @@ _hailstone:
        jmp L6
     L6:
        movq $3, %r12
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        pushq %r8
        movq %rbx, %r8
@@ -143,11 +143,11 @@ _hailstone:
        movq %r8, %rbx
        popq %r8
        movq %rbx, %r11
-       movq %r11, -48(%rbp)
+       movq %r11, -56(%rbp)
        jmp L8
     L8:
     L9:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, -72(%rbp)
        movq %r10, %r10
        movq $1, %r12
@@ -162,7 +162,7 @@ _hailstone:
        jne L11
        jmp L10
    L10:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        pushq %rcx
        pushq %rdx
@@ -194,7 +194,7 @@ _hailstone:
    L11:
        jmp L12
     L7:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r12
        movq $2, %rbx
        pushq %rdx
@@ -207,7 +207,7 @@ _hailstone:
        popq %rax
        popq %rdx
        movq %rbx, %r11
-       movq %r11, -48(%rbp)
+       movq %r11, -56(%rbp)
        jmp L8
     L4:
     L2:
@@ -216,7 +216,7 @@ _hailstone:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $888, %rsp
+       addq $152, %rsp
        popq %rbp
        ret
  _main:
@@ -244,6 +244,7 @@ _hailstone:
        popq %rcx
        popq %rax
        movq -8(%rbp), %rbx
+       movq %rbx, %rbx
        movq %rbx, %rbx
        movq %rbx, %rdi
        pushq %rcx

@@ -80,37 +80,40 @@
           compi 1, r24, ccr
           cbrne cc, L13, L12
    L12:
-          read r17
-          read r18
-          mov r17, r25
-          storeoutargument r25, 0
-          call _fact, 1
-          loadret r26
-          mov r26, r17
-          mov r18, r27
+          read r25
+          mov r25, r17
+          read r26
+          mov r26, r18
+          mov r17, r27
           storeoutargument r27, 0
           call _fact, 1
           loadret r28
-          mov r28, r18
-          mov r17, r29
-          mov r18, r30
+          mov r28, r17
+          mov r18, r29
           storeoutargument r29, 0
-          storeoutargument r30, 1
+          call _fact, 1
+          loadret r30
+          mov r30, r18
+          mov r17, r31
+          mov r18, r32
+          storeoutargument r31, 0
+          storeoutargument r32, 1
           call _sum, 2
-          loadret r31
-          print r31
-          read r19
-          mov r19, r32
-          loadi 1, r33
-          loadi -1, r34
-          mult r34, r33, r34
-          loadi 0, r35
-          comp r34, r32, ccr
-          movne 1, r35
-          compi 1, r35, ccr
+          loadret r33
+          print r33
+          read r34
+          mov r34, r19
+          mov r19, r35
+          loadi 1, r36
+          loadi -1, r37
+          mult r37, r36, r37
+          loadi 0, r38
+          comp r37, r35, ccr
+          movne 1, r38
+          compi 1, r38, ccr
           cbrne cc, L13, L12
    L13:
-          loadi 0, r36
-          storeret r36
+          loadi 0, r39
+          storeret r39
           br L11
    L11:

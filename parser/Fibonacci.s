@@ -18,9 +18,9 @@ _computeFib:
        movq %r14, -32(%rbp)
        movq %r15, -40(%rbp)
        movq %rdi, %r11
-       movq %r11, -48(%rbp)
+       movq %r11, -56(%rbp)
     L2:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r13
        movq $0, %r12
        movq $0, %rbx
@@ -49,7 +49,7 @@ _computeFib:
        ret
     L4:
     L5:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r13
        movq $2, %r12
        movq $0, %rbx
@@ -69,7 +69,7 @@ _computeFib:
     L8:
        jmp L9
     L7:
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r12
        movq $1, %rbx
        pushq %r8
@@ -96,7 +96,7 @@ _computeFib:
        popq %rdx
        popq %rcx
        movq %rax, %r13
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %r12
        movq $2, %rbx
        pushq %r8
@@ -156,6 +156,7 @@ _computeFib:
        popq %rcx
        popq %rax
        movq -8(%rbp), %rbx
+       movq %rbx, %rbx
        movq %rbx, %rbx
        movq %rbx, %rdi
        pushq %rcx

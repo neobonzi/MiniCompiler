@@ -69,12 +69,13 @@ _hailstone:
     L4:
     L2:
  _main:
-          read r17
-          mov r17, r18
-          storeoutargument r18, 0
+          read r18
+          mov r18, r17
+          mov r17, r19
+          storeoutargument r19, 0
           call _hailstone, 1
-          loadret r19
-          loadi 0, r20
-          storeret r20
+          loadret r20
+          loadi 0, r21
+          storeret r21
           br L13
    L13:

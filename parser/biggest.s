@@ -11,7 +11,7 @@ L2_.str:
 _getIntList:
        pushq %rbp
        movq %rsp, %rbp
-       subq $560, %rsp
+       subq $80, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -21,7 +21,7 @@ _getIntList:
        call _malloc
        movq %rax, %rbx
        movq %rbx, %r11
-       movq %r11, -48(%rbp)
+       movq %r11, -56(%rbp)
        pushq %rax
        pushq %rcx
        pushq %rdx
@@ -42,10 +42,11 @@ _getIntList:
        popq %rdx
        popq %rcx
        popq %rax
-       movq -56(%rbp), %r11
-       movq %r11, -64(%rbp)
+       movq -56(%rbp), %rbx
+       movq %rbx, %r11
+       movq %r11, -72(%rbp)
     L2:
-       movq -64(%rbp), %r10
+       movq -72(%rbp), %r10
        movq %r10, %r13
        movq $1, %rbx
        movq $-1, %r12
@@ -64,16 +65,16 @@ _getIntList:
        jne L4
        jmp L3
     L3:
-       movq -64(%rbp), %r10
+       movq -72(%rbp), %r10
        movq %r10, %rbx
-       movq -48(%rbp), %r11
-       movq %r11, -48(%rbp)
+       movq -56(%rbp), %r11
+       movq %r11, -56(%rbp)
        movq %rbx, 0(%r11)
        movq $0, %rbx
-       movq -48(%rbp), %r11
-       movq %r11, -48(%rbp)
+       movq -56(%rbp), %r11
+       movq %r11, -56(%rbp)
        movq %rbx, 8(%r11)
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        movq %rbx, %rax
        jmp L1
@@ -85,14 +86,14 @@ _getIntList:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $560, %rsp
+       addq $80, %rsp
        popq %rbp
        ret
     L4:
-       movq -64(%rbp), %r10
+       movq -72(%rbp), %r10
        movq %r10, %rbx
-       movq -48(%rbp), %r11
-       movq %r11, -48(%rbp)
+       movq -56(%rbp), %r11
+       movq %r11, -56(%rbp)
        movq %rbx, 0(%r11)
        pushq %rcx
        pushq %rdx
@@ -112,10 +113,10 @@ _getIntList:
        popq %rdx
        popq %rcx
        movq %rax, %rbx
-       movq -48(%rbp), %r11
-       movq %r11, -48(%rbp)
+       movq -56(%rbp), %r11
+       movq %r11, -56(%rbp)
        movq %rbx, 8(%r11)
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        movq %rbx, %rax
        jmp L1
@@ -123,7 +124,7 @@ _getIntList:
 _biggest:
        pushq %rbp
        movq %rsp, %rbp
-       subq $352, %rsp
+       subq $56, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -155,7 +156,7 @@ _biggest:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $352, %rsp
+       addq $56, %rsp
        popq %rbp
        ret
     L9:
@@ -166,20 +167,20 @@ _biggest:
 _biggestInList:
        pushq %rbp
        movq %rsp, %rbp
-       subq $368, %rsp
+       subq $72, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
        movq %r14, -32(%rbp)
        movq %r15, -40(%rbp)
        movq %rdi, %r11
-       movq %r11, -48(%rbp)
-       movq -48(%rbp), %r10
+       movq %r11, -56(%rbp)
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        movq 0(%rbx), %rbx
        movq %rbx, %r11
-       movq %r11, -56(%rbp)
-       movq -48(%rbp), %r10
+       movq %r11, -64(%rbp)
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        movq 8(%rbx), %r13
        movq $0, %r12
@@ -193,9 +194,9 @@ _biggestInList:
        jne L13
        jmp L12
    L12:
-       movq -56(%rbp), %r10
+       movq -64(%rbp), %r10
        movq %r10, %r12
-       movq -48(%rbp), %r10
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        movq 0(%rbx), %rbx
        movq %r12, %rdi
@@ -219,13 +220,13 @@ _biggestInList:
        popq %rcx
        movq %rax, %rbx
        movq %rbx, %r11
-       movq %r11, -56(%rbp)
-       movq -48(%rbp), %r10
+       movq %r11, -64(%rbp)
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        movq 8(%rbx), %rbx
        movq %rbx, %r11
-       movq %r11, -48(%rbp)
-       movq -48(%rbp), %r10
+       movq %r11, -56(%rbp)
+       movq -56(%rbp), %r10
        movq %r10, %rbx
        movq 8(%rbx), %r13
        movq $0, %r12
@@ -239,7 +240,7 @@ _biggestInList:
        jne L13
        jmp L12
    L13:
-       movq -56(%rbp), %r10
+       movq -64(%rbp), %r10
        movq %r10, %rbx
        movq %rbx, %rax
        jmp L11
@@ -249,13 +250,13 @@ _biggestInList:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $368, %rsp
+       addq $72, %rsp
        popq %rbp
        ret
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $80, %rsp
+       subq $16, %rsp
        pushq %rcx
        pushq %rdx
        pushq %rsi
@@ -319,6 +320,6 @@ _biggestInList:
        movq %rbx, %rax
        jmp L14
    L14:
-       addq $80, %rsp
+       addq $16, %rsp
        popq %rbp
        ret
