@@ -12,7 +12,7 @@ L2_.str:
 _length:
        pushq %rbp
        movq %rsp, %rbp
-       subq $136, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -75,7 +75,7 @@ _length:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $136, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
     L4:
@@ -83,7 +83,7 @@ _length:
 _addToFront:
        pushq %rbp
        movq %rsp, %rbp
-       subq $136, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -143,7 +143,7 @@ _addToFront:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $136, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
     L9:
@@ -157,9 +157,11 @@ _deleteFirst:
        movq %r13, -24(%rbp)
        movq %r14, -32(%rbp)
        movq %r15, -40(%rbp)
-       movq %rdi, %r15
+       movq %rdi, %r11
+       movq %r11, -56(%rbp)
    L12:
-       movq %r15, %r13
+       movq -56(%rbp), %r10
+       movq %r10, %r13
        movq $0, %r12
        movq $0, %rbx
        cmpq %r12, %r13
@@ -176,13 +178,34 @@ _deleteFirst:
        jmp L11
        jmp L15
    L15:
-       movq %r15, %rbx
+       movq -56(%rbp), %r10
+       movq %r10, %rbx
        movq %rbx, %r14
-       movq %r15, %rbx
+       movq -56(%rbp), %r10
+       movq %r10, %rbx
        movq 8(%rbx), %rbx
-       movq %rbx, %r15
+       movq %rbx, %r11
+       movq %r11, -56(%rbp)
        movq %r14, %rbx
-       movq %r15, %rbx
+       pushq %rax
+       pushq %rcx
+       pushq %rdx
+       pushq %rsi
+       pushq %rdi
+       pushq %r8
+       pushq %r9
+       pushq %r10
+       call _free
+       popq %r10
+       popq %r9
+       popq %r8
+       popq %rdi
+       popq %rsi
+       popq %rdx
+       popq %rcx
+       popq %rax
+       movq -56(%rbp), %r10
+       movq %r10, %rbx
        movq %rbx, %rax
        jmp L11
    L11:
@@ -199,7 +222,7 @@ _deleteFirst:
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $144, %rsp
+       subq $128, %rsp
        pushq %rax
        pushq %rcx
        pushq %rdx
@@ -221,8 +244,7 @@ _deleteFirst:
        popq %rcx
        popq %rax
        movq -8(%rbp), %rbx
-       movq intList(%rip), %rbx
-       movq %rbx, %rbx
+       movq %rbx, intList(%rip)
        movq $0, %rbx
        movq %rbx, %r11
        movq %r11, -24(%rbp)
@@ -525,6 +547,6 @@ _deleteFirst:
        movq %rbx, %rax
        jmp L16
    L16:
-       addq $144, %rsp
+       addq $128, %rsp
        popq %rbp
        ret

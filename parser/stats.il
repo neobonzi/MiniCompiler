@@ -59,7 +59,7 @@ _getRands:
           compi 1, r57, ccr
           cbrne cc, L3, L2
     L3:
-          mov r22, r58
+          mov r21, r58
           storeret r58
           br L1
     L1:
@@ -281,7 +281,22 @@ _range:
           call _getRands, 2
           loadret r25
           mov r25, r20
-          loadi 0, r26
-          storeret r26
+          mov r20, r26
+          storeoutargument r26, 0
+          call _calcMean, 1
+          loadret r27
+          mov r27, r19
+          mov r19, r28
+          print r28
+          mov r20, r29
+          storeoutargument r29, 0
+          call _range, 1
+          loadret r30
+          mov r20, r31
+          storeoutargument r31, 0
+          call _approxSqrtAll, 1
+          loadret r32
+          loadi 0, r33
+          storeret r33
           br L32
    L32:

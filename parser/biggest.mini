@@ -58,6 +58,6 @@ fun main () int
  struct IntList list;
  
  list = getIntList ();
- print (biggestInList (list)) endl;
+
  return 0;
 }

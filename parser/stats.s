@@ -11,7 +11,7 @@ L2_.str:
 _getRands:
        pushq %rbp
        movq %rsp, %rbp
-       subq $160, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -151,7 +151,7 @@ _getRands:
        jne L3
        jmp L2
     L3:
-       movq %r14, %rbx
+       movq %r15, %rbx
        movq %rbx, %rax
        jmp L1
     L1:
@@ -160,13 +160,13 @@ _getRands:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $160, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
 _calcMean:
        pushq %rbp
        movq %rsp, %rbp
-       subq $144, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -269,7 +269,7 @@ _calcMean:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $144, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
     L9:
@@ -277,7 +277,7 @@ _calcMean:
 _approxSqrt:
        pushq %rbp
        movq %rsp, %rbp
-       subq $144, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -351,13 +351,13 @@ _approxSqrt:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $144, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
 _approxSqrtAll:
        pushq %rbp
        movq %rsp, %rbp
-       subq $152, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -448,13 +448,13 @@ _approxSqrtAll:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $152, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
 _range:
        pushq %rbp
        movq %rsp, %rbp
-       subq $192, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -634,13 +634,13 @@ _range:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $192, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $104, %rsp
+       subq $128, %rsp
        pushq %rax
        pushq %rcx
        pushq %rdx
@@ -684,9 +684,9 @@ _range:
        popq %rcx
        popq %rax
        movq -16(%rbp), %rbx
-       movq %rbx, %r13
+       movq %rbx, %r14
        movq %r12, %r12
-       movq %r13, %rbx
+       movq %r14, %rbx
        movq %r12, %rdi
        movq %rbx, %rsi
        pushq %rcx
@@ -707,11 +707,93 @@ _range:
        popq %rdx
        popq %rcx
        movq %rax, %rbx
+       movq %rbx, %r13
+       movq %r13, %rbx
+       movq %rbx, %rdi
+       pushq %rcx
+       pushq %rdx
+       pushq %rsi
+       pushq %rdi
+       pushq %r8
+       pushq %r9
+       pushq %r10
+       pushq %r11
+       call _calcMean
+       popq %r11
+       popq %r10
+       popq %r9
+       popq %r8
+       popq %rdi
+       popq %rsi
+       popq %rdx
+       popq %rcx
+       movq %rax, %rbx
        movq %rbx, %rbx
+       movq %rbx, %rbx
+       pushq %rcx
+       pushq %rdx
+       pushq %rsi
+       pushq %rdi
+       pushq %r8
+       pushq %r9
+       pushq %r10
+       pushq %r11
+       leaq L_.str(%rip), %rdi
+       movq $0, %rax
+       movq %rbx, %rsi
+       call _printf
+       popq %r11
+       popq %r10
+       popq %r9
+       popq %r8
+       popq %rdi
+       popq %rsi
+       popq %rdx
+       popq %rcx
+       movq %r13, %rbx
+       movq %rbx, %rdi
+       pushq %rcx
+       pushq %rdx
+       pushq %rsi
+       pushq %rdi
+       pushq %r8
+       pushq %r9
+       pushq %r10
+       pushq %r11
+       call _range
+       popq %r11
+       popq %r10
+       popq %r9
+       popq %r8
+       popq %rdi
+       popq %rsi
+       popq %rdx
+       popq %rcx
+       movq %rax, %rbx
+       movq %r13, %rbx
+       movq %rbx, %rdi
+       pushq %rcx
+       pushq %rdx
+       pushq %rsi
+       pushq %rdi
+       pushq %r8
+       pushq %r9
+       pushq %r10
+       pushq %r11
+       call _approxSqrtAll
+       popq %r11
+       popq %r10
+       popq %r9
+       popq %r8
+       popq %rdi
+       popq %rsi
+       popq %rdx
+       popq %rcx
+       movq %rax, %rbx
        movq $0, %rbx
        movq %rbx, %rax
        jmp L32
    L32:
-       addq $104, %rsp
+       addq $128, %rsp
        popq %rbp
        ret

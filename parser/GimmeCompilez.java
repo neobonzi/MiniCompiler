@@ -791,6 +791,8 @@ private static void adaptLVAILiveOuts(HashMap<String, LVAIBlock> lvaHash, Vector
             transformedBlocks.clear();
             allocateRegisters(intGraph, cfgBlock, stackVarHash);
             Integer finalStackOffset = 80 + curOffset;
+            // I HATE YOU MAC DIE DIE DIE.
+            finalStackOffset = (((int)Math.ceil(curOffset / 128.0)) * 128); 
             cfgBlock.assemInstructions.add(2, new SubQ(new ImmediateRegister(finalStackOffset), new AssemblyRegister(x86_64Reg.RSP)));
             funExit.assemInstructions.add(funExit.assemInstructions.size() - 2, new AddQ(new ImmediateRegister(finalStackOffset), new AssemblyRegister(x86_64Reg.RSP)));
          }

@@ -11,7 +11,7 @@ L2_.str:
 _buildList:
        pushq %rbp
        movq %rsp, %rbp
-       subq $200, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -212,13 +212,13 @@ _buildList:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $200, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
 _multiple:
        pushq %rbp
        movq %rsp, %rbp
-       subq $176, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -332,13 +332,13 @@ _multiple:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $176, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
   _add:
        pushq %rbp
        movq %rsp, %rbp
-       subq $176, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -452,13 +452,13 @@ _multiple:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $176, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
 _recurseList:
        pushq %rbp
        movq %rsp, %rbp
-       subq $136, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -494,7 +494,7 @@ _recurseList:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $136, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
    L11:
@@ -534,7 +534,7 @@ _recurseList:
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $176, %rsp
+       subq $128, %rsp
        movq $0, %rbx
        movq %rbx, %r11
        movq %r11, -16(%rbp)
@@ -810,6 +810,6 @@ _recurseList:
        movq %rbx, %rax
        jmp L13
    L13:
-       addq $176, %rsp
+       addq $128, %rsp
        popq %rbp
        ret

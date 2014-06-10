@@ -92,8 +92,7 @@ _deleteFirst:
           br L15
  _main:
           read r19
-          loadglobal @intList, r19
-          mov r19, r20
+          storeglobal r19, @intList
           loadi 0, r21
           mov r21, r18
           loadi 0, r22

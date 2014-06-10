@@ -581,11 +581,14 @@ lvalueRead [RegisterTable regTable, BasicBlock prevBlock, Integer assReg] return
       {
          $regNum = regTable.get($retId.text);
          if ($regNum == null) {
-            LoadGlobalInst inst = new LoadGlobalInst($retId.text, assReg);
+            StoreGlobalInst inst = new StoreGlobalInst(assReg, $retId.text);
             prevBlock.instructions.add(inst);
             $regNum = regCounter++;
          }
-         prevBlock.instructions.add(new MoveInst($assReg, $regNum));
+         else
+         {
+            prevBlock.instructions.add(new MoveInst($assReg, $regNum));
+         }
       }
    |  ^(DOT retReg=lvalueRead2[regTable, prevBlock] newId=ID)
       {

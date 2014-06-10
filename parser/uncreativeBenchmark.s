@@ -94,7 +94,7 @@ _countTotal:
 _printRecursive:
        pushq %rbp
        movq %rsp, %rbp
-       subq $152, %rsp
+       subq $128, %rsp
        movq %rbx, -8(%rbp)
        movq %r12, -16(%rbp)
        movq %r13, -24(%rbp)
@@ -132,7 +132,7 @@ _printRecursive:
        movq -24(%rbp), %r13
        movq -32(%rbp), %r14
        movq -40(%rbp), %r15
-       addq $152, %rsp
+       addq $128, %rsp
        popq %rbp
        ret
     L5:
@@ -400,7 +400,7 @@ _convertBinary:
  _main:
        pushq %rbp
        movq %rsp, %rbp
-       subq $200, %rsp
+       subq $128, %rsp
        movq $72, %rdi
        call _malloc
        movq %rax, %rbx
@@ -1220,6 +1220,6 @@ _convertBinary:
        movq %rbx, %rax
        jmp L44
    L44:
-       addq $200, %rsp
+       addq $128, %rsp
        popq %rbp
        ret

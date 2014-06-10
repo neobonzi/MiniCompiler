@@ -9,6 +9,7 @@ public class MovQ extends AssemblyInstruction{
 	public boolean fromMem = false;
 	public boolean toMem = false;
 	public String varOffset = null;
+	public String globalStackOffset = null;
 	public LeaQ relatedLoad = null;
 
 	public MovQ(Register source, Register target) {
@@ -29,7 +30,14 @@ public class MovQ extends AssemblyInstruction{
 		}
 
 		if (toMem) {
-			return "movq " + source_ass +  ", " + stackPos + "(" + target_ass + ")";
+			if(globalStackOffset != null)
+			{
+				return "movq " + source_ass +  ", " + globalStackOffset + "(" + target_ass + ")";
+			}
+			else
+			{
+				return "movq " + source_ass +  ", " + stackPos + "(" + target_ass + ")";
+			}
 		}
 
 		return "movq " + source_ass + ", " + target_ass;

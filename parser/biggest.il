@@ -99,12 +99,7 @@ _biggestInList:
           call _getIntList, 0
           loadret r18
           mov r18, r17
-          mov r17, r19
-          storeoutargument r19, 0
-          call _biggestInList, 1
-          loadret r20
-          print r20
-          loadi 0, r21
-          storeret r21
+          loadi 0, r19
+          storeret r19
           br L14
    L14:
